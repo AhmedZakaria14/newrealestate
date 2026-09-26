@@ -1,0 +1,6 @@
+{
+  "name": "Skyvilla - Luxury Real Estate & Construction",
+  "description": "Skyvilla premium real estate and construction website featuring high-end architectural planning, luxury villas, commercial projects, modern designs, and construction excellence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

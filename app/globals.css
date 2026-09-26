@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@600;700;800&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap");
+@import "tailwindcss";
+
+@layer base {
+  /* Default Light Mode (نهاري) */
+  :root {
+    --primary: #0f172a;
+    --primary-foreground: #ffffff;
+    --accent: #22c55e;
+    --accent-dark: #16a34a;
+    --accent-foreground: #ffffff;
+    --background: #f8fafc;
+    --foreground: #0f172a;
+    --muted: #64748b;
+    --muted-foreground: #475569;
+    --card: #ffffff;
+    --card-foreground: #0f172a;
+    --border: rgba(15, 23, 42, 0.1);
+    --border-light: rgba(15, 23, 42, 0.05);
+  }
+
+  /* Dark Mode (ليلي) */
+  html.dark {
+    --primary: #040618;
+    --primary-foreground: #ffffff;
+    --accent: #DCFF09;
+    --accent-dark: #b8d605;
+    --accent-foreground: #040618;
+    --background: #040618;
+    --foreground: #ffffff;
+    --muted: #585960;
+    --muted-foreground: #9da0a8;
+    --card: #080b24;
+    --card-foreground: #ffffff;
+    --border: rgba(255, 255, 255, 0.1);
+    --border-light: rgba(4, 6, 24, 0.08);
+  }
+
+  body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Arabic Font Setting */
+  html[lang="ar"] body,
+  html[dir="rtl"] body {
+    font-family: "Cairo", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  /* English Font Setting */
+  html[lang="en"] body,
+  html[dir="ltr"] body {
+    font-family: "General Sans", "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+/* Custom animations and utilities */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes marquee-rtl {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+@keyframes marquee-rtl-reverse {
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(220, 255, 9, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(220, 255, 9, 0.85);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pulse-glow-light {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.85);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rotate-text {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+[dir="rtl"] .animate-marquee {
+  animation: marquee-rtl 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse 32s linear infinite;
+}
+
+[dir="rtl"] .animate-marquee-reverse {
+  animation: marquee-rtl-reverse 32s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: rotate-text 18s linear infinite;
+}
+
+.pulse-button-glow {
+  animation: pulse-glow 2.5s infinite;
+}
+
+.pulse-button-glow-light {
+  animation: pulse-glow-light 2.5s infinite;
+}
+
+/* Glass and metal card styling */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.html:not(.dark) .glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.glass-card-hover {
+  transition: all 0.35s ease;
+}
+
+.glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(220, 255, 9, 0.35);
+  transform: translateY(-4px);
+}
+
+.lime-glow-hover:hover {
+  box-shadow: 0 8px 30px rgba(220, 255, 9, 0.25);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #040618;
+}
+html:not(.dark) ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1e3d;
+  border-radius: 4px;
+}
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #DCFF09;
+}
+html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+  background: #0ea5e9;
+}
