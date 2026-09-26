@@ -417,32 +417,30 @@ export const translations: Record<Language, Record<string, string>> = {
 
 export function LanguageThemeProvider({ children }: { children: React.ReactNode }) {
   // Default language is 'ar' as requested by user
-  const [language, setLanguageState] = useState<Language>('ar');
-  // Default theme is 'light' (نهاري) as requested by user
-  const [theme, setThemeState] = useState<Theme>('light');
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    // Check saved preferences in localStorage
-    try {
-      const savedLang = localStorage.getItem('skyvilla_lang') as Language | null;
-      if (savedLang && (savedLang === 'ar' || savedLang === 'en')) {
-        setLanguageState(savedLang);
-      } else {
-        setLanguageState('ar');
+  const [language, setLanguageState] = useState<Language>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const savedLang = localStorage.getItem('skyvilla_lang') as Language | null;
+        if (savedLang === 'ar' || savedLang === 'en') return savedLang;
+      } catch {
+        // Ignore
       }
-
-      const savedTheme = localStorage.getItem('skyvilla_theme') as Theme | null;
-      if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
-        setThemeState(savedTheme);
-      } else {
-        setThemeState('light');
-      }
-    } catch {
-      // Ignore localStorage read errors in SSR/iframe
     }
-    setMounted(true);
-  }, []);
+    return 'ar';
+  });
+
+  // Default theme is 'light' (نهاري) as requested by user
+  const [theme, setThemeState] = useState<Theme>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const savedTheme = localStorage.getItem('skyvilla_theme') as Theme | null;
+        if (savedTheme === 'light' || savedTheme === 'dark') return savedTheme;
+      } catch {
+        // Ignore
+      }
+    }
+    return 'light';
+  });
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
