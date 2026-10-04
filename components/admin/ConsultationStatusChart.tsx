@@ -151,7 +151,10 @@ export default function ConsultationStatusChart({
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    setIsMounted(true);
+    const timer = setTimeout(() => {
+      setIsMounted(true);
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   // Compute status aggregates
@@ -291,25 +294,28 @@ export default function ConsultationStatusChart({
               <div className="w-full h-[270px] relative">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
-                    {React.createElement(Pie as any, {
-                      data,
-                      cx: "50%",
-                      cy: "50%",
-                      innerRadius: 65,
-                      outerRadius: 95,
-                      paddingAngle: 4,
-                      dataKey: "value",
-                      activeIndex: activeIndex !== null ? activeIndex : undefined,
-                      activeShape: renderActiveShape,
-                      onMouseEnter: (_: any, index: number) => setActiveIndex(index),
-                      onMouseLeave: () => setActiveIndex(null),
-                      onClick: (entry: any) => {
-                        if (onSelectStatus && entry && entry.key) {
-                          onSelectStatus(entry.key);
-                        }
+                    {React.createElement(
+                      Pie as any,
+                      {
+                        data,
+                        cx: "50%",
+                        cy: "50%",
+                        innerRadius: 65,
+                        outerRadius: 95,
+                        paddingAngle: 4,
+                        dataKey: "value",
+                        activeIndex: activeIndex !== null ? activeIndex : undefined,
+                        activeShape: renderActiveShape,
+                        onMouseEnter: (_: any, index: number) => setActiveIndex(index),
+                        onMouseLeave: () => setActiveIndex(null),
+                        onClick: (entry: any) => {
+                          if (onSelectStatus && entry && entry.key) {
+                            onSelectStatus(entry.key);
+                          }
+                        },
+                        className: "cursor-pointer outline-none",
                       },
-                      className: "cursor-pointer outline-none",
-                      children: data.map((entry) => (
+                      data.map((entry) => (
                         <Cell
                           key={`cell-${entry.key}`}
                           fill={entry.color}
@@ -318,7 +324,7 @@ export default function ConsultationStatusChart({
                           className="cursor-pointer transition-transform hover:opacity-90"
                         />
                       ))
-                    })}
+                    )}
                     <Tooltip
                       content={({ active, payload }) => {
                         if (active && payload && payload.length) {
