@@ -2,270 +2,338 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Star, ArrowUpRight, Play, Plus, ShieldCheck } from 'lucide-react';
-import { clientAvatars, partnerLogos } from '@/data/skyvilla-data';
+import Link from 'next/link';
+import {
+  ArrowUpRight,
+  ShieldCheck,
+  Building2,
+  HardHat,
+  Fan,
+  Layers,
+  Calculator,
+  CheckCircle2,
+  Phone,
+  FileSpreadsheet,
+  Clock,
+  Sparkles,
+} from 'lucide-react';
 import ConsultationModal from '@/components/ConsultationModal';
-import VideoModal from '@/components/VideoModal';
 import { useLanguageTheme } from '@/lib/language-theme-context';
 
 export default function HeroSection() {
-  const { theme, t, direction } = useLanguageTheme();
-  const [videoModalOpen, setVideoModalOpen] = useState(false);
-  const [consultationOpen, setConsultationOpen] = useState(false);
-
+  const { language, theme, direction } = useLanguageTheme();
+  const isAr = language === 'ar';
   const isDark = theme === 'dark';
 
+  const [consultationOpen, setConsultationOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<'contracting' | 'realestate' | 'hvac'>('contracting');
+
+  const stats = [
+    {
+      value: isAr ? 'فئة أولى' : 'Class-1',
+      label: isAr ? 'تصنيف المقاولات العامة' : 'General Contracting Grade',
+    },
+    {
+      value: 'SBC 100%',
+      label: isAr ? 'مطابقة كود البناء السعودي' : 'Saudi Building Code Certified',
+    },
+    {
+      value: isAr ? 'فال 1200028472' : 'FAL 1200028472',
+      label: isAr ? 'رخصة الوساطة والتسويق' : 'Licensed Real Estate Brokerage',
+    },
+    {
+      value: isAr ? '24/7 طوارئ' : '24/7 Emergency',
+      label: isAr ? 'عقود تشغيل وصيانة AMC' : 'HVAC & Operations AMC',
+    },
+  ];
+
   return (
-    <section className="relative min-h-screen pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden flex flex-col justify-between">
-      {/* Hero background image with gradient layer */}
+    <section className="relative min-h-[92vh] pt-24 pb-14 lg:pt-32 lg:pb-20 overflow-hidden flex flex-col justify-between">
+      {/* Hero background image with architectural construction presence */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://demo.awaikenthemes.com/skyvilla/wp-content/uploads/2026/01/hero-bg-image-metal.jpg"
-          alt="Skyvilla Hero Background"
+          src="https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=2200&q=90"
+          alt="General Contracting & Structural Development"
           fill
           priority
           className={`object-cover object-center transition-all ${
             isDark
-              ? 'filter brightness-[0.38] contrast-[1.1]'
-              : 'filter brightness-[0.45] contrast-[1.05]'
+              ? 'filter brightness-[0.32] contrast-[1.12]'
+              : 'filter brightness-[0.38] contrast-[1.08]'
           }`}
           referrerPolicy="no-referrer"
         />
         <div
           className={`absolute inset-0 transition-colors ${
             isDark
-              ? 'bg-gradient-to-b from-[#040618]/70 via-[#040618]/50 to-[#040618]'
-              : 'bg-gradient-to-b from-slate-950/75 via-slate-900/60 to-slate-950/90'
+              ? 'bg-gradient-to-b from-[#040618]/90 via-[#040618]/75 to-[#040618]'
+              : 'bg-gradient-to-b from-slate-950/90 via-slate-900/80 to-slate-950/95'
           }`}
         />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Hero Content */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
-            {/* Top Badge: Trusted By Hundreds Of Satisfied Clients */}
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
-              <div className="flex -space-x-2 rtl:space-x-reverse">
-                {clientAvatars.slice(0, 3).map((avatar, idx) => (
-                  <div key={idx} className="relative w-6 h-6 rounded-full overflow-hidden border border-[#DCFF09]">
-                    <Image
-                      src={avatar}
-                      alt="Client"
-                      fill
-                      className="object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                ))}
-              </div>
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3 h-3 fill-[#DCFF09] text-[#DCFF09]" />
-                ))}
-              </div>
-              <span className="text-xs sm:text-sm font-semibold text-gray-100">
-                {t('hero.badge')}
-              </span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-10 sm:mb-14">
+          {/* Left Hero Content: Emphasizing General Contracting & Integrated Ecosystem */}
+          <div className="lg:col-span-7 space-y-6 sm:space-y-7">
+            {/* Top Unboxed Metadata / Kicker following constitution */}
+            <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-bold text-sky-400">
+              <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
+              <span>{isAr ? 'مقاولات عامة فئة أولى' : 'Class-1 General Contracting'}</span>
+              <span aria-hidden="true" className="opacity-40">·</span>
+              <span>{isAr ? 'كود البناء السعودي SBC' : 'Saudi Building Code (SBC)'}</span>
+              <span aria-hidden="true" className="opacity-40">·</span>
+              <span>{isAr ? 'رخصة فال 1200028472' : 'VAL Lic. 1200028472'}</span>
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black text-white tracking-tight leading-[1.12]">
-              {t('hero.titlePre')}{' '}
-              <span className="text-[#DCFF09] underline decoration-[#DCFF09]/60 underline-offset-8">
-                {t('hero.titleHighlight')}
+            <h1 className="text-3xl sm:text-5xl md:text-6xl xl:text-7xl font-black text-white tracking-tight leading-[1.16] sm:leading-[1.10]">
+              <span className="block mb-1 sm:mb-2">
+                {isAr ? 'مجموعة هارد القابضة' : 'HARD Group Holding'}
+              </span>
+              <span className="block text-sky-400">
+                {isAr ? 'للمقاولات والتطوير العقاري' : '& Structural Development'}
               </span>
             </h1>
 
             {/* Subtext */}
-            <p className="text-gray-200 text-base sm:text-lg max-w-2xl leading-relaxed">
-              {t('hero.description')}
+            <p className="text-gray-200 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed">
+              {isAr
+                ? 'منظومة استثمارية وطنية متكاملة تجمع بين المقاولات الإنشائية المصنفة فئة أولى، الوساطة والتسويق العقاري المرخص (فال)، وهندسة التكييف وتشغيل المرافق (AMC 24/7).'
+                : 'A unified Saudi development ecosystem integrating Class-1 structural contracting, licensed real estate brokerage (VAL), and 24/7 electromechanical facility engineering.'}
             </p>
 
-            {/* CTA row: Button + Review Rating */}
-            <div className="flex flex-wrap items-center gap-6 pt-2">
+            {/* Action buttons */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
               <button
+                type="button"
                 onClick={() => setConsultationOpen(true)}
-                className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-[#DCFF09] text-[#040618] font-black text-base hover:bg-white transition-all transform hover:-translate-y-1 shadow-lg shadow-[#DCFF09]/25 cursor-pointer group"
+                className="inline-flex items-center gap-2 px-7 py-3.5 sm:px-8 sm:py-4 rounded-2xl bg-blue-600 text-white font-black text-xs sm:text-sm hover:bg-blue-500 transition-all transform hover:-translate-y-0.5 shadow-lg shadow-blue-600/30 cursor-pointer active:scale-98"
               >
-                <span>{t('hero.cta')}</span>
+                <span>{isAr ? 'طلب استشارة وتسعير فوري' : 'Request Instant Estimate'}</span>
                 <ArrowUpRight
-                  className={`w-5 h-5 transition-transform ${
-                    direction === 'rtl'
-                      ? 'rotate-[-90deg] group-hover:-translate-x-1 group-hover:-translate-y-1'
-                      : 'group-hover:translate-x-1 group-hover:-translate-y-1'
+                  className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform ${
+                    direction === 'rtl' ? 'rotate-[-90deg]' : ''
                   }`}
                 />
               </button>
 
-              <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/15">
-                <div className="text-left rtl:text-right">
-                  <div className="flex items-center gap-2">
-                    <span className="text-2xl font-black text-white">{t('hero.reviewRating')}</span>
-                    <div className="flex">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3.5 h-3.5 fill-[#DCFF09] text-[#DCFF09]" />
-                      ))}
-                    </div>
-                  </div>
-                  <span className="text-xs text-gray-300 font-medium block">
-                    {t('hero.reviewText')}
-                  </span>
-                </div>
-              </div>
+              <a
+                href="#project-calculator"
+                className="inline-flex items-center gap-2 px-5 py-3.5 sm:px-6 sm:py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm backdrop-blur-md border border-white/20 transition-all cursor-pointer"
+              >
+                <Calculator className="w-4 h-4 text-blue-400" />
+                <span>{isAr ? 'حاسبة تكاليف المشاريع' : 'Cost Estimator'}</span>
+              </a>
+
+              <a
+                href="tel:+966138004273"
+                className="inline-flex items-center gap-2 px-4 py-3.5 sm:py-4 rounded-2xl bg-white/5 hover:bg-white/10 text-white font-semibold text-xs sm:text-sm border border-white/15 transition-all"
+              >
+                <Phone className="w-4 h-4 text-emerald-400" />
+                <span>{isAr ? 'اتصال مباشر' : 'Direct Call'}</span>
+              </a>
             </div>
           </div>
 
-          {/* Right Hero Visual & Metal Cards */}
+          {/* Right Hero Card: Direct Sector Portals Hub */}
           <div className="lg:col-span-5 relative">
-            {/* Circular Rotating Video Badge */}
-            <div
-              className={`hidden sm:block absolute -top-8 ${
-                direction === 'rtl' ? '-right-8 xl:-right-12' : '-left-8 xl:-left-12'
-              } z-20`}
-            >
-              <div className="relative w-32 h-32 flex items-center justify-center">
-                {/* Rotating SVG text */}
-                <svg
-                  className="w-full h-full animate-spin-slow pointer-events-none"
-                  viewBox="0 0 100 100"
-                >
-                  <path
-                    id="circlePath"
-                    d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-                    fill="none"
-                  />
-                  <text className="text-[9.5px] uppercase tracking-[0.25em] fill-gray-100 font-bold">
-                    <textPath xlinkHref="#circlePath">
-                      {t('hero.watchVideo')}
-                    </textPath>
-                  </text>
-                </svg>
-
-                {/* Central Play Button */}
+            <div className="rounded-3xl p-5 sm:p-7 backdrop-blur-xl bg-[#080d2b]/95 border border-white/15 text-white shadow-2xl space-y-5">
+              {/* Tab Selector Segmented Control */}
+              <div className="flex items-center gap-1 p-1 rounded-2xl bg-black/40 border border-white/10">
                 <button
-                  onClick={() => setVideoModalOpen(true)}
-                  className="absolute inset-0 m-auto w-12 h-12 rounded-full bg-[#DCFF09] text-[#040618] flex items-center justify-center hover:bg-white transition-all transform hover:scale-110 shadow-lg shadow-[#DCFF09]/30 cursor-pointer"
-                  aria-label="Play video showcase"
+                  type="button"
+                  onClick={() => setActiveTab('contracting')}
+                  className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                    activeTab === 'contracting'
+                      ? 'bg-blue-600 text-white shadow-md'
+                      : 'text-gray-300 hover:text-white'
+                  }`}
                 >
-                  <Play className={`w-5 h-5 fill-current ${direction === 'rtl' ? 'mr-0.5' : 'ml-0.5'}`} />
+                  {isAr ? 'المقاولات (SBC)' : 'Contracting'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('realestate')}
+                  className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                    activeTab === 'realestate'
+                      ? 'bg-blue-600 text-white shadow-md'
+                      : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  {isAr ? 'العقارات (فال)' : 'Real Estate'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('hvac')}
+                  className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                    activeTab === 'hvac'
+                      ? 'bg-blue-600 text-white shadow-md'
+                      : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  {isAr ? 'التكييف (AMC)' : 'HVAC'}
                 </button>
               </div>
-            </div>
 
-            {/* Stacked Cards Container */}
-            <div className="space-y-4">
-              {/* Card 1: Featured Image & Trusted Builders */}
-              <div className="relative rounded-3xl overflow-hidden border border-white/20 bg-gradient-to-br from-[#0c0f2f]/90 to-[#040618]/90 p-6 shadow-2xl backdrop-blur-xl group hover:border-[#DCFF09]/50 transition-all duration-300">
-                <div className="flex flex-col sm:flex-row items-center gap-5">
-                  <div className="relative w-full sm:w-40 h-44 rounded-2xl overflow-hidden shrink-0 border border-white/10">
-                    <Image
-                      src="https://demo.awaikenthemes.com/skyvilla/wp-content/uploads/2026/01/hero-info-item-image-1-metal.jpg"
-                      alt="Luxury Skyvilla Construction"
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      referrerPolicy="no-referrer"
-                    />
+              {activeTab === 'contracting' && (
+                <div className="space-y-4">
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 block">
+                      {isAr ? 'مقاولات عامة فئة أولى معتمدة' : 'Class-1 General Contracting'}
+                    </span>
+                    <h3 className="text-base sm:text-lg font-black">
+                      {isAr ? 'تنفيذ الأبراج والمجمعات والفلل الفاخرة' : 'Towers, Plazas & Luxury Estates'}
+                    </h3>
                   </div>
 
-                  <div className="space-y-3">
-                    {/* Avatars row */}
-                    <div className="flex items-center gap-2">
-                      <div className="flex -space-x-2 rtl:space-x-reverse">
-                        {clientAvatars.slice(0, 3).map((avatar, idx) => (
-                          <div
-                            key={idx}
-                            className="relative w-8 h-8 rounded-full overflow-hidden border-2 border-[#040618]"
-                          >
-                            <Image
-                              src={avatar}
-                              alt="Avatar"
-                              fill
-                              className="object-cover"
-                              referrerPolicy="no-referrer"
-                            />
-                          </div>
-                        ))}
-                      </div>
-                      <div className="w-8 h-8 rounded-full bg-[#DCFF09]/20 border border-[#DCFF09]/40 flex items-center justify-center text-[#DCFF09]">
-                        <Plus className="w-4 h-4" />
-                      </div>
+                  <div className="space-y-2.5 text-xs">
+                    <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/5 border border-white/10">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                      <span>{isAr ? 'مطابقة هندسية 100% لكود البناء السعودي (SBC)' : '100% Saudi Building Code compliance'}</span>
                     </div>
+                    <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/5 border border-white/10">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                      <span>{isAr ? 'جداول كميات (BOQ) ملزمة وإشراف هندسي مقيم' : 'Binding BOQ & resident site engineers'}</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/5 border border-white/10">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                      <span>{isAr ? 'ضمانات هيكلية ممتدة تصل إلى 10 سنوات' : '10-Year structural engineering warranty'}</span>
+                    </div>
+                  </div>
 
-                    <h3 className="text-xl font-bold text-white group-hover:text-[#DCFF09] transition-colors">
-                      {t('hero.trustedBuilders')}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                      {t('hero.trustedBuildersDesc')}
-                    </p>
+                  <div className="pt-1 flex flex-col gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setConsultationOpen(true)}
+                      className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-98"
+                    >
+                      <FileSpreadsheet className="w-4 h-4" />
+                      <span>{isAr ? 'طلب دراسة تكلفة وجداول كميات BOQ' : 'Request BOQ Estimate'}</span>
+                    </button>
+                    <Link
+                      href="/construction"
+                      className="w-full py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white font-semibold text-xs text-center transition-all"
+                    >
+                      {isAr ? 'استعراض صفحة المقاولات الإنشائية التفصيلية' : 'Visit Full Contracting Portal'}
+                    </Link>
                   </div>
                 </div>
-              </div>
+              )}
 
-              {/* Card 2: Your Trusted Partners with counter graphic */}
-              <div className="relative rounded-3xl overflow-hidden border border-white/20 bg-gradient-to-br from-[#0c0f2f]/90 to-[#040618]/90 p-6 shadow-2xl backdrop-blur-xl group hover:border-[#DCFF09]/50 transition-all duration-300">
-                <div className="flex items-center justify-between gap-4">
-                  <div className="space-y-1.5 max-w-xs">
-                    <div className="inline-flex items-center gap-1.5 text-xs uppercase font-bold text-[#DCFF09]">
-                      <ShieldCheck className="w-4 h-4" />
-                      <span>{t('hero.certifiedIntegrity')}</span>
-                    </div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-[#DCFF09] transition-colors">
-                      {t('hero.trustedPartners')}
+              {activeTab === 'realestate' && (
+                <div className="space-y-4">
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400 block">
+                      {isAr ? 'وساطة وتسويق معتمد برخصة فال 1200028472' : 'VAL Licensed Brokerage 1200028472'}
+                    </span>
+                    <h3 className="text-base sm:text-lg font-black">
+                      {isAr ? 'تسويق المخططات والقصور والفرص الاستثمارية' : 'Prime Off-Plan & Luxury Palaces'}
                     </h3>
-                    <p className="text-xs sm:text-sm text-gray-300">
-                      {t('hero.trustedPartnersDesc')}
-                    </p>
                   </div>
 
-                  <div className="relative w-28 h-24 shrink-0">
-                    <Image
-                      src="https://demo.awaikenthemes.com/skyvilla/wp-content/uploads/2026/01/hero-info-counter-image-metal.png"
-                      alt="Construction Experience Counter"
-                      fill
-                      className="object-contain"
-                      referrerPolicy="no-referrer"
-                    />
+                  <div className="grid grid-cols-2 gap-2 text-xs">
+                    <Link
+                      href="/listings?status=for-sale"
+                      className="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/50 text-center font-bold"
+                    >
+                      {isAr ? 'عقارات للبيع' : 'Properties for Sale'}
+                    </Link>
+                    <Link
+                      href="/listings?status=for-rent"
+                      className="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/50 text-center font-bold"
+                    >
+                      {isAr ? 'عقارات للإيجار' : 'Properties for Rent'}
+                    </Link>
+                  </div>
+
+                  <div className="pt-1 flex flex-col gap-2">
+                    <Link
+                      href="/realestate"
+                      className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-lg transition-all flex items-center justify-center gap-2"
+                    >
+                      <span>{isAr ? 'الدخول لبوابة الوساطة والتسويق العقاري' : 'Open Real Estate Portal'}</span>
+                      <ArrowUpRight className={`w-4 h-4 ${direction === 'rtl' ? 'rotate-[-90deg]' : ''}`} />
+                    </Link>
+                    <Link
+                      href="/projects"
+                      className="w-full py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white font-semibold text-xs text-center transition-all"
+                    >
+                      {isAr ? 'استعراض المشاريع الكبرى قيد الإنشاء' : 'View Master Developments'}
+                    </Link>
                   </div>
                 </div>
-              </div>
+              )}
+
+              {activeTab === 'hvac' && (
+                <div className="space-y-4">
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-400 block">
+                      {isAr ? 'عقود صيانة وقائية AMC وطوارئ 24/7' : 'Preventive AMC & 24/7 Emergency'}
+                    </span>
+                    <h3 className="text-base sm:text-lg font-black">
+                      {isAr ? 'شيلرات مركزية وأنظمة VRF الذكية' : 'Central Chillers & Inverter VRF'}
+                    </h3>
+                  </div>
+
+                  <div className="space-y-2.5 text-xs">
+                    <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/5 border border-white/10">
+                      <Clock className="w-4 h-4 text-cyan-400 shrink-0" />
+                      <span>{isAr ? 'استجابة ميدانية فورية لطوارئ التبريد 24/7' : '24/7 immediate cooling dispatch'}</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/5 border border-white/10">
+                      <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
+                      <span>{isAr ? 'توفير يصل إلى 35% في استهلاك طاقة التكييف' : 'Up to 35% HVAC energy optimization'}</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-1 flex flex-col gap-2">
+                    <Link
+                      href="/hvac"
+                      className="w-full py-3 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs shadow-lg transition-all flex items-center justify-center gap-2"
+                    >
+                      <span>{isAr ? 'طلب عقد صيانة وقائية AMC' : 'Request AMC Service Contract'}</span>
+                      <ArrowUpRight className={`w-4 h-4 ${direction === 'rtl' ? 'rotate-[-90deg]' : ''}`} />
+                    </Link>
+                    <a
+                      href="https://wa.me/966556125711"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-emerald-400 font-semibold text-xs text-center transition-all"
+                    >
+                      {isAr ? 'طوارئ التكييف عبر واتساب 24/7' : 'WhatsApp Emergency 24/7'}
+                    </a>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
 
-        {/* Partner Logos Marquee Banner */}
-        <div className="mt-16 pt-8 border-t border-white/15">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
-            <span className="text-xs uppercase tracking-widest text-gray-300 font-bold">
-              {t('hero.partnersBanner')}
-            </span>
-          </div>
-          <div className="overflow-hidden py-3">
-            <div className="animate-marquee flex items-center gap-12 sm:gap-16">
-              {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((logo, idx) => (
-                <div key={idx} className="shrink-0 h-9 w-36 relative grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-all">
-                  <img
-                    src={logo}
-                    alt="Partner Logo"
-                    className="h-full w-auto object-contain brightness-0 invert"
-                  />
-                </div>
-              ))}
+        {/* 4 Trust Metrics Strip */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-5 border-t border-white/15">
+          {stats.map((st, i) => (
+            <div key={i} className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-blue-400 shrink-0">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-sm sm:text-base font-black text-white block">
+                  {st.value}
+                </span>
+                <span className="text-[11px] text-gray-300 block">
+                  {st.label}
+                </span>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
-
-      <VideoModal
-        isOpen={videoModalOpen}
-        onClose={() => setVideoModalOpen(false)}
-        youtubeId="Y-x0efG1seA"
-        title="Skyvilla Construction Tour"
-      />
 
       <ConsultationModal
         isOpen={consultationOpen}
         onClose={() => setConsultationOpen(false)}
+        defaultService="General Contracting & Structural Construction"
       />
     </section>
   );

@@ -34,16 +34,16 @@ export default function TestimonialsSection() {
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
           <div className="space-y-3 max-w-2xl">
-            <span className="inline-block text-xs uppercase tracking-widest font-bold text-emerald-500 px-3.5 py-1.5 bg-emerald-500/10 rounded-full border border-emerald-500/20">
+            <span className="inline-block text-xs uppercase tracking-widest font-bold text-blue-500 px-3.5 py-1.5 bg-blue-500/10 rounded-full border border-blue-500/20">
               {t('testimonials.badge')}
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
               {t('testimonials.titlePre')}{' '}
-              <span className={isDark ? 'text-[#DCFF09]' : 'text-emerald-600'}>
+              <span className={isDark ? 'text-blue-400' : 'text-blue-600'}>
                 {t('testimonials.titleHighlight')}
               </span>
             </h2>
-            <p className="opacity-75 text-sm sm:text-base leading-relaxed">
+            <p className="opacity-95 text-sm sm:text-base leading-relaxed">
               {t('testimonials.subtitle')}
             </p>
           </div>
@@ -53,8 +53,8 @@ export default function TestimonialsSection() {
               onClick={direction === 'rtl' ? nextSlide : prevSlide}
               className={`p-3.5 rounded-full border transition-colors cursor-pointer ${
                 isDark
-                  ? 'bg-[#080b24] border-white/10 text-white hover:bg-[#DCFF09] hover:text-[#040618] hover:border-[#DCFF09]'
-                  : 'bg-slate-100 border-slate-200 text-slate-800 hover:bg-emerald-600 hover:text-white hover:border-emerald-600'
+                  ? 'bg-[#080b24] border-white/10 text-white hover:bg-blue-600 hover:text-white hover:border-blue-500'
+                  : 'bg-slate-100 border-slate-200 text-slate-800 hover:bg-blue-600 hover:text-white hover:border-blue-600'
               }`}
               aria-label="Previous testimonial"
             >
@@ -64,8 +64,8 @@ export default function TestimonialsSection() {
               onClick={direction === 'rtl' ? prevSlide : nextSlide}
               className={`p-3.5 rounded-full border transition-colors cursor-pointer ${
                 isDark
-                  ? 'bg-[#080b24] border-white/10 text-white hover:bg-[#DCFF09] hover:text-[#040618] hover:border-[#DCFF09]'
-                  : 'bg-slate-100 border-slate-200 text-slate-800 hover:bg-emerald-600 hover:text-white hover:border-emerald-600'
+                  ? 'bg-[#080b24] border-white/10 text-white hover:bg-blue-600 hover:text-white hover:border-blue-500'
+                  : 'bg-slate-100 border-slate-200 text-slate-800 hover:bg-blue-600 hover:text-white hover:border-blue-600'
               }`}
               aria-label="Next testimonial"
             >
@@ -86,7 +86,7 @@ export default function TestimonialsSection() {
             className={`absolute top-8 ${
               direction === 'rtl' ? 'left-8' : 'right-8'
             } transition-colors ${
-              isDark ? 'text-[#DCFF09]/15 group-hover:text-[#DCFF09]/25' : 'text-emerald-500/10 group-hover:text-emerald-500/20'
+              isDark ? 'text-blue-400/15 group-hover:text-blue-400/25' : 'text-blue-500/10 group-hover:text-blue-500/20'
             }`}
           >
             <Quote className="w-24 h-24 sm:w-32 sm:h-32" />
@@ -107,7 +107,7 @@ export default function TestimonialsSection() {
 
             {/* Author info */}
             <div className="flex items-center gap-4 pt-4 border-t border-gray-500/15">
-              <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-emerald-500">
+              <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-blue-500">
                 <Image
                   src={current.avatar}
                   alt={name}
@@ -119,7 +119,7 @@ export default function TestimonialsSection() {
 
               <div>
                 <h4 className="text-lg font-bold">{name}</h4>
-                <span className="text-xs uppercase font-bold text-emerald-500 tracking-wider block">
+                <span className="text-xs uppercase font-bold text-blue-500 tracking-wider block">
                   {role}
                 </span>
               </div>
@@ -135,8 +135,8 @@ export default function TestimonialsSection() {
                 className={`h-2 rounded-full transition-all cursor-pointer ${
                   currentIndex === idx
                     ? isDark
-                      ? 'w-8 bg-[#DCFF09]'
-                      : 'w-8 bg-emerald-600'
+                      ? 'w-8 bg-blue-600'
+                      : 'w-8 bg-blue-600'
                     : 'w-2 bg-gray-400/40'
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
@@ -147,19 +147,22 @@ export default function TestimonialsSection() {
 
         {/* Global Clients Trust Strip */}
         <div className="mt-16 pt-10 border-t border-gray-500/15 flex flex-col md:flex-row items-center justify-between gap-6">
-          <span className="text-sm font-bold uppercase tracking-wider opacity-80">
+          <span className="text-sm font-bold uppercase tracking-wider opacity-100">
             {t('testimonials.clientsCount')}
           </span>
-          <div className="flex flex-wrap items-center gap-8 opacity-75">
+          <div className="flex flex-wrap items-center gap-8 opacity-95">
             {partnerLogos.map((logo, i) => (
-              <img
-                key={i}
-                src={logo}
-                alt="Partner logo"
-                className={`h-7 w-auto grayscale opacity-60 hover:opacity-100 transition-opacity ${
-                  isDark ? 'brightness-0 invert' : ''
-                }`}
-              />
+              <div key={i} className="relative h-7 w-28">
+                <Image
+                  src={logo}
+                  alt="Partner logo"
+                  fill
+                  className={`object-contain grayscale opacity-60 hover:opacity-100 transition-opacity ${
+                    isDark ? 'brightness-0 invert' : ''
+                  }`}
+                  referrerPolicy="no-referrer"
+                />
+              </div>
             ))}
           </div>
         </div>

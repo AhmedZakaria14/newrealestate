@@ -14,7 +14,7 @@ export default function VideoModal({
   isOpen,
   onClose,
   youtubeId = 'Y-x0efG1seA',
-  title = 'Skyvilla Construction Tour',
+  title = 'HARD Real Estate Video Tour',
 }: VideoModalProps) {
   if (!isOpen) return null;
 
@@ -25,7 +25,7 @@ export default function VideoModal({
           <h3 className="font-semibold text-white truncate">{title}</h3>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-white p-1.5 rounded-full hover:bg-white/10 transition-colors cursor-pointer"
+            className="text-gray-300 hover:text-white p-1.5 rounded-full hover:bg-white/10 transition-colors cursor-pointer"
             aria-label="Close video"
           >
             <X className="w-5 h-5" />

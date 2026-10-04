@@ -20,11 +20,11 @@ export default function AboutUsPage() {
       <Navbar />
 
       <PageHeader
-        title={language === 'ar' ? 'من نحن' : 'About Us'}
+        title={language === 'ar' ? 'عن شركة هارد للعقارات' : 'About HARD Real Estate'}
         subtitle={
           language === 'ar'
-            ? 'بناة ومطورون موثوقون يقدمون مشاريع معمارية حديثة تجمع بين النزاهة والتميز الإنشائي.'
-            : 'Trusted builders creating modern spaces with integrity and architectural distinction.'
+            ? 'منظومة وساطة وتسويق عقاري ترتكز على الشفافية المطلقة، والبيانات الدقيقة، والتركيز على نجاح العميل.'
+            : 'A premier real estate brokerage and marketing system built on absolute transparency, precise data, and client success.'
         }
         breadcrumb={[{ label: language === 'ar' ? 'من نحن' : 'About Us' }]}
       />
@@ -47,23 +47,11 @@ export default function AboutUsPage() {
                 isDark ? 'bg-white/5 border-white/5' : 'bg-slate-50 border-slate-200 shadow-sm'
               }`}
             >
-              <span className="text-4xl sm:text-5xl font-black text-emerald-500 block mb-2">
-                15+
+              <span className="text-2xl sm:text-3xl font-black text-blue-500 block mb-2">
+                1200028472
               </span>
-              <span className="text-xs uppercase tracking-wider font-bold opacity-75">
-                {language === 'ar' ? 'عاماً من التميز الإنشائي' : 'Years of Excellence'}
-              </span>
-            </div>
-            <div
-              className={`p-6 rounded-3xl border ${
-                isDark ? 'bg-white/5 border-white/5' : 'bg-slate-50 border-slate-200 shadow-sm'
-              }`}
-            >
-              <span className="text-4xl sm:text-5xl font-black text-emerald-500 block mb-2">
-                250+
-              </span>
-              <span className="text-xs uppercase tracking-wider font-bold opacity-75">
-                {language === 'ar' ? 'مشروعاً منجزاً بنجاح' : 'Projects Completed'}
+              <span className="text-xs uppercase tracking-wider font-bold opacity-95">
+                {language === 'ar' ? 'رخصة فال للوساطة والتسويق' : 'FAL Brokerage License'}
               </span>
             </div>
             <div
@@ -71,11 +59,11 @@ export default function AboutUsPage() {
                 isDark ? 'bg-white/5 border-white/5' : 'bg-slate-50 border-slate-200 shadow-sm'
               }`}
             >
-              <span className="text-4xl sm:text-5xl font-black text-emerald-500 block mb-2">
-                5,000+
+              <span className="text-2xl sm:text-3xl font-black text-blue-500 block mb-2">
+                {language === 'ar' ? 'فئة أولى' : 'Class-1'}
               </span>
-              <span className="text-xs uppercase tracking-wider font-bold opacity-75">
-                {language === 'ar' ? 'عميلاً راضياً حول العالم' : 'Satisfied Clients'}
+              <span className="text-xs uppercase tracking-wider font-bold opacity-95">
+                {language === 'ar' ? 'تصنيف المقاولات المعتمد' : 'Contracting Classification'}
               </span>
             </div>
             <div
@@ -83,11 +71,23 @@ export default function AboutUsPage() {
                 isDark ? 'bg-white/5 border-white/5' : 'bg-slate-50 border-slate-200 shadow-sm'
               }`}
             >
-              <span className="text-4xl sm:text-5xl font-black text-emerald-500 block mb-2">
-                48
+              <span className="text-2xl sm:text-3xl font-black text-blue-500 block mb-2">
+                SBC 100%
               </span>
-              <span className="text-xs uppercase tracking-wider font-bold opacity-75">
-                {language === 'ar' ? 'جائزة تميز وتصميم' : 'Industry Awards'}
+              <span className="text-xs uppercase tracking-wider font-bold opacity-95">
+                {language === 'ar' ? 'الامتثال لكود البناء السعودي' : 'Saudi Building Code (SBC)'}
+              </span>
+            </div>
+            <div
+              className={`p-6 rounded-3xl border ${
+                isDark ? 'bg-white/5 border-white/5' : 'bg-slate-50 border-slate-200 shadow-sm'
+              }`}
+            >
+              <span className="text-2xl sm:text-3xl font-black text-blue-500 block mb-2">
+                24/7 AMC
+              </span>
+              <span className="text-xs uppercase tracking-wider font-bold opacity-95">
+                {language === 'ar' ? 'عقود صيانة وتشغيل التكييف' : 'Preventive HVAC Contracts'}
               </span>
             </div>
           </div>

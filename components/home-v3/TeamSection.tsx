@@ -21,12 +21,12 @@ export default function TeamSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div className="space-y-3 max-w-2xl">
-            <span className="inline-block text-xs uppercase tracking-widest font-bold text-emerald-500 px-3.5 py-1.5 bg-emerald-500/10 rounded-full border border-emerald-500/20">
+            <span className="inline-block text-xs uppercase tracking-widest font-bold text-blue-500 px-3.5 py-1.5 bg-blue-500/10 rounded-full border border-blue-500/20">
               {t('team.badge')}
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
               {t('team.titlePre')}{' '}
-              <span className={isDark ? 'text-[#DCFF09]' : 'text-emerald-600'}>
+              <span className={isDark ? 'text-blue-400' : 'text-blue-600'}>
                 {t('team.titleHighlight')}
               </span>
             </h2>
@@ -35,7 +35,7 @@ export default function TeamSection() {
           <Link
             href="/our-team"
             className={`inline-flex items-center gap-2 text-sm font-bold transition-colors ${
-              isDark ? 'text-[#DCFF09] hover:text-white' : 'text-emerald-600 hover:text-slate-900'
+              isDark ? 'text-blue-400 hover:text-white' : 'text-blue-600 hover:text-slate-900'
             }`}
           >
             <span>{t('team.viewAll')}</span>
@@ -54,8 +54,8 @@ export default function TeamSection() {
                 key={member.id}
                 className={`relative rounded-3xl overflow-hidden group transition-all duration-300 transform hover:-translate-y-2 shadow-xl border ${
                   isDark
-                    ? 'bg-[#080b24] border-white/10 hover:border-[#DCFF09]/50'
-                    : 'bg-white border-slate-200 hover:border-emerald-500'
+                    ? 'bg-[#080b24] border-white/10 hover:border-blue-500/50'
+                    : 'bg-white border-slate-200 hover:border-blue-500'
                 }`}
               >
                 {/* Member Photo */}
@@ -89,25 +89,25 @@ export default function TeamSection() {
                   >
                     <a
                       href="#"
-                      className="p-2.5 rounded-full bg-black/60 backdrop-blur-md text-white hover:bg-emerald-500 transition-colors"
+                      className="p-2.5 rounded-full bg-black/60 backdrop-blur-md text-white hover:bg-blue-500 transition-colors"
                     >
                       <Facebook className="w-3.5 h-3.5" />
                     </a>
                     <a
                       href="#"
-                      className="p-2.5 rounded-full bg-black/60 backdrop-blur-md text-white hover:bg-emerald-500 transition-colors"
+                      className="p-2.5 rounded-full bg-black/60 backdrop-blur-md text-white hover:bg-blue-500 transition-colors"
                     >
                       <Twitter className="w-3.5 h-3.5" />
                     </a>
                     <a
                       href="#"
-                      className="p-2.5 rounded-full bg-black/60 backdrop-blur-md text-white hover:bg-emerald-500 transition-colors"
+                      className="p-2.5 rounded-full bg-black/60 backdrop-blur-md text-white hover:bg-blue-500 transition-colors"
                     >
                       <Linkedin className="w-3.5 h-3.5" />
                     </a>
                     <a
                       href="#"
-                      className="p-2.5 rounded-full bg-black/60 backdrop-blur-md text-white hover:bg-emerald-500 transition-colors"
+                      className="p-2.5 rounded-full bg-black/60 backdrop-blur-md text-white hover:bg-blue-500 transition-colors"
                     >
                       <Instagram className="w-3.5 h-3.5" />
                     </a>
@@ -120,12 +120,12 @@ export default function TeamSection() {
                     <div>
                       <h3
                         className={`text-xl font-bold transition-colors ${
-                          isDark ? 'group-hover:text-[#DCFF09]' : 'group-hover:text-emerald-600'
+                          isDark ? 'group-hover:text-blue-400' : 'group-hover:text-blue-600'
                         }`}
                       >
                         <Link href={`/our-team/${member.slug}`}>{name}</Link>
                       </h3>
-                      <span className="text-xs uppercase tracking-wider font-semibold opacity-70 mt-1 block">
+                      <span className="text-xs uppercase tracking-wider font-semibold opacity-90 mt-1 block">
                         {role}
                       </span>
                     </div>
@@ -134,8 +134,8 @@ export default function TeamSection() {
                       href={`/our-team/${member.slug}`}
                       className={`w-10 h-10 rounded-full border flex items-center justify-center transition-colors ${
                         isDark
-                          ? 'bg-white/5 border-white/10 text-white group-hover:bg-[#DCFF09] group-hover:text-[#040618] group-hover:border-[#DCFF09]'
-                          : 'bg-slate-100 border-slate-200 text-slate-800 group-hover:bg-emerald-600 group-hover:text-white group-hover:border-emerald-600'
+                          ? 'bg-white/5 border-white/10 text-white group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-500'
+                          : 'bg-slate-100 border-slate-200 text-slate-800 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600'
                       }`}
                       aria-label={`View ${name} profile`}
                     >

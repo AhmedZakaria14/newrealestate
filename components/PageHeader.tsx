@@ -28,7 +28,7 @@ export default function PageHeader({
       }`}
     >
       {/* Background ambient lighting */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-10 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -44,22 +44,22 @@ export default function PageHeader({
 
         {/* Breadcrumb */}
         <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 border border-white/15 text-xs sm:text-sm text-gray-200 backdrop-blur-md">
-          <Link href="/" className="hover:text-[#DCFF09] transition-colors font-medium">
+          <Link href="/" className="hover:text-blue-400 transition-colors font-medium">
             {t('nav.home')}
           </Link>
           {breadcrumb.map((crumb, idx) => (
             <React.Fragment key={idx}>
               {direction === 'rtl' ? (
-                <ChevronLeft className="w-3.5 h-3.5 text-gray-400" />
+                <ChevronLeft className="w-3.5 h-3.5 text-gray-300" />
               ) : (
-                <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
+                <ChevronRight className="w-3.5 h-3.5 text-gray-300" />
               )}
               {crumb.href ? (
-                <Link href={crumb.href} className="hover:text-[#DCFF09] transition-colors font-medium">
+                <Link href={crumb.href} className="hover:text-blue-400 transition-colors font-medium">
                   {crumb.label}
                 </Link>
               ) : (
-                <span className="text-[#DCFF09] font-bold">{crumb.label}</span>
+                <span className="text-blue-400 font-bold">{crumb.label}</span>
               )}
             </React.Fragment>
           ))}

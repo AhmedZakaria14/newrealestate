@@ -62,7 +62,7 @@ export default function VideoGalleryPage() {
 
                     {/* Play Button */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full bg-[#DCFF09] text-[#040618] flex items-center justify-center shadow-xl transform group-hover:scale-110 transition-transform">
+                      <div className="w-16 h-16 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-xl transform group-hover:scale-110 transition-transform">
                         <Play className={`w-7 h-7 fill-current ${direction === 'rtl' ? 'mr-0.5' : 'ml-0.5'}`} />
                       </div>
                     </div>
@@ -72,18 +72,18 @@ export default function VideoGalleryPage() {
                         direction === 'rtl' ? 'left-4' : 'right-4'
                       } px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-xs font-semibold text-white flex items-center gap-1.5`}
                     >
-                      <Clock className="w-3.5 h-3.5 text-[#DCFF09]" />
+                      <Clock className="w-3.5 h-3.5 text-blue-400" />
                       <span>{video.duration}</span>
                     </div>
                   </div>
 
                   <div className="p-6">
-                    <span className="text-xs uppercase font-bold text-emerald-500 tracking-wider block mb-1">
+                    <span className="text-xs uppercase font-bold text-blue-500 tracking-wider block mb-1">
                       {cat}
                     </span>
                     <h4
                       className={`text-lg font-bold transition-colors leading-snug ${
-                        isDark ? 'group-hover:text-[#DCFF09]' : 'group-hover:text-emerald-600'
+                        isDark ? 'group-hover:text-blue-400' : 'group-hover:text-blue-600'
                       }`}
                     >
                       {title}

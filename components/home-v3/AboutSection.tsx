@@ -3,13 +3,13 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Target, Eye, Phone, ArrowUpRight } from 'lucide-react';
-import { clientAvatars } from '@/data/skyvilla-data';
+import { Target, Eye, Phone, ArrowUpRight, ShieldCheck } from 'lucide-react';
 import { useLanguageTheme } from '@/lib/language-theme-context';
 
 export default function AboutSection() {
-  const { theme, t, direction } = useLanguageTheme();
+  const { theme, language, t, direction } = useLanguageTheme();
   const isDark = theme === 'dark';
+  const isAr = language === 'ar';
 
   return (
     <section
@@ -18,25 +18,25 @@ export default function AboutSection() {
       }`}
     >
       {/* Background radial glow */}
-      <div className="absolute top-1/2 left-0 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Text & Mission/Vision */}
           <div className="lg:col-span-6 space-y-6 sm:space-y-8">
             <div className="space-y-3">
-              <span className="inline-block text-xs uppercase tracking-widest font-bold text-emerald-500 px-3.5 py-1.5 bg-emerald-500/10 rounded-full border border-emerald-500/20">
+              <span className="inline-block text-xs uppercase tracking-widest font-bold text-blue-500 px-3.5 py-1.5 bg-blue-500/10 rounded-full border border-blue-500/20">
                 {t('about.badge')}
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
                 {t('about.titlePre')}{' '}
-                <span className={isDark ? 'text-[#DCFF09]' : 'text-emerald-600'}>
+                <span className={isDark ? 'text-blue-400' : 'text-blue-600'}>
                   {t('about.titleHighlight')}
                 </span>
               </h2>
             </div>
 
-            <p className="opacity-80 text-base leading-relaxed">
+            <p className="opacity-100 text-base leading-relaxed">
               {t('about.description')}
             </p>
 
@@ -45,27 +45,27 @@ export default function AboutSection() {
               <div
                 className={`p-6 rounded-2xl border transition-all group ${
                   isDark
-                    ? 'bg-white/5 border-white/10 hover:border-[#DCFF09]/40'
-                    : 'bg-white border-slate-200 shadow-sm hover:border-emerald-500 hover:shadow-md'
+                    ? 'bg-white/5 border-white/10 hover:border-blue-500/40'
+                    : 'bg-white border-slate-200 shadow-sm hover:border-blue-500 hover:shadow-md'
                 }`}
               >
                 <div
                   className={`p-3 rounded-xl inline-block mb-3 ${
                     isDark
-                      ? 'bg-[#DCFF09]/10 text-[#DCFF09]'
-                      : 'bg-emerald-50 text-emerald-600'
+                      ? 'bg-blue-600/10 text-blue-400'
+                      : 'bg-blue-50 text-blue-600'
                   }`}
                 >
                   <Target className="w-6 h-6" />
                 </div>
                 <h3
                   className={`text-lg font-bold mb-2 transition-colors ${
-                    isDark ? 'group-hover:text-[#DCFF09]' : 'group-hover:text-emerald-600'
+                    isDark ? 'group-hover:text-blue-400' : 'group-hover:text-blue-600'
                   }`}
                 >
                   {t('about.mission')}
                 </h3>
-                <p className="text-xs sm:text-sm opacity-70 leading-relaxed">
+                <p className="text-xs sm:text-sm opacity-90 leading-relaxed">
                   {t('about.missionDesc')}
                 </p>
               </div>
@@ -73,27 +73,27 @@ export default function AboutSection() {
               <div
                 className={`p-6 rounded-2xl border transition-all group ${
                   isDark
-                    ? 'bg-white/5 border-white/10 hover:border-[#DCFF09]/40'
-                    : 'bg-white border-slate-200 shadow-sm hover:border-emerald-500 hover:shadow-md'
+                    ? 'bg-white/5 border-white/10 hover:border-blue-500/40'
+                    : 'bg-white border-slate-200 shadow-sm hover:border-blue-500 hover:shadow-md'
                 }`}
               >
                 <div
                   className={`p-3 rounded-xl inline-block mb-3 ${
                     isDark
-                      ? 'bg-[#DCFF09]/10 text-[#DCFF09]'
-                      : 'bg-emerald-50 text-emerald-600'
+                      ? 'bg-blue-600/10 text-blue-400'
+                      : 'bg-blue-50 text-blue-600'
                   }`}
                 >
                   <Eye className="w-6 h-6" />
                 </div>
                 <h3
                   className={`text-lg font-bold mb-2 transition-colors ${
-                    isDark ? 'group-hover:text-[#DCFF09]' : 'group-hover:text-emerald-600'
+                    isDark ? 'group-hover:text-blue-400' : 'group-hover:text-blue-600'
                   }`}
                 >
                   {t('about.vision')}
                 </h3>
-                <p className="text-xs sm:text-sm opacity-70 leading-relaxed">
+                <p className="text-xs sm:text-sm opacity-90 leading-relaxed">
                   {t('about.visionDesc')}
                 </p>
               </div>
@@ -105,8 +105,8 @@ export default function AboutSection() {
                 href="/about-us"
                 className={`inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-sm tracking-tight transition-all transform hover:-translate-y-0.5 shadow-md ${
                   isDark
-                    ? 'bg-[#DCFF09] text-[#040618] hover:bg-white shadow-[#DCFF09]/20'
-                    : 'bg-[#0f172a] text-white hover:bg-emerald-600 shadow-slate-400/30'
+                    ? 'bg-blue-600 text-white hover:bg-white shadow-blue-500/20'
+                    : 'bg-[#0f172a] text-white hover:bg-blue-600 shadow-slate-400/30'
                 }`}
               >
                 <span>{t('about.btn')}</span>
@@ -117,31 +117,31 @@ export default function AboutSection() {
                 <div
                   className={`p-3 rounded-full border ${
                     isDark
-                      ? 'bg-white/5 border-white/10 text-[#DCFF09]'
-                      : 'bg-emerald-50 border-emerald-200 text-emerald-600'
+                      ? 'bg-white/5 border-white/10 text-blue-400'
+                      : 'bg-blue-50 border-blue-200 text-blue-600'
                   }`}
                 >
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="block text-xs uppercase opacity-70 font-bold tracking-wider">
+                  <span className="block text-xs uppercase opacity-90 font-bold tracking-wider">
                     {t('about.callUs')}
                   </span>
                   <a
-                    href="tel:+91123456789"
+                    href="tel:+966556125711"
                     dir="ltr"
                     className={`text-base font-bold transition-colors ${
-                      isDark ? 'hover:text-[#DCFF09]' : 'hover:text-emerald-600'
+                      isDark ? 'hover:text-blue-400' : 'hover:text-blue-600'
                     }`}
                   >
-                    +91 (123) 456-789
+                    +966 55 612 5711
                   </a>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Image with Floating 5k+ Customer Card */}
+          {/* Right Image with Floating Accreditation Card */}
           <div className="lg:col-span-6 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               {/* Main Featured Metal Image */}
@@ -166,59 +166,35 @@ export default function AboutSection() {
                 />
               </div>
 
-              {/* Floating Customer Badge */}
+              {/* Verified Institutional Accreditation Badge */}
               <div
                 className={`absolute -bottom-6 sm:-bottom-8 ${
                   direction === 'rtl'
                     ? 'right-4 sm:-right-6 left-4 sm:left-auto'
                     : 'left-4 sm:-left-6 right-4 sm:right-auto'
-                } sm:w-84 backdrop-blur-xl border p-5 rounded-2xl shadow-2xl ${
+                } sm:w-96 backdrop-blur-xl border p-5 rounded-2xl shadow-2xl ${
                   isDark
                     ? 'bg-[#080b24]/95 border-white/15 text-white'
                     : 'bg-white/95 border-slate-200 text-slate-900'
                 }`}
               >
                 <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <span className="text-xs uppercase font-bold text-emerald-500 block mb-1">
-                      {t('about.verifiedTrack')}
+                  <div className="space-y-1">
+                    <span className="text-xs uppercase font-bold text-blue-500 block">
+                      {isAr ? 'اعتماد الهيئة العامة للعقار' : 'REGA Regulatory Compliance'}
                     </span>
-                    <h4 className="text-lg sm:text-xl font-extrabold leading-tight">
-                      {t('about.satisfiedCustomers')}
+                    <h4 className="text-base sm:text-lg font-extrabold leading-snug">
+                      {isAr ? 'رخصة فال: 1200028472' : 'FAL License No. 1200028472'}
                     </h4>
-                    <div className="flex items-center gap-2 mt-2">
-                      <div className="flex -space-x-2 rtl:space-x-reverse">
-                        {clientAvatars.slice(0, 3).map((av, i) => (
-                          <div
-                            key={i}
-                            className={`relative w-7 h-7 rounded-full overflow-hidden border-2 ${
-                              isDark ? 'border-[#080b24]' : 'border-white'
-                            }`}
-                          >
-                            <Image
-                              src={av}
-                              alt="Customer"
-                              fill
-                              className="object-cover"
-                              referrerPolicy="no-referrer"
-                            />
-                          </div>
-                        ))}
-                      </div>
-                      <span className="text-xs font-semibold opacity-80">
-                        {t('about.positiveRate')}
-                      </span>
-                    </div>
+                    <p className="text-xs opacity-80 pt-0.5">
+                      {isAr
+                        ? 'وساطة وتسويق معتمد • كود البناء السعودي SBC'
+                        : 'Certified Brokerage • Saudi Building Code (SBC)'}
+                    </p>
                   </div>
 
-                  <div className="relative w-20 h-20 shrink-0">
-                    <Image
-                      src="https://demo.awaikenthemes.com/skyvilla/wp-content/uploads/2026/01/about-body-counter-image-metal.png"
-                      alt="Counter"
-                      fill
-                      className="object-contain"
-                      referrerPolicy="no-referrer"
-                    />
+                  <div className="w-12 h-12 rounded-2xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center shrink-0">
+                    <ShieldCheck className="w-6 h-6 text-blue-500" />
                   </div>
                 </div>
               </div>

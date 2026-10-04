@@ -76,8 +76,8 @@ export default function ImageGalleryPage() {
                 className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer border ${
                   activeCategory === cat.key
                     ? isDark
-                      ? 'bg-[#DCFF09] text-[#040618] border-[#DCFF09] shadow-md'
-                      : 'bg-emerald-600 text-white border-emerald-600 shadow-md'
+                      ? 'bg-blue-600 text-white border-blue-500 shadow-md'
+                      : 'bg-emerald-600 text-white border-blue-600 shadow-md'
                     : isDark
                     ? 'bg-[#080b24] text-gray-300 hover:text-white border-white/10'
                     : 'bg-white text-slate-700 hover:text-slate-900 border-slate-200 shadow-sm'
@@ -109,11 +109,11 @@ export default function ImageGalleryPage() {
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-100 group-hover:opacity-95 transition-opacity" />
 
                   {/* Hover overlay with zoom button */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="w-14 h-14 rounded-full bg-[#DCFF09] text-[#040618] flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform">
+                    <div className="w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform">
                       <ZoomIn className="w-6 h-6" />
                     </div>
                   </div>
@@ -123,10 +123,10 @@ export default function ImageGalleryPage() {
                       direction === 'rtl' ? 'right-6 left-6 text-right' : 'left-6 right-6 text-left'
                     }`}
                   >
-                    <span className="text-xs uppercase font-bold text-[#DCFF09] tracking-wider block mb-1">
+                    <span className="text-xs uppercase font-bold text-blue-400 tracking-wider block mb-1">
                       {cat}
                     </span>
-                    <h4 className="text-lg font-bold text-white group-hover:text-[#DCFF09] transition-colors leading-snug">
+                    <h4 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors leading-snug">
                       {title}
                     </h4>
                   </div>
@@ -178,7 +178,7 @@ export default function ImageGalleryPage() {
               <h4 className="text-xl font-bold text-white">
                 {language === 'ar' ? filtered[lightboxIndex].title_ar : filtered[lightboxIndex].title}
               </h4>
-              <span className="text-xs uppercase text-[#DCFF09] font-semibold tracking-wider">
+              <span className="text-xs uppercase text-blue-400 font-semibold tracking-wider">
                 {language === 'ar' ? filtered[lightboxIndex].category_ar : filtered[lightboxIndex].category} • {language === 'ar' ? 'صورة' : 'Image'} {lightboxIndex + 1} {language === 'ar' ? 'من' : 'of'} {filtered.length}
               </span>
             </div>

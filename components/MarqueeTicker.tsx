@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Star, Sparkles } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
 import { useLanguageTheme } from '@/lib/language-theme-context';
 
 interface MarqueeTickerProps {
@@ -24,8 +24,9 @@ export default function MarqueeTicker({
   reverse = false,
   bgDark = true,
 }: MarqueeTickerProps) {
-  const { t, theme } = useLanguageTheme();
+  const { t, theme, language } = useLanguageTheme();
   const isDark = theme === 'dark';
+  const isAr = language === 'ar';
 
   const label = labelKey ? t(labelKey) : defaultLabel;
   const linkText = linkTextKey ? t(linkTextKey) : defaultLinkText;
@@ -43,7 +44,7 @@ export default function MarqueeTicker({
       <Link
         href={linkHref}
         className={`text-base sm:text-lg font-extrabold underline transition-colors uppercase whitespace-nowrap ${
-          isDark ? 'text-[#DCFF09] hover:text-white' : 'text-emerald-600 hover:text-slate-900'
+          isDark ? 'text-blue-400 hover:text-white' : 'text-blue-600 hover:text-blue-900'
         }`}
       >
         {linkText}
@@ -51,15 +52,19 @@ export default function MarqueeTicker({
       <div
         className={`flex items-center gap-2 px-3.5 py-1 rounded-full border ${
           isDark
-            ? 'bg-[#DCFF09]/10 border-[#DCFF09]/30 text-white'
-            : 'bg-emerald-50 border-emerald-200 text-slate-800'
+            ? 'bg-blue-500/10 border-blue-500/30 text-white'
+            : 'bg-blue-50 border-blue-200 text-slate-800'
         }`}
       >
-        <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-        <span className="text-xs sm:text-sm font-bold">4.9</span>
-        <span className="text-xs opacity-70">4,200+ Reviews</span>
+        <ShieldCheck className="w-4 h-4 text-blue-400" />
+        <span className="text-xs sm:text-sm font-bold">
+          {isAr ? 'رخصة فال: 1200028472' : 'FAL #1200028472'}
+        </span>
+        <span className="text-xs opacity-90">
+          {isAr ? 'اعتماد الهيئة العامة للعقار' : 'REGA Licensed'}
+        </span>
       </div>
-      <Sparkles className="w-4 h-4 text-emerald-500" />
+      <span className="w-1.5 h-1.5 rounded-full bg-blue-500/60 inline-block shrink-0" />
     </div>
   );
 

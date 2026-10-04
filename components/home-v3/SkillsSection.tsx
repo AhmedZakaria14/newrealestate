@@ -40,13 +40,13 @@ export default function SkillsSection() {
           {/* Left: Our Skills with Animated Progress Bars */}
           <div className="lg:col-span-6 space-y-8">
             <div className="space-y-3">
-              <span className="inline-block text-xs uppercase tracking-widest font-bold text-emerald-500 px-3.5 py-1.5 bg-emerald-500/10 rounded-full border border-emerald-500/20">
+              <span className="inline-block text-xs uppercase tracking-widest font-bold text-blue-500 px-3.5 py-1.5 bg-blue-500/10 rounded-full border border-blue-500/20">
                 {t('skills.badge')}
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
                 {t('skills.title')}
               </h2>
-              <p className="opacity-80 text-sm sm:text-base leading-relaxed">
+              <p className="opacity-100 text-sm sm:text-base leading-relaxed">
                 {t('skills.desc')}
               </p>
             </div>
@@ -57,7 +57,7 @@ export default function SkillsSection() {
                 <div key={skill.name} className="space-y-2">
                   <div className="flex justify-between items-center text-sm font-bold">
                     <span>{skill.name}</span>
-                    <span className={isDark ? 'text-[#DCFF09]' : 'text-emerald-600'}>
+                    <span className={isDark ? 'text-blue-400' : 'text-blue-600'}>
                       {skill.percentage}%
                     </span>
                   </div>
@@ -69,8 +69,8 @@ export default function SkillsSection() {
                     <div
                       className={`h-full rounded-full transition-all duration-1000 ease-out ${
                         isDark
-                          ? 'bg-gradient-to-r from-[#DCFF09]/80 to-[#DCFF09]'
-                          : 'bg-gradient-to-r from-emerald-500 to-emerald-600'
+                          ? 'bg-gradient-to-r from-blue-500 to-blue-600'
+                          : 'bg-gradient-to-r from-blue-600 to-blue-500'
                       }`}
                       style={{ width: `${skill.percentage}%` }}
                     />
@@ -88,7 +88,7 @@ export default function SkillsSection() {
                     : 'bg-white border-slate-200 shadow-sm'
                 }`}
               >
-                <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-blue-500 shrink-0" />
                 <span className="text-sm font-bold">
                   {t('skills.yearsExp')}
                 </span>
@@ -100,7 +100,7 @@ export default function SkillsSection() {
                     : 'bg-white border-slate-200 shadow-sm'
                 }`}
               >
-                <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-blue-500 shrink-0" />
                 <span className="text-sm font-bold">
                   {t('skills.materials')}
                 </span>
@@ -111,18 +111,18 @@ export default function SkillsSection() {
           {/* Right: Who We Are & Featured Image */}
           <div className="lg:col-span-6 space-y-8">
             <div className="space-y-3">
-              <span className="inline-block text-xs uppercase tracking-widest font-bold text-emerald-500 px-3.5 py-1.5 bg-emerald-500/10 rounded-full border border-emerald-500/20">
+              <span className="inline-block text-xs uppercase tracking-widest font-bold text-blue-500 px-3.5 py-1.5 bg-blue-500/10 rounded-full border border-blue-500/20">
                 {t('skills.whoBadge')}
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
                 {t('skills.whoTitlePre')}{' '}
-                <span className={isDark ? 'text-[#DCFF09]' : 'text-emerald-600'}>
+                <span className={isDark ? 'text-blue-400' : 'text-blue-600'}>
                   {t('skills.whoTitleHighlight')}
                 </span>
               </h2>
             </div>
 
-            <p className="opacity-80 text-base leading-relaxed">
+            <p className="opacity-100 text-base leading-relaxed">
               {t('skills.whoDesc')}
             </p>
 
@@ -154,8 +154,8 @@ export default function SkillsSection() {
                 href="/contact-us"
                 className={`inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-sm tracking-tight transition-all transform hover:-translate-y-0.5 shadow-md ${
                   isDark
-                    ? 'bg-[#DCFF09] text-[#040618] hover:bg-white shadow-[#DCFF09]/20'
-                    : 'bg-[#0f172a] text-white hover:bg-emerald-600 shadow-slate-400/30'
+                    ? 'bg-blue-600 text-white hover:bg-white shadow-blue-500/20'
+                    : 'bg-[#0f172a] text-white hover:bg-blue-600 shadow-slate-400/30'
                 }`}
               >
                 <span>{t('skills.contactUs')}</span>
@@ -166,24 +166,24 @@ export default function SkillsSection() {
                 <div
                   className={`p-3 rounded-full border ${
                     isDark
-                      ? 'bg-white/5 border-white/10 text-[#DCFF09]'
-                      : 'bg-emerald-50 border-emerald-200 text-emerald-600'
+                      ? 'bg-white/5 border-white/10 text-blue-400'
+                      : 'bg-blue-50 border-blue-200 text-blue-600'
                   }`}
                 >
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="block text-xs uppercase opacity-70 font-bold tracking-wider">
+                  <span className="block text-xs uppercase opacity-90 font-bold tracking-wider">
                     {t('about.callUs')}
                   </span>
                   <a
-                    href="tel:+91123456789"
+                    href="tel:+966556125711"
                     dir="ltr"
                     className={`text-base font-bold transition-colors ${
-                      isDark ? 'hover:text-[#DCFF09]' : 'hover:text-emerald-600'
+                      isDark ? 'hover:text-blue-400' : 'hover:text-blue-600'
                     }`}
                   >
-                    +91 (123) 456-789
+                    +966 55 612 5711
                   </a>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useSyncExternalStore, useCallback } from 'react';
 
 export type Language = 'ar' | 'en';
 export type Theme = 'light' | 'dark';
@@ -17,6 +17,44 @@ interface LanguageThemeContextType {
 }
 
 const LanguageThemeContext = createContext<LanguageThemeContextType | undefined>(undefined);
+
+// External store subscription helper for cross-tab and local state dispatch
+const listeners = new Set<() => void>();
+
+function subscribe(callback: () => void) {
+  listeners.add(callback);
+  window.addEventListener('storage', callback);
+  return () => {
+    listeners.delete(callback);
+    window.removeEventListener('storage', callback);
+  };
+}
+
+function notifyListeners() {
+  listeners.forEach((listener) => listener());
+}
+
+function getSavedLanguage(): Language {
+  if (typeof window === 'undefined') return 'ar';
+  try {
+    const saved = localStorage.getItem('skyvilla_lang') as Language | null;
+    if (saved === 'ar' || saved === 'en') return saved;
+  } catch {
+    // Ignore
+  }
+  return 'ar';
+}
+
+function getSavedTheme(): Theme {
+  if (typeof window === 'undefined') return 'light';
+  try {
+    const saved = localStorage.getItem('skyvilla_theme') as Theme | null;
+    if (saved === 'light' || saved === 'dark') return saved;
+  } catch {
+    // Ignore
+  }
+  return 'light';
+}
 
 export const translations: Record<Language, Record<string, string>> = {
   ar: {
@@ -51,13 +89,13 @@ export const translations: Record<Language, Record<string, string>> = {
     'nav.langSwitch': 'English',
 
     // Hero Section
-    'hero.badge': 'موثوق من مئات العملاء الراضين حول العالم',
+    'hero.badge': 'مجموعة استثمارية رائدة في العقارات والمقاولات والتكييف',
     'hero.titlePre': 'نشكّل أسلوب الحياة العصري من خلال',
     'hero.titleHighlight': 'التميز والريادة في البناء',
     'hero.description': 'نقدّم أرقى الحلول العقارية والإنشائية المرتكزة على أعلى معايير الجودة والسلامة والاستدامة طويلة الأمد. من الفلل الفارهة إلى الأبراج والمجمعات التجارية، يقود خبراؤنا كل مرحلة بإتقان هندسي متفوق.',
     'hero.cta': 'احجز استشارة مجانية',
-    'hero.reviewRating': '4.9',
-    'hero.reviewText': 'تقييم عملائنا حول العالم',
+    'hero.reviewRating': '1200028472',
+    'hero.reviewText': 'رخصة فال المعتمدة من الهيئة العامة للعقار',
     'hero.watchVideo': 'شاهد الفيديو • شاهد الفيديو • شاهد الفيديو •',
     'hero.trustedBuilders': 'مقاولون ومطورون معتمدون',
     'hero.trustedBuildersDesc': 'نمتلك خبرة رائدة في تصميم وتنفيذ الفلل السكنية الفاخرة والمشاريع الكبرى بهندسة معمارية فريدة وجودة استثنائية.',
@@ -74,6 +112,41 @@ export const translations: Record<Language, Record<string, string>> = {
     'ticker.precision': 'دقة هندسية، تصاميم مبتكرة، وضمانات إنشائية ممتدة',
     'ticker.quoteLink': 'اطلب عرض سعر',
 
+    // Hard Group Core Divisions (3 Main Cards)
+    'divisions.badge': 'أذرع مجموعة هارد الرئيسية',
+    'divisions.titlePre': 'ريادة متكاملة في',
+    'divisions.titleHighlight': 'التطوير والمقاولات والخدمات الفنية',
+    'divisions.subtitle': 'منظومة عمل متكاملة تقودها كفاءات وطنية ومعايير دولية لتلبية متطلبات السوق السعودي في العقارات والإنشاءات والتبريد',
+    'divisions.realEstate.title': 'هارد للعقارات',
+    'divisions.realEstate.badge': 'ترخيص فال المعتمد',
+    'divisions.realEstate.category': 'الذراع العقاري والاستثماري',
+    'divisions.realEstate.desc': 'الذراع العقاري الرائد في المملكة العربية السعودية، متخصص في التسويق والوساطة المعتمدة من الهيئة العامة للعقار (فال)، وإدارة المحافظ الاستثمارية الكبرى في المنطقة الشرقية والرياض.',
+    'divisions.realEstate.tag1': 'وساطة وتسويق معتمد (فال)',
+    'divisions.realEstate.tag2': 'إدارة المحافظ الاستثمارية الكبرى',
+    'divisions.realEstate.tag3': 'تغطية المنطقة الشرقية والرياض',
+    'divisions.realEstate.cta': 'استكشف الفرص العقارية',
+    'divisions.realEstate.consult': 'طلب وساطة واستشارة',
+
+    'divisions.construction.title': 'هارد للإنشاءات والمقاولات',
+    'divisions.construction.badge': 'تصنيف مقاولات فئة أولى',
+    'divisions.construction.category': 'الذراع الإنشائي والهندسي',
+    'divisions.construction.desc': 'الذراع الإنشائي والهندسي لمجموعة هارد، يقدم خدمات المقاولات العامة المصنفة فئة أولى لتنفيذ الأبراج التجارية، المجمعات السكنية، والمنشآت الذكية بأعلى كفاءة ومعايير كود البناء السعودي.',
+    'divisions.construction.tag1': 'مقاولات عامة مصنفة فئة أولى',
+    'divisions.construction.tag2': 'معايير كود البناء السعودي (SBC)',
+    'divisions.construction.tag3': 'تنفيذ الأبراج والمنشآت الذكية',
+    'divisions.construction.cta': 'استعرض المشاريع الإنشائية',
+    'divisions.construction.consult': 'طلب عرض سعر مقاولات',
+
+    'divisions.hvac.title': 'هارد لصيانة وتكييف الهواء',
+    'divisions.hvac.badge': 'طوارئ واستجابة 24/7',
+    'divisions.hvac.category': 'الذراع الكهروميكانيكي والتبريد',
+    'divisions.hvac.desc': 'الذراع التخصصي للخدمات الكهروميكانيكية والتبريد، يقدم عقود الصيانة الوقائية (AMC) للشيلرات، أنظمة VRF الحديثة، وتنقية مجاري الهواء مع طوارئ واستجابة فورية على مدار الساعة.',
+    'divisions.hvac.tag1': 'عقود الصيانة الوقائية السنوية (AMC)',
+    'divisions.hvac.tag2': 'صيانة الشيلرات وأنظمة VRF الحديثة',
+    'divisions.hvac.tag3': 'تنقية الهواء وطوارئ 24/7 فورية',
+    'divisions.hvac.cta': 'طلب خدمات الصيانة والتكييف',
+    'divisions.hvac.consult': 'طلب عقد صيانة وقائية',
+
     // About Section
     'about.badge': 'عن سكاي فيلا للإنشاءات',
     'about.titlePre': 'خبراء التطوير العقاري',
@@ -85,9 +158,9 @@ export const translations: Record<Language, Record<string, string>> = {
     'about.visionDesc': 'أن نكون الخيار الأول عالمياً في مجال البناء الفاخر والتطوير العمراني الحديث بصناعة معالم مستدامة وملهمة.',
     'about.btn': 'تعرف علينا أكثر',
     'about.callUs': 'اتصل بنا مباشرة!',
-    'about.satisfiedCustomers': 'أكثر من 5,000 عميل راضٍ',
-    'about.positiveRate': '99.4% نسبة رضا العملاء',
-    'about.verifiedTrack': 'سجل إنجازات معتمد',
+    'about.satisfiedCustomers': 'رخصة فال المعتمدة: 1200028472',
+    'about.positiveRate': 'كود البناء السعودي SBC 100%',
+    'about.verifiedTrack': 'اعتمادات وتراخيص رسمية موثقة',
 
     // Services Section
     'services.badge': 'خدماتنا الاحترافية',
@@ -248,13 +321,13 @@ export const translations: Record<Language, Record<string, string>> = {
     'nav.langSwitch': 'العربية',
 
     // Hero Section
-    'hero.badge': 'Trusted By Hundreds Of Satisfied Clients',
+    'hero.badge': 'Licensed Real Estate • Class-1 Contracting • HVAC Facilities',
     'hero.titlePre': 'Shaping modern living through',
     'hero.titleHighlight': 'construction excellence',
     'hero.description': 'We deliver reliable real estate and construction solutions focused on quality, safety, and long-term value. From residential homes to commercial developments, our experienced team manages every stage.',
     'hero.cta': 'Get Free Consultation',
-    'hero.reviewRating': '4.9',
-    'hero.reviewText': 'Our Word Wide Customer Review',
+    'hero.reviewRating': '1200028472',
+    'hero.reviewText': 'Certified Real Estate General Authority (FAL)',
     'hero.watchVideo': 'Watch Video • Watch Video • Watch Video •',
     'hero.trustedBuilders': 'Trusted Builders',
     'hero.trustedBuildersDesc': 'We are experienced builders and developers known for premium quality, structural resilience, and architectural distinction.',
@@ -271,6 +344,41 @@ export const translations: Record<Language, Record<string, string>> = {
     'ticker.precision': 'Precision Structural Engineering & Architectural Design',
     'ticker.quoteLink': 'Get Free Quote',
 
+    // Hard Group Core Divisions (3 Main Cards)
+    'divisions.badge': 'Hard Group Core Divisions',
+    'divisions.titlePre': 'Integrated Leadership in',
+    'divisions.titleHighlight': 'Real Estate, Construction & Specialized Services',
+    'divisions.subtitle': 'A unified engineering and operational ecosystem meeting supreme Saudi market standards across development, execution, and cooling',
+    'divisions.realEstate.title': 'Hard Real Estate',
+    'divisions.realEstate.badge': 'Licensed (VAL)',
+    'divisions.realEstate.category': 'Real Estate & Investment Arm',
+    'divisions.realEstate.desc': 'The leading real estate arm in the Kingdom of Saudi Arabia, specializing in marketing and brokerage licensed by the Real Estate General Authority (VAL), and managing major investment portfolios across the Eastern Province and Riyadh.',
+    'divisions.realEstate.tag1': 'Certified Brokerage (VAL License)',
+    'divisions.realEstate.tag2': 'Major Portfolio Management',
+    'divisions.realEstate.tag3': 'Eastern Province & Riyadh Coverage',
+    'divisions.realEstate.cta': 'Explore Real Estate Opportunities',
+    'divisions.realEstate.consult': 'Request Brokerage & Advisory',
+
+    'divisions.construction.title': 'Hard Construction & Contracting',
+    'divisions.construction.badge': 'Class 1 Contracting',
+    'divisions.construction.category': 'Construction & Engineering Arm',
+    'divisions.construction.desc': 'The construction and engineering arm of Hard Group, delivering Class-1 classified general contracting services for commercial towers, residential complexes, and smart facilities with supreme efficiency and Saudi Building Code standards.',
+    'divisions.construction.tag1': 'Class-1 General Contracting',
+    'divisions.construction.tag2': 'Saudi Building Code (SBC) Standards',
+    'divisions.construction.tag3': 'Commercial Towers & Smart Facilities',
+    'divisions.construction.cta': 'View Construction Projects',
+    'divisions.construction.consult': 'Request Contracting Quote',
+
+    'divisions.hvac.title': 'Hard HVAC & Maintenance',
+    'divisions.hvac.badge': '24/7 Rapid Response',
+    'divisions.hvac.category': 'Electromechanical & Cooling Arm',
+    'divisions.hvac.desc': 'The specialized arm for electromechanical and refrigeration services, offering preventive maintenance contracts (AMC) for chillers, modern VRF systems, and air duct purification with 24/7 emergency response.',
+    'divisions.hvac.tag1': 'Annual Preventive Maintenance (AMC)',
+    'divisions.hvac.tag2': 'Industrial Chillers & Modern VRF Systems',
+    'divisions.hvac.tag3': 'Air Duct Sanitation & 24/7 Emergency',
+    'divisions.hvac.cta': 'Request HVAC Services',
+    'divisions.hvac.consult': 'Request Maintenance Contract',
+
     // About Section
     'about.badge': 'About Our Construction',
     'about.titlePre': 'Trusted real estate and construction',
@@ -282,9 +390,9 @@ export const translations: Record<Language, Record<string, string>> = {
     'about.visionDesc': 'To become a globally recognized leader in luxury real estate & construction by shaping modern, resilient, and enduring urban architecture.',
     'about.btn': 'About Us',
     'about.callUs': 'Call Us Now!',
-    'about.satisfiedCustomers': 'Our 5k+ Satisfied Customers',
-    'about.positiveRate': '99.4% Positive Feedback',
-    'about.verifiedTrack': 'Verified Track Record',
+    'about.satisfiedCustomers': 'FAL License No. 1200028472',
+    'about.positiveRate': '100% SBC Code Compliance',
+    'about.verifiedTrack': 'Official Regulatory Accreditations',
 
     // Services Section
     'services.badge': 'Our Services',
@@ -416,31 +524,27 @@ export const translations: Record<Language, Record<string, string>> = {
 };
 
 export function LanguageThemeProvider({ children }: { children: React.ReactNode }) {
-  // Default language is 'ar' as requested by user
-  const [language, setLanguageState] = useState<Language>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const savedLang = localStorage.getItem('skyvilla_lang') as Language | null;
-        if (savedLang === 'ar' || savedLang === 'en') return savedLang;
-      } catch {
-        // Ignore
-      }
-    }
-    return 'ar';
-  });
+  const isMounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
-  // Default theme is 'light' (نهاري) as requested by user
-  const [theme, setThemeState] = useState<Theme>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const savedTheme = localStorage.getItem('skyvilla_theme') as Theme | null;
-        if (savedTheme === 'light' || savedTheme === 'dark') return savedTheme;
-      } catch {
-        // Ignore
-      }
-    }
-    return 'light';
-  });
+  // Use React's useSyncExternalStore for hydration-safe external storage synchronization
+  const rawLanguage = useSyncExternalStore(
+    subscribe,
+    getSavedLanguage,
+    () => 'ar' as Language
+  );
+
+  const rawTheme = useSyncExternalStore(
+    subscribe,
+    getSavedTheme,
+    () => 'light' as Theme
+  );
+
+  const language = isMounted ? rawLanguage : 'ar';
+  const theme = isMounted ? rawTheme : 'light';
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
@@ -455,33 +559,48 @@ export function LanguageThemeProvider({ children }: { children: React.ReactNode 
         document.documentElement.classList.remove('dark');
         document.documentElement.classList.add('light');
       }
-
-      try {
-        localStorage.setItem('skyvilla_lang', language);
-        localStorage.setItem('skyvilla_theme', theme);
-      } catch {
-        // Ignore
-      }
     }
   }, [language, theme]);
 
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-  };
+  const setLanguage = useCallback((lang: Language) => {
+    try {
+      localStorage.setItem('skyvilla_lang', lang);
+      notifyListeners();
+    } catch {
+      // Ignore
+    }
+  }, []);
 
-  const toggleLanguage = () => {
-    setLanguageState((prev) => (prev === 'ar' ? 'en' : 'ar'));
-  };
+  const toggleLanguage = useCallback(() => {
+    try {
+      const nextLang = language === 'ar' ? 'en' : 'ar';
+      localStorage.setItem('skyvilla_lang', nextLang);
+      notifyListeners();
+    } catch {
+      // Ignore
+    }
+  }, [language]);
 
-  const setTheme = (t: Theme) => {
-    setThemeState(t);
-  };
+  const setTheme = useCallback((t: Theme) => {
+    try {
+      localStorage.setItem('skyvilla_theme', t);
+      notifyListeners();
+    } catch {
+      // Ignore
+    }
+  }, []);
 
-  const toggleTheme = () => {
-    setThemeState((prev) => (prev === 'light' ? 'dark' : 'light'));
-  };
+  const toggleTheme = useCallback(() => {
+    try {
+      const nextTheme = theme === 'light' ? 'dark' : 'light';
+      localStorage.setItem('skyvilla_theme', nextTheme);
+      notifyListeners();
+    } catch {
+      // Ignore
+    }
+  }, [theme]);
 
-  const t = (key: string, fallback?: string): string => {
+  const t = useCallback((key: string, fallback?: string): string => {
     const dict = translations[language];
     if (dict && dict[key]) {
       return dict[key];
@@ -491,7 +610,7 @@ export function LanguageThemeProvider({ children }: { children: React.ReactNode 
       return fallbackDict[key];
     }
     return fallback || key;
-  };
+  }, [language]);
 
   const direction = language === 'ar' ? 'rtl' : 'ltr';
 

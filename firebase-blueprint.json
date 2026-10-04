@@ -1,0 +1,178 @@
+{
+  "entities": {
+    "Property": {
+      "title": "Property",
+      "description": "Real estate listing including sales, rentals, prices, specs, and status.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Property title" },
+        "titleAr": { "type": "string", "description": "Property title in Arabic" },
+        "type": { "type": "string", "description": "Villa, apartment, commercial, land" },
+        "status": { "type": "string", "enum": ["for-sale", "for-rent", "sold", "reserved"], "description": "Market status" },
+        "price": { "type": "number", "description": "Price in SAR" },
+        "area": { "type": "number", "description": "Area in square meters" },
+        "location": { "type": "string", "description": "Location / City in KSA" },
+        "locationAr": { "type": "string", "description": "Location in Arabic" },
+        "bedrooms": { "type": "number", "description": "Number of bedrooms" },
+        "bathrooms": { "type": "number", "description": "Number of bathrooms" },
+        "description": { "type": "string", "description": "Detailed description" },
+        "descriptionAr": { "type": "string", "description": "Detailed description in Arabic" },
+        "image": { "type": "string", "format": "uri", "description": "Featured image URL" },
+        "featured": { "type": "boolean", "description": "Whether displayed on homepage" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last update timestamp" }
+      },
+      "required": ["title", "type", "status", "price", "location", "createdAt"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "Major structural and architectural development projects.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Project title" },
+        "titleAr": { "type": "string", "description": "Project title in Arabic" },
+        "category": { "type": "string", "enum": ["commercial", "residential", "industrial", "infrastructure"], "description": "Project category" },
+        "location": { "type": "string", "description": "Project location" },
+        "locationAr": { "type": "string", "description": "Project location in Arabic" },
+        "progress": { "type": "number", "description": "Completion percentage 0-100" },
+        "completionDate": { "type": "string", "description": "Estimated completion date" },
+        "description": { "type": "string", "description": "Project description" },
+        "descriptionAr": { "type": "string", "description": "Project description in Arabic" },
+        "image": { "type": "string", "format": "uri", "description": "Project hero image" },
+        "client": { "type": "string", "description": "Client name or Developer" },
+        "featured": { "type": "boolean", "description": "Display on home feature" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last update timestamp" }
+      },
+      "required": ["title", "category", "location", "progress", "createdAt"]
+    },
+    "Service": {
+      "title": "Service",
+      "description": "Hard Group core services and engineering offerings.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Service title" },
+        "titleAr": { "type": "string", "description": "Service title in Arabic" },
+        "category": { "type": "string", "enum": ["contracting", "realestate", "hvac", "supervision"], "description": "Service sector" },
+        "description": { "type": "string", "description": "Service description" },
+        "descriptionAr": { "type": "string", "description": "Service description in Arabic" },
+        "active": { "type": "boolean", "description": "Whether service is actively offered" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp" }
+      },
+      "required": ["title", "category", "description", "createdAt"]
+    },
+    "Article": {
+      "title": "Article",
+      "description": "Market reports, architectural news, and real estate insights.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Article headline" },
+        "titleAr": { "type": "string", "description": "Article headline in Arabic" },
+        "category": { "type": "string", "description": "Article topic or category" },
+        "excerpt": { "type": "string", "description": "Short excerpt" },
+        "excerptAr": { "type": "string", "description": "Short excerpt in Arabic" },
+        "content": { "type": "string", "description": "Full content markdown/html" },
+        "contentAr": { "type": "string", "description": "Full content in Arabic" },
+        "image": { "type": "string", "format": "uri", "description": "Article cover image" },
+        "author": { "type": "string", "description": "Author name" },
+        "readTime": { "type": "string", "description": "Estimated read time" },
+        "published": { "type": "boolean", "description": "Published status" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Publication date" }
+      },
+      "required": ["title", "category", "content", "published", "createdAt"]
+    },
+    "Consultation": {
+      "title": "Consultation",
+      "description": "Customer consultation requests, quote inquiries, and project leads.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Client full name" },
+        "phone": { "type": "string", "description": "Client contact phone" },
+        "email": { "type": "string", "format": "email", "description": "Client email" },
+        "service": { "type": "string", "description": "Requested service" },
+        "budget": { "type": "string", "description": "Estimated budget" },
+        "details": { "type": "string", "description": "Project specifications" },
+        "status": { "type": "string", "enum": ["new", "in_progress", "contacted", "completed", "cancelled"], "description": "Lead processing status" },
+        "source": { "type": "string", "description": "Form source e.g. web, calculator, modal" },
+        "notes": { "type": "string", "description": "Internal staff notes" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Submission timestamp" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last update timestamp" }
+      },
+      "required": ["name", "phone", "status", "createdAt"]
+    },
+    "MediaItem": {
+      "title": "MediaItem",
+      "description": "Uploaded media files, blueprints, and property photography.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Original file name" },
+        "url": { "type": "string", "format": "uri", "description": "Public download URL" },
+        "storagePath": { "type": "string", "description": "Path in Firebase Storage" },
+        "size": { "type": "number", "description": "File size in bytes" },
+        "type": { "type": "string", "description": "MIME type" },
+        "folder": { "type": "string", "description": "Storage folder" },
+        "uploader": { "type": "string", "description": "Uploader email or admin" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Upload date" }
+      },
+      "required": ["name", "url", "storagePath", "size", "createdAt"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Staff and administrator profiles for dashboard access.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string", "format": "email", "description": "User email" },
+        "displayName": { "type": "string", "description": "Full name" },
+        "role": { "type": "string", "enum": ["admin", "editor", "viewer"], "description": "Access level" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Account creation date" },
+        "lastLogin": { "type": "string", "format": "date-time", "description": "Last sign in timestamp" }
+      },
+      "required": ["uid", "email", "role", "createdAt"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Trusted admin whitelist records.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email", "description": "Admin email" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Granted timestamp" }
+      },
+      "required": ["email", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/properties/{propertyId}": {
+      "schema": { "$ref": "#/entities/Property" },
+      "description": "Real estate listings and properties collection."
+    },
+    "/projects/{projectId}": {
+      "schema": { "$ref": "#/entities/Project" },
+      "description": "Structural and commercial engineering projects collection."
+    },
+    "/services/{serviceId}": {
+      "schema": { "$ref": "#/entities/Service" },
+      "description": "Company engineering and real estate services."
+    },
+    "/articles/{articleId}": {
+      "schema": { "$ref": "#/entities/Article" },
+      "description": "Market reports and architectural articles."
+    },
+    "/consultations/{consultationId}": {
+      "schema": { "$ref": "#/entities/Consultation" },
+      "description": "Customer leads, consultation requests, and quotes."
+    },
+    "/media/{mediaId}": {
+      "schema": { "$ref": "#/entities/MediaItem" },
+      "description": "Storage media library files and records."
+    },
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User accounts and administrative staff profiles."
+    },
+    "/admins/{adminId}": {
+      "schema": { "$ref": "#/entities/Admin" },
+      "description": "Administrator whitelist document for RBAC security."
+    }
+  }
+}

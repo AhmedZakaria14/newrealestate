@@ -62,8 +62,8 @@ export default function FAQsPage() {
                 className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer border ${
                   activeCategory === cat.key
                     ? isDark
-                      ? 'bg-[#DCFF09] text-[#040618] border-[#DCFF09] shadow-md'
-                      : 'bg-emerald-600 text-white border-emerald-600 shadow-md'
+                      ? 'bg-blue-600 text-white border-blue-500 shadow-md'
+                      : 'bg-emerald-600 text-white border-blue-600 shadow-md'
                     : isDark
                     ? 'bg-[#080b24] text-gray-300 hover:text-white border-white/10'
                     : 'bg-white text-slate-700 hover:text-slate-900 border-slate-200 shadow-sm'
@@ -95,7 +95,7 @@ export default function FAQsPage() {
                     className="w-full p-6 text-left rtl:text-right flex items-center justify-between gap-4 cursor-pointer hover:opacity-90 transition-opacity"
                   >
                     <div className="flex items-center gap-3.5">
-                      <div className="p-2.5 rounded-2xl bg-emerald-500/10 text-emerald-500 shrink-0">
+                      <div className="p-2.5 rounded-2xl bg-blue-500/10 text-blue-500 shrink-0">
                         <HelpCircle className="w-5 h-5" />
                       </div>
                       <span className="text-base sm:text-lg font-bold">
@@ -104,13 +104,13 @@ export default function FAQsPage() {
                     </div>
                     <ChevronDown
                       className={`w-5 h-5 opacity-60 shrink-0 transition-transform duration-200 ${
-                        isOpen ? 'rotate-180 text-emerald-500 opacity-100' : ''
+                        isOpen ? 'rotate-180 text-blue-500 opacity-100' : ''
                       }`}
                     />
                   </button>
 
                   {isOpen && (
-                    <div className="px-6 pb-6 pt-2 text-sm sm:text-base opacity-80 leading-relaxed border-t border-gray-500/10 pr-16 rtl:pr-16 rtl:pl-6 pl-16">
+                    <div className="px-6 pb-6 pt-2 text-sm sm:text-base opacity-100 leading-relaxed border-t border-gray-500/10 pr-16 rtl:pr-16 rtl:pl-6 pl-16">
                       {answer}
                     </div>
                   )}
@@ -130,7 +130,7 @@ export default function FAQsPage() {
             <h4 className="text-2xl font-bold">
               {language === 'ar' ? 'هل لديك استفسار آخر غير موجود هنا؟' : 'Have a question not listed here?'}
             </h4>
-            <p className="text-sm opacity-80 max-w-lg mx-auto">
+            <p className="text-sm opacity-100 max-w-lg mx-auto">
               {language === 'ar'
                 ? 'فريقنا الهندسي جاهز دائماً لتقديم التوجيه الفني الكامل لمخططاتك الإنشائية.'
                 : 'Our engineering team is always on standby to provide detailed technical guidance for your custom construction plans.'}
@@ -138,7 +138,7 @@ export default function FAQsPage() {
             <div className="pt-2">
               <button
                 onClick={() => setConsultationOpen(true)}
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#DCFF09] text-[#040618] font-bold text-sm tracking-tight hover:bg-white transition-colors cursor-pointer"
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-blue-600 text-white font-bold text-sm tracking-tight hover:bg-white transition-colors cursor-pointer"
               >
                 <span>{language === 'ar' ? 'تحدث مباشرة مع مهندس مختص' : 'Ask An Expert Directly'}</span>
                 <ArrowUpRight className={`w-4 h-4 ${direction === 'rtl' ? 'rotate-[-90deg]' : ''}`} />

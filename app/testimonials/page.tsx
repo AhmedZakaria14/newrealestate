@@ -41,7 +41,7 @@ export default function TestimonialsPage() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-            <span className="text-xs uppercase font-bold text-emerald-500 tracking-widest">
+            <span className="text-xs uppercase font-bold text-blue-500 tracking-widest">
               {t('about.verifiedTrack')}
             </span>
             <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
@@ -60,7 +60,7 @@ export default function TestimonialsPage() {
                   key={item.id}
                   className={`p-8 rounded-3xl border transition-all space-y-6 relative ${
                     isDark
-                      ? 'bg-[#080b24] border-white/10 hover:border-[#DCFF09]/40'
+                      ? 'bg-[#080b24] border-white/10 hover:border-blue-500/40'
                       : 'bg-white border-slate-200 hover:border-emerald-500 shadow-sm'
                   }`}
                 >
@@ -70,7 +70,7 @@ export default function TestimonialsPage() {
                         <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                       ))}
                     </div>
-                    <Quote className="w-8 h-8 text-emerald-500/20" />
+                    <Quote className="w-8 h-8 text-blue-500/20" />
                   </div>
 
                   <p className="opacity-90 text-sm sm:text-base leading-relaxed italic">
@@ -89,7 +89,7 @@ export default function TestimonialsPage() {
                     </div>
                     <div>
                       <h5 className="font-bold text-base">{name}</h5>
-                      <span className="text-xs text-emerald-500 font-bold">{role}</span>
+                      <span className="text-xs text-blue-500 font-bold">{role}</span>
                     </div>
                   </div>
                 </div>

@@ -21,13 +21,13 @@ export default function PricingPlanPage() {
       <Navbar />
 
       <PageHeader
-        title={t('nav.pricing')}
+        title={language === 'ar' ? 'التسعير ودراسات الجدوى المعتمدة' : 'Valuation & Project Estimation'}
         subtitle={
           language === 'ar'
-            ? 'باقات تسعير شفافة وجداول دفعات مرونة ومطابقة تماماً لمراحل الإنجاز بدون أي رسوم خفية.'
-            : 'Transparent pricing packages and flexible construction estimates with no hidden fees.'
+            ? 'دراسات تسعير متخصصة وجداول كميات وتكاليف دقيقة لكل عقار ومشروع إنشائي بدون أي باقات نمطية أو رسوم خفية.'
+            : 'Authoritative comparative valuations and precision engineering estimates tailored to your asset.'
         }
-        breadcrumb={[{ label: t('nav.pricing') }]}
+        breadcrumb={[{ label: language === 'ar' ? 'التسعير والاستشارات' : 'Estimation & Advisory' }]}
       />
 
       <PricingSection />
@@ -42,7 +42,7 @@ export default function PricingPlanPage() {
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 space-y-3">
-            <span className="text-xs uppercase tracking-widest font-bold text-emerald-500">
+            <span className="text-xs uppercase tracking-widest font-bold text-blue-500">
               {language === 'ar' ? 'الأسئلة الشائعة حول التكاليف' : 'Pricing Questions'}
             </span>
             <h3 className="text-3xl font-extrabold">
@@ -63,10 +63,10 @@ export default function PricingPlanPage() {
                   }`}
                 >
                   <h4 className="text-base font-bold flex items-center gap-2.5">
-                    <HelpCircle className="w-5 h-5 text-emerald-500 shrink-0" />
+                    <HelpCircle className="w-5 h-5 text-blue-500 shrink-0" />
                     <span>{question}</span>
                   </h4>
-                  <p className="text-sm opacity-80 leading-relaxed pr-8 rtl:pr-8 rtl:pl-0 pl-8">
+                  <p className="text-sm opacity-100 leading-relaxed pr-8 rtl:pr-8 rtl:pl-0 pl-8">
                     {answer}
                   </p>
                 </div>

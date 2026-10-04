@@ -30,13 +30,13 @@ export default function ContactUsPage() {
       <Navbar />
 
       <PageHeader
-        title={t('nav.contact')}
+        title={language === 'ar' ? 'تواصل مع فريق هارد للعقارات' : 'Get in Touch with HARD Real Estate'}
         subtitle={
           language === 'ar'
-            ? 'تواصل مع كبار مهندسينا ومديري المشاريع لطلب دراسات الجدوى، معاينات المواقع، أو الاستشارات الإنشائية.'
-            : 'Get in touch with our engineering and project management leads for estimates, site audits, or partnerships.'
+            ? 'هل لديك استفسار، ترغب في حجز استشارة خاصة، أو تريد إدراج عقارك؟ مستشارونا المعتمدون جاهزون لمساعدتك.'
+            : 'Have an inquiry, looking to book a private viewing, or wanting to list your property? Our certified advisors are ready to assist.'
         }
-        breadcrumb={[{ label: t('nav.contact') }]}
+        breadcrumb={[{ label: language === 'ar' ? 'تواصل معنا' : 'Contact Us' }]}
       />
 
       <section
@@ -49,19 +49,19 @@ export default function ContactUsPage() {
             {/* Left Contact Information */}
             <div className="lg:col-span-5 space-y-8">
               <div className="space-y-3">
-                <span className="inline-block text-xs uppercase tracking-widest font-bold text-emerald-500 px-3.5 py-1.5 bg-emerald-500/10 rounded-full border border-emerald-500/20">
-                  {language === 'ar' ? 'تواصل معنا مباشرة' : 'Get In Touch'}
+                <span className="inline-block text-xs uppercase tracking-widest font-bold text-blue-500 px-3.5 py-1.5 bg-blue-500/10 rounded-full border border-blue-500/20">
+                  {language === 'ar' ? 'استشارات عقارية معتمدة' : 'Certified Advisory'}
                 </span>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
-                  {language === 'ar' ? 'مستعدون لبناء صرحك المعماري' : "We're ready to build your future"}{' '}
-                  <span className={isDark ? 'text-[#DCFF09]' : 'text-emerald-600'}>
-                    {language === 'ar' ? 'بأعلى إتقان' : 'together'}
+                  {language === 'ar' ? 'نحن هنا لإرشادك في كل خطوة' : "We're here to guide your investment"}{' '}
+                  <span className={isDark ? 'text-blue-400' : 'text-blue-600'}>
+                    {language === 'ar' ? 'بأعلى موثوقية' : 'with excellence'}
                   </span>
                 </h2>
-                <p className="opacity-80 text-sm sm:text-base leading-relaxed">
+                <p className="opacity-100 text-sm sm:text-base leading-relaxed">
                   {language === 'ar'
-                    ? 'هل لديك فكرة معمارية، قطعة أرض تجارية، أو تخطط لفيلا سكنية راقية؟ تواصل مع مهندسينا للحصول على استشارة فنية وتقديرات واضحة للمشروع.'
-                    : 'Have an architectural concept, commercial plot, or residential luxury villa in mind? Contact our engineering leads for transparent estimates.'}
+                    ? 'سواء كنت تبحث عن عقار استثنائي للتملك، أو ترغب في تسويق مشروع عقاري، أو تحتاج لتقييم معتمد وفق رخصة فال، يسعدنا الترحيب بك في مكاتبنا أو التواصل المباشر عبر الهاتف والواتساب.'
+                    : 'Whether you are seeking an exceptional residence, marketing a landmark development, or requiring verified FAL valuation, our certified team is at your disposal.'}
                 </p>
               </div>
 
@@ -74,26 +74,26 @@ export default function ContactUsPage() {
                 >
                   <div
                     className={`p-3.5 rounded-2xl shrink-0 mt-0.5 ${
-                      isDark ? 'bg-[#DCFF09]/10 text-[#DCFF09]' : 'bg-emerald-50 text-emerald-600'
+                      isDark ? 'bg-blue-500/10 text-blue-400' : 'bg-blue-50 text-blue-600'
                     }`}
                   >
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="text-xs uppercase tracking-wider opacity-70 font-bold block mb-1">
-                      {t('footer.callUs')}
+                    <span className="text-xs uppercase tracking-wider opacity-90 font-bold block mb-1">
+                      {language === 'ar' ? 'الاتصال المباشر والواتساب' : 'Direct Line & WhatsApp'}
                     </span>
                     <a
-                      href="tel:+91123456789"
+                      href="tel:+966556125711"
                       dir="ltr"
                       className={`text-lg font-bold transition-colors block text-left rtl:text-right ${
-                        isDark ? 'hover:text-[#DCFF09]' : 'hover:text-emerald-600'
+                        isDark ? 'hover:text-blue-400' : 'hover:text-blue-600'
                       }`}
                     >
-                      +91 (123) 456-789
+                      +966 55 612 5711
                     </a>
-                    <span className="text-xs opacity-70 block mt-0.5">
-                      {t('drawer.hours')}
+                    <span className="text-xs opacity-90 block mt-0.5">
+                      {language === 'ar' ? 'الأحد - الخميس: 8:30 ص - 8:00 م' : 'Sunday - Thursday: 8:30 AM - 8:00 PM'}
                     </span>
                   </div>
                 </div>
@@ -105,25 +105,25 @@ export default function ContactUsPage() {
                 >
                   <div
                     className={`p-3.5 rounded-2xl shrink-0 mt-0.5 ${
-                      isDark ? 'bg-[#DCFF09]/10 text-[#DCFF09]' : 'bg-emerald-50 text-emerald-600'
+                      isDark ? 'bg-blue-500/10 text-blue-400' : 'bg-blue-50 text-blue-600'
                     }`}
                   >
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="text-xs uppercase tracking-wider opacity-70 font-bold block mb-1">
-                      {t('footer.emailUs')}
+                    <span className="text-xs uppercase tracking-wider opacity-90 font-bold block mb-1">
+                      {language === 'ar' ? 'البريد الإلكتروني' : 'Official Email'}
                     </span>
                     <a
-                      href="mailto:info@skyvillaconstruction.com"
+                      href="mailto:info@hardgp.com"
                       className={`text-lg font-bold transition-colors truncate block ${
-                        isDark ? 'hover:text-[#DCFF09]' : 'hover:text-emerald-600'
+                        isDark ? 'hover:text-blue-400' : 'hover:text-blue-600'
                       }`}
                     >
-                      info@skyvillaconstruction.com
+                      info@hardgp.com
                     </a>
-                    <span className="text-xs opacity-70 block mt-0.5">
-                      {language === 'ar' ? 'الرد خلال 24 ساعة كحد أقصى' : 'Typical reply time: within 24 hours'}
+                    <span className="text-xs opacity-90 block mt-0.5">
+                      {language === 'ar' ? 'الرد خلال 15 دقيقة خلال ساعات العمل' : 'Fast response within 15 minutes'}
                     </span>
                   </div>
                 </div>
@@ -135,20 +135,22 @@ export default function ContactUsPage() {
                 >
                   <div
                     className={`p-3.5 rounded-2xl shrink-0 mt-0.5 ${
-                      isDark ? 'bg-[#DCFF09]/10 text-[#DCFF09]' : 'bg-emerald-50 text-emerald-600'
+                      isDark ? 'bg-blue-500/10 text-blue-400' : 'bg-blue-50 text-blue-600'
                     }`}
                   >
                     <MapPin className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="text-xs uppercase tracking-wider opacity-70 font-bold block mb-1">
-                      {t('footer.location')}
+                    <span className="text-xs uppercase tracking-wider opacity-90 font-bold block mb-1">
+                      {language === 'ar' ? 'المقر الرئيسي' : 'Headquarters'}
                     </span>
                     <p className="text-sm font-bold">
-                      {t('footer.locationVal')}
+                      {language === 'ar'
+                        ? 'طريق الأمير تركي، الكورنيش، الخُبر، المملكة العربية السعودية'
+                        : 'Prince Turki Street, Corniche Waterfront, Al Khobar, Saudi Arabia'}
                     </p>
-                    <span className="text-xs opacity-70 block mt-0.5">
-                      {language === 'ar' ? 'المقر الرئيسي واستوديو التصميم الهندسي' : 'Global Headquarters & Engineering Studio'}
+                    <span className="text-xs opacity-90 block mt-0.5">
+                      {language === 'ar' ? 'مرخص من الهيئة العامة للعقار برخصة فال 1200028944' : 'REGA Licensed Real Estate Brokerage FAL 1200028944'}
                     </span>
                   </div>
                 </div>
@@ -164,23 +166,23 @@ export default function ContactUsPage() {
                     : 'bg-white border-slate-200 text-slate-900'
                 }`}
               >
-                <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
                 {submitted ? (
                   <div className="py-16 text-center space-y-4">
-                    <div className="inline-flex p-4 rounded-full bg-emerald-500/20 text-emerald-500">
+                    <div className="inline-flex p-4 rounded-full bg-blue-500/20 text-blue-500">
                       <CheckCircle2 className="w-12 h-12" />
                     </div>
                     <h3 className="text-2xl font-bold">{t('modal.successTitle')}</h3>
-                    <p className="opacity-80 max-w-md mx-auto text-sm leading-relaxed">
+                    <p className="opacity-100 max-w-md mx-auto text-sm leading-relaxed">
                       {t('modal.successDesc')}
                     </p>
                     <button
                       onClick={() => setSubmitted(false)}
                       className={`px-8 py-3 font-bold rounded-xl transition-colors cursor-pointer text-sm shadow-md ${
                         isDark
-                          ? 'bg-[#DCFF09] text-[#040618] hover:bg-white'
-                          : 'bg-[#0f172a] text-white hover:bg-emerald-600'
+                          ? 'bg-blue-600 text-white hover:bg-white'
+                          : 'bg-[#0f172a] text-white hover:bg-blue-600'
                       }`}
                     >
                       {language === 'ar' ? 'إرسال رسالة أخرى' : 'Send Another Message'}
@@ -189,11 +191,11 @@ export default function ContactUsPage() {
                 ) : (
                   <div>
                     <div className="mb-8">
-                      <span className="text-xs uppercase font-bold text-emerald-500 tracking-wider block mb-1">
+                      <span className="text-xs uppercase font-bold text-blue-500 tracking-wider block mb-1">
                         {language === 'ar' ? 'نموذج التواصل' : 'Inquiry Form'}
                       </span>
                       <h3 className="text-2xl font-bold">{language === 'ar' ? 'أرسل لنا رسالة' : 'Send Us A Message'}</h3>
-                      <p className="text-xs opacity-70 mt-1">
+                      <p className="text-xs opacity-90 mt-1">
                         {language === 'ar'
                           ? 'يرجى تدوين تفاصيل مشروعك وسيقوم مهندسنا المختص بالتواصل معك مباشرة.'
                           : 'Fill out the details below and our lead engineer will respond promptly.'}
@@ -203,7 +205,7 @@ export default function ContactUsPage() {
                     <form onSubmit={handleSubmit} className="space-y-4">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-bold uppercase mb-1 opacity-80">
+                          <label className="block text-xs font-bold uppercase mb-1 opacity-100">
                             {t('modal.nameLabel')}
                           </label>
                           <input
@@ -214,13 +216,13 @@ export default function ContactUsPage() {
                             placeholder={language === 'ar' ? 'سلطان المنصور' : 'John Doe'}
                             className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition-colors ${
                               isDark
-                                ? 'bg-[#040618] border-white/10 text-white placeholder-gray-500 focus:border-[#DCFF09]'
-                                : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-emerald-600'
+                                ? 'bg-[#040618] border-white/10 text-white placeholder-gray-500 focus:border-blue-500'
+                                : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-blue-600'
                             }`}
                           />
                         </div>
                         <div>
-                          <label className="block text-xs font-bold uppercase mb-1 opacity-80">
+                          <label className="block text-xs font-bold uppercase mb-1 opacity-100">
                             {t('modal.emailLabel')}
                           </label>
                           <input
@@ -231,8 +233,8 @@ export default function ContactUsPage() {
                             placeholder="john@example.com"
                             className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition-colors ${
                               isDark
-                                ? 'bg-[#040618] border-white/10 text-white placeholder-gray-500 focus:border-[#DCFF09]'
-                                : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-emerald-600'
+                                ? 'bg-[#040618] border-white/10 text-white placeholder-gray-500 focus:border-blue-500'
+                                : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-blue-600'
                             }`}
                           />
                         </div>
@@ -240,7 +242,7 @@ export default function ContactUsPage() {
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-bold uppercase mb-1 opacity-80">
+                          <label className="block text-xs font-bold uppercase mb-1 opacity-100">
                             {t('modal.phoneLabel')}
                           </label>
                           <input
@@ -251,31 +253,31 @@ export default function ContactUsPage() {
                             dir="ltr"
                             className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition-colors text-left rtl:text-right ${
                               isDark
-                                ? 'bg-[#040618] border-white/10 text-white placeholder-gray-500 focus:border-[#DCFF09]'
-                                : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-emerald-600'
+                                ? 'bg-[#040618] border-white/10 text-white placeholder-gray-500 focus:border-blue-500'
+                                : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-blue-600'
                             }`}
                           />
                         </div>
                         <div>
-                          <label className="block text-xs font-bold uppercase mb-1 opacity-80">
+                          <label className="block text-xs font-bold uppercase mb-1 opacity-100">
                             {language === 'ar' ? 'نوع المشروع / الموضوع' : 'Subject / Project Type'}
                           </label>
                           <input
                             type="text"
                             value={formData.subject}
                             onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                            placeholder={language === 'ar' ? 'بناء فيلا سكنية فاخرة' : 'Luxury Villa Construction'}
+                            placeholder={language === 'ar' ? 'طلب معاينة عقار / إدراج عقار للبيع' : 'Property Viewing / Listing Inquiry'}
                             className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition-colors ${
                               isDark
-                                ? 'bg-[#040618] border-white/10 text-white placeholder-gray-500 focus:border-[#DCFF09]'
-                                : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-emerald-600'
+                                ? 'bg-[#040618] border-white/10 text-white placeholder-gray-500 focus:border-blue-500'
+                                : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-blue-600'
                             }`}
                           />
                         </div>
                       </div>
 
                       <div>
-                        <label className="block text-xs font-bold uppercase mb-1 opacity-80">
+                        <label className="block text-xs font-bold uppercase mb-1 opacity-100">
                           {t('modal.detailsLabel')}
                         </label>
                         <textarea
@@ -286,8 +288,8 @@ export default function ContactUsPage() {
                           placeholder={t('modal.detailsPlaceholder')}
                           className={`w-full px-4 py-3 rounded-xl border text-sm focus:outline-none transition-colors resize-none ${
                             isDark
-                              ? 'bg-[#040618] border-white/10 text-white placeholder-gray-500 focus:border-[#DCFF09]'
-                              : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-emerald-600'
+                              ? 'bg-[#040618] border-white/10 text-white placeholder-gray-500 focus:border-blue-500'
+                              : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-blue-600'
                           }`}
                         />
                       </div>
@@ -297,8 +299,8 @@ export default function ContactUsPage() {
                           type="submit"
                           className={`w-full py-4 font-bold rounded-2xl transition-all transform hover:-translate-y-0.5 shadow-lg flex items-center justify-center gap-2 group cursor-pointer text-sm ${
                             isDark
-                              ? 'bg-[#DCFF09] text-[#040618] hover:bg-white shadow-[#DCFF09]/20'
-                              : 'bg-[#0f172a] text-white hover:bg-emerald-600 shadow-slate-400/30'
+                              ? 'bg-blue-600 text-white hover:bg-white shadow-blue-500/25'
+                              : 'bg-[#0f172a] text-white hover:bg-blue-600 shadow-slate-400/30'
                           }`}
                         >
                           <span>{language === 'ar' ? 'إرسال الرسالة الآن' : 'Send Message Now'}</span>

@@ -1,0 +1,98 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default-deny safety net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Admin authorization check (trusted database lookup or verified primary owner)
+    function isAdmin() {
+      return isSignedIn() && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        request.auth.token.email == 'azeco44@gmail.com' ||
+        (request.auth.token.email != null && request.auth.token.email.matches('^.*@hardgroup\\.sa$'))
+      );
+    }
+
+    function isStaff() {
+      return isSignedIn() && (
+        isAdmin() ||
+        exists(/databases/$(database)/documents/users/$(request.auth.uid))
+      );
+    }
+
+    // 1. Properties Collection (Publicly visible, manageable by staff/admins)
+    match /properties/{propertyId} {
+      allow read: if true;
+      allow create: if isStaff() && isValidId(propertyId);
+      allow update, delete: if isStaff();
+    }
+
+    // 2. Projects Collection (Publicly visible, manageable by staff/admins)
+    match /projects/{projectId} {
+      allow read: if true;
+      allow create: if isStaff() && isValidId(projectId);
+      allow update, delete: if isStaff();
+    }
+
+    // 3. Services Collection (Publicly visible, manageable by staff/admins)
+    match /services/{serviceId} {
+      allow read: if true;
+      allow create: if isStaff() && isValidId(serviceId);
+      allow update, delete: if isStaff();
+    }
+
+    // 4. Articles Collection (Publicly visible, manageable by staff/admins)
+    match /articles/{articleId} {
+      allow read: if true;
+      allow create: if isStaff() && isValidId(articleId);
+      allow update, delete: if isStaff();
+    }
+
+    // 5. Consultations Collection (Public creation for client leads, staff-only management)
+    match /consultations/{consultationId} {
+      allow create: if isValidId(consultationId) &&
+        incoming().name is string && incoming().name.size() > 0 && incoming().name.size() <= 150 &&
+        incoming().phone is string && incoming().phone.size() > 0 && incoming().phone.size() <= 50;
+      allow read, update, delete: if isStaff();
+    }
+
+    // 6. Media Library Collection (Staff-managed uploaded images and documents)
+    match /media/{mediaId} {
+      allow read: if true;
+      allow create, update, delete: if isStaff();
+    }
+
+    // 7. Users Collection (Profile management & RBAC access)
+    match /users/{userId} {
+      allow read: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      allow create, update: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      allow delete: if isAdmin();
+    }
+
+    // 8. Admins Collection (Strictly protected admin whitelist)
+    match /admins/{adminId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+  }
+}
