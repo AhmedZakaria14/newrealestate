@@ -1,207 +1,112 @@
 'use client';
 
-import React from 'react';
-import Image from 'next/image';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { Target, Eye, Phone, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { ShieldCheck, ArrowRight, Phone, Award, Building2 } from 'lucide-react';
 import { useLanguageTheme } from '@/lib/language-theme-context';
+import WordsPullUpMultiStyle, { StyleSegment } from '@/components/animations/WordsPullUpMultiStyle';
+import AnimatedLetterText from '@/components/animations/AnimatedLetterText';
+import ConsultationModal from '@/components/ConsultationModal';
 
 export default function AboutSection() {
-  const { theme, language, t, direction } = useLanguageTheme();
-  const isDark = theme === 'dark';
+  const { language, direction } = useLanguageTheme();
   const isAr = language === 'ar';
+  const isRtl = direction === 'rtl';
+  const [consultationOpen, setConsultationOpen] = useState(false);
+
+  const segmentsAr: StyleSegment[] = [
+    { text: 'نحن مجموعة هارد،', className: 'text-[#E1E0CC] font-bold' },
+    { text: 'صرح إنشائي وعقاري رائد.', className: 'text-[#DEDBC8] font-serif italic', italic: true },
+    { text: 'نمتلك كفاءات معتمدة في المقاولات فئة أولى والوساطة المرخصة فال.', className: 'text-[#E1E0CC]/90 font-medium' },
+  ];
+
+  const segmentsEn: StyleSegment[] = [
+    { text: 'We are HARD Group,', className: 'text-[#E1E0CC] font-bold' },
+    { text: 'a premier Saudi development house.', className: 'text-[#DEDBC8] font-serif italic', italic: true },
+    { text: 'Uniting Class-1 general contracting, VAL brokerage, and MEP engineering.', className: 'text-[#E1E0CC]/90 font-medium' },
+  ];
+
+  const bodyTextAr =
+    'على مدار أكثر من عقد من الإنجاز والتطوير المستمر في المملكة العربية السعودية، شيدت مجموعة هارد محفظة استثنائية من الأبراج والمشاريع التجارية والمجمعات السكنية في الخبر والرياض، مرخصة برخصة فال ومطابقة 100% لكود البناء السعودي مع التزام راسخ بأعلى معايير الجودة والحوكمة المؤسسية.';
+
+  const bodyTextEn =
+    'Over the past decade of continuous development across the Kingdom of Saudi Arabia, HARD Group has delivered an exceptional portfolio of commercial towers, residential communities, and advanced infrastructure in Khobar and Riyadh, fully compliant with the Saudi Building Code (SBC) and licensed under VAL.';
 
   return (
-    <section
-      className={`relative py-24 sm:py-32 overflow-hidden transition-colors ${
-        isDark ? 'bg-[#040618] text-white' : 'bg-slate-50 text-slate-900'
-      }`}
-    >
-      {/* Background radial glow */}
-      <div className="absolute top-1/2 left-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
+    <section id="about-hard" className="bg-black py-20 sm:py-28 px-4 md:px-8 relative overflow-hidden">
+      {/* Centered Inner Cinematic Card */}
+      <div className="max-w-6xl mx-auto rounded-3xl md:rounded-[2.5rem] bg-[#101010] border border-[#222222] p-8 sm:p-14 lg:p-20 text-center relative shadow-2xl">
+        {/* Top Kicker Label */}
+        <div className="mb-6 sm:mb-8 flex items-center justify-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#DEDBC8]" />
+          <span className="text-[#DEDBC8] text-[10px] sm:text-xs font-semibold tracking-widest uppercase">
+            {isAr ? 'الهندسة الإنشائية والاستثمار العقاري' : 'Structural Engineering & Real Estate'}
+          </span>
+          <span className="w-1.5 h-1.5 rounded-full bg-[#DEDBC8]" />
+        </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Text & Mission/Vision */}
-          <div className="lg:col-span-6 space-y-6 sm:space-y-8">
-            <div className="space-y-3">
-              <span className="inline-block text-xs uppercase tracking-widest font-bold text-blue-500 px-3.5 py-1.5 bg-blue-500/10 rounded-full border border-blue-500/20">
-                {t('about.badge')}
-              </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
-                {t('about.titlePre')}{' '}
-                <span className={isDark ? 'text-blue-400' : 'text-blue-600'}>
-                  {t('about.titleHighlight')}
-                </span>
-              </h2>
-            </div>
+        {/* Main Heading with Multi-Style Pull-Up Animation */}
+        <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl max-w-4xl mx-auto leading-[1.05] sm:leading-[0.98] tracking-tight">
+          <WordsPullUpMultiStyle
+            segments={isAr ? segmentsAr : segmentsEn}
+            className="justify-center"
+          />
+        </div>
 
-            <p className="opacity-100 text-base leading-relaxed">
-              {t('about.description')}
-            </p>
+        {/* Scroll-Linked Progressive Opacity Reveal Body Text */}
+        <div className="max-w-3xl mx-auto mt-8 sm:mt-10">
+          <AnimatedLetterText
+            text={isAr ? bodyTextAr : bodyTextEn}
+            className="text-[#DEDBC8]/85 text-xs sm:text-sm md:text-base leading-relaxed font-light"
+          />
+        </div>
 
-            {/* Mission & Vision Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div
-                className={`p-6 rounded-2xl border transition-all group ${
-                  isDark
-                    ? 'bg-white/5 border-white/10 hover:border-blue-500/40'
-                    : 'bg-white border-slate-200 shadow-sm hover:border-blue-500 hover:shadow-md'
-                }`}
-              >
-                <div
-                  className={`p-3 rounded-xl inline-block mb-3 ${
-                    isDark
-                      ? 'bg-blue-600/10 text-blue-400'
-                      : 'bg-blue-50 text-blue-600'
-                  }`}
-                >
-                  <Target className="w-6 h-6" />
-                </div>
-                <h3
-                  className={`text-lg font-bold mb-2 transition-colors ${
-                    isDark ? 'group-hover:text-blue-400' : 'group-hover:text-blue-600'
-                  }`}
-                >
-                  {t('about.mission')}
-                </h3>
-                <p className="text-xs sm:text-sm opacity-90 leading-relaxed">
-                  {t('about.missionDesc')}
-                </p>
-              </div>
-
-              <div
-                className={`p-6 rounded-2xl border transition-all group ${
-                  isDark
-                    ? 'bg-white/5 border-white/10 hover:border-blue-500/40'
-                    : 'bg-white border-slate-200 shadow-sm hover:border-blue-500 hover:shadow-md'
-                }`}
-              >
-                <div
-                  className={`p-3 rounded-xl inline-block mb-3 ${
-                    isDark
-                      ? 'bg-blue-600/10 text-blue-400'
-                      : 'bg-blue-50 text-blue-600'
-                  }`}
-                >
-                  <Eye className="w-6 h-6" />
-                </div>
-                <h3
-                  className={`text-lg font-bold mb-2 transition-colors ${
-                    isDark ? 'group-hover:text-blue-400' : 'group-hover:text-blue-600'
-                  }`}
-                >
-                  {t('about.vision')}
-                </h3>
-                <p className="text-xs sm:text-sm opacity-90 leading-relaxed">
-                  {t('about.visionDesc')}
-                </p>
-              </div>
-            </div>
-
-            {/* Action Row: About Button + Call Hotline */}
-            <div className="flex flex-wrap items-center gap-6 pt-4">
-              <Link
-                href="/about-us"
-                className={`inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-sm tracking-tight transition-all transform hover:-translate-y-0.5 shadow-md ${
-                  isDark
-                    ? 'bg-blue-600 text-white hover:bg-white shadow-blue-500/20'
-                    : 'bg-[#0f172a] text-white hover:bg-blue-600 shadow-slate-400/30'
-                }`}
-              >
-                <span>{t('about.btn')}</span>
-                <ArrowUpRight className={`w-4 h-4 ${direction === 'rtl' ? 'rotate-[-90deg]' : ''}`} />
-              </Link>
-
-              <div className="flex items-center gap-3">
-                <div
-                  className={`p-3 rounded-full border ${
-                    isDark
-                      ? 'bg-white/5 border-white/10 text-blue-400'
-                      : 'bg-blue-50 border-blue-200 text-blue-600'
-                  }`}
-                >
-                  <Phone className="w-5 h-5" />
-                </div>
-                <div>
-                  <span className="block text-xs uppercase opacity-90 font-bold tracking-wider">
-                    {t('about.callUs')}
-                  </span>
-                  <a
-                    href="tel:+966556125711"
-                    dir="ltr"
-                    className={`text-base font-bold transition-colors ${
-                      isDark ? 'hover:text-blue-400' : 'hover:text-blue-600'
-                    }`}
-                  >
-                    +966 55 612 5711
-                  </a>
-                </div>
-              </div>
-            </div>
+        {/* Quick Credentials & Trust Pills */}
+        <div className="mt-10 sm:mt-12 pt-8 border-t border-[#222222] flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-gray-400">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#181818] border border-[#2a2a2a]">
+            <ShieldCheck className="w-4 h-4 text-[#DEDBC8]" />
+            <span>{isAr ? 'رخصة فال: 1200028472' : 'VAL License: 1200028472'}</span>
           </div>
 
-          {/* Right Image with Floating Accreditation Card */}
-          <div className="lg:col-span-6 relative">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-              {/* Main Featured Metal Image */}
-              <div
-                className={`relative h-[480px] sm:h-[560px] w-full rounded-3xl overflow-hidden border shadow-2xl ${
-                  isDark ? 'border-white/15' : 'border-slate-300'
-                }`}
-              >
-                <Image
-                  src="https://demo.awaikenthemes.com/skyvilla/wp-content/uploads/2026/01/about-us-image-metal.jpg"
-                  alt="Skyvilla Construction Experts"
-                  fill
-                  className="object-cover"
-                  referrerPolicy="no-referrer"
-                />
-                <div
-                  className={`absolute inset-0 ${
-                    isDark
-                      ? 'bg-gradient-to-t from-[#040618]/70 via-transparent to-transparent'
-                      : 'bg-gradient-to-t from-slate-900/60 via-transparent to-transparent'
-                  }`}
-                />
-              </div>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#181818] border border-[#2a2a2a]">
+            <Building2 className="w-4 h-4 text-[#DEDBC8]" />
+            <span>{isAr ? 'تصنيف مقاولات فئة أولى' : 'Class-1 Contractor'}</span>
+          </div>
 
-              {/* Verified Institutional Accreditation Badge */}
-              <div
-                className={`absolute -bottom-6 sm:-bottom-8 ${
-                  direction === 'rtl'
-                    ? 'right-4 sm:-right-6 left-4 sm:left-auto'
-                    : 'left-4 sm:-left-6 right-4 sm:right-auto'
-                } sm:w-96 backdrop-blur-xl border p-5 rounded-2xl shadow-2xl ${
-                  isDark
-                    ? 'bg-[#080b24]/95 border-white/15 text-white'
-                    : 'bg-white/95 border-slate-200 text-slate-900'
-                }`}
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <div className="space-y-1">
-                    <span className="text-xs uppercase font-bold text-blue-500 block">
-                      {isAr ? 'اعتماد الهيئة العامة للعقار' : 'REGA Regulatory Compliance'}
-                    </span>
-                    <h4 className="text-base sm:text-lg font-extrabold leading-snug">
-                      {isAr ? 'رخصة فال: 1200028472' : 'FAL License No. 1200028472'}
-                    </h4>
-                    <p className="text-xs opacity-80 pt-0.5">
-                      {isAr
-                        ? 'وساطة وتسويق معتمد • كود البناء السعودي SBC'
-                        : 'Certified Brokerage • Saudi Building Code (SBC)'}
-                    </p>
-                  </div>
-
-                  <div className="w-12 h-12 rounded-2xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center shrink-0">
-                    <ShieldCheck className="w-6 h-6 text-blue-500" />
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#181818] border border-[#2a2a2a]">
+            <Award className="w-4 h-4 text-[#DEDBC8]" />
+            <span>{isAr ? 'كود البناء السعودي SBC' : 'Saudi Building Code (SBC)'}</span>
           </div>
         </div>
+
+        {/* CTAs */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <button
+            type="button"
+            onClick={() => setConsultationOpen(true)}
+            className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#DEDBC8] hover:bg-[#eae8d8] text-black font-semibold text-xs sm:text-sm transition-all transform hover:-translate-y-0.5 cursor-pointer shadow-lg active:scale-98"
+          >
+            <span>{isAr ? 'طلب استشارة فورية' : 'Request Consultation'}</span>
+            <div className="w-7 h-7 rounded-full bg-black text-[#DEDBC8] flex items-center justify-center transition-transform group-hover:scale-110">
+              <ArrowRight className={`w-3.5 h-3.5 ${isRtl ? 'rotate-180' : ''}`} />
+            </div>
+          </button>
+
+          <Link
+            href="/about-us"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#181818] hover:bg-[#222] text-[#E1E0CC] font-medium text-xs sm:text-sm border border-[#333] transition-all"
+          >
+            <span>{isAr ? 'عن تاريخ المجموعة' : 'Our Corporate Story'}</span>
+            <ArrowRight className={`w-3.5 h-3.5 ${isRtl ? 'rotate-180' : ''}`} />
+          </Link>
+        </div>
       </div>
+
+      <ConsultationModal
+        isOpen={consultationOpen}
+        onClose={() => setConsultationOpen(false)}
+        initialServiceType="all"
+      />
     </section>
   );
 }
