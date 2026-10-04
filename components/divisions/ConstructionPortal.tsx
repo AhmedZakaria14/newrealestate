@@ -80,6 +80,21 @@ export default function ConstructionPortal() {
     notes: '',
   });
 
+  // Smart Cost Calculator Modal State
+  const [isCalculatorOpen, setIsCalculatorOpen] = useState<boolean>(false);
+  const [calcParams, setCalcParams] = useState<CostCalculatorParams>({
+    projectType: 'villa',
+    finishingLevel: 'deluxe',
+    builtUpArea: 650,
+    floors: 2,
+    hasBasement: false,
+    hasPool: false,
+    hasElevator: false,
+    hasSmartHome: true,
+  });
+
+  const currentEstimate = calculateConstructionCost(calcParams);
+
   // Filter projects
   const filteredProjects = hardConstructionProjects.filter((p) => {
     const matchCat = selectedCategory === 'all' || p.category === selectedCategory;
@@ -227,14 +242,11 @@ export default function ConstructionPortal() {
 
               <button
                 type="button"
-                onClick={() => {
-                  setQuoteSubmitted(false);
-                  setIsQuoteOpen(true);
-                }}
+                onClick={() => setIsCalculatorOpen(true)}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md text-sm font-bold transition-all transform hover:scale-105 active:scale-95 cursor-pointer touch-manipulation"
               >
-                <Send className="w-4 h-4 text-amber-400" />
-                <span>{isAr ? 'طلب استشارة وعرض سعر' : 'Request Instant Quote'}</span>
+                <Calculator className="w-4 h-4 text-amber-400" />
+                <span>{isAr ? 'حاسبة التكاليف التقديرية' : 'Smart Cost Estimator'}</span>
               </button>
             </div>
 
