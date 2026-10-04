@@ -55,21 +55,20 @@ export default function HeroSection() {
     <section className="bg-black p-3 sm:p-5 md:p-6 min-h-screen flex flex-col justify-center">
       {/* Inset Cinematic Container */}
       <div className="relative rounded-2xl md:rounded-[2rem] overflow-hidden border border-[#222222] bg-[#0c0c0c] min-h-[90vh] flex flex-col justify-between pt-24 pb-10 sm:pt-28 sm:pb-12 px-4 sm:px-8 lg:px-12">
-        {/* Background visual asset - Ultra-smooth GPU accelerated */}
-        <div className="absolute inset-0 z-0 overflow-hidden transform-gpu pointer-events-none">
+        {/* Background visual asset with noise & gradient overlays */}
+        <div className="absolute inset-0 z-0">
           <Image
-            src={settings.heroImage || "https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=2200&q=90"}
+            src={settings.heroImage || "/images/hardgp/por1-big.jpg"}
             alt={isAr ? (settings.heroTitleAr || 'مجموعة هارد القابضة') : (settings.heroTitleEn || 'HARD Group Holding')}
             fill
             priority
-            sizes="100vw"
-            quality={85}
-            className="object-cover object-center opacity-40 transform-gpu will-change-transform select-none pointer-events-none transition-opacity duration-700"
+            className="object-cover object-center filter brightness-[0.32] contrast-[1.15]"
             referrerPolicy="no-referrer"
           />
-          {/* Lightweight GPU-composited radial vignette and gradient overlays (zero CPU overhead) */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_10%,rgba(0,0,0,0.85)_100%)] pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black pointer-events-none" />
+          {/* Fractal Noise Overlay */}
+          <div className="absolute inset-0 noise-overlay opacity-[0.65] mix-blend-overlay pointer-events-none" />
+          {/* Deep Cinematic Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/95" />
         </div>
 
         {/* Hero Content */}
@@ -117,13 +116,13 @@ export default function HeroSection() {
                   </div>
                 </button>
 
-                <a
-                  href="#project-calculator"
+                <Link
+                  href="/services"
                   className="inline-flex items-center gap-2 px-5 py-3.5 sm:px-6 sm:py-4 rounded-full bg-[#1b1b1b]/90 hover:bg-[#262626] text-[#E1E0CC] font-medium text-xs sm:text-sm border border-[#333] transition-all cursor-pointer backdrop-blur-md"
                 >
-                  <Calculator className="w-4 h-4 text-[#DEDBC8]" />
-                  <span>{isAr ? (settings.heroCtaCalcAr || 'حاسبة تكاليف المشاريع') : (settings.heroCtaCalcEn || 'Cost Estimator')}</span>
-                </a>
+                  <ArrowUpRight className="w-4 h-4 text-[#DEDBC8]" />
+                  <span>{isAr ? 'استعراض كافة الخدمات' : 'Explore Services'}</span>
+                </Link>
 
                 <a
                   href="tel:+966138004273"

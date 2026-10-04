@@ -329,22 +329,23 @@ export async function seedInitialDatabase() {
 
     if (existingProps.empty) {
       console.log('Seeding initial properties to Firestore...');
-      for (const p of referenceProperties.slice(0, 6)) {
+      for (const p of referenceProperties.filter(Boolean)) {
+        if (!p) continue;
         await addDoc(propsCol, {
-          title: p.title.en,
-          titleAr: p.title.ar,
-          type: p.type,
-          status: p.status,
-          price: p.price.sar,
-          area: p.areaSqM,
-          location: p.location.city.en,
-          locationAr: p.location.city.ar,
-          bedrooms: p.bedrooms,
-          bathrooms: p.bathrooms,
-          description: p.description.en,
-          descriptionAr: p.description.ar,
-          image: p.images[0] || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
-          featured: p.featured,
+          title: p.title?.en || '',
+          titleAr: p.title?.ar || '',
+          type: p.type || 'villa',
+          status: p.status || 'for-sale',
+          price: p.price?.sar || 0,
+          area: p.areaSqM || 350,
+          location: p.location?.city?.en || '',
+          locationAr: p.location?.city?.ar || '',
+          bedrooms: p.bedrooms ?? 4,
+          bathrooms: p.bathrooms ?? 3,
+          description: p.description?.en || '',
+          descriptionAr: p.description?.ar || '',
+          image: p.images?.[0] || '/images/hardgp/por4-big.jpg',
+          featured: !!p.featured,
           createdAt: serverTimestamp(),
           updatedAt: serverTimestamp(),
         });
@@ -516,7 +517,7 @@ export const defaultSiteSettings: SiteSettingsDoc = {
   heroSubtitleEn: '& Structural Development',
   heroBadgeAr: 'مقاولات عامة فئة أولى · كود البناء السعودي SBC · رخصة فال 1200028472',
   heroBadgeEn: 'Class-1 General Contracting · Saudi Building Code (SBC) · VAL Lic. 1200028472',
-  heroImage: 'https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=2200&q=90',
+  heroImage: '/images/hardgp/por1-big.jpg',
   heroCtaQuoteAr: 'طلب استشارة وتسعير فوري',
   heroCtaQuoteEn: 'Request Instant Estimate',
   heroCtaCalcAr: 'حاسبة تكاليف المشاريع',
@@ -576,7 +577,7 @@ export const defaultSiteSettings: SiteSettingsDoc = {
     metaDescriptionEn: 'HARD Group: Class-1 general contracting, certified SBC structural development, licensed VAL real estate brokerage, and 24/7 HVAC AMC engineering in Saudi Arabia.',
     keywordsAr: 'مقاولات عامة, تطوير عقاري, كود البناء السعودي, SBC, رخصة فال, وساطة عقارية, الخبر, الرياض, تكييف مركزي, مجموعة هارد',
     keywordsEn: 'general contracting, real estate development, Saudi building code, SBC, VAL license, KSA real estate, HVAC AMC, HARD group',
-    ogImage: 'https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=1200&q=80',
+    ogImage: '/images/hardgp/por1-big.jpg',
     canonicalUrl: 'https://hardgroup.sa',
     googleVerification: 'google-site-verification-hard-group-ksa',
     indexNowKey: 'hardgroup_indexnow_2026_sec',

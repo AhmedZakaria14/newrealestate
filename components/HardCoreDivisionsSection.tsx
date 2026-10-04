@@ -1,294 +1,239 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useInView } from 'motion/react';
+import { motion } from 'motion/react';
 import {
   Building2,
   HardHat,
   Fan,
-  Check,
+  ArrowLeft,
   ArrowRight,
+  ShieldCheck,
+  CheckCircle2,
+  ArrowUpRight,
 } from 'lucide-react';
 import { useLanguageTheme } from '@/lib/language-theme-context';
-import WordsPullUpMultiStyle, { StyleSegment } from '@/components/animations/WordsPullUpMultiStyle';
+
+interface DivisionCard {
+  id: string;
+  titleAr: string;
+  titleEn: string;
+  badgeAr: string;
+  badgeEn: string;
+  tagColor: string;
+  descAr: string;
+  descEn: string;
+  href: string;
+  pathDisplay: string;
+  image: string;
+  icon: React.ElementType;
+  highlights: { ar: string; en: string }[];
+}
 
 export default function HardCoreDivisionsSection() {
-  const { language, direction } = useLanguageTheme();
-  const isAr = language === 'ar';
+  const { theme, language, direction } = useLanguageTheme();
+  const isDark = theme === 'dark';
   const isRtl = direction === 'rtl';
 
-  const gridRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(gridRef, { once: true, margin: '-100px' });
-
-  const headerSegments: StyleSegment[] = [
+  const divisions: DivisionCard[] = [
     {
-      text: isAr
-        ? 'قطاعات هندسية واستثمارية لصناع المستقبل.'
-        : 'Studio-grade workflows for visionary leaders.',
-      className: 'text-[#E1E0CC]',
+      id: 'realestate',
+      titleAr: 'هارد للعقارات والاستثمار',
+      titleEn: 'HARD Real Estate & Investment',
+      badgeAr: 'رخصة فال 1200028472',
+      badgeEn: 'VAL Licensed 1200028472',
+      tagColor: 'text-blue-400 bg-blue-500/10 border-blue-500/20',
+      descAr:
+        'الذراع العقاري والاستثماري الرائد في المملكة العربية السعودية، متخصص في التسويق والوساطة المعتمدة من الهيئة العامة للعقار (فال)، وإدارة المحافظ الاستثمارية وتطوير الفرص في المنطقة الشرقية والرياض.',
+      descEn:
+        'The premier real estate and investment arm licensed by the Real Estate General Authority (VAL), specializing in certified brokerage, portfolio management, and prime developments across Eastern Province and Riyadh.',
+      href: '/realestate',
+      pathDisplay: '/realestate',
+      image: '/images/hardgp/por4-big.jpg',
+      icon: Building2,
+      highlights: [
+        { ar: 'وساطة وتسويق رسمي مرخص (فال)', en: 'VAL Licensed Brokerage' },
+        { ar: 'إدارة المحافظ الاستثمارية الكبرى', en: 'Institutional Asset Portfolios' },
+        { ar: 'تسويق المخططات والأبراج السكنية', en: 'Master Projects & Towers' },
+      ],
+    },
+    {
+      id: 'construction',
+      titleAr: 'هارد للإنشاءات والمقاولات العامة',
+      titleEn: 'HARD Construction & Contracting',
+      badgeAr: 'تصنيف مقاولات فئة أولى • كود SBC',
+      badgeEn: 'Class-1 Contractor • SBC Code',
+      tagColor: 'text-amber-400 bg-amber-500/10 border-amber-500/20',
+      descAr:
+        'الذراع الإنشائي والهندسي لمجموعة هارد، يقدم خدمات المقاولات العامة المصنفة فئة أولى لتنفيذ الأبراج التجارية، المجمعات السكنية، والمنشآت الذكية بأعلى كفاءة ومعايير كود البناء السعودي (SBC).',
+      descEn:
+        'The engineering powerhouse of HARD Group, delivering Class-1 classified general contracting for commercial towers, residential communities, and advanced infrastructure under the Saudi Building Code (SBC).',
+      href: '/construction',
+      pathDisplay: '/construction',
+      image: '/images/hardgp/por1-big.jpg',
+      icon: HardHat,
+      highlights: [
+        { ar: 'مقاولات عامة فئة أولى معتمدة (SCA)', en: 'Class-1 General Contracting' },
+        { ar: 'مطابقة 100% لكود البناء السعودي (SBC)', en: '100% Saudi Building Code (SBC)' },
+        { ar: 'تسليم متكامل على المفتاح وضمانات ممتدة', en: 'Turnkey Delivery & Warranty' },
+      ],
+    },
+    {
+      id: 'hvac',
+      titleAr: 'هارد لصيانة وتكييف الهواء',
+      titleEn: 'HARD HVAC & Facilities Maintenance',
+      badgeAr: 'طوارئ واستجابة 24/7 • عقود AMC',
+      badgeEn: '24/7 Emergency • AMC Contracts',
+      tagColor: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20',
+      descAr:
+        'الذراع التخصصي للخدمات الكهروميكانيكية والتبريد، يقدم عقود الصيانة الوقائية (AMC) للشيلرات المركزية، أنظمة VRF الحديثة، وتنقية مجاري الهواء مع طوارئ واستجابة فورية على مدار الساعة.',
+      descEn:
+        'The electromechanical engineering arm providing annual preventive maintenance contracts (AMC) for central chillers, VRF variable refrigerant systems, air quality sanitation, and 24/7 rapid response.',
+      href: '/hvac',
+      pathDisplay: '/hvac',
+      image: '/images/hardgp/slide-12.jpg',
+      icon: Fan,
+      highlights: [
+        { ar: 'عقود الصيانة الوقائية السنوية (AMC)', en: 'Preventive Annual Maintenance (AMC)' },
+        { ar: 'محطات الشيلرات وأنظمة VRF الذكية', en: 'Industrial Chillers & VRF Systems' },
+        { ar: 'طوارئ واستجابة ميدانية فورية 24/7', en: '24/7 Rapid Emergency Response' },
+      ],
     },
   ];
 
-  const headerSubSegments: StyleSegment[] = [
-    {
-      text: isAr
-        ? 'مطابقة لكود البناء السعودي (SBC). مرخصة من هيئة العقار (فال).'
-        : 'Built for pure vision. Powered by Saudi engineering.',
-      className: 'text-gray-500',
-    },
-  ];
-
-  const cardVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: (custom: number) => ({
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        delay: custom * 0.15,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    }),
-  };
+  const ArrowIcon = isRtl ? ArrowLeft : ArrowRight;
 
   return (
     <section
       id="core-divisions"
-      className="min-h-screen bg-black relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden text-[#E1E0CC]"
+      className={`relative py-16 sm:py-24 transition-colors overflow-hidden ${
+        isDark ? 'bg-[#040618] text-white' : 'bg-slate-50 text-slate-900'
+      }`}
     >
-      {/* Subtle Noise Texture Overlay */}
-      <div className="absolute inset-0 bg-noise opacity-[0.12] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header with WordsPullUpMultiStyle */}
-        <div className="text-center space-y-2 mb-12 sm:mb-16">
-          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal">
-            <WordsPullUpMultiStyle segments={headerSegments} className="justify-center" />
-          </div>
-          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal">
-            <WordsPullUpMultiStyle segments={headerSubSegments} className="justify-center" />
-          </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="max-w-3xl mx-auto text-center space-y-3 mb-12 sm:mb-16">
+          <span className="text-xs font-black uppercase tracking-widest text-blue-500 block">
+            {language === 'ar' ? 'القطاعات الاستثمارية الثلاثة' : 'Core Business Pillars'}
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
+            {language === 'ar' ? 'أذرع مجموعة هارد الرئيسية' : 'HARD Group Core Divisions'}
+          </h2>
+          <p className="text-sm sm:text-base opacity-75 max-w-2xl mx-auto leading-relaxed">
+            {language === 'ar'
+              ? 'تكامل فريد يجمع بين الريادة العقارية، المقاولات الإنشائية المصنفة فئة أولى، والحلول الكهروميكانيكية لتلبية متطلبات كبرى المشاريع في المملكة.'
+              : 'An integrated ecosystem uniting Class-1 contracting, licensed real estate brokerage, and premier electromechanical cooling solutions.'}
+          </p>
         </div>
 
-        {/* 4-Column Card Grid (lg:h-[480px], gap-3 sm:gap-2 md:gap-2) */}
-        <div
-          ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3 md:gap-3 lg:h-[480px] items-stretch"
-        >
-          {/* Card 1 - Visual Media Card */}
-          <motion.div
-            custom={0}
-            variants={cardVariants}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            className="relative rounded-2xl overflow-hidden border border-[#2a2a2a] min-h-[300px] lg:min-h-full flex flex-col justify-end p-6 group transform-gpu"
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1541888946425-d0fbb18615f3?auto=format&fit=crop&w=1200&q=85"
-              alt={isAr ? 'منصتكم الإنشائية' : 'Your creative canvas'}
-              fill
-              sizes="(max-width: 1024px) 100vw, 25vw"
-              className="object-cover object-center filter brightness-[0.7] group-hover:scale-105 transition-transform duration-700 ease-out"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-            <div className="relative z-10">
-              <span className="text-[10px] uppercase font-bold tracking-widest text-[#DEDBC8] block mb-1">
-                {isAr ? 'الصرح الإنشائي' : 'Master Canvas'}
-              </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#E1E0CC]">
-                {isAr ? 'منصتكم الهندسية والعقارية.' : 'Your creative canvas.'}
-              </h3>
-            </div>
-          </motion.div>
+        {/* 3 Core Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+          {divisions.map((card, idx) => {
+            const Icon = card.icon;
+            const title = language === 'ar' ? card.titleAr : card.titleEn;
+            const desc = language === 'ar' ? card.descAr : card.descEn;
+            const badge = language === 'ar' ? card.badgeAr : card.badgeEn;
+            const buttonText =
+              language === 'ar' ? `استكشف صفحة ${card.titleAr}` : `Explore ${card.titleEn}`;
 
-          {/* Card 2 - Real Estate & Brokerage (01) */}
-          <motion.div
-            custom={1}
-            variants={cardVariants}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            className="rounded-2xl bg-[#212121] border border-[#2e2e2e] p-6 flex flex-col justify-between transform-gpu hover:border-[#444] transition-colors"
-          >
-            <div className="space-y-4">
-              {/* Top Row: Icon + Number */}
-              <div className="flex items-center justify-between">
-                <div className="w-10 h-10 rounded-xl bg-black border border-[#333] flex items-center justify-center text-[#DEDBC8]">
-                  <Building2 className="w-5 h-5" />
-                </div>
-                <span className="text-xs font-mono text-gray-500 font-bold">01</span>
-              </div>
-
-              {/* Title */}
-              <div>
-                <h3 className="text-lg font-bold text-[#E1E0CC]">
-                  {isAr ? 'هارد للعقارات والاستثمار.' : 'HARD Real Estate.'}
-                </h3>
-                <p className="text-[11px] text-[#DEDBC8]/70 mt-0.5">
-                  {isAr ? 'رخصة فال: 1200028472' : 'VAL Lic. 1200028472'}
-                </p>
-              </div>
-
-              {/* Checklist Items */}
-              <div className="space-y-2.5 pt-2">
-                <div className="flex items-start gap-2.5 text-xs text-gray-400">
-                  <Check className="w-4 h-4 text-[#DEDBC8] shrink-0 mt-0.5" />
-                  <span>{isAr ? 'وساطة وتسويق رسمي مرخص (فال)' : 'VAL Licensed Brokerage'}</span>
-                </div>
-                <div className="flex items-start gap-2.5 text-xs text-gray-400">
-                  <Check className="w-4 h-4 text-[#DEDBC8] shrink-0 mt-0.5" />
-                  <span>{isAr ? 'إدارة المحافظ الاستثمارية الكبرى' : 'Portfolio Asset Management'}</span>
-                </div>
-                <div className="flex items-start gap-2.5 text-xs text-gray-400">
-                  <Check className="w-4 h-4 text-[#DEDBC8] shrink-0 mt-0.5" />
-                  <span>{isAr ? 'تسويق المخططات والقصور الفاخرة' : 'Master Developments & Off-plan'}</span>
-                </div>
-                <div className="flex items-start gap-2.5 text-xs text-gray-400">
-                  <Check className="w-4 h-4 text-[#DEDBC8] shrink-0 mt-0.5" />
-                  <span>{isAr ? 'تحليل العوائد الاستثمارية (ROI)' : 'Investment ROI Valuation'}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Learn More Link with Rotated Arrow */}
-            <div className="pt-4 border-t border-[#2e2e2e]">
-              <Link
-                href="/realestate"
-                className="group inline-flex items-center gap-2 text-xs font-semibold text-[#DEDBC8] hover:text-white transition-colors"
+            return (
+              <motion.article
+                key={card.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.45, delay: idx * 0.1 }}
+                className={`group relative flex flex-col rounded-3xl border overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5 ${
+                  isDark
+                    ? 'bg-[#080d2b] border-white/10 hover:border-blue-500/50'
+                    : 'bg-white border-slate-200 hover:border-blue-400 shadow-md'
+                }`}
               >
-                <span>{isAr ? 'اكتشف المزيد' : 'Learn more'}</span>
-                <ArrowRight className={`w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${
-                  isRtl ? 'rotate-[-135deg]' : 'rotate-[-45deg]'
-                }`} />
-              </Link>
-            </div>
-          </motion.div>
+                {/* Card Image */}
+                <div className="relative h-60 sm:h-64 w-full overflow-hidden bg-slate-900">
+                  <Image
+                    src={card.image}
+                    alt={title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                    referrerPolicy="no-referrer"
+                  />
+                  {/* Subtle gradient overlay */}
+                  <div
+                    className={`absolute inset-0 ${
+                      isDark
+                        ? 'bg-gradient-to-t from-[#080d2b] via-[#080d2b]/40 to-transparent'
+                        : 'bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent'
+                    }`}
+                  />
 
-          {/* Card 3 - General Contracting & Structural (02) */}
-          <motion.div
-            custom={2}
-            variants={cardVariants}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            className="rounded-2xl bg-[#212121] border border-[#2e2e2e] p-6 flex flex-col justify-between transform-gpu hover:border-[#444] transition-colors"
-          >
-            <div className="space-y-4">
-              {/* Top Row: Icon + Number */}
-              <div className="flex items-center justify-between">
-                <div className="w-10 h-10 rounded-xl bg-black border border-[#333] flex items-center justify-center text-[#DEDBC8]">
-                  <HardHat className="w-5 h-5" />
-                </div>
-                <span className="text-xs font-mono text-gray-500 font-bold">02</span>
-              </div>
+                  {/* Top Badge */}
+                  <div className={`absolute top-4 ${isRtl ? 'right-4' : 'left-4'} z-10`}>
+                    <span className={`text-[11px] font-bold px-3 py-1 rounded-full border shadow-md backdrop-blur-md ${card.tagColor}`}>
+                      {badge}
+                    </span>
+                  </div>
 
-              {/* Title */}
-              <div>
-                <h3 className="text-lg font-bold text-[#E1E0CC]">
-                  {isAr ? 'هارد للإنشاءات والمقاولات.' : 'HARD Construction.'}
-                </h3>
-                <p className="text-[11px] text-[#DEDBC8]/70 mt-0.5">
-                  {isAr ? 'تصنيف فئة أولى • كود SBC' : 'Class-1 • Saudi Building Code'}
-                </p>
-              </div>
+                  {/* Icon badge */}
+                  <div className={`absolute top-4 ${isRtl ? 'left-4' : 'right-4'} z-10 p-2.5 rounded-xl bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-md`}>
+                    <Icon className="w-5 h-5" />
+                  </div>
+                </div>
 
-              {/* Checklist Items */}
-              <div className="space-y-2.5 pt-2">
-                <div className="flex items-start gap-2.5 text-xs text-gray-400">
-                  <Check className="w-4 h-4 text-[#DEDBC8] shrink-0 mt-0.5" />
-                  <span>{isAr ? 'مقاولات عامة فئة أولى معتمدة' : 'Class-1 General Contracting'}</span>
-                </div>
-                <div className="flex items-start gap-2.5 text-xs text-gray-400">
-                  <Check className="w-4 h-4 text-[#DEDBC8] shrink-0 mt-0.5" />
-                  <span>{isAr ? 'مطابقة 100% لكود البناء السعودي (SBC)' : '100% SBC Code Compliance'}</span>
-                </div>
-                <div className="flex items-start gap-2.5 text-xs text-gray-400">
-                  <Check className="w-4 h-4 text-[#DEDBC8] shrink-0 mt-0.5" />
-                  <span>{isAr ? 'تسليم تسليم مفتاح مع ضمانات هيكلية' : 'Turnkey Delivery & Warranties'}</span>
-                </div>
-                <div className="flex items-start gap-2.5 text-xs text-gray-400">
-                  <Check className="w-4 h-4 text-[#DEDBC8] shrink-0 mt-0.5" />
-                  <span>{isAr ? 'إشراف هندسي وإدارة مشاريع ذكية' : 'Smart Project Engineering'}</span>
-                </div>
-              </div>
-            </div>
+                {/* Card Body */}
+                <div className="p-6 sm:p-7 flex flex-col flex-grow justify-between gap-6">
+                  <div className="space-y-4">
+                    {/* Title */}
+                    <h3 className="text-xl sm:text-2xl font-black tracking-tight leading-snug group-hover:text-blue-500 transition-colors">
+                      {title}
+                    </h3>
 
-            {/* Learn More Link with Rotated Arrow */}
-            <div className="pt-4 border-t border-[#2e2e2e]">
-              <Link
-                href="/construction"
-                className="group inline-flex items-center gap-2 text-xs font-semibold text-[#DEDBC8] hover:text-white transition-colors"
-              >
-                <span>{isAr ? 'اكتشف المزيد' : 'Learn more'}</span>
-                <ArrowRight className={`w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${
-                  isRtl ? 'rotate-[-135deg]' : 'rotate-[-45deg]'
-                }`} />
-              </Link>
-            </div>
-          </motion.div>
+                    {/* Exact User Description */}
+                    <p
+                      className={`text-xs sm:text-sm leading-relaxed ${
+                        isDark ? 'text-slate-300' : 'text-slate-600'
+                      }`}
+                    >
+                      {desc}
+                    </p>
 
-          {/* Card 4 - HVAC & Facility Engineering (03) */}
-          <motion.div
-            custom={3}
-            variants={cardVariants}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            className="rounded-2xl bg-[#212121] border border-[#2e2e2e] p-6 flex flex-col justify-between transform-gpu hover:border-[#444] transition-colors"
-          >
-            <div className="space-y-4">
-              {/* Top Row: Icon + Number */}
-              <div className="flex items-center justify-between">
-                <div className="w-10 h-10 rounded-xl bg-black border border-[#333] flex items-center justify-center text-[#DEDBC8]">
-                  <Fan className="w-5 h-5" />
-                </div>
-                <span className="text-xs font-mono text-gray-500 font-bold">03</span>
-              </div>
+                    {/* Highlights list */}
+                    <div className="pt-2 space-y-2 border-t border-gray-500/15">
+                      {card.highlights.map((hl, hIdx) => (
+                        <div key={hIdx} className="flex items-center gap-2 text-xs font-semibold">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                          <span className="opacity-90">{language === 'ar' ? hl.ar : hl.en}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
-              {/* Title */}
-              <div>
-                <h3 className="text-lg font-bold text-[#E1E0CC]">
-                  {isAr ? 'هارد للتكييف والمرافق.' : 'HARD HVAC & Facilities.'}
-                </h3>
-                <p className="text-[11px] text-[#DEDBC8]/70 mt-0.5">
-                  {isAr ? 'عقود صيانة AMC • طوارئ 24/7' : 'AMC Maintenance • 24/7'}
-                </p>
-              </div>
-
-              {/* Checklist Items */}
-              <div className="space-y-2.5 pt-2">
-                <div className="flex items-start gap-2.5 text-xs text-gray-400">
-                  <Check className="w-4 h-4 text-[#DEDBC8] shrink-0 mt-0.5" />
-                  <span>{isAr ? 'عقود الصيانة الوقائية السنوية (AMC)' : 'Annual Preventive AMC'}</span>
+                  {/* Independent Page Button with Sub-route representation */}
+                  <div className="pt-2">
+                    <Link
+                      href={card.href}
+                      className={`w-full inline-flex items-center justify-between px-5 py-3.5 rounded-2xl font-bold text-xs sm:text-sm tracking-wide transition-all shadow-md active:scale-[0.98] ${
+                        isDark
+                          ? 'bg-blue-600 text-white hover:bg-blue-500'
+                          : 'bg-slate-900 text-white hover:bg-blue-600'
+                      }`}
+                    >
+                      <span>{buttonText}</span>
+                      <div className="flex items-center gap-1.5 opacity-90">
+                        <span className="text-[11px] font-mono opacity-70 dir-ltr">
+                          {card.pathDisplay}
+                        </span>
+                        <ArrowIcon className="w-4 h-4" />
+                      </div>
+                    </Link>
+                  </div>
                 </div>
-                <div className="flex items-start gap-2.5 text-xs text-gray-400">
-                  <Check className="w-4 h-4 text-[#DEDBC8] shrink-0 mt-0.5" />
-                  <span>{isAr ? 'محطات الشيلرات وأنظمة VRF الذكية' : 'Chillers & Smart VRF Systems'}</span>
-                </div>
-                <div className="flex items-start gap-2.5 text-xs text-gray-400">
-                  <Check className="w-4 h-4 text-[#DEDBC8] shrink-0 mt-0.5" />
-                  <span>{isAr ? 'استجابة ميدانية فورية على مدار الساعة' : '24/7 Rapid Emergency Response'}</span>
-                </div>
-                <div className="flex items-start gap-2.5 text-xs text-gray-400">
-                  <Check className="w-4 h-4 text-[#DEDBC8] shrink-0 mt-0.5" />
-                  <span>{isAr ? 'تنقية الهواء وتعقيم مجاري الدكت' : 'Air Sanitation & Ductwork'}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Learn More Link with Rotated Arrow */}
-            <div className="pt-4 border-t border-[#2e2e2e]">
-              <Link
-                href="/hvac"
-                className="group inline-flex items-center gap-2 text-xs font-semibold text-[#DEDBC8] hover:text-white transition-colors"
-              >
-                <span>{isAr ? 'اكتشف المزيد' : 'Learn more'}</span>
-                <ArrowRight className={`w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${
-                  isRtl ? 'rotate-[-135deg]' : 'rotate-[-45deg]'
-                }`} />
-              </Link>
-            </div>
-          </motion.div>
+              </motion.article>
+            );
+          })}
         </div>
       </div>
     </section>

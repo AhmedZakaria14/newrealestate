@@ -45,31 +45,31 @@ export default function RealEstatePropertiesPage() {
 
   // Combined properties (Firestore live properties + reference catalog)
   const displayProperties = dbProperties.length > 0
-    ? dbProperties.map((p) => ({
-        id: p.id || '',
-        title: isAr ? p.titleAr || p.title : p.title,
-        price: `${p.price.toLocaleString()} ${isAr ? 'ريال' : 'SAR'}`,
-        type: p.type,
-        status: p.status,
-        area: `${p.area} م²`,
-        location: isAr ? p.locationAr || p.location : p.location,
-        bedrooms: p.bedrooms || 4,
-        bathrooms: p.bathrooms || 5,
-        image: p.image || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
-        featured: p.featured,
+    ? dbProperties.filter(Boolean).map((p) => ({
+        id: p?.id || '',
+        title: isAr ? (p?.titleAr || p?.title || '') : (p?.title || p?.titleAr || ''),
+        price: p?.price != null ? `${Number(p.price).toLocaleString()} ${isAr ? 'ريال' : 'SAR'}` : (isAr ? 'عند الطلب' : 'On Request'),
+        type: p?.type || 'villa',
+        status: p?.status || 'for-sale',
+        area: p?.area ? `${p.area} م²` : '350 م²',
+        location: isAr ? (p?.locationAr || p?.location || '') : (p?.location || p?.locationAr || ''),
+        bedrooms: p?.bedrooms ?? 4,
+        bathrooms: p?.bathrooms ?? 5,
+        image: p?.image || '/images/hardgp/por4-big.jpg',
+        featured: !!p?.featured,
       }))
-    : referenceProperties.map((p) => ({
-        id: p.id,
-        title: isAr ? p.title.ar : p.title.en,
-        price: p.price.formattedSAR,
-        type: isAr ? (p.type === 'Villa' ? 'فيلا فاخرة' : 'شقة دوبلكس') : p.type,
-        status: p.status,
-        area: `${p.areaSqM} م²`,
-        location: isAr ? p.location.city.ar : p.location.city.en,
-        bedrooms: p.bedrooms,
-        bathrooms: p.bathrooms,
-        image: p.images[0] || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
-        featured: p.featured,
+    : referenceProperties.filter(Boolean).map((p) => ({
+        id: p?.id || '',
+        title: isAr ? p?.title?.ar : p?.title?.en,
+        price: p?.price?.formattedSAR || `${p?.price?.sar?.toLocaleString() || ''} SAR`,
+        type: isAr ? (p?.type === 'villa' || p?.type === 'Villa' ? 'فيلا فاخرة' : 'شقة دوبلكس') : p?.type || 'Villa',
+        status: p?.status || 'for-sale',
+        area: `${p?.areaSqM ?? 350} م²`,
+        location: isAr ? (p?.location?.city?.ar || '') : (p?.location?.city?.en || ''),
+        bedrooms: p?.bedrooms ?? 4,
+        bathrooms: p?.bathrooms ?? 5,
+        image: p?.images?.[0] || '/images/hardgp/por4-big.jpg',
+        featured: !!p?.featured,
       }));
 
   const filtered = displayProperties.filter((p) => {

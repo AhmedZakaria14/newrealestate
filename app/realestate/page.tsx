@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://demo.awaikenthemes.com/skyvilla/wp-content/uploads/2026/01/project-image-1.jpg',
+        url: '/images/hardgp/por4-big.jpg',
         width: 1200,
         height: 630,
         alt: 'هارد للعقارات - الذراع العقاري لمجموعة هارد',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description:
       'الذراع العقاري الرائد في المملكة العربية السعودية، متخصص في التسويق والوساطة المعتمدة من الهيئة العامة للعقار (فال).',
     images: [
-      'https://demo.awaikenthemes.com/skyvilla/wp-content/uploads/2026/01/project-image-1.jpg',
+      '/images/hardgp/por4-big.jpg',
     ],
   },
 };

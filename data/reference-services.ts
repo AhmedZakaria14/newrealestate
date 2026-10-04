@@ -87,7 +87,7 @@ export const referenceRealEstateServices: ReferenceServiceItem[] = [
         label: { en: 'Coverage: Eastern, Central, Western', ar: 'الشرقية، الوسطى، والغربية' },
       },
     ],
-    image: '/images/hardgp/page3-img2.jpg',
+    image: '/images/hardgp/por4-big.jpg',
     actionText: {
       en: 'Explore Properties',
       ar: 'استعراض المشاريع العقارية',
@@ -161,7 +161,7 @@ export const referenceRealEstateServices: ReferenceServiceItem[] = [
         label: { en: 'Land to Handover', ar: 'من شراء الأرض حتى التسليم' },
       },
     ],
-    image: '/images/hardgp/page2-img14.jpg',
+    image: '/images/hardgp/por8-big.jpg',
     actionText: {
       en: 'Inquire About Funding',
       ar: 'استفسر عن برامج التمويل',
@@ -235,7 +235,7 @@ export const referenceRealEstateServices: ReferenceServiceItem[] = [
         label: { en: 'Advisory & Brokerage', ar: 'فريق تسويق متخصص' },
       },
     ],
-    image: '/images/hardgp/page3-img10.jpg',
+    image: '/images/hardgp/por6-big.jpg',
     actionText: {
       en: 'Contact Marketing Desk',
       ar: 'تواصل مع إدارة التسويق',
@@ -313,7 +313,7 @@ export const referenceConstructionServices: ReferenceServiceItem[] = [
         label: { en: 'Rigorous QA Guarantee', ar: 'ضمان الجودة والسلامة' },
       },
     ],
-    image: '/images/hardgp/page3-img1.jpg',
+    image: '/images/hardgp/por1-big.jpg',
     actionText: {
       en: 'View Construction Portfolio',
       ar: 'استعراض مشاريع المقاولات',
@@ -387,7 +387,7 @@ export const referenceConstructionServices: ReferenceServiceItem[] = [
         label: { en: 'Target Standard', ar: 'هدفنا الإنشائي الدائم' },
       },
     ],
-    image: '/images/hardgp/page3-img4.jpg',
+    image: '/images/hardgp/por5-big.jpg',
     actionText: {
       en: 'Learn About QA Standards',
       ar: 'معايير ضمان الجودة',
@@ -461,7 +461,7 @@ export const referenceConstructionServices: ReferenceServiceItem[] = [
         label: { en: 'Site Safety Engineers', ar: 'مهندسو سلامة معتمدون' },
       },
     ],
-    image: '/images/hardgp/page3-img5.jpg',
+    image: '/images/hardgp/por3-big.jpg',
     actionText: {
       en: 'Safety Policy Details',
       ar: 'تفاصيل سياسة السلامة',
@@ -539,7 +539,7 @@ export const referenceHVACServices: ReferenceServiceItem[] = [
         label: { en: 'Technician Experience', ar: 'خبرة مهندسي التكييف' },
       },
     ],
-    image: '/images/hardgp/page3-img9.jpg',
+    image: '/images/hardgp/slide-12.jpg',
     actionText: {
       en: 'Explore HVAC Maintenance',
       ar: 'خدمات التكييف وعقود الصيانة',
@@ -613,7 +613,7 @@ export const referenceHVACServices: ReferenceServiceItem[] = [
         label: { en: 'Protection & Grounding', ar: 'أنظمة تأريض وحماية متكاملة' },
       },
     ],
-    image: '/images/hardgp/page3-img6.jpg',
+    image: '/images/hardgp/slide-9.jpg',
     actionText: {
       en: 'Inquire Electrical Services',
       ar: 'طلب خدمات الكهرباء والتحكم',
@@ -687,7 +687,7 @@ export const referenceHVACServices: ReferenceServiceItem[] = [
         label: { en: 'Eastern Province Agency', ar: 'وكالة حصرية بالمنطقة الشرقية' },
       },
     ],
-    image: '/images/hardgp/Al-Ameria_Pipes.jpg',
+    image: '/images/hardgp/por23-big.jpg',
     actionText: {
       en: 'Explore Plumbing & Pipes',
       ar: 'تفاصيل السباكة والأنابيب الحرارية',
@@ -761,7 +761,7 @@ export const referenceHVACServices: ReferenceServiceItem[] = [
         label: { en: 'Initial, Liquid, Deep, Cooking Oil', ar: 'السوائل، الزيوت، المواد الصلبة، البدايات' },
       },
     ],
-    image: '/images/hardgp/kitchen_fire_extinguisher.png',
+    image: '/images/hardgp/throwable_fire_extinguisher.png',
     actionText: {
       en: 'Contact Distributorship Desk',
       ar: 'طلب منتجات سوتيريا للسلامة',
@@ -835,7 +835,7 @@ export const referenceHVACServices: ReferenceServiceItem[] = [
         label: { en: 'Specialist Welders', ar: 'فنيو لحام معتمدون' },
       },
     ],
-    image: '/images/hardgp/page3-img8.jpg',
+    image: '/images/hardgp/por22-big.jpg',
     actionText: {
       en: 'Inquire Welding Services',
       ar: 'طلب خدمات اللحام الهندسي',

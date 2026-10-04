@@ -1022,7 +1022,7 @@ export const referenceBlogPosts: ReferenceBlogPost[] = [
       en: 'Ali H. Amsharah',
       ar: 'علي ح. عمشارة'
     },
-    image: '/images/hardgp/page3-img4.jpg',
+    image: '/images/hardgp/por5-big.jpg',
     content: {
       en: 'Our construction services are guaranteed to prevent any possible defects or mistakes with construction materials before and after delivery to the construction site. This is what is called QA (Quality Assurance) - verifying that delivered materials meet requirements and specifications approved by the client. QA is vital to check all items comply with agreed standards and avoid having any conflict with original functionality.',
       ar: 'خدماتنا الإنشائية مضمونة لمنع أي عيوب أو أخطاء محتملة في مواد البناء قبل وبعد وصولها إلى موقع العمل. وهذا ما يسمى بضمان الجودة (QA)، وهو التحقق من أن المواد الموردة تطابق المواصفات المعتمدة من قبل العميل. ويعد ضمان الجودة ركيزة حيوية للتأكد من مطابقة جميع المواد للمعايير المعتمدة وتجنب أي تعارض مع الوظيفة الأساسية للمنشأة.'
@@ -1109,7 +1109,7 @@ export const referenceBlogPosts: ReferenceBlogPost[] = [
       en: 'Mohammad Al-Qahtani',
       ar: 'محمد القحطاني'
     },
-    image: '/images/hardgp/page2-img14.jpg',
+    image: '/images/hardgp/por8-big.jpg',
     content: {
       en: 'HARD offers real estate consultancy support to clients and investors in the market, seeking to reconcile the establishment of residential communities characterized by innovative design and function. We assist clients to own land where we build residential or commercial projects by utilizing institutional funding. Our management has long-term agreements with three of the best banks in real estate funding: AlJazira Bank, Riyad Bank, and Samba Bank, providing low profit margins specially to company employees and investors.',
       ar: 'تقدم هارد الدعم والاستشارات العقارية للعملاء والمستثمرين، وتسعى للتوفيق بين إنشاء مجتمعات سكنية تتميز بالتصميم المبتكر والوظيفة الحيوية. نحن نساعد عملائنا على تملك الأراضي وبناء المشاريع السكنية أو التجارية عبر التمويل المؤسسي. وترتبط إدارتنا باتفاقيات طويلة الأجل مع أفضل ثلاثة بنوك في التمويل العقاري: بنك الجزيرة، بنك الرياض، وبنك سامبا، والتي توفر هوامش ربح منخفضة مخصصة لموظفي الشركات والمستثمرين.'

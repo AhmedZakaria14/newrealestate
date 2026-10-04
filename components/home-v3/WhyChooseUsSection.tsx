@@ -27,8 +27,8 @@ export default function WhyChooseUsSection() {
               }`}
             >
               <Image
-                src="https://demo.awaikenthemes.com/skyvilla/wp-content/uploads/2026/01/why-choose-video-image-metal.jpg"
-                alt="Skyvilla Why Choose Us Video"
+                src="/images/hardgp/por2-big.jpg"
+                alt="HARD Group Construction Video"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 referrerPolicy="no-referrer"

@@ -135,7 +135,7 @@ export default function HvacPortal() {
       >
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://demo.awaikenthemes.com/skyvilla/wp-content/uploads/2026/01/project-image-2.jpg"
+            src="/images/hardgp/slide-12.jpg"
             alt="هارد لصيانة وتكييف الهواء"
             fill
             priority

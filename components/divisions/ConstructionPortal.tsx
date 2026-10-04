@@ -51,21 +51,6 @@ export default function ConstructionPortal() {
   const [selectedProject, setSelectedProject] = useState<ConstructionProjectItem | null>(null);
   const [activeGalleryIdx, setActiveGalleryIdx] = useState<number>(0);
 
-  // Cost Calculator Modal State
-  const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
-  const [calcParams, setCalcParams] = useState<CostCalculatorParams>({
-    projectType: 'villa',
-    finishingLevel: 'deluxe',
-    builtUpArea: 1200,
-    floors: 2,
-    hasBasement: false,
-    hasPool: true,
-    hasElevator: true,
-    hasSmartHome: true,
-    location: 'Riyadh',
-  });
-  const currentEstimate = calculateConstructionCost(calcParams);
-
   // Quote / RFP Modal State
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [quoteSubmitted, setQuoteSubmitted] = useState(false);
@@ -178,7 +163,7 @@ export default function ConstructionPortal() {
       >
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=1600&q=80"
+            src="/images/hardgp/por1-big.jpg"
             alt={isAr ? 'هارد للإنشاءات والمقاولات' : 'HARD Construction & Contracting'}
             fill
             priority
@@ -230,11 +215,14 @@ export default function ConstructionPortal() {
             <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
               <button
                 type="button"
-                onClick={() => setIsCalculatorOpen(true)}
+                onClick={() => {
+                  setQuoteSubmitted(false);
+                  setIsQuoteOpen(true);
+                }}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-black shadow-lg shadow-amber-500/25 transition-all transform hover:scale-105 active:scale-95 cursor-pointer touch-manipulation"
               >
-                <Calculator className="w-4 h-4" />
-                <span>{isAr ? 'حاسبة تكاليف البناء التقديرية' : 'Smart Cost Calculator'}</span>
+                <Send className="w-4 h-4" />
+                <span>{isAr ? 'طلب عرض سعر رسمي' : 'Request Official Quote'}</span>
               </button>
 
               <button
@@ -307,11 +295,14 @@ export default function ConstructionPortal() {
 
             <button
               type="button"
-              onClick={() => setIsCalculatorOpen(true)}
+              onClick={() => {
+                setQuoteSubmitted(false);
+                setIsQuoteOpen(true);
+              }}
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold shadow-md cursor-pointer shrink-0 self-start md:self-end touch-manipulation"
             >
-              <Calculator className="w-4 h-4" />
-              <span>{isAr ? 'تسعير مشروع جديد' : 'Estimate a Project'}</span>
+              <Send className="w-4 h-4" />
+              <span>{isAr ? 'طلب عرض سعر جديد' : 'New Project RFP'}</span>
             </button>
           </div>
 

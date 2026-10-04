@@ -133,8 +133,8 @@ export default function SkillsSection() {
               }`}
             >
               <Image
-                src="https://demo.awaikenthemes.com/skyvilla/wp-content/uploads/2026/01/who-we-are-image-metal.jpg"
-                alt="Skyvilla Engineers"
+                src="/images/hardgp/por6-big.jpg"
+                alt="HARD Group Engineers"
                 fill
                 className="object-cover"
                 referrerPolicy="no-referrer"

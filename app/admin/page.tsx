@@ -149,7 +149,7 @@ export default function AdminDashboardPage() {
     bathrooms: 6,
     description: 'Luxury turnkey villa with smart automation and SBC code certification.',
     descriptionAr: 'فيلا فاخرة تسليم على المفتاح مع أنظمة ذكية ومطابقة كود البناء السعودي.',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/hardgp/por4-big.jpg',
     featured: true,
   });
 
@@ -166,7 +166,7 @@ export default function AdminDashboardPage() {
     budget: '85,000,000 SAR',
     description: 'Commercial corporate tower engineered to SBC 100% standards.',
     descriptionAr: 'برج تجاري وإداري متطور تم تنفيذه وفق أعلى معايير كود البناء السعودي.',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/hardgp/por1-big.jpg',
     featured: true,
   });
 
@@ -189,7 +189,7 @@ export default function AdminDashboardPage() {
     excerptAr: 'تحليل شامل لاتجاهات السوق العقاري والإنشائي بالمملكة وفق رؤية 2030.',
     content: 'Full comprehensive market intelligence article...',
     contentAr: 'تقرير شامل ومفصل حول نمو قطاع المقاولات والعقارات في المنطقة الشرقية والرياض...',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/hardgp/por6-big.jpg',
     author: 'هيئة الدراسات بمجموعة هارد',
     readTime: '5 دقائق',
     published: true,
@@ -266,7 +266,7 @@ export default function AdminDashboardPage() {
         bathrooms: 6,
         description: '',
         descriptionAr: '',
-        image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+        image: '/images/hardgp/por4-big.jpg',
         featured: true,
       });
     } catch (err) {
@@ -292,7 +292,7 @@ export default function AdminDashboardPage() {
         budget: '85,000,000 SAR',
         description: '',
         descriptionAr: '',
-        image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80',
+        image: '/images/hardgp/por1-big.jpg',
         featured: true,
       });
     } catch (err) {
@@ -333,7 +333,7 @@ export default function AdminDashboardPage() {
         excerptAr: '',
         content: '',
         contentAr: '',
-        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
+        image: '/images/hardgp/por6-big.jpg',
         author: 'هيئة الدراسات بمجموعة هارد',
         readTime: '5 دقائق',
         published: true,
@@ -961,7 +961,7 @@ export default function AdminDashboardPage() {
                   <div>
                     <div className="relative h-48 w-full bg-slate-900">
                       <Image
-                        src={prop.image || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'}
+                        src={prop.image || '/images/hardgp/por4-big.jpg'}
                         alt={prop.titleAr || prop.title}
                         fill
                         className="object-cover"
@@ -973,14 +973,14 @@ export default function AdminDashboardPage() {
                     </div>
 
                     <div className="p-5 space-y-2">
-                      <h4 className="text-sm font-black line-clamp-1">{isAr ? prop.titleAr || prop.title : prop.title}</h4>
-                      <p className="text-xs text-blue-500 font-bold">{prop.price.toLocaleString()} {isAr ? 'ريال' : 'SAR'}</p>
+                      <h4 className="text-sm font-black line-clamp-1">{(isAr ? prop?.titleAr || prop?.title : prop?.title) || ''}</h4>
+                      <p className="text-xs text-blue-500 font-bold">{prop?.price != null ? Number(prop.price).toLocaleString() : ''} {isAr ? 'ريال' : 'SAR'}</p>
                       <div className="flex items-center gap-3 text-[11px] opacity-75">
-                        <span>{prop.area} م²</span>
+                        <span>{prop?.area || 350} م²</span>
                         <span>·</span>
-                        <span>{prop.bedrooms || 4} {isAr ? 'غرف' : 'Beds'}</span>
+                        <span>{prop?.bedrooms ?? 4} {isAr ? 'غرف' : 'Beds'}</span>
                         <span>·</span>
-                        <span className="truncate">{isAr ? prop.locationAr || prop.location : prop.location}</span>
+                        <span className="truncate">{(isAr ? prop?.locationAr || prop?.location : prop?.location) || ''}</span>
                       </div>
                     </div>
                   </div>
@@ -1030,7 +1030,7 @@ export default function AdminDashboardPage() {
                   <div>
                     <div className="relative h-48 w-full bg-slate-900">
                       <Image
-                        src={proj.image || 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80'}
+                        src={proj.image || '/images/hardgp/por1-big.jpg'}
                         alt={proj.titleAr || proj.title}
                         fill
                         className="object-cover"

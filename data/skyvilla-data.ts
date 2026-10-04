@@ -139,9 +139,9 @@ export const navigationLinks: NavItem[] = [
 ];
 
 export const partnerLogos = [
-  '/images/hardgp/Al-Ameria_Pipes.jpg',
+  '/images/hardgp/por23-big.jpg',
   '/images/hardgp/HDPE.png',
-  '/images/hardgp/kitchen_fire_extinguisher.png',
+  '/images/hardgp/throwable_fire_extinguisher.png',
   '/images/hardgp/throwable_fire_extinguisher.png',
   '/images/hardgp/logo.png',
 ];
@@ -176,7 +176,7 @@ export const servicesData: ServiceItem[] = [
     description: 'HARD offers grass root building construction, plant construction, plant revamp and modification, plant upgrade and expansion and de-bottlenecking for LSTK/EPC/LSPB type projects. We meet all requirements of civil, industrial mechanical and electro-mechanical construction.',
     description_ar: 'تقدم مؤسسة هارد مقاولات البناء من الأساسات، إنشاء المصانع، إعادة تأهيل وتطوير المنشآت، توسعة وتحديث المصانع لمشاريع LSTK و EPC و LSPB. تغطي خدماتنا الأعمال المدنية والإنشائية والصناعية الميكانيكية والكهربائية.',
     iconName: 'Building2',
-    image: '/images/hardgp/page3-img1.jpg',
+    image: '/images/hardgp/por1-big.jpg',
     features: [
       'Grass root building & plant construction',
       'Plant revamp, modification & expansion',
@@ -199,7 +199,7 @@ export const servicesData: ServiceItem[] = [
     description: 'In light of the continued requirement to provide housing solutions for all types of modern society, particularly the young layer, HARD develops lands, villas, duplexes, towers, and commercial headquarters.',
     description_ar: 'استجابة للطلب المتزايد على الحلول السكنية العصرية لمختلف فئات المجتمع لاسيما الشباب، تطور هارد الأراضي، الفلل، الدوبلكسات، الأبراج والمقرات التجارية بحلول مبتكرة وجودة متميزة.',
     iconName: 'Compass',
-    image: '/images/hardgp/page3-img2.jpg',
+    image: '/images/hardgp/por4-big.jpg',
     features: [
       'Development of residential villas & duplexes',
       'Commercial towers & corporate headquarters',
@@ -222,7 +222,7 @@ export const servicesData: ServiceItem[] = [
     description: 'HARD offers real estate consultancy support to clients and investors. We assist clients to own land and build residential or commercial projects, with long-term agreements with AlJazira Bank, Riyad Bank, and Samba Bank offering low profit margins.',
     description_ar: 'تقدم هارد الدعم والاستشارات العقارية للعملاء والمستثمرين، ومساعدتهم في تملك الأراضي وبناء المشاريع السكنية والتجارية عبر شراكات طويلة الأمد مع بنوك الجزيرة، الرياض، وسامبا بهامش ربح تنافسي.',
     iconName: 'Briefcase',
-    image: '/images/hardgp/page2-img14.jpg',
+    image: '/images/hardgp/por8-big.jpg',
     features: [
       'Real estate investment consultancy & land acquisition',
       'Long-term agreements with AlJazira Bank',
@@ -245,7 +245,7 @@ export const servicesData: ServiceItem[] = [
     description: 'HARD focused on marketing its services and products using ultimate choices of marketing plans in collaboration with major real estate companies in the region, analyzed precisely for consumers and investors.',
     description_ar: 'تركز هارد على تسويق منتجاتها وخدماتها باختيار أفضل الخطط التسويقية بالتعاون مع كبرى الشركات العقارية في المنطقة، مع تحليل البدائل البيعية لتلائم احتياجات المستهلكين والمستثمرين.',
     iconName: 'DraftingCompass',
-    image: '/images/hardgp/page3-img10.jpg',
+    image: '/images/hardgp/por6-big.jpg',
     features: [
       'Collaborations with major real estate companies in KSA',
       'Precise market analyses for optimal pricing & yield',
@@ -268,7 +268,7 @@ export const servicesData: ServiceItem[] = [
     description: 'We perform all types of retaining items to their required function by repairing or fixing failures. Covering four specialized sections: Electrical, Plumbing, Welding, and Air Conditioning Works.',
     description_ar: 'نقوم بإعادة جميع التجهيزات والمرافق إلى وظائفها المطلوبة من خلال إصلاح الأعطال والتشغيل الدوري. تتوزع خدمات الصيانة في هارد على أربعة أقسام: الكهرباء، السباكة، اللحام، والتكييف.',
     iconName: 'Hammer',
-    image: '/images/hardgp/page3-img3.jpg',
+    image: '/images/hardgp/slide-12.jpg',
     features: [
       'Comprehensive preventative & corrective maintenance',
       'Electrical systems maintenance & fault diagnostics',
@@ -291,7 +291,7 @@ export const servicesData: ServiceItem[] = [
     description: 'The E&I team has vast engineering, design experience in Medium and Low Voltage Electrical systems, Instrumentation, Various Control Systems (DCS, ESD, PLC, RTU, SCADA), LAN, Campus Networking, OFC, Fire Alarm and Security Systems.',
     description_ar: 'يمتلك فريق الهندسة والتحكم خبرة واسعة في أنظمة الجهد المتوسط والمنخفض، الأجهزة الدقيقة، أنظمة التحكم الآلي (DCS, ESD, PLC, RTU, SCADA)، شبكات LAN، الألياف الضوئية، وأنظمة الإنذار ومكافحة الحريق.',
     iconName: 'Sparkles',
-    image: '/images/hardgp/page3-img6.jpg',
+    image: '/images/hardgp/slide-9.jpg',
     features: [
       'Medium and Low Voltage Electrical distribution systems',
       'Industrial Control Systems: DCS, ESD, PLC, RTU, SCADA',
@@ -314,7 +314,7 @@ export const servicesData: ServiceItem[] = [
     description: 'High quality plumbing services for residential, commercial, and industrial clients: water heater repair, sink & toilet installation, kitchen/bathroom remodeling, drain/sewer repairs, complete piping installations, shut-off valves, water line maintenance, and pipe joint sealant.',
     description_ar: 'خدمات سباكة احترافية للقطاعات السكنية والتجارية والصناعية: صيانة السخانات، تركيب المغاسل والمراحيض، تجديد شبكات المطابخ والحمامات، صيانة الصرف والمجاري، تمديد خطوط الأنابيب، وإصلاح المحابس والتسربات.',
     iconName: 'Layers',
-    image: '/images/hardgp/page3-img7.jpg',
+    image: '/images/hardgp/por23-big.jpg',
     features: [
       'Complete piping systems installations and re-modeling',
       'Water heater repair, sink and toilet installation',
@@ -337,7 +337,7 @@ export const servicesData: ServiceItem[] = [
     description: 'Specialized gas welding, cutting, and brazing operations, electric welding with full PPE safety helmets and filters. Tested welding machines grounded effectively, positioned level 15 cm above ground, following strict safety engineer inspections.',
     description_ar: 'أعمال لحام متخصصة بالغاز والقطع واللحام بالنحاس، ولحام القوس الكهربائي مع الالتزام التام بوسائل الحماية الشخصية. فحص عزل ماكينات اللحام وتأريضها ورفعها 15 سم عن الأرض تحت إشراف مهندسي السلامة.',
     iconName: 'Layers',
-    image: '/images/hardgp/page3-img8.jpg',
+    image: '/images/hardgp/por22-big.jpg',
     features: [
       'Gas welding, oxy-fuel cutting & brazing operations',
       'Electric arc welding with certified electrode holders',
@@ -360,7 +360,7 @@ export const servicesData: ServiceItem[] = [
     description: 'HARD has agreements with pioneers in Air Conditioning: AlZamil, Daikin, LG, Samsung, and Trane. Warranty is provided for 5 years from the vendor with customer support. Experts specialized for over 10 years, free site survey by AC engineers, and regular maintenance contracts.',
     description_ar: 'شراكات واتفاقيات مع رواد شركات التكييف: الزامل، دايكن، إل جي، سامسونج، وترين. ضمان 5 سنوات من المورد وخدمة ما بعد البيع. فنيون ومهندسون متخصصون بخبرة تفوق 10 سنوات، كشف ومعاينة موقعية مجانية وعقود صيانة دورية.',
     iconName: 'Layers',
-    image: '/images/hardgp/page3-img9.jpg',
+    image: '/images/hardgp/slide-12.jpg',
     features: [
       'Agreements with AlZamil, Daikin, LG, Samsung, Trane',
       '5-Year manufacturer warranty & dedicated after-sales support',
@@ -383,7 +383,7 @@ export const servicesData: ServiceItem[] = [
     description: 'Guaranteed prevention of defects before and after delivery to site. Safety is first and most important with monthly training, on-site safety engineers, PPE enforcement, site warning signs, vehicle speed limits, and tool safety procedures.',
     description_ar: 'ضمان منع أي عيوب في المواد الإنشائية قبل وبعد تسليمها لموقع العمل. السلامة أولاً عبر برامج تدريبية شهرية، وتعيين مهندس سلامة بالموقع، وإلزامية خوذ وأحذية السلامة، واللوحات التحذيرية وفحص المعدات.',
     iconName: 'ShieldCheck',
-    image: '/images/hardgp/page3-img4.jpg',
+    image: '/images/hardgp/por5-big.jpg',
     features: [
       'Material defect prevention before and after site delivery',
       'Dedicated on-site Safety Engineer with assistant team',
@@ -406,7 +406,7 @@ export const servicesData: ServiceItem[] = [
     description: 'Authorized agent and distributor of local and international products: Exclusive agency for Al-Ameria Pipes (German made in Turkey Polypropylene, 50-year warranty, ISO certified), Euro HDPE Italian gas/water pipes, and SOTERIA Throwable & Kitchen Fire Extinguishers.',
     description_ar: 'وكيل وموزع معتمد لمنتجات محلية ودولية: وكالة حصرية لأنابيب العامرية الحرارية بالمنطقة الشرقية (صناعة ألمانية بتركيا، ضمان 50 سنة، معتمدة بالمواصفات السعودية)، أنابيب يورو HDPE الإيطالية، وطفايات حريق سوتيريا بدون صيانة.',
     iconName: 'Building2',
-    image: '/images/hardgp/Al-Ameria_Pipes.jpg',
+    image: '/images/hardgp/por23-big.jpg',
     features: [
       'Al-Ameria Pipes exclusive distributor in Eastern Province (50-year warranty)',
       'German-engineered Turkey-manufactured polypropylene thermal pipes',
@@ -1364,7 +1364,7 @@ export const blogPosts: BlogPost[] = [
     date_ar: 'معلومات المنتجات المعتمدة',
     category: 'Agency & Products',
     category_ar: 'الوكالات والمنتجات',
-    image: '/images/hardgp/Al-Ameria_Pipes.jpg',
+    image: '/images/hardgp/por23-big.jpg',
     author: 'Commercial Agency Unit',
     author_ar: 'إدارة الوكالات التجارية',
     excerpt: 'HARD is the authorized exclusive distributor of Al-Ameria Pipes in the Eastern Province, featuring 50-year warranty polypropylene thermal pipes.',

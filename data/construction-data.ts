@@ -310,7 +310,7 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "image": "/images/hardgp/por1-big.jpg",
     "galleryImages": [
       "/images/hardgp/por1-big.jpg",
-      "/images/hardgp/por1-small.jpg"
+      "/images/hardgp/por1-big.jpg"
     ],
     "descriptionAr": "تنفيذ كامل للأعمال الإنشائية والخرسانية والهيكل الحامل لمجمع تجاري مع تطبيق صارم لمعايير الجودة والسلامة المهنية.",
     "descriptionEn": "Turnkey execution of commercial structural superstructure, concrete framing, and civil contracting delivered on time.",
@@ -361,7 +361,7 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "image": "/images/hardgp/por2-big.jpg",
     "galleryImages": [
       "/images/hardgp/por2-big.jpg",
-      "/images/hardgp/por2-small.jpg"
+      "/images/hardgp/por2-big.jpg"
     ],
     "descriptionAr": "تشييد مبنى متعدد الطوابق يشمل الأعمال الإنشائية الكاملة والواجهات المقاومة للعوامل الجوية وتمديدات المرافق.",
     "descriptionEn": "Comprehensive multi-storey reinforced concrete framing and exterior facade construction.",
@@ -410,7 +410,7 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "image": "/images/hardgp/por3-big.jpg",
     "galleryImages": [
       "/images/hardgp/por3-big.jpg",
-      "/images/hardgp/por3-small.jpg"
+      "/images/hardgp/por3-big.jpg"
     ],
     "descriptionAr": "أعمال مدنية وصناعية تشمل تركيب الهياكل المعدنية واللحام الهندسي المتقدم والأنظمة الكهروميكانيكية المتوافقة مع معايير EPC.",
     "descriptionEn": "Heavy civil and industrial mechanical erection including specialized welding and electro-mechanical systems.",
@@ -459,7 +459,7 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "image": "/images/hardgp/por4-big.jpg",
     "galleryImages": [
       "/images/hardgp/por4-big.jpg",
-      "/images/hardgp/por4-small.jpg"
+      "/images/hardgp/por4-big.jpg"
     ],
     "descriptionAr": "عمارة سكنية معاصرة تجمع بين التخطيط الفراغي الذكي والعزل الحراري، مع تمديدات أنابيب العامرية بضمان 50 سنة وتكييف مركزي متطور.",
     "descriptionEn": "Modern residential villa architecture combining smart layout planning, thermal efficiency, and luxury finishes.",
@@ -508,7 +508,7 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "image": "/images/hardgp/por5-big.jpg",
     "galleryImages": [
       "/images/hardgp/por5-big.jpg",
-      "/images/hardgp/por5-small.jpg"
+      "/images/hardgp/por5-big.jpg"
     ],
     "descriptionAr": "نجارة مسلحة عالية الدقة، وتثبيت حديد التسليح، وصب الخرسانة المسلحة وفق درجات حرارة مضبوطة وبفحوصات كسر مخبرية معتمدة.",
     "descriptionEn": "High-precision shuttering, steel reinforcement binding, and temperature-controlled mass concrete casting.",
@@ -557,7 +557,7 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "image": "/images/hardgp/por6-big.jpg",
     "galleryImages": [
       "/images/hardgp/por6-big.jpg",
-      "/images/hardgp/por6-small.jpg"
+      "/images/hardgp/por6-big.jpg"
     ],
     "descriptionAr": "مبنى إداري متطور مجهز بشبكات التحكم E&I والألياف الضوئية وأنظمة الإنذار والتشطيبات العصرية.",
     "descriptionEn": "State-of-the-art office infrastructure with integrated E&I networking, fire alarms, and modern aesthetic.",
@@ -606,7 +606,7 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "image": "/images/hardgp/por7-big.jpg",
     "galleryImages": [
       "/images/hardgp/por7-big.jpg",
-      "/images/hardgp/por7-small.jpg"
+      "/images/hardgp/por7-big.jpg"
     ],
     "descriptionAr": "أعمال الحفر، تسوية المناسيب بالليزر، تثبيت التربة، وتمديد شبكات الأنابيب والمرافق التحتية باستخدام أنابيب يورو HDPE الإيطالية.",
     "descriptionEn": "Excavation, grading, soil stabilization, and underground utility piping infrastructure utilizing Euro HDPE Italian piping systems.",
@@ -655,7 +655,7 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "image": "/images/hardgp/por8-big.jpg",
     "galleryImages": [
       "/images/hardgp/por8-big.jpg",
-      "/images/hardgp/por8-small.jpg"
+      "/images/hardgp/por8-big.jpg"
     ],
     "descriptionAr": "تعديل وتوسعة المنشآت والتشطيب الصناعي والمعماري ذو المواصفات الصارمة تحت إشراف قسم ضمان الجودة.",
     "descriptionEn": "Plant modification, revamping, and high-specification industrial building finishing under strict QA/QC.",
@@ -704,7 +704,7 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "image": "/images/hardgp/por9-big.jpg",
     "galleryImages": [
       "/images/hardgp/por9-big.jpg",
-      "/images/hardgp/por9-small.jpg"
+      "/images/hardgp/por9-big.jpg"
     ],
     "descriptionAr": "تسليم كامل على المفتاح يشمل الهيكل الإنشائي، الكهروميكانيك، السباكة، والتشطيبات الفاخرة.",
     "descriptionEn": "Full turnkey delivery encompassing structural execution, electro-mechanical, plumbing, and luxury finish.",

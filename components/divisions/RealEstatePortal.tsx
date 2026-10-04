@@ -147,7 +147,7 @@ export default function RealEstatePortal() {
         {/* Background ambient lighting */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://demo.awaikenthemes.com/skyvilla/wp-content/uploads/2026/01/hero-bg-image-metal.jpg"
+            src="/images/hardgp/por4-big.jpg"
             alt="هارد للعقارات"
             fill
             priority

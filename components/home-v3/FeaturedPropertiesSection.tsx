@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { useLanguageTheme } from '@/lib/language-theme-context';
 import {
   MapPin,
-  Building,
   Bed,
   Bath,
   Maximize2,
@@ -84,13 +83,18 @@ export default function FeaturedPropertiesSection() {
         {/* Properties Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filtered.slice(0, 6).map((prop) => {
-            const title = isAr ? prop.title.ar : prop.title.en;
-            const city = isAr ? prop.location.city.ar : prop.location.city.en;
-            const areaName = isAr ? prop.location.area.ar : prop.location.area.en;
+            const title = isAr ? prop.title?.ar || prop.title?.en : prop.title?.en || prop.title?.ar;
+            const city = isAr ? prop.location?.city?.ar || prop.location?.city?.en : prop.location?.city?.en || prop.location?.city?.ar;
+            const areaName = isAr ? prop.location?.area?.ar || prop.location?.area?.en : prop.location?.area?.en || prop.location?.area?.ar;
             const statusLabel =
               prop.status === 'for-sale'
                 ? isAr ? 'للبيع' : 'For Sale'
                 : isAr ? 'للإيجار' : 'For Rent';
+            const priceDisplay = prop.price?.formattedSAR || (prop.price?.sar ? `${prop.price.sar.toLocaleString()} SAR` : '');
+            const bedroomsCount = prop.bedrooms ?? 0;
+            const bathroomsCount = prop.bathrooms ?? 0;
+            const areaDisplay = prop.areaSqM ? `${prop.areaSqM.toLocaleString()} م²` : (prop.areaSqFt ? `${prop.areaSqFt.toLocaleString()} sqft` : '');
+            const imageSrc = prop.images?.[0] || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80';
 
             return (
               <div
@@ -104,8 +108,8 @@ export default function FeaturedPropertiesSection() {
                     className="relative block h-60 sm:h-64 w-full overflow-hidden"
                   >
                     <Image
-                      src={prop.images[0]}
-                      alt={title}
+                      src={imageSrc}
+                      alt={title || ''}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -122,9 +126,11 @@ export default function FeaturedPropertiesSection() {
                       <span className="px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-[#333] text-[#DEDBC8] text-[11px] font-bold">
                         {statusLabel}
                       </span>
-                      <span className="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] text-gray-400 border border-[#262626]">
-                        {prop.type.toUpperCase()}
-                      </span>
+                      {prop.type && (
+                        <span className="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] text-gray-400 border border-[#262626]">
+                          {prop.type.toUpperCase()}
+                        </span>
+                      )}
                     </div>
 
                     {/* Location Badge on Image */}
@@ -154,15 +160,15 @@ export default function FeaturedPropertiesSection() {
                     <div className="grid grid-cols-3 gap-2 py-3 border-y border-[#1e1e1e] text-xs text-gray-400">
                       <div className="flex items-center gap-1.5">
                         <Bed className="w-3.5 h-3.5 text-[#DEDBC8]" />
-                        <span>{prop.specs.bedrooms} {isAr ? 'غرف' : 'Beds'}</span>
+                        <span>{bedroomsCount > 0 ? `${bedroomsCount} ${isAr ? 'غرف' : 'Beds'}` : (isAr ? 'مفتوح' : 'Open')}</span>
                       </div>
                       <div className="flex items-center gap-1.5">
                         <Bath className="w-3.5 h-3.5 text-[#DEDBC8]" />
-                        <span>{prop.specs.bathrooms} {isAr ? 'حمام' : 'Baths'}</span>
+                        <span>{bathroomsCount > 0 ? `${bathroomsCount} ${isAr ? 'حمام' : 'Baths'}` : (isAr ? 'مرافق' : 'Amenities')}</span>
                       </div>
                       <div className="flex items-center gap-1.5">
                         <Maximize2 className="w-3.5 h-3.5 text-[#DEDBC8]" />
-                        <span>{prop.specs.area} م²</span>
+                        <span>{areaDisplay || '—'}</span>
                       </div>
                     </div>
                   </div>
@@ -175,7 +181,7 @@ export default function FeaturedPropertiesSection() {
                       {isAr ? 'السعر التقديري' : 'Starting Price'}
                     </span>
                     <span className="text-base sm:text-lg font-bold text-[#DEDBC8]">
-                      {prop.price.formatted} {prop.price.currency}
+                      {priceDisplay}
                     </span>
                   </div>
 

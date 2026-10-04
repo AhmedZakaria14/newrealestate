@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://demo.awaikenthemes.com/skyvilla/wp-content/uploads/2026/01/project-image-2.jpg',
+        url: '/images/hardgp/slide-12.jpg',
         width: 1200,
         height: 630,
         alt: 'هارد لصيانة وتكييف الهواء - الذراع الكهروميكانيكي لمجموعة هارد',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description:
       'الذراع التخصصي للكهروميكانيك والتبريد، عقود AMC للشيلرات و VRF وتنقية مجاري الهواء وطوارئ 24/7.',
     images: [
-      'https://demo.awaikenthemes.com/skyvilla/wp-content/uploads/2026/01/project-image-2.jpg',
+      '/images/hardgp/slide-12.jpg',
     ],
   },
 };

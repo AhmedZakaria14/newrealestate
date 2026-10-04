@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://demo.awaikenthemes.com/skyvilla/wp-content/uploads/2026/01/project-image-3.jpg',
+        url: '/images/hardgp/por1-big.jpg',
         width: 1200,
         height: 630,
         alt: 'هارد للإنشاءات والمقاولات - الذراع الإنشائي لمجموعة هارد',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description:
       'الذراع الإنشائي والهندسي لمجموعة هارد، مقاولات عامة مصنفة فئة أولى لتنفيذ الأبراج التجارية والمجمعات الذكية وفق كود البناء السعودي.',
     images: [
-      'https://demo.awaikenthemes.com/skyvilla/wp-content/uploads/2026/01/project-image-3.jpg',
+      '/images/hardgp/por1-big.jpg',
     ],
   },
 };

@@ -9,12 +9,14 @@ interface ConsultationModalProps {
   isOpen: boolean;
   onClose: () => void;
   defaultService?: string;
+  initialServiceType?: string;
 }
 
 export default function ConsultationModal({
   isOpen,
   onClose,
   defaultService,
+  initialServiceType,
 }: ConsultationModalProps) {
   const { language, theme, t, direction } = useLanguageTheme();
   const [submitted, setSubmitted] = useState(false);
@@ -22,11 +24,13 @@ export default function ConsultationModal({
   const isAr = language === 'ar';
   const isDark = theme === 'dark';
 
+  const initialService = defaultService || initialServiceType;
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    service: defaultService || (isAr ? 'المقاولات العامة والتطوير الإنشائي' : 'General Contracting & Structural Construction'),
+    service: initialService || (isAr ? 'المقاولات العامة والتطوير الإنشائي' : 'General Contracting & Structural Construction'),
     projectType: isAr ? 'فيلا فاخرة / قصر' : 'Luxury Villa / Mansion',
     budget: isAr ? '3 - 10 ملايين ريال' : '3M - 10M SAR',
     message: '',
