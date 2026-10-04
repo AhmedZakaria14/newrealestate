@@ -139,6 +139,52 @@
         "createdAt": { "type": "string", "format": "date-time", "description": "Granted timestamp" }
       },
       "required": ["email", "createdAt"]
+    },
+    "SiteSettings": {
+      "title": "SiteSettings",
+      "description": "Dynamic editable site content, section titles, hero texts, contact information, and SEO configuration.",
+      "type": "object",
+      "properties": {
+        "heroTitleAr": { "type": "string", "description": "Hero primary title in Arabic" },
+        "heroTitleEn": { "type": "string", "description": "Hero primary title in English" },
+        "heroSubtitleAr": { "type": "string", "description": "Hero subtitle in Arabic" },
+        "heroSubtitleEn": { "type": "string", "description": "Hero subtitle in English" },
+        "heroBadgeAr": { "type": "string", "description": "Hero badge text in Arabic" },
+        "heroBadgeEn": { "type": "string", "description": "Hero badge text in English" },
+        "heroImage": { "type": "string", "description": "Hero background or banner image URL" },
+        "sectionTitles": { "type": "object", "description": "Dictionary of section titles in Arabic and English" },
+        "contactInfo": { "type": "object", "description": "Official company contacts, hotline, emergency, and licenses" },
+        "stats": { "type": "object", "description": "Key milestone numbers and metrics" },
+        "seo": { "type": "object", "description": "Global SEO meta titles, descriptions, and keywords" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last update timestamp" }
+      }
+    },
+    "NewsletterSubscriber": {
+      "title": "NewsletterSubscriber",
+      "description": "Customer newsletter subscribers with verified email and status.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email", "description": "Subscriber email address" },
+        "status": { "type": "string", "enum": ["active", "unsubscribed"], "description": "Subscription status" },
+        "source": { "type": "string", "description": "Subscription origin form" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Subscription timestamp" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last status change timestamp" }
+      },
+      "required": ["email", "status", "createdAt"]
+    },
+    "AnalyticsVisit": {
+      "title": "AnalyticsVisit",
+      "description": "Real-time anonymous site visit logs for dashboard analytics.",
+      "type": "object",
+      "properties": {
+        "path": { "type": "string", "description": "Visited page path" },
+        "referrer": { "type": "string", "description": "Referrer source" },
+        "device": { "type": "string", "description": "Device type: mobile, tablet, desktop" },
+        "language": { "type": "string", "description": "Client active language" },
+        "userAgent": { "type": "string", "description": "Browser user agent summary" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Visit timestamp" }
+      },
+      "required": ["path", "createdAt"]
     }
   },
   "firestore": {
@@ -173,6 +219,18 @@
     "/admins/{adminId}": {
       "schema": { "$ref": "#/entities/Admin" },
       "description": "Administrator whitelist document for RBAC security."
+    },
+    "/site_settings/{settingId}": {
+      "schema": { "$ref": "#/entities/SiteSettings" },
+      "description": "Global website configuration, dynamic section names, and SEO parameters."
+    },
+    "/newsletter_subscribers/{subscriberId}": {
+      "schema": { "$ref": "#/entities/NewsletterSubscriber" },
+      "description": "Registered subscriber emails for marketing and news."
+    },
+    "/analytics_visits/{visitId}": {
+      "schema": { "$ref": "#/entities/AnalyticsVisit" },
+      "description": "Real-time traffic visits and page impressions log."
     }
   }
 }

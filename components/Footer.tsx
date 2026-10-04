@@ -6,21 +6,44 @@ import { Phone, Mail, ArrowUpRight, Check, Send, MapPin } from 'lucide-react';
 import ConsultationModal from '@/components/ConsultationModal';
 import Logo from '@/components/Logo';
 import { useLanguageTheme } from '@/lib/language-theme-context';
+import { useSiteContent } from '@/lib/site-content-context';
+import { subscribeNewsletter } from '@/lib/firestore-service';
 
 export default function Footer() {
   const { language, theme, t, direction } = useLanguageTheme();
+  const { settings } = useSiteContent();
   const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
+  const [subMessage, setSubMessage] = useState('');
   const [consultationOpen, setConsultationOpen] = useState(false);
 
   const isDark = theme === 'dark';
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    if (!email) return;
+
+    try {
+      setLoading(true);
+      const res = await subscribeNewsletter(email, 'footer');
       setSubscribed(true);
-      setTimeout(() => setSubscribed(false), 5000);
+      setSubMessage(
+        res.alreadySubscribed
+          ? (language === 'ar' ? 'أنت مسجل بالفعل في قائمتنا البريدية!' : 'You are already subscribed to our newsletter!')
+          : (language === 'ar' ? 'تم تسجيل بريدك بنجاح في النشرة البريدية!' : 'Successfully subscribed to our newsletter!')
+      );
       setEmail('');
+      setTimeout(() => {
+        setSubscribed(false);
+        setSubMessage('');
+      }, 5000);
+    } catch (err) {
+      console.error(err);
+      setSubscribed(true);
+      setSubMessage(language === 'ar' ? 'حدث خطأ، يرجى المحاولة لاحقاً' : 'Error subscribing. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -269,7 +292,8 @@ export default function Footer() {
                   />
                   <button
                     type="submit"
-                    className={`absolute top-1.5 bottom-1.5 px-3.5 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition-colors flex items-center justify-center cursor-pointer ${
+                    disabled={loading}
+                    className={`absolute top-1.5 bottom-1.5 px-3.5 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition-colors flex items-center justify-center cursor-pointer disabled:opacity-50 ${
                       direction === 'rtl' ? 'left-1.5' : 'right-1.5'
                     }`}
                     aria-label="Subscribe"
@@ -278,8 +302,8 @@ export default function Footer() {
                   </button>
                 </div>
                 {subscribed && (
-                  <p className="text-xs text-blue-400 flex items-center gap-1 font-bold">
-                    <Check className="w-3.5 h-3.5" /> {t('footer.subscribeSuccess')}
+                  <p className="text-xs text-blue-400 flex items-center gap-1.5 font-bold">
+                    <Check className="w-3.5 h-3.5 shrink-0" /> {subMessage || t('footer.subscribeSuccess')}
                   </p>
                 )}
               </form>

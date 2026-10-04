@@ -431,3 +431,365 @@ export async function seedInitialDatabase() {
     return false;
   }
 }
+
+// ----------------- SITE SETTINGS & DYNAMIC CONTENT -----------------
+export interface SiteSettingsDoc {
+  heroTitleAr: string;
+  heroTitleEn: string;
+  heroSubtitleAr: string;
+  heroSubtitleEn: string;
+  heroBadgeAr: string;
+  heroBadgeEn: string;
+  heroImage?: string;
+  heroCtaQuoteAr?: string;
+  heroCtaQuoteEn?: string;
+  heroCtaCalcAr?: string;
+  heroCtaCalcEn?: string;
+  sectionTitles: {
+    propertiesAr: string;
+    propertiesEn: string;
+    propertiesSubtitleAr?: string;
+    propertiesSubtitleEn?: string;
+    projectsAr: string;
+    projectsEn: string;
+    projectsSubtitleAr?: string;
+    projectsSubtitleEn?: string;
+    contractingAr: string;
+    contractingEn: string;
+    hvacAr: string;
+    hvacEn: string;
+    realestateAr: string;
+    realestateEn: string;
+    servicesAr: string;
+    servicesEn: string;
+    calculatorAr: string;
+    calculatorEn: string;
+    testimonialsAr: string;
+    testimonialsEn: string;
+    branchesAr: string;
+    branchesEn: string;
+    blogAr: string;
+    blogEn: string;
+    faqAr: string;
+    faqEn: string;
+    aboutAr: string;
+    aboutEn: string;
+  };
+  contactInfo: {
+    hotline: string;
+    emergencyPhone: string;
+    email: string;
+    addressKhobarAr: string;
+    addressKhobarEn: string;
+    addressRiyadhAr: string;
+    addressRiyadhEn: string;
+    licenseVal: string;
+    codeSbc: string;
+    crNumber: string;
+  };
+  stats: {
+    projectsCount: string;
+    investmentSar: string;
+    satisfactionRate: string;
+    engineersCount: string;
+  };
+  seo: {
+    metaTitleAr: string;
+    metaTitleEn: string;
+    metaDescriptionAr: string;
+    metaDescriptionEn: string;
+    keywordsAr: string;
+    keywordsEn: string;
+    ogImage: string;
+    canonicalUrl: string;
+    googleVerification?: string;
+    indexNowKey?: string;
+    lastPingedAt?: any;
+  };
+  updatedAt?: any;
+}
+
+export const defaultSiteSettings: SiteSettingsDoc = {
+  heroTitleAr: 'مجموعة هارد القابضة',
+  heroTitleEn: 'HARD Group Holding',
+  heroSubtitleAr: 'للمقاولات والتطوير العقاري',
+  heroSubtitleEn: '& Structural Development',
+  heroBadgeAr: 'مقاولات عامة فئة أولى · كود البناء السعودي SBC · رخصة فال 1200028472',
+  heroBadgeEn: 'Class-1 General Contracting · Saudi Building Code (SBC) · VAL Lic. 1200028472',
+  heroImage: 'https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=2200&q=90',
+  heroCtaQuoteAr: 'طلب استشارة وتسعير فوري',
+  heroCtaQuoteEn: 'Request Instant Estimate',
+  heroCtaCalcAr: 'حاسبة تكاليف المشاريع',
+  heroCtaCalcEn: 'Cost Estimator',
+  sectionTitles: {
+    propertiesAr: 'فرص استثمارية وعقارات مميزة',
+    propertiesEn: 'Featured Investment Properties',
+    propertiesSubtitleAr: 'أصول عقارية فاخرة موثقة برخصة فال المعتمدة 1200028472 بالمنطقة الشرقية والرياض',
+    propertiesSubtitleEn: 'Verified luxury real estate assets backed by certified VAL license in Eastern Province & Riyadh',
+    projectsAr: 'المشاريع الاستراتيجية والتطويرية',
+    projectsEn: 'Strategic & Master Projects',
+    projectsSubtitleAr: 'سجل حافل بتنفيذ الأبراج والمجمعات التجارية والطبية واللوجستية وفق أعلى معايير الجودة',
+    projectsSubtitleEn: 'Proven track record delivering commercial towers, healthcare, and logistics facilities',
+    contractingAr: 'هارد للمقاولات العامة والإنشاءات',
+    contractingEn: 'HARD General Contracting & Civil Works',
+    hvacAr: 'هارد لأنظمة التكييف والتشغيل 24/7',
+    hvacEn: 'HARD HVAC & Facility Operations 24/7',
+    realestateAr: 'هارد للوساطة والتسويق العقاري (فال)',
+    realestateEn: 'HARD Real Estate Brokerage (VAL)',
+    servicesAr: 'مصفوفة الخدمات الهندسية والإنشائية',
+    servicesEn: 'Comprehensive Engineering Services',
+    calculatorAr: 'حاسبة تكاليف المشاريع التقديرية',
+    calculatorEn: 'Interactive Project Cost Calculator',
+    testimonialsAr: 'شهادات العملاء وسجل الإنجاز المؤسسي',
+    testimonialsEn: 'Client Testimonials & Institutional Track Record',
+    branchesAr: 'فروعنا ومكاتبنا في المملكة العربية السعودية',
+    branchesEn: 'Our Branches & Kingdom Presence',
+    blogAr: 'المركز الإعلامي والتقارير العقارية',
+    blogEn: 'Media Center & Market Reports',
+    faqAr: 'الأسئلة الشائعة والتراخيص الرسمية',
+    faqEn: 'Frequently Asked Questions & Accreditations',
+    aboutAr: 'عن مجموعة هارد القابضة',
+    aboutEn: 'About HARD Group Holding',
+  },
+  contactInfo: {
+    hotline: '+966138004273',
+    emergencyPhone: '+966501234567',
+    email: 'info@hardgroup.sa',
+    addressKhobarAr: 'طريق الملك فهد، حي الحزام الذهبي، الخُبر، المملكة العربية السعودية',
+    addressKhobarEn: 'King Fahd Rd, Al Hizam Al Thahabi, Al Khobar, Saudi Arabia',
+    addressRiyadhAr: 'طريق الملك عبدالعزيز، حي الياسمين، الرياض، المملكة العربية السعودية',
+    addressRiyadhEn: 'King Abdulaziz Rd, Al Yasmin, Riyadh, Saudi Arabia',
+    licenseVal: '1200028472',
+    codeSbc: 'SBC 100% Certified',
+    crNumber: '2051067890',
+  },
+  stats: {
+    projectsCount: '+180',
+    investmentSar: '4.8 مليار',
+    satisfactionRate: '99.4%',
+    engineersCount: '+65',
+  },
+  seo: {
+    metaTitleAr: 'مجموعة هارد | المقاولات العامة والتطوير الإنشائي والعقاري - HARD Group',
+    metaTitleEn: 'HARD Group | General Contracting & Real Estate Development KSA',
+    metaDescriptionAr: 'مجموعة هارد للمقاولات العامة فئة أولى والتطوير الإنشائي والوساطة العقارية المرخصة (فال 1200028472). تنفيذ أبراج ومجمعات وفق كود البناء السعودي SBC وهندسة تشغيل المرافق AMC.',
+    metaDescriptionEn: 'HARD Group: Class-1 general contracting, certified SBC structural development, licensed VAL real estate brokerage, and 24/7 HVAC AMC engineering in Saudi Arabia.',
+    keywordsAr: 'مقاولات عامة, تطوير عقاري, كود البناء السعودي, SBC, رخصة فال, وساطة عقارية, الخبر, الرياض, تكييف مركزي, مجموعة هارد',
+    keywordsEn: 'general contracting, real estate development, Saudi building code, SBC, VAL license, KSA real estate, HVAC AMC, HARD group',
+    ogImage: 'https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=1200&q=80',
+    canonicalUrl: 'https://hardgroup.sa',
+    googleVerification: 'google-site-verification-hard-group-ksa',
+    indexNowKey: 'hardgroup_indexnow_2026_sec',
+  },
+};
+
+export async function getSiteSettings(): Promise<SiteSettingsDoc> {
+  try {
+    const docRef = doc(db, 'site_settings', 'content');
+    const snap = await getDoc(docRef);
+    if (snap.exists()) {
+      return { ...defaultSiteSettings, ...snap.data() } as SiteSettingsDoc;
+    }
+  } catch (err) {
+    console.warn('Using default site settings:', err);
+  }
+  return defaultSiteSettings;
+}
+
+export function subscribeToSiteSettings(callback: (settings: SiteSettingsDoc) => void) {
+  const docRef = doc(db, 'site_settings', 'content');
+  return onSnapshot(
+    docRef,
+    (snap) => {
+      if (snap.exists()) {
+        callback({ ...defaultSiteSettings, ...snap.data() } as SiteSettingsDoc);
+      } else {
+        callback(defaultSiteSettings);
+      }
+    },
+    (error) => {
+      console.error('Error listening to site settings:', error);
+      callback(defaultSiteSettings);
+    }
+  );
+}
+
+export async function updateSiteSettings(settings: Partial<SiteSettingsDoc>) {
+  const docRef = doc(db, 'site_settings', 'content');
+  await setDoc(
+    docRef,
+    {
+      ...settings,
+      updatedAt: serverTimestamp(),
+    },
+    { merge: true }
+  );
+}
+
+// ----------------- NEWSLETTER SUBSCRIBERS -----------------
+export interface NewsletterSubscriberDoc {
+  id?: string;
+  email: string;
+  status: 'active' | 'unsubscribed';
+  source?: string;
+  createdAt: any;
+  updatedAt?: any;
+}
+
+export async function subscribeNewsletter(email: string, source: string = 'footer'): Promise<{ success: boolean; alreadySubscribed?: boolean; id?: string }> {
+  try {
+    const cleanEmail = email.trim().toLowerCase();
+    if (!cleanEmail || !cleanEmail.includes('@')) {
+      throw new Error('Invalid email address');
+    }
+
+    const colRef = collection(db, 'newsletter_subscribers');
+    const existingQ = query(colRef, where('email', '==', cleanEmail), limit(1));
+    const snap = await getDocs(existingQ);
+
+    if (!snap.empty) {
+      return { success: true, alreadySubscribed: true, id: snap.docs[0].id };
+    }
+
+    const docRef = await addDoc(colRef, {
+      email: cleanEmail,
+      status: 'active',
+      source,
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp(),
+    });
+
+    return { success: true, alreadySubscribed: false, id: docRef.id };
+  } catch (error) {
+    console.error('Error saving newsletter subscriber:', error);
+    throw error;
+  }
+}
+
+export function subscribeToNewsletterSubscribers(callback: (subscribers: NewsletterSubscriberDoc[]) => void) {
+  const colRef = collection(db, 'newsletter_subscribers');
+  const q = query(colRef, orderBy('createdAt', 'desc'), limit(200));
+
+  return onSnapshot(
+    q,
+    (snapshot) => {
+      const list: NewsletterSubscriberDoc[] = [];
+      snapshot.forEach((d) => {
+        list.push({ id: d.id, ...d.data() } as NewsletterSubscriberDoc);
+      });
+      callback(list);
+    },
+    (error) => {
+      console.error('Error listening to newsletter subscribers:', error);
+    }
+  );
+}
+
+export async function deleteNewsletterSubscriber(id: string) {
+  const docRef = doc(db, 'newsletter_subscribers', id);
+  await deleteDoc(docRef);
+}
+
+export async function updateNewsletterSubscriberStatus(id: string, status: 'active' | 'unsubscribed') {
+  const docRef = doc(db, 'newsletter_subscribers', id);
+  await updateDoc(docRef, { status, updatedAt: serverTimestamp() });
+}
+
+// ----------------- REAL-TIME ANALYTICS & VISIT TRACKING -----------------
+export interface AnalyticsVisitDoc {
+  id?: string;
+  path: string;
+  referrer?: string;
+  device?: string;
+  language?: string;
+  userAgent?: string;
+  createdAt: any;
+}
+
+export async function logAnalyticsVisit(data: {
+  path: string;
+  referrer?: string;
+  device?: string;
+  language?: string;
+  userAgent?: string;
+}) {
+  try {
+    const colRef = collection(db, 'analytics_visits');
+    await addDoc(colRef, {
+      path: data.path.slice(0, 200),
+      referrer: (data.referrer || '').slice(0, 250),
+      device: data.device || 'desktop',
+      language: data.language || 'ar',
+      userAgent: (data.userAgent || '').slice(0, 250),
+      createdAt: serverTimestamp(),
+    });
+  } catch (err) {
+    // Non-blocking for analytics logging
+    console.warn('Analytics visit log error:', err);
+  }
+}
+
+export function subscribeToAnalyticsVisits(callback: (visits: AnalyticsVisitDoc[]) => void, limitCount = 100) {
+  const colRef = collection(db, 'analytics_visits');
+  const q = query(colRef, orderBy('createdAt', 'desc'), limit(limitCount));
+
+  return onSnapshot(
+    q,
+    (snapshot) => {
+      const list: AnalyticsVisitDoc[] = [];
+      snapshot.forEach((d) => {
+        list.push({ id: d.id, ...d.data() } as AnalyticsVisitDoc);
+      });
+      callback(list);
+    },
+    (error) => {
+      console.error('Error listening to analytics visits:', error);
+    }
+  );
+}
+
+// ----------------- MEDIA UPLOADS & REPOSITORY -----------------
+export interface MediaItemDoc {
+  id?: string;
+  name: string;
+  url: string;
+  storagePath?: string;
+  size: number;
+  type: string;
+  folder?: string;
+  uploader?: string;
+  createdAt: any;
+}
+
+export function subscribeToMedia(callback: (media: MediaItemDoc[]) => void) {
+  const colRef = collection(db, 'media');
+  const q = query(colRef, orderBy('createdAt', 'desc'), limit(100));
+
+  return onSnapshot(
+    q,
+    (snapshot) => {
+      const list: MediaItemDoc[] = [];
+      snapshot.forEach((d) => {
+        list.push({ id: d.id, ...d.data() } as MediaItemDoc);
+      });
+      callback(list);
+    },
+    (error) => {
+      console.error('Error listening to media items:', error);
+    }
+  );
+}
+
+export async function addMediaItem(item: Omit<MediaItemDoc, 'id' | 'createdAt'>) {
+  const colRef = collection(db, 'media');
+  const docRef = await addDoc(colRef, {
+    ...item,
+    createdAt: serverTimestamp(),
+  });
+  return docRef.id;
+}
+
+export async function deleteMediaItem(id: string) {
+  const docRef = doc(db, 'media', id);
+  await deleteDoc(docRef);
+}

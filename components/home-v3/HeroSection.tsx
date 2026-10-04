@@ -19,9 +19,11 @@ import {
 } from 'lucide-react';
 import ConsultationModal from '@/components/ConsultationModal';
 import { useLanguageTheme } from '@/lib/language-theme-context';
+import { useSiteContent } from '@/lib/site-content-context';
 
 export default function HeroSection() {
   const { language, theme, direction } = useLanguageTheme();
+  const { settings } = useSiteContent();
   const isAr = language === 'ar';
   const isDark = theme === 'dark';
 
@@ -34,16 +36,16 @@ export default function HeroSection() {
       label: isAr ? 'تصنيف المقاولات العامة' : 'General Contracting Grade',
     },
     {
-      value: 'SBC 100%',
-      label: isAr ? 'مطابقة كود البناء السعودي' : 'Saudi Building Code Certified',
+      value: settings.stats?.projectsCount || '+180',
+      label: isAr ? 'المشاريع المنفذة والمعتمدة' : 'Executed & Approved Projects',
     },
     {
-      value: isAr ? 'فال 1200028472' : 'FAL 1200028472',
+      value: isAr ? `فال ${settings.contactInfo?.licenseVal || '1200028472'}` : `VAL ${settings.contactInfo?.licenseVal || '1200028472'}`,
       label: isAr ? 'رخصة الوساطة والتسويق' : 'Licensed Real Estate Brokerage',
     },
     {
-      value: isAr ? '24/7 طوارئ' : '24/7 Emergency',
-      label: isAr ? 'عقود تشغيل وصيانة AMC' : 'HVAC & Operations AMC',
+      value: settings.stats?.satisfactionRate || '99.4%',
+      label: isAr ? 'نسبة رضا العملاء والمستثمرين' : 'Investor Satisfaction Rate',
     },
   ];
 
@@ -52,8 +54,8 @@ export default function HeroSection() {
       {/* Hero background image with architectural construction presence */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=2200&q=90"
-          alt="General Contracting & Structural Development"
+          src={settings.heroImage || "https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=2200&q=90"}
+          alt={isAr ? (settings.heroTitleAr || 'مجموعة هارد القابضة') : (settings.heroTitleEn || 'HARD Group Holding')}
           fill
           priority
           className={`object-cover object-center transition-all ${
@@ -79,20 +81,16 @@ export default function HeroSection() {
             {/* Top Unboxed Metadata / Kicker following constitution */}
             <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-bold text-sky-400">
               <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
-              <span>{isAr ? 'مقاولات عامة فئة أولى' : 'Class-1 General Contracting'}</span>
-              <span aria-hidden="true" className="opacity-40">·</span>
-              <span>{isAr ? 'كود البناء السعودي SBC' : 'Saudi Building Code (SBC)'}</span>
-              <span aria-hidden="true" className="opacity-40">·</span>
-              <span>{isAr ? 'رخصة فال 1200028472' : 'VAL Lic. 1200028472'}</span>
+              <span>{isAr ? (settings.heroBadgeAr || 'مقاولات عامة فئة أولى · كود البناء السعودي SBC · رخصة فال 1200028472') : (settings.heroBadgeEn || 'Class-1 General Contracting · Saudi Building Code (SBC) · VAL Lic. 1200028472')}</span>
             </div>
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-5xl md:text-6xl xl:text-7xl font-black text-white tracking-tight leading-[1.16] sm:leading-[1.10]">
               <span className="block mb-1 sm:mb-2">
-                {isAr ? 'مجموعة هارد القابضة' : 'HARD Group Holding'}
+                {isAr ? (settings.heroTitleAr || 'مجموعة هارد القابضة') : (settings.heroTitleEn || 'HARD Group Holding')}
               </span>
               <span className="block text-sky-400">
-                {isAr ? 'للمقاولات والتطوير العقاري' : '& Structural Development'}
+                {isAr ? (settings.heroSubtitleAr || 'للمقاولات والتطوير العقاري') : (settings.heroSubtitleEn || '& Structural Development')}
               </span>
             </h1>
 
@@ -110,7 +108,7 @@ export default function HeroSection() {
                 onClick={() => setConsultationOpen(true)}
                 className="inline-flex items-center gap-2 px-7 py-3.5 sm:px-8 sm:py-4 rounded-2xl bg-blue-600 text-white font-black text-xs sm:text-sm hover:bg-blue-500 transition-all transform hover:-translate-y-0.5 shadow-lg shadow-blue-600/30 cursor-pointer active:scale-98"
               >
-                <span>{isAr ? 'طلب استشارة وتسعير فوري' : 'Request Instant Estimate'}</span>
+                <span>{isAr ? (settings.heroCtaQuoteAr || 'طلب استشارة وتسعير فوري') : (settings.heroCtaQuoteEn || 'Request Instant Estimate')}</span>
                 <ArrowUpRight
                   className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform ${
                     direction === 'rtl' ? 'rotate-[-90deg]' : ''
@@ -123,7 +121,7 @@ export default function HeroSection() {
                 className="inline-flex items-center gap-2 px-5 py-3.5 sm:px-6 sm:py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm backdrop-blur-md border border-white/20 transition-all cursor-pointer"
               >
                 <Calculator className="w-4 h-4 text-blue-400" />
-                <span>{isAr ? 'حاسبة تكاليف المشاريع' : 'Cost Estimator'}</span>
+                <span>{isAr ? (settings.heroCtaCalcAr || 'حاسبة تكاليف المشاريع') : (settings.heroCtaCalcEn || 'Cost Estimator')}</span>
               </a>
 
               <a

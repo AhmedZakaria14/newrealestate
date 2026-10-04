@@ -37,6 +37,11 @@ import {
   Send,
   Loader2,
   Save,
+  Sliders,
+  Globe,
+  Activity,
+  Image as ImageIcon,
+  Radio,
 } from 'lucide-react';
 import {
   PropertyDoc,
@@ -44,11 +49,21 @@ import {
   ServiceDoc,
   ArticleDoc,
   ConsultationDoc,
+  SiteSettingsDoc,
+  defaultSiteSettings,
+  NewsletterSubscriberDoc,
+  AnalyticsVisitDoc,
+  MediaItemDoc,
   subscribeToConsultations,
   subscribeToProperties,
   subscribeToProjects,
   subscribeToServices,
   subscribeToArticles,
+  subscribeToSiteSettings,
+  updateSiteSettings,
+  subscribeToNewsletterSubscribers,
+  subscribeToAnalyticsVisits,
+  subscribeToMedia,
   updateConsultationStatus,
   deleteConsultation,
   addProperty,
@@ -66,6 +81,25 @@ import {
   seedInitialDatabase,
 } from '@/lib/firestore-service';
 import ConsultationStatusChart from '@/components/admin/ConsultationStatusChart';
+import SiteContentEditor from '@/components/admin/SiteContentEditor';
+import NewsletterManager from '@/components/admin/NewsletterManager';
+import MediaLibraryModal from '@/components/admin/MediaLibraryModal';
+import SeoManager from '@/components/admin/SeoManager';
+import RealtimeAnalyticsView from '@/components/admin/RealtimeAnalyticsView';
+
+export type AdminTab =
+  | 'overview'
+  | 'consultations'
+  | 'content'
+  | 'newsletter'
+  | 'media'
+  | 'seo'
+  | 'analytics'
+  | 'properties'
+  | 'projects'
+  | 'services'
+  | 'articles'
+  | 'users';
 
 export default function AdminDashboardPage() {
   const router = useRouter();
@@ -75,7 +109,7 @@ export default function AdminDashboardPage() {
   const isDark = theme === 'dark';
 
   // Navigation tabs
-  const [activeTab, setActiveTab] = useState<'overview' | 'consultations' | 'properties' | 'projects' | 'services' | 'articles' | 'users'>('overview');
+  const [activeTab, setActiveTab] = useState<AdminTab>('overview');
 
   // Real-time Firestore state
   const [consultations, setConsultations] = useState<ConsultationDoc[]>([]);
@@ -83,6 +117,10 @@ export default function AdminDashboardPage() {
   const [projects, setProjects] = useState<ProjectDoc[]>([]);
   const [services, setServices] = useState<ServiceDoc[]>([]);
   const [articles, setArticles] = useState<ArticleDoc[]>([]);
+  const [siteSettings, setSiteSettings] = useState<SiteSettingsDoc>(defaultSiteSettings);
+  const [subscribers, setSubscribers] = useState<NewsletterSubscriberDoc[]>([]);
+  const [analyticsVisits, setAnalyticsVisits] = useState<AnalyticsVisitDoc[]>([]);
+  const [mediaItems, setMediaItems] = useState<MediaItemDoc[]>([]);
 
   // Filtering states
   const [consultationFilter, setConsultationFilter] = useState<'all' | 'new' | 'in_progress' | 'contacted' | 'completed'>('all');
@@ -173,6 +211,10 @@ export default function AdminDashboardPage() {
     const unsubProjects = subscribeToProjects((data) => setProjects(data));
     const unsubServices = subscribeToServices((data) => setServices(data));
     const unsubArticles = subscribeToArticles((data) => setArticles(data));
+    const unsubSettings = subscribeToSiteSettings((data) => setSiteSettings(data));
+    const unsubSubscribers = subscribeToNewsletterSubscribers((data) => setSubscribers(data));
+    const unsubVisits = subscribeToAnalyticsVisits((data) => setAnalyticsVisits(data));
+    const unsubMedia = subscribeToMedia((data) => setMediaItems(data));
 
     return () => {
       unsubConsultations?.();
@@ -180,8 +222,16 @@ export default function AdminDashboardPage() {
       unsubProjects?.();
       unsubServices?.();
       unsubArticles?.();
+      unsubSettings?.();
+      unsubSubscribers?.();
+      unsubVisits?.();
+      unsubMedia?.();
     };
   }, [user]);
+
+  const handleSaveSiteSettings = async (partial: Partial<SiteSettingsDoc>) => {
+    await updateSiteSettings(partial);
+  };
 
   // Seed database helper
   const handleSeedDatabase = async () => {
@@ -414,7 +464,12 @@ export default function AdminDashboardPage() {
         <div className="flex overflow-x-auto pb-2 gap-2 border-b border-gray-500/15 text-xs font-bold scrollbar-none">
           {[
             { id: 'overview', labelAr: 'نظرة عامة والتحليلات', labelEn: 'Overview', icon: BarChart3, count: null },
-            { id: 'consultations', labelAr: 'طلبات العملاء والاستشارات', labelEn: 'Customer Leads', icon: MessageSquare, count: consultations.length },
+            { id: 'consultations', labelAr: 'الطلبات والاستشارات', labelEn: 'Customer Leads', icon: MessageSquare, count: consultations.length },
+            { id: 'content', labelAr: 'تعديل نصوص وأقسام الموقع', labelEn: 'Site Content & Sections', icon: Sliders, count: null },
+            { id: 'newsletter', labelAr: 'النشرة البريدية', labelEn: 'Newsletter', icon: Mail, count: subscribers.length },
+            { id: 'media', labelAr: 'رفع الصور والملفات', labelEn: 'Media & Uploads', icon: ImageIcon, count: mediaItems.length },
+            { id: 'seo', labelAr: 'السيو والأرشفة الفورية', labelEn: 'SEO & Indexing', icon: Globe, count: null },
+            { id: 'analytics', labelAr: 'الزيارات اللحظية', labelEn: 'Live Traffic', icon: Activity, count: analyticsVisits.length },
             { id: 'properties', labelAr: 'العقارات والوحدات', labelEn: 'Properties', icon: Building2, count: properties.length },
             { id: 'projects', labelAr: 'المشاريع الإنشائية', labelEn: 'Projects', icon: HardHat, count: projects.length },
             { id: 'services', labelAr: 'الخدمات والتكييف', labelEn: 'Services', icon: Fan, count: services.length },
@@ -629,8 +684,52 @@ export default function AdminDashboardPage() {
                 <h3 className="text-base font-black">{isAr ? 'إجراءات سريعة لإدارة المحتوى' : 'Quick Actions'}</h3>
                 <div className="space-y-2.5">
                   <button
+                    onClick={() => setActiveTab('content')}
+                    className="w-full p-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold flex items-center justify-between cursor-pointer shadow-md"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Sliders className="w-4 h-4" />
+                      {isAr ? 'تعديل نصوص وأسماء الأقسام' : 'Edit Section Names & Texts'}
+                    </span>
+                    <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded">تحرير</span>
+                  </button>
+
+                  <button
+                    onClick={() => setActiveTab('media')}
+                    className="w-full p-3 rounded-2xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold flex items-center justify-between cursor-pointer shadow-md"
+                  >
+                    <span className="flex items-center gap-2">
+                      <ImageIcon className="w-4 h-4" />
+                      {isAr ? 'رفع الصور والمخططات والملفات' : 'Upload Media & Blueprints'}
+                    </span>
+                    <Plus className="w-4 h-4" />
+                  </button>
+
+                  <button
+                    onClick={() => setActiveTab('seo')}
+                    className="w-full p-3 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold flex items-center justify-between cursor-pointer shadow-md"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Globe className="w-4 h-4" />
+                      {isAr ? 'إرسال الأرشفة الفورية لمحركات البحث' : 'Instant Search Engine Indexing'}
+                    </span>
+                    <Radio className="w-3.5 h-3.5 animate-pulse" />
+                  </button>
+
+                  <button
+                    onClick={() => setActiveTab('newsletter')}
+                    className="w-full p-3 rounded-2xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold flex items-center justify-between cursor-pointer shadow-md"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Mail className="w-4 h-4" />
+                      {isAr ? 'مشتركي النشرة البريدية والعملاء' : 'Newsletter Subscribers'}
+                    </span>
+                    <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded font-mono">{subscribers.length}</span>
+                  </button>
+
+                  <button
                     onClick={() => { setPropertyModalOpen(true); setActiveTab('properties'); }}
-                    className="w-full p-3.5 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center justify-between cursor-pointer"
+                    className="w-full p-3 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center justify-between cursor-pointer"
                   >
                     <span className="flex items-center gap-2">
                       <Building2 className="w-4 h-4" />
@@ -641,7 +740,7 @@ export default function AdminDashboardPage() {
 
                   <button
                     onClick={() => { setProjectModalOpen(true); setActiveTab('projects'); }}
-                    className="w-full p-3.5 rounded-2xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold flex items-center justify-between cursor-pointer"
+                    className="w-full p-3 rounded-2xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold flex items-center justify-between cursor-pointer"
                   >
                     <span className="flex items-center gap-2">
                       <HardHat className="w-4 h-4" />
@@ -650,21 +749,11 @@ export default function AdminDashboardPage() {
                     <Plus className="w-4 h-4" />
                   </button>
 
-                  <button
-                    onClick={() => { setArticleModalOpen(true); setActiveTab('articles'); }}
-                    className="w-full p-3.5 rounded-2xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold flex items-center justify-between cursor-pointer"
-                  >
-                    <span className="flex items-center gap-2">
-                      <FileText className="w-4 h-4" />
-                      {isAr ? 'نشر مقال أو تقرير سوقي' : 'Publish Market Report'}
-                    </span>
-                    <Plus className="w-4 h-4" />
-                  </button>
-
                   <div className="pt-3 border-t border-gray-500/15 text-xs opacity-75 space-y-1">
-                    <p className="font-bold">{isAr ? 'حالة قاعدة بيانات Firebase:' : 'Firebase Status:'}</p>
-                    <p className="text-emerald-500 font-mono text-[11px]">✓ Firestore Connected: ai-studio-newrealestate</p>
-                    <p className="text-emerald-500 font-mono text-[11px]">✓ Auth Rules Deployed & Enforced</p>
+                    <p className="font-bold">{isAr ? 'حالة قاعدة بيانات Firebase المتزامنة:' : 'Firebase Live Sync Status:'}</p>
+                    <p className="text-emerald-500 font-mono text-[11px]">✓ Firestore DB: ai-studio-newrealestate</p>
+                    <p className="text-emerald-500 font-mono text-[11px]">✓ Security Rules: Synchronous & Deployed</p>
+                    <p className="text-emerald-500 font-mono text-[11px]">✓ Live Visitors Stream: Active ({analyticsVisits.length} recorded)</p>
                   </div>
                 </div>
               </div>
@@ -795,7 +884,54 @@ export default function AdminDashboardPage() {
           </div>
         )}
 
-        {/* TAB 3: PROPERTIES MANAGEMENT */}
+        {/* TAB 3: SITE CONTENT & SECTIONS EDITOR */}
+        {activeTab === 'content' && (
+          <SiteContentEditor
+            settings={siteSettings}
+            onSave={handleSaveSiteSettings}
+            isDark={isDark}
+            isAr={isAr}
+          />
+        )}
+
+        {/* TAB 4: NEWSLETTER SUBSCRIBERS */}
+        {activeTab === 'newsletter' && (
+          <NewsletterManager
+            subscribers={subscribers}
+            isDark={isDark}
+            isAr={isAr}
+          />
+        )}
+
+        {/* TAB 5: MEDIA & FILE UPLOAD CENTER */}
+        {activeTab === 'media' && (
+          <MediaLibraryModal
+            media={mediaItems}
+            isDark={isDark}
+            isAr={isAr}
+          />
+        )}
+
+        {/* TAB 6: ADVANCED SEO & INSTANT INDEXING */}
+        {activeTab === 'seo' && (
+          <SeoManager
+            settings={siteSettings}
+            onSave={handleSaveSiteSettings}
+            isDark={isDark}
+            isAr={isAr}
+          />
+        )}
+
+        {/* TAB 7: LIVE ANALYTICS & VISITS LOG */}
+        {activeTab === 'analytics' && (
+          <RealtimeAnalyticsView
+            visits={analyticsVisits}
+            isDark={isDark}
+            isAr={isAr}
+          />
+        )}
+
+        {/* TAB 8: PROPERTIES MANAGEMENT */}
         {activeTab === 'properties' && (
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">

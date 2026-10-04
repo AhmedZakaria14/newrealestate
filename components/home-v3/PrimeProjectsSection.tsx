@@ -15,9 +15,11 @@ import {
 } from 'lucide-react';
 import { referenceProjects } from '@/data/reference-data';
 import ConsultationModal from '@/components/ConsultationModal';
+import { useSiteContent } from '@/lib/site-content-context';
 
 export default function PrimeProjectsSection() {
   const { language, theme, direction } = useLanguageTheme();
+  const { settings } = useSiteContent();
   const [consultationOpen, setConsultationOpen] = useState(false);
   const isDark = theme === 'dark';
   const isAr = language === 'ar';
@@ -37,12 +39,14 @@ export default function PrimeProjectsSection() {
               {isAr ? 'مشاريع كبرى قيد الإنشاء' : 'Master Developments'}
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
-              {isAr ? 'المشاريع التطويرية والمجتمعات الكبرى' : 'Master Developments & New Launches'}
+              {isAr
+                ? (settings.sectionTitles?.projectsAr || 'المشاريع الاستراتيجية والتطويرية')
+                : (settings.sectionTitles?.projectsEn || 'Strategic & Master Projects')}
             </h2>
             <p className="text-sm sm:text-base opacity-80 leading-relaxed">
               {isAr
-                ? 'مشاريع استثنائية قيد الإنشاء وفرص استثمارية مباشرة من كبرى شركات التطوير، مع خطط سداد ميسرة وعوائد استثمارية واعدة.'
-                : 'Exclusive off-plan releases and visionary master developments from premier real estate partners, offering advantageous payment structures and high capital growth.'}
+                ? (settings.sectionTitles?.projectsSubtitleAr || 'مشاريع استثنائية قيد الإنشاء وفرص استثمارية مباشرة من كبرى شركات التطوير، مع خطط سداد ميسرة وعوائد استثمارية واعدة.')
+                : (settings.sectionTitles?.projectsSubtitleEn || 'Exclusive off-plan releases and visionary master developments from premier real estate partners, offering advantageous payment structures and high capital growth.')}
             </p>
           </div>
 
@@ -70,7 +74,7 @@ export default function PrimeProjectsSection() {
             return (
               <div
                 key={proj.id}
-                className={`group rounded-3xl overflow-hidden border shadow-xl flex flex-col justify-between transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:-translate-y-1.5 ${
+                className={`group rounded-3xl overflow-hidden border shadow-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 ${
                   isDark
                     ? 'bg-[#080d2b] border-white/10 hover:border-blue-500/50 shadow-black/40'
                     : 'bg-white border-slate-200 hover:border-blue-500 shadow-slate-200/50'

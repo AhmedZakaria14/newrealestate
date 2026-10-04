@@ -2,13 +2,15 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { LanguageThemeProvider } from '@/lib/language-theme-context';
 import { AuthProvider } from '@/lib/auth-context';
+import { SiteContentProvider } from '@/lib/site-content-context';
 import SmoothScrollProvider from '@/components/SmoothScrollProvider';
-import PageTransitionLoader from '@/components/PageTransitionLoader';
+import AnalyticsTracker from '@/components/AnalyticsTracker';
+import SeoJsonLd from '@/components/SeoJsonLd';
 
 export const metadata: Metadata = {
-  title: 'HARD Real Estate | Premier Marketing & Brokerage',
+  title: 'مجموعة هارد | المقاولات العامة والتطوير الإنشائي والعقاري - HARD Group',
   description:
-    'HARD Real Estate - Premier bilingual real estate marketing and brokerage platform in English and Arabic. Luxury properties, master projects, certified advisory, and marketing excellence.',
+    'مجموعة هارد للمقاولات العامة والتطوير الإنشائي والوساطة العقارية المرخصة (فال 1200028472). مقاولات عامة فئة أولى، تنفيذ أبراج ومجمعات سكنية وتجارية وفق كود البناء السعودي (SBC)، وهندسة تشغيل المرافق وعقود AMC.',
   keywords:
     'مقاولات عامة, تطوير إنشائي, كود البناء السعودي, SBC, وساطة عقارية, رخصة فال 1200028472, تسويق عقاري, تكييف مركزي, عقود صيانة AMC, مجموعة هارد, هارد للمقاولات, الخُبر, الرياض, HARD Group, HARD Construction, HARD Real Estate',
   authors: [{ name: 'HARD Group - مجموعة هارد' }],
@@ -16,9 +18,9 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'HARD Real Estate | Premier Marketing & Brokerage',
+    title: 'مجموعة هارد | المقاولات العامة والتطوير الإنشائي والعقاري',
     description:
-      'HARD Real Estate - Premier bilingual real estate marketing and brokerage platform in English and Arabic. Luxury properties, master projects, certified advisory, and marketing excellence.',
+      'مقاولات عامة فئة أولى لتنفيذ الأبراج والمجمعات الذكية وفق كود البناء السعودي (SBC)، مع منظومة متكاملة للتطوير العقاري، الوساطة المعتمدة (فال 1200028472)، وتشغيل المرافق.',
     url: 'https://ai-realestate-phi-ecru.vercel.app/',
     siteName: 'مجموعة هارد - HARD Group',
     images: [
@@ -26,7 +28,7 @@ export const metadata: Metadata = {
         url: 'https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=1200&q=80',
         width: 1200,
         height: 630,
-        alt: 'HARD Real Estate | Premier Marketing & Brokerage',
+        alt: 'مجموعة هارد للمقاولات العامة والتطوير الإنشائي والعقاري',
       },
     ],
     locale: 'ar_SA',
@@ -34,9 +36,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'HARD Real Estate | Premier Marketing & Brokerage',
+    title: 'مجموعة هارد | المقاولات العامة والتطوير الإنشائي والعقاري',
     description:
-      'HARD Real Estate - Premier bilingual real estate marketing and brokerage platform in English and Arabic. Luxury properties, master projects, certified advisory, and marketing excellence.',
+      'مقاولات عامة فئة أولى لتنفيذ الأبراج والمجمعات الذكية وفق كود البناء السعودي (SBC)، مع منظومة متكاملة للتطوير العقاري وتشغيل المرافق.',
     images: ['https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=1200&q=80'],
   },
   icons: {
@@ -54,10 +56,13 @@ export default function RootLayout({
       <body className="antialiased selection:bg-blue-600 selection:text-white" suppressHydrationWarning>
         <LanguageThemeProvider>
           <AuthProvider>
-            <SmoothScrollProvider>
-              <PageTransitionLoader />
-              {children}
-            </SmoothScrollProvider>
+            <SiteContentProvider>
+              <AnalyticsTracker />
+              <SeoJsonLd />
+              <SmoothScrollProvider>
+                {children}
+              </SmoothScrollProvider>
+            </SiteContentProvider>
           </AuthProvider>
         </LanguageThemeProvider>
       </body>

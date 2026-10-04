@@ -94,5 +94,25 @@ service cloud.firestore {
       allow read: if isSignedIn();
       allow write: if isAdmin();
     }
+
+    // 9. Site Settings Collection (Public read for dynamic texts & sections, staff-managed)
+    match /site_settings/{settingId} {
+      allow read: if true;
+      allow create, update, delete: if isStaff();
+    }
+
+    // 10. Newsletter Subscribers Collection (Public subscription creation, staff management)
+    match /newsletter_subscribers/{subscriberId} {
+      allow create: if isValidId(subscriberId) &&
+        incoming().email is string && incoming().email.size() > 3 && incoming().email.size() <= 150;
+      allow read, update, delete: if isStaff();
+    }
+
+    // 11. Analytics Visits Collection (Public anonymous visit logging, staff analytics read)
+    match /analytics_visits/{visitId} {
+      allow create: if isValidId(visitId) &&
+        incoming().path is string && incoming().path.size() <= 250;
+      allow read, update, delete: if isStaff();
+    }
   }
 }

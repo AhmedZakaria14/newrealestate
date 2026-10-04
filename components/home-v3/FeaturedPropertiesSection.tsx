@@ -17,9 +17,11 @@ import {
   Calendar,
 } from 'lucide-react';
 import { referenceProperties, ReferenceProperty } from '@/data/reference-data';
+import { useSiteContent } from '@/lib/site-content-context';
 
 export default function FeaturedPropertiesSection() {
   const { language, theme, direction } = useLanguageTheme();
+  const { settings } = useSiteContent();
   const [activeTab, setActiveTab] = useState<string>('all');
   const isDark = theme === 'dark';
   const isAr = language === 'ar';
@@ -56,12 +58,14 @@ export default function FeaturedPropertiesSection() {
               {isAr ? 'عقارات حصرية معتمدة' : 'Exclusive Portfolio'}
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
-              {isAr ? 'فرص عقارية مختارة وحصرية' : 'Featured Real Estate Opportunities'}
+              {isAr
+                ? (settings.sectionTitles?.propertiesAr || 'فرص استثمارية وعقارات مميزة')
+                : (settings.sectionTitles?.propertiesEn || 'Featured Investment Properties')}
             </h2>
             <p className="text-sm sm:text-base opacity-80 leading-relaxed">
               {isAr
-                ? 'مجموعة منتقاة من الفلل الفارهة، والشقق المطلة على البحر، والمباني التجارية ذات العوائد المجزية الجاهزة للتملك.'
-                : 'Hand-picked luxury residences, premium waterfront developments, and high-yield commercial properties ready for immediate acquisition.'}
+                ? (settings.sectionTitles?.propertiesSubtitleAr || 'مجموعة منتقاة من الفلل الفارهة، والشقق المطلة على البحر، والمباني التجارية ذات العوائد المجزية الجاهزة للتملك.')
+                : (settings.sectionTitles?.propertiesSubtitleEn || 'Hand-picked luxury residences, premium waterfront developments, and high-yield commercial properties ready for immediate acquisition.')}
             </p>
           </div>
 
@@ -102,7 +106,7 @@ export default function FeaturedPropertiesSection() {
             return (
               <div
                 key={prop.id}
-                className={`group rounded-3xl overflow-hidden border shadow-xl flex flex-col justify-between transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:-translate-y-1.5 ${
+                className={`group rounded-3xl overflow-hidden border shadow-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 ${
                   isDark
                     ? 'bg-[#080d2b] border-white/10 hover:border-blue-500/50 shadow-black/40'
                     : 'bg-white border-slate-200 hover:border-blue-500 shadow-slate-200/50'
