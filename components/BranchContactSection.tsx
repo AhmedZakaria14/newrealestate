@@ -26,34 +26,36 @@ export default function BranchContactSection() {
 
   const branches = {
     khobar: {
-      nameAr: 'المقر الرئيسي — مدينة الخُبر والمنطقة الشرقية',
-      nameEn: 'Headquarters — Al Khobar & Eastern Province',
-      addressAr: 'طريق الملك فيصل الساحلي، حي اليرموك، الخُبر، المملكة العربية السعودية',
-      addressEn: 'King Faisal Coastal Road, Al Yarmouk District, Al Khobar, Saudi Arabia',
-      phone: '+966138004273',
-      phoneDisplay: '+966 13 800 4273',
+      nameAr: 'المقر الرئيسي — حي الريان، الدمام (المنطقة الشرقية)',
+      nameEn: 'Headquarters — Al-Rayyan, Dammam (Eastern Province)',
+      addressAr: '4737 شارع 18 - حي الريان وحدة رقم: 1، الدمام 32256 - 8405، المملكة العربية السعودية',
+      addressEn: '4737 18th - Al-Rayyan Unit No.: 1, Dammam 32256 - 8405, Kingdom of Saudi Arabia',
+      phone: '+966138444663',
+      phoneDisplay: '+966 13 844 4663',
+      fax: '+966 13 844 4663 Ext. 108',
       whatsapp: '+966556125711',
       whatsappDisplay: '+966 55 612 5711',
-      email: 'khobar@hardgroup.sa',
-      hoursAr: 'الأحد - الخميس: 8:00 ص – 6:00 م (طوارئ الصيانة AMC 24/7)',
-      hoursEn: 'Sun - Thu: 8:00 AM – 6:00 PM (Emergency AMC 24/7)',
-      coverageAr: 'الخُبر، الدمام، الظهران، الجبيل، الأحساء، وكافة مدن المنطقة الشرقية',
-      coverageEn: 'Al Khobar, Dammam, Dhahran, Jubail, Al Ahsa, and Eastern Province',
+      email: 'info@hardgp.com',
+      hoursAr: 'الأحد - الخميس: 8:00 ص – 6:00 م (طوارئ المشاريع والصيانة 24/7)',
+      hoursEn: 'Sun - Thu: 8:00 AM – 6:00 PM (Emergency Contracting & AMC 24/7)',
+      coverageAr: 'الدمام، الخُبر، الظهران، الجبيل، الأحساء، وكافة محافظات المنطقة الشرقية',
+      coverageEn: 'Dammam, Al Khobar, Dhahran, Jubail, Al Ahsa, and Eastern Province',
     },
     riyadh: {
-      nameAr: 'الفرع الإقليمي — العاصمة الرياض',
-      nameEn: 'Regional Branch — Riyadh Capital City',
-      addressAr: 'طريق الملك فهد، حي الملقا / برج الأعمال، الرياض، المملكة العربية السعودية',
-      addressEn: 'King Fahd Road, Al Malqa District, Riyadh, Saudi Arabia',
-      phone: '+966114008291',
-      phoneDisplay: '+966 11 400 8291',
+      nameAr: 'خدمات التوسع الإقليمي — المنطقتان الوسطى والغربية',
+      nameEn: 'Regional Expansion — Central & Western Provinces',
+      addressAr: 'مشاريع وخدمات التوسع: الرياض والمنطقة الوسطى، وجدة والمنطقة الغربية',
+      addressEn: 'Expansion Projects: Central Province (Riyadh) and Western Province (Jeddah)',
+      phone: '+966138444663',
+      phoneDisplay: '+966 13 844 4663',
+      fax: '+966 13 844 4663 Ext. 108',
       whatsapp: '+966556125711',
       whatsappDisplay: '+966 55 612 5711',
-      email: 'riyadh@hardgroup.sa',
-      hoursAr: 'الأحد - الخميس: 8:30 ص – 6:30 م (طوارئ المشاريع 24/7)',
-      hoursEn: 'Sun - Thu: 8:30 AM – 6:30 PM (Emergency 24/7)',
-      coverageAr: 'مدينة الرياض، المجمعات الذكية، والمناطق اللوجستية المحيطة',
-      coverageEn: 'Riyadh city, smart compounds, and surrounding logistics clusters',
+      email: 'info@hardgp.com',
+      hoursAr: 'الأحد - الخميس: 8:00 ص – 6:00 م (مكتب التنسيق المركزي)',
+      hoursEn: 'Sun - Thu: 8:00 AM – 6:00 PM (Central Coordination Desk)',
+      coverageAr: 'تغطية مشاريع الإنشاءات والتطوير العقاري بالمنطقة الوسطى (الرياض) والمنطقة الغربية',
+      coverageEn: 'Coverage for Construction & Real Estate Development in Central & Western Provinces',
     },
   };
 
@@ -78,8 +80,8 @@ export default function BranchContactSection() {
           </h2>
           <p className="text-sm sm:text-base opacity-75 max-w-2xl mx-auto leading-relaxed">
             {isAr
-              ? 'تفضل بزيارة مقراتنا في المنطقة الشرقية والرياض، أو تواصل فورياً مع فريق المهندسين ومستشاري الوساطة لحجز استشارة هندسية ميدانية.'
-              : 'Visit our regional headquarters in Al Khobar and Riyadh, or connect directly with our engineering and brokerage advisors.'}
+              ? 'تفضل بزيارة مقرنا الرئيسي بحي الريان بالدمام، أو تواصل مباشرة مع فريق المهندسين وإدارة المشاريع لحجز استشارة هندسية أو طلب خدمات المقاولات والتطوير العقاري.'
+              : 'Visit our headquarters in Al-Rayyan, Dammam, or connect directly with our engineering and project management teams for contracting and property development.'}
           </p>
         </div>
 
@@ -97,7 +99,7 @@ export default function BranchContactSection() {
                   : 'text-slate-700 hover:text-slate-950'
               }`}
             >
-              {isAr ? 'مقر الخُبر (الرئيسي)' : 'Al Khobar HQ'}
+              {isAr ? 'المقر الرئيسي (الدمام)' : 'Dammam HQ'}
             </button>
             <button
               type="button"
@@ -110,7 +112,7 @@ export default function BranchContactSection() {
                   : 'text-slate-700 hover:text-slate-950'
               }`}
             >
-              {isAr ? 'مكتب الرياض (العاصمة)' : 'Riyadh Branch'}
+              {isAr ? 'المنطقة الوسطى والغربية' : 'Central & Western'}
             </button>
           </div>
         </div>
@@ -143,6 +145,25 @@ export default function BranchContactSection() {
                   <div>
                     <span className="font-bold block mb-0.5">{isAr ? 'العنوان والموقع:' : 'Physical Address:'}</span>
                     <p className="opacity-75">{isAr ? branch.addressAr : branch.addressEn}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center shrink-0 mt-0.5">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <div className="space-y-1">
+                    <span className="font-bold block mb-0.5">{isAr ? 'أرقام الاتصال والفاكس:' : 'Telephone, Fax & Mobile:'}</span>
+                    <p className="opacity-75">
+                      <span className="font-medium">{isAr ? 'هاتف: ' : 'Tel: '}</span>+966 13 844 4663
+                      <span className="mx-2 opacity-50">|</span>
+                      <span className="font-medium">{isAr ? 'فاكس: ' : 'FAX: '}</span>+966 13 844 4663 Ext. 108
+                    </p>
+                    <p className="opacity-75">
+                      <span className="font-medium">{isAr ? 'جوال: ' : 'Mobile: '}</span>+966 55 612 5711
+                      <span className="mx-2 opacity-50">|</span>
+                      <span className="font-medium">{isAr ? 'بريد: ' : 'E-mail: '}</span>info@hardgp.com
+                    </p>
                   </div>
                 </div>
 

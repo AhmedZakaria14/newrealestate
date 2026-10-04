@@ -55,485 +55,329 @@ export interface RealEstateListingItem {
 export const realEstateListings: RealEstateListingItem[] = [
   {
     id: 'prop-1',
-    slug: 'the-sky-crest-penthouse-khobar-corniche',
-    titleAr: 'بنتهاوس ذا سكاي كريست مع إطلالات بانورامية على كورنيش الخُبر والخليج',
-    titleEn: 'The Sky Crest Penthouse with Panoramic Arabian Gulf Views',
-    city: 'khobar',
-    cityNameAr: 'المنطقة الشرقية – كورنيش الخُبر',
-    cityNameEn: 'Eastern Province – Al Khobar Corniche',
-    districtAr: 'كورنيش الخُبر - طريق الأمير تركي',
-    districtEn: 'Al Khobar Corniche - Prince Turki St',
-    type: 'penthouse',
-    typeNameAr: 'بنتهاوس فاخر معلق',
-    typeNameEn: 'Ultra-Prime Penthouse',
-    status: 'sale',
-    statusNameAr: 'متاح للبيع الفوري',
-    statusNameEn: 'Available for Sale',
-    price: '25,687,500 ر.س',
-    priceRaw: 25687500,
-    priceCurrency: 'SAR',
-    area: '729 م² (7,850 قدم²)',
-    areaRaw: 729,
-    beds: '5 أجنحة ماستر',
-    baths: '6 حمامات رخامية',
-    parking: '4 مواقف خاصة بالقبو',
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80'
-    ],
-    badgeAr: 'مرخص من الهيئة العامة للعقار (فال)',
-    badgeEn: 'REGA / FAL Certified',
-    descriptionAr:
-      'تحفة معمارية في قمة كورنيش الخُبر تتميز بزجاج مزدوج الارتفاع من الأرض حتى السقف، ومسبح إنفينيتي خاص، وتشطيبات من الرخام الإيطالي الفاخر، ومصعد خاص مباشر بإطلالة ساحلية مفتوحة.',
-    descriptionEn:
-      'An architectural masterpiece atop Al Khobar Corniche featuring double-height floor-to-ceiling glass, private infinity pool, Italian marble finishes, bespoke designer kitchen, and private direct elevator lobby.',
-    longOverviewAr: [
-      'يمثل بنتهاوس ذا سكاي كريست ذروة الفخامة المعمارية على كورنيش مدينة الخُبر، حيث يوفر إطلالات بانورامية مفتوحة بنسبة 360 درجة على مياه الخليج العربي وأفق المدينة الساحلي.',
-      'صُممت المساحات الداخلية بأسقف شاهقة الارتفاع وتشطيبات رخامية إيطالية نادرة، مع مسبح خاص معلق وجناح سبا متكامل وتراس مفتوح للاسترخاء والضيافة.',
-      'العقار مرخص وموثق رسمياً عبر الهيئة العامة للعقار برخصة فال 1200028472 وبصك إلكتروني مستقل جاهز للإفراغ الفوري عبر البورصة العقارية.'
-    ],
-    longOverviewEn: [
-      'The Sky Crest Penthouse represents the absolute pinnacle of luxury along Al Khobar Corniche, commanding unobstructed 360-degree vistas across the Arabian Gulf horizon.',
-      'Features double-height gallery living spaces, imported Italian Calacatta marble, private heated cantilevered infinity lap pool, and a dedicated wellness spa suite.',
-      'Fully authenticated by REGA under FAL License 1200028472 with an unencumbered electronic title deed ready for instant closing.'
-    ],
-    featuresAr: [
-      'مسبح إنفينيتي خاص معلق مواجه للبحر',
-      'مصعد خاص مباشر يفتح داخل البنتهاوس',
-      'خدمات استقبال وحراسة وكونسيرج 24/7',
-      'نظام أتمتة وتحكم منزلي ذكي متكامل',
-      'سبا وساونا وجاكوزي خاص',
-      'مجلس استقبال تنفيذي بأسقف مضاعفة',
-      '4 مواقف سيارات مغطاة بالقبو',
-      'صك ملكية إلكتروني رسمي مرخص فال 1200028472'
-    ],
-    featuresEn: [
-      'Private Cantilevered Sea-Facing Infinity Pool',
-      'Private Keycard Direct Elevator Lobby',
-      '24/7 Concierge, Security & Valet Services',
-      'Full Crestron Integrated Smart Automation',
-      'Private Spa, Sauna & Hydrotherapy Jacuzzi',
-      'Grand Executive Double-Height Reception Salon',
-      '4 Dedicated Covered Basement Parking Bays',
-      'Official REGA FAL License No. 1200028472'
-    ],
-    specs: [
-      { labelAr: 'المساحة المبنية', labelEn: 'Built-up Area', valueAr: '729 م²', valueEn: '729 m²' },
-      { labelAr: 'المساحة بالقدم', labelEn: 'Area (Sq Ft)', valueAr: '7,850 قدم²', valueEn: '7,850 sq ft' },
-      { labelAr: 'سنة البناء', labelEn: 'Year Built', valueAr: '2025 حديث', valueEn: '2025 Brand New' },
-      { labelAr: 'الفرش والتأثيث', labelEn: 'Furnishing', valueAr: 'مفروشة بالكامل (تصميم إيطالي فاخر)', valueEn: 'Luxury Italian Furnished' },
-      { labelAr: 'الإطلالة', labelEn: 'View Type', valueAr: 'إطلالة بحرية كاملة على الخليج والكورنيش', valueEn: 'Full Arabian Gulf Panorama' },
-      { labelAr: 'رخصة فال', labelEn: 'FAL License', valueAr: '1200028472', valueEn: '1200028472' }
-    ],
-    falLicense: '1200028472',
-    titleDeedNumber: '310102948271',
-    advertisementNumber: '7200192847',
-    coords: { lat: 26.2886, lng: 50.2185 },
-    relatedSlugs: ['the-royal-palm-coastal-palace-villa', 'the-shobaily-bay-royal-villa', 'al-malqa-elite-contemporary-villa']
-  },
-  {
-    id: 'prop-2',
-    slug: 'the-royal-palm-coastal-palace-villa',
-    titleAr: 'فيلا قصر النخيل الملكية الفاخرة على واجهة الدانة',
-    titleEn: 'The Royal Palm Coastal Palace Villa',
-    city: 'khobar',
-    cityNameAr: 'المنطقة الشرقية – الخُبر (حي الدانة)',
-    cityNameEn: 'Eastern Province – Al Khobar (Al Dana)',
-    districtAr: 'واجهة الدانة البحرية - طريق الكورنيش الجنوبي',
-    districtEn: 'Al Dana Waterfront - South Corniche',
+    slug: 'hard-al-rayyan-residential-villa-dammam',
+    titleAr: 'فيلا هارد الفاخرة بحي الريان — الدمام',
+    titleEn: 'HARD Al-Rayyan Luxury Modern Villa Development',
+    city: 'dammam',
+    cityNameAr: 'المنطقة الشرقية – الدمام',
+    cityNameEn: 'Eastern Province – Dammam',
+    districtAr: 'حي الريان - شارع 18',
+    districtEn: 'Al-Rayyan District - 18th St',
     type: 'villa',
-    typeNameAr: 'قصر ساحلي ملكي',
-    typeNameEn: 'Ultra-Luxury Coastal Palace',
+    typeNameAr: 'فيلا سكنية عصرية',
+    typeNameEn: 'Contemporary Luxury Villa',
     status: 'sale',
-    statusNameAr: 'صفقة حصرية للتملك',
-    statusNameEn: 'Trophy Acquisition',
-    price: '33,412,500 ر.س',
-    priceRaw: 33412500,
+    statusNameAr: 'متاح للتملك والاستثمار',
+    statusNameEn: 'Available for Acquisition',
+    price: '2,850,000 ر.س',
+    priceRaw: 2850000,
     priceCurrency: 'SAR',
-    area: '1,320 م² (14,200 قدم²)',
-    areaRaw: 1320,
-    beds: '7 أجنحة ملكية',
-    baths: '9 حمامات ماستر',
-    parking: '6 مواقف سيارات خاصة',
-    image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=80',
+    area: '500 م² (5,380 قدم²)',
+    areaRaw: 500,
+    beds: '5 أجنحة نوم',
+    baths: '6 دورات مياه',
+    parking: 'كراج خاص يتسع لسيارتين',
+    image: '/images/hardgp/por4-big.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80'
+      '/images/hardgp/por4-big.jpg',
+      '/images/hardgp/por9-big.jpg',
+      '/images/hardgp/por10-big.jpg',
+      '/images/hardgp/por11-big.jpg'
     ],
-    badgeAr: 'صك ملكية إلكتروني موثق',
-    badgeEn: 'Verified Digital Title Deed',
+    badgeAr: 'تطوير مؤسسة هارد للمقاولات العامة',
+    badgeEn: 'HARD Group Real Estate Development',
     descriptionAr:
-      'قصر شاطئي ملكي استثنائي يمتد على مساحة شاسعة مع واجهة بحرية خاصة، يضم حدائق استوائية منسقة، مسابح متعددة، سينما منزلية خاصة، صالة بولينغ، ومرسى لليخوت.',
+      'فيلا سكنية عصرية بتصميم معماري مبتكر من تطوير مؤسسة هارد بحي الريان بالدمام. تم تشييدها باستخدام أنابيب العامرية الحرارية الألمانية بضمان 50 سنة، وتجهيزات تكييف مركزية معتمدة، وتشطيب كامل على المفتاح.',
     descriptionEn:
-      'An exceptional beachfront palatial residence set upon expansive private waterfront grounds. Highlights include private marina slip, cascading resort-style pools, private home cinema, bowling alley, and private wellness pavilions.',
+      'Modern residential villa architecture developed by HARD Establishment in Al-Rayyan district, Dammam. Built with German-engineered Al-Ameria thermal piping (50-year warranty), pioneer HVAC installations, and turnkey structural engineering.',
     longOverviewAr: [
-      'يقع قصر النخيل الملكي على واجهة الدانة البحرية بالخُبر، ويعد أحد أفخم القصور الخاصة في المنطقة الشرقية بمواصفات تضاهي المنتجعات العالمية فئة الخمس نجوم.',
-      'يضم القصر 7 أجنحة ملكية فسيحة، قاعات استقبال رسمية للضيوف بأسقف بارتفاع 7 أمتار، مطابخ احترافية مجهزة، ومركز صحي متكامل يضم حماماً مغربياً وساونا وجاكوزي.',
-      'مشيد وفق أعلى متطلبات كود البناء السعودي مع وثيقة تأمين إنشائي لمدة 10 سنوات وضمان شامل على الهيكل الخرساني والتشطيبات.'
+      'تجسد هذه الفيلا المعمارية بحي الريان بالدمام رؤية مؤسسة هارد في تقديم حلول سكنية متطورة تلبي تطلعات الأسر السعودية والشباب بتصميم يجمع بين الأصالة والحداثة.',
+      'تشتمل على تمديدات أنابيب العامرية الحرارية الألمانية الصنع في تركيا ذات الضمان لمدة 50 سنة، مع أنظمة تكييف مركزية متعاقد عليها مع كبرى الشركات (الزامل، دايكن، LG، ترين).',
+      'تتوفر تسهيلات تمويلية عبر اتفاقيات هارد الاستراتيجية مع بنوك الجزيرة، الرياض، وسامبا بهوامش ربح منخفضة للموظفين والمستثمرين.'
     ],
     longOverviewEn: [
-      'The Royal Palm Coastal Palace Villa is an iconic estate located along the prestigious Al Dana waterfront in Al Khobar, conceived to five-star international resort standards.',
-      'Features 7 palatial suites, formal 7-meter high reception salons, German professional chef kitchens, private cinema, and dedicated wellness hammam facilities.',
-      'Constructed strictly to Saudi Building Code guidelines backed by a 10-year comprehensive structural insurance guarantee.'
+      'This architectural villa in Al-Rayyan, Dammam embodies HARD Establishment vision of delivering modern, accessible housing solutions combining cultural elegance and contemporary lifestyle.',
+      'Fitted with German-engineered Al-Ameria thermal polypropylene piping carrying an unprecedented 50-year warranty, alongside certified central HVAC systems.',
+      'Eligible for preferential bank funding through HARD corporate partnership programs with AlJazira Bank, Riyad Bank, and Samba Bank.'
     ],
     featuresAr: [
-      'واجهة بحرية خاصة مع شاطئ رملي ومرسى قوارب',
-      'مسبحان (مسبح خارجي متدرج ومسبح داخلي مدفأ)',
-      'سينما منزلية احترافية معزولة صوتياً',
-      'صالة رياضية وسبا متكامل وحمام مغربي',
-      'أجنحة منفصلة للضيافة مع مدخل خاص',
-      'تكييف مركزي ذكي VRF من هارد لأنظمة التبريد',
-      'كراج خاص يتسع لـ 6 سيارات فارهة',
-      'مرخص رسمياً برخصة فال رقم 1200028472'
+      'شبكة أنابيب العامرية الحرارية بضمان 50 سنة',
+      'تكييف مركزي بشراكة مع رواد التكييف (ضمان 5 سنوات)',
+      'تسهيلات تمويلية بنكية عبر الجزيرة والرياض وسامبا',
+      'كراج خاص مغطى يتسع لسيارتين',
+      'أجنحة خاصة للضيافة وغرف للسائق والخدمات',
+      'إشراف هندسي ميداني وفحص كامل للجودة والسلامة'
     ],
     featuresEn: [
-      'Private Sand Beachfront with Exclusive Boat Marina',
-      'Dual Pools: Resort Infinity Pool + Heated Indoor Spa',
-      'Acoustically Treated 14-Seat Private Home Cinema',
-      'Fully Equipped Fitness Gym, Moroccan Hammam & Sauna',
-      'Independent VIP Guest House with Private Access',
-      'Hard Central VRF Multi-Zone Energy-Saving Climate Tech',
-      'Enclosed Garage for 6 Luxury Vehicles',
-      'Fully Licensed under REGA FAL No. 1200028472'
+      'Al-Ameria Thermal Polypropylene Piping (50-Yr Warranty)',
+      'Pioneer Central HVAC Integration (5-Yr Vendor Warranty)',
+      'Bank Funding Options via AlJazira, Riyad & Samba',
+      'Covered Private 2-Vehicle Garage',
+      'Dedicated Guest Majlis & Maid / Service Suites',
+      'Certified Quality Assurance & SBC Structural Inspection'
     ],
     specs: [
-      { labelAr: 'مساحة الأرض', labelEn: 'Plot Area', valueAr: '2,400 م²', valueEn: '2,400 m²' },
-      { labelAr: 'المساحة المبنية', labelEn: 'Built-up Area', valueAr: '1,320 م²', valueEn: '1,320 m²' },
-      { labelAr: 'الواجهة البحرية', labelEn: 'Waterfront Span', valueAr: '45 متراً على البحر مباشرة', valueEn: '45m Direct Shoreline' },
-      { labelAr: 'الضمان الإنشائي', labelEn: 'Warranty', valueAr: '10 سنوات تأمين العيوب الخفية', valueEn: '10 Years Insurance' },
-      { labelAr: 'الوثائق الرسمية', labelEn: 'Title Deed', valueAr: 'صك إلكتروني حر جاهز للإفراغ', valueEn: 'Clean Digital Title Deed' },
-      { labelAr: 'الترخيص العقاري', labelEn: 'Broker License', valueAr: 'رخصة فال 1200028472', valueEn: 'FAL #1200028472' }
-    ],
-    falLicense: '1200028472',
-    titleDeedNumber: '210998347102',
-    advertisementNumber: '7200192848',
-    coords: { lat: 26.2412, lng: 50.2114 },
-    relatedSlugs: ['the-sky-crest-penthouse-khobar-corniche', 'the-shobaily-bay-royal-villa', 'al-malqa-elite-contemporary-villa']
-  },
-  {
-    id: 'prop-3',
-    slug: 'al-malqa-elite-contemporary-villa',
-    titleAr: 'فيلا الملقا العصرية الفاخرة شمال الرياض',
-    titleEn: 'Al Malqa Elite Contemporary Villa',
-    city: 'riyadh',
-    cityNameAr: 'الرياض – حي الملقا',
-    cityNameEn: 'Riyadh – Al Malqa District',
-    districtAr: 'حي الملقا - قرب طريق الأمير تركي الأول',
-    districtEn: 'Al Malqa - Near Prince Turki I Rd',
-    type: 'villa',
-    typeNameAr: 'فيلا مودرن ذكية',
-    typeNameEn: 'Smart Modern Luxury Villa',
-    status: 'sale',
-    statusNameAr: 'متاح للبيع والتملك',
-    statusNameEn: 'Available for Purchase',
-    price: '14,850,000 ر.س',
-    priceRaw: 14850000,
-    priceCurrency: 'SAR',
-    area: '880 م² (9,470 قدم²)',
-    areaRaw: 880,
-    beds: '6 غرف ماستر',
-    baths: '8 حمامات مجهزة',
-    parking: '3 مواقف سيارات خاصة',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80'
-    ],
-    badgeAr: 'كود البناء السعودي وتأمين ملاذ',
-    badgeEn: 'SBC Certified & 10-Yr Warranty',
-    descriptionAr:
-      'فيلا عصرية استثنائية في أرقى مربعات حي الملقا شمال الرياض، تتميز بتصميم معماري انسيابي، مصعد بانورامي، شلالات مائية داخلية، وفناء زجاجي مفتوح يدمج الطبيعة بداخل المنزل.',
-    descriptionEn:
-      'A bespoke architectural modern villa in Riyadh’s most coveted Al Malqa enclave. Highlights glass courtyards, cascading indoor water features, smart elevator, and rooftop entertainment lounge.',
-    longOverviewAr: [
-      'تقع هذه الفيلا في موقع استراتيجي نادر بحي الملقا بالقرب من مركز الملك عبد الله المالي (KAFD) وبوليفارد الرياض، مما يجعلها الخيار الأمثل للعائلات الباحثة عن الرفاهية والموقع الاستراتيجي.',
-      'تتميز بتصميم يدمج الإضاءة الطبيعية مع واجهات زجاجية ممتدة عازلة للحرارة، وحديقة خلفية بمسبح خاص مجهز بأنظمة تدفئة وإنارة ليلية متطورة.',
-      'جميع مراحل التنفيذ والخرسانات معتمدة وموثقة بتقارير هندسية مع وثيقة تأمين ملاذ ضد العيوب الخفية لمدة 10 سنوات.'
-    ],
-    longOverviewEn: [
-      'Ideally located in prestigious Al Malqa, minutes from King Abdullah Financial District (KAFD) and Riyadh Boulevard.',
-      'Features inner landscaped atrium, floor-to-ceiling thermally isolated glazing, private heated pool, and panoramic glass elevator connecting all levels.',
-      'Full engineering audit compliance verified under the Saudi Building Code (SBC) with 10-year comprehensive structural insurance.'
-    ],
-    featuresAr: [
-      'مسبح خارجي مدفأ مع شلال جداري وجلسة شواء',
-      'مصعد زجاجي بانورامي يخدم كافة الأدوار',
-      'تكييف مخفي مركزي VRF فائق الهدوء وموفر للطاقة',
-      'أنظمة تحكم ذكي بالإضاءة والمكيفات والستائر والكاميرات',
-      'أجنحة نوم ماستر مجهزة بغرف ملابس إيطالية مخصصة',
-      'مجلس رجال فخم مع مدخل مستقل ومغاسل رخامية',
-      'تأسيس شواحن سيارات كهربائية سريعة في الكراج',
-      'صك ملكية إلكتروني رسمي مرخص فال 1200028472'
-    ],
-    featuresEn: [
-      'Heated Outdoor Swimming Pool with Water Cascade',
-      'Panoramic Hydraulic Glass Elevator Serving All Floors',
-      'Concealed Inverter VRF Ultra-Quiet Climate System',
-      'Smart Automation for Climate, Lighting, Shades & CCTV',
-      'Ensuite Master Bedrooms with Bespoke Italian Closets',
-      'Formal Grand Majlis Salon with Private Guest Entry',
-      'Pre-Wired Electric Vehicle (EV) Rapid Charger Bay',
-      'Clean Digital Title Deed & Official FAL No. 1200028472'
-    ],
-    specs: [
-      { labelAr: 'مساحة الأرض', labelEn: 'Land Area', valueAr: '650 م²', valueEn: '650 m²' },
-      { labelAr: 'مسطح البناء', labelEn: 'Built-up Area', valueAr: '880 م²', valueEn: '880 m²' },
-      { labelAr: 'عرض الشارع', labelEn: 'Street Width', valueAr: 'شارع 20م واجهة شمالية', valueEn: '20m North-Facing' },
-      { labelAr: 'شهادة البناء', labelEn: 'Certificate', valueAr: 'شهادة إتمام بناء نظامية', valueEn: 'Handover Certificate' },
-      { labelAr: 'التأمين', labelEn: 'Insurance', valueAr: 'تأمين ملاذ 10 سنوات ضد العيوب', valueEn: '10-Yr Malath Policy' },
-      { labelAr: 'الترخيص العقاري', labelEn: 'FAL License', valueAr: 'رخصة فال 1200028472', valueEn: 'FAL #1200028472' }
-    ],
-    falLicense: '1200028472',
-    titleDeedNumber: '110339485721',
-    advertisementNumber: '7200192849',
-    coords: { lat: 24.8112, lng: 46.6234 },
-    relatedSlugs: ['the-sky-crest-penthouse-khobar-corniche', 'the-shobaily-bay-royal-villa', 'the-royal-palm-coastal-palace-villa']
-  },
-  {
-    id: 'prop-4',
-    slug: 'khobar-sunset-boulevard-waterfront-residence',
-    titleAr: 'شقة فاخرة بإطلالة مباشرة على غروب كورنيش الخُبر',
-    titleEn: 'Khobar Sunset Boulevard Waterfront Residence',
-    city: 'khobar',
-    cityNameAr: 'المنطقة الشرقية – الخُبر (الكورنيش الشمالي)',
-    cityNameEn: 'Eastern Province – Al Khobar (North Corniche)',
-    districtAr: 'طريق الكورنيش الشمالي - الخُبر',
-    districtEn: 'North Corniche Blvd - Al Khobar',
-    type: 'apartment',
-    typeNameAr: 'شقة فندقية فاخرة',
-    typeNameEn: 'Waterfront Luxury Residence',
-    status: 'sale',
-    statusNameAr: 'متاح للبيع الفوري',
-    statusNameEn: 'Available for Immediate Sale',
-    price: '5,850,000 ر.س',
-    priceRaw: 5850000,
-    priceCurrency: 'SAR',
-    area: '345 م² (3,710 قدم²)',
-    areaRaw: 345,
-    beds: '3 أجنحة نوم ماستر',
-    baths: '4 حمامات فاخرة',
-    parking: 'موقفين خاصين بالقبو',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80'
-    ],
-    badgeAr: 'صك إلكتروني مستقل',
-    badgeEn: 'Independent Title Deed',
-    descriptionAr:
-      'شقة سكنية راقية في برج حديث على كورنيش الخُبر الشمالي بإطلالة بحرية مباشرة على غروب الشمس، تتضمن شرفة زجاجية ممتدة، مطبخاً مفتوحاً مجهزاً، وخدمات فندقية متكاملة.',
-    descriptionEn:
-      'A refined coastal luxury residence located in a premier waterfront tower on Al Khobar North Corniche. Commands direct sunset sea views, expansive glass terrace, and hotel-grade concierge amenities.',
-    longOverviewAr: [
-      'تتميز الشقة بموقعها الاستثنائي المباشر على كورنيش الخُبر الشمالي مع إطلالة بانورامية لا تنقطع على مياه الخليج العربي وغروب الشمس الأخاذ.',
-      'تضم 3 أجنحة نوم رئيسية، صالة معيشة مفتوحة على الشرفة البحرية، مطبخاً مصمماً بأحدث التجهيزات الأوروبية، وغرفة خادمة مستقلة بحمام خاص.',
-      'يستمتع قاطنو البرج بنادٍ صحي متكامل، مسبح عائلي، خدمات استقبال وحراسة على مدار الساعة، وإدارة مرافق معتمدة عبر منصة مُلاّك.'
-    ],
-    longOverviewEn: [
-      'Situated along Al Khobar North Corniche, enjoying permanent unobstructed sea vistas and sunset panoramas over the Arabian Gulf waters.',
-      'Features 3 ensuite bedrooms, airy open-concept salon opening to the sea terrace, European integrated kitchen, and separate maid quarters.',
-      'Building amenities include a luxury health club, infinity pool, 24/7 concierge, and certified HOA governance via the Saudi Mullak platform.'
-    ],
-    featuresAr: [
-      'شرفة بانورامية واسعة مطلة على البحر وغروب الشمس',
-      'نادي صحي وسبا ومسبح معلق خاص بسكان البرج',
-      'أمن واستقبال وصيانة مدارة على مدار الساعة',
-      'موقفان مخصصان للسيارات في القبو مع تحكم إلكتروني',
-      'تكييف مركزي موفر للطاقة وتحكم ذكي بالحرارة',
-      'صك إلكتروني مستقل ورخصة وساطة معتمدة من فال'
-    ],
-    featuresEn: [
-      'Expansive Panoramic Sea & Sunset Horizon Terrace',
-      'Resident-Only Health Spa & Suspended Infinity Pool',
-      '24/7 Monitored Front-Desk Security & Maintenance',
-      '2 Designated Underground Garage Parking Spaces',
-      'High-Efficiency Central HVAC with Smart Zoning',
-      'Clean Digital Title Deed & Certified REGA/FAL Brokerage'
-    ],
-    specs: [
-      { labelAr: 'المساحة الإجمالية', labelEn: 'Total Built Area', valueAr: '345 م²', valueEn: '345 m²' },
-      { labelAr: 'الطابق', labelEn: 'Floor Level', valueAr: 'الطابق 14 (واجهة بحرية)', valueEn: 'Level 14 Direct Sea View' },
-      { labelAr: 'رسوم الخدمات', labelEn: 'HOA & Facilities', valueAr: 'موثقة عبر منصة مُلاّك', valueEn: 'Mullak HOA Platform' },
-      { labelAr: 'التكييف', labelEn: 'Climate Tech', valueAr: 'تكييف مركزي هارد عالي الكفاءة', valueEn: 'Hard Central Inverter' },
-      { labelAr: 'حالة العقار', labelEn: 'Condition', valueAr: 'جاهز للسكن الفوري والإفراغ', valueEn: 'Turnkey Move-In Ready' },
-      { labelAr: 'رخصة فال', labelEn: 'FAL License', valueAr: '1200028472', valueEn: '1200028472' }
-    ],
-    falLicense: '1200028472',
-    titleDeedNumber: '410887652914',
-    advertisementNumber: '7200192850',
-    coords: { lat: 26.2954, lng: 50.2142 },
-    relatedSlugs: ['the-sky-crest-penthouse-khobar-corniche', 'the-shobaily-bay-royal-villa', 'the-grand-rakah-executive-suite-khobar']
-  },
-  {
-    id: 'prop-5',
-    slug: 'the-grand-rakah-executive-suite-khobar',
-    titleAr: 'جناح تنفيذي راقٍ للإيجار السنوي - حي الراكة الخُبر',
-    titleEn: 'The Grand Rakah Executive Sky Suite',
-    city: 'khobar',
-    cityNameAr: 'المنطقة الشرقية – الخُبر (حي الراكة الجنوبية)',
-    cityNameEn: 'Eastern Province – Al Khobar (Al Rakah South)',
-    districtAr: 'طريق الملك خالد - حي الراكة - الخُبر',
-    districtEn: 'King Khalid Rd - Al Rakah - Al Khobar',
-    type: 'apartment',
-    typeNameAr: 'جناح سكني تنفيذي للإيجار',
-    typeNameEn: 'Executive Serviced Apartment',
-    status: 'rent',
-    statusNameAr: 'عقد إيجار سنوي موثق',
-    statusNameEn: 'Annual Lease via Ejar',
-    price: '240,000 ر.س / سنوياً',
-    priceRaw: 240000,
-    priceCurrency: 'SAR',
-    period: 'year',
-    area: '172 م² (1,850 قدم²)',
-    areaRaw: 172,
-    beds: 'غرفتا نوم ماستر',
-    baths: '3 حمامات فاخرة',
-    parking: 'موقف خاص بالقبو',
-    image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1600&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=1600&q=80'
-    ],
-    badgeAr: 'توثيق عبر منصة إيجار المعتمدة',
-    badgeEn: 'Ejar Platform Certified',
-    descriptionAr:
-      'شقة فاخرة مؤثثة بالكامل للإيجار السنوي في حي الراكة الراقي بين الخُبر والدمام. تشطيبات فندقية فاخرة وتكييف مركزي وموقع استراتيجي ممتاز بالقرب من وادي الظهران للتقنية وأرامكو.',
-    descriptionEn:
-      'Prime luxury rental home ready for immediate occupancy. High-end furnished layout, custom ambient lighting, walk-in closets, central HVAC, and immediate highway access to Dhahran Techno Valley and Al Khobar commercial core.',
-    longOverviewAr: [
-      'يقدم هذا الجناح التنفيذي حلاً سكنياً استثنائياً للكوادر الإدارية والشركات متعددة الجنسيات الباحثة عن إقامة راقية ومجهزة بالكامل في حي الراكة بين الخُبر والظهران.',
-      'تتضمن الشقة أثاثاً حديثاً مختاراً بعناية، إضاءة ذكية مخفية، شبكة إنترنت فايبر عالية السرعة، ومطبخاً مجهزاً بأحدث الأجهزة الكهربائية.',
-      'كافة عقود الإيجار موثقة رسمياً عبر منصة إيجار الحكومية مع صيانة دورية شاملة مجانية تقدمها هارد للتشغيل والصيانة.'
-    ],
-    longOverviewEn: [
-      'An ideal turnkey rental residence tailored for corporate executives and consultants seeking premier furnished accommodations between Al Khobar and Dhahran.',
-      'Comes fully appointed with designer Italian furnishings, architectural ambient lighting, high-speed fiber connectivity, and premium kitchen appliances.',
-      'All tenancy contracts are authenticated via the Saudi government Ejar platform with full 24/7 preventive maintenance supported by Hard Facilities.'
-    ],
-    featuresAr: [
-      'مفروشة بالكامل بتصميم راقٍ وأثاث فندقي حديث',
-      'عقد إيجار تجاري أو سكني موحد عبر منصة إيجار',
-      'مسبح داخلي مدفأ ونادي صحي خاص بالسكان',
-      'دخول ذكي إلكتروني وحراسة أمنية 24/7',
-      'موقف سيارة خاص ومظلل في القبو',
-      'صيانة دورية شاملة للتكييف والسباكة والكهرباء'
-    ],
-    featuresEn: [
-      'Fully Designer Furnished with Modern Luxury Fittings',
-      'Unified Government Tenancy Contract via Ejar Platform',
-      'Resident-Only Heated Indoor Pool & Fitness Hub',
-      'Smart Electronic Access Control & 24/7 CCTV Security',
-      'Assigned Shaded Basement Parking Bay',
-      'Full 24/7 Maintenance Coverage for HVAC, MEP & Appliances'
-    ],
-    specs: [
-      { labelAr: 'المساحة المبنية', labelEn: 'Net Built Area', valueAr: '172 م²', valueEn: '172 m²' },
-      { labelAr: 'نظام الإيجار', labelEn: 'Lease Terms', valueAr: 'سنوي موثق بمنصة إيجار', valueEn: 'Annual Ejar Contract' },
-      { labelAr: 'الفرش والتأثيث', labelEn: 'Furnishing', valueAr: 'مفروشة بالكامل بالخدمات', valueEn: 'Fully Turnkey Furnished' },
-      { labelAr: 'الصيانة والتشغيل', labelEn: 'Facilities AMC', valueAr: 'مشمولة بالكامل 24/7 من هارد', valueEn: 'Full 24/7 AMC Included' },
-      { labelAr: 'رخصة فال', labelEn: 'FAL License', valueAr: '1200028472', valueEn: '1200028472' }
-    ],
-    falLicense: '1200028472',
-    titleDeedNumber: '210884930192',
-    advertisementNumber: '7200192852',
-    coords: { lat: 26.368, lng: 50.198 },
-    relatedSlugs: ['khobar-sunset-boulevard-waterfront-residence', 'the-sky-crest-penthouse-khobar-corniche', 'the-shobaily-bay-royal-villa']
-  },
-  {
-    id: 'prop-6',
-    slug: 'the-shobaily-bay-royal-villa',
-    titleAr: 'فيلا المارينا الملكية المستقلة - خليج الشبيلي الخُبر',
-    titleEn: 'The Royal Marina Villa in Al Shobaily Bay',
-    city: 'khobar',
-    cityNameAr: 'المنطقة الشرقية – الخُبر (واجهة الشبيلي البحرية)',
-    cityNameEn: 'Eastern Province – Al Khobar (Al Shobaily Bay)',
-    districtAr: 'طريق جزيرة المارينا - الشبيلي - الخُبر',
-    districtEn: 'Marina Island Way - Al Shobaily - Al Khobar',
-    type: 'villa',
-    typeNameAr: 'فيلا ملكية على المارينا',
-    typeNameEn: 'Royal Waterfront Marina Villa',
-    status: 'sale',
-    statusNameAr: 'متاح للبيع والتملك',
-    statusNameEn: 'Available for Purchase',
-    price: '8,062,500 ر.س',
-    priceRaw: 8062500,
-    priceCurrency: 'SAR',
-    area: '576 م² (6,200 قدم²)',
-    areaRaw: 576,
-    beds: '5 أجنحة ماستر',
-    baths: '6 حمامات مجهزة',
-    parking: '4 مواقف سيارات مظللة',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80'
-    ],
-    badgeAr: 'مرخص من الهيئة العامة للعقار (فال)',
-    badgeEn: 'REGA / FAL Certified',
-    descriptionAr:
-      'فيلا ملكية فاخرة مستقلة مباشرة على مياه خليج الشبيلي مع مرسى خاص للقوارب واليخوت. تتميز بتراسات رخامية شاسعة وصالات استقبال فاخرة وإطلالات بحرية آسرة.',
-    descriptionEn:
-      'A premier waterfront estate located on the tranquil shores of Al Shobaily Bay. Featuring private direct boat slip, expansive marble terraces, floor-to-ceiling glass pavilions, and grand reception halls.',
-    longOverviewAr: [
-      'تقع هذه الفيلا الملكية في واجهة الشبيلي البحرية بالخُبر، وتوفر أسلوب حياة بحري استثنائي بفضل مرساها المباشر وموقعها المطل على مياه الخليج الهادئة.',
-      'تتميز بتصميم معماري حديث يدمج بين الرخام والخشب الطبيعي والزجاج البانورامي، مع مسبح إنفينيتي خارجي مطل على الخليج ومجلس ضيوف مستقل.',
-      'مرخصة رسمياً ومطابقة لكود البناء السعودي مع صك ملكية إلكتروني رسمي حر ومتاح للإفراغ الفوري عبر البورصة العقارية.'
-    ],
-    longOverviewEn: [
-      'Situated along pristine Al Shobaily Bay in Al Khobar, presenting a rare waterfront lifestyle complete with dedicated boat berth and tranquil lagoon vistas.',
-      'Features bespoke natural stone and timber architecture, sea-facing infinity pool, separate formal majlis pavilion, and chef prep kitchens.',
-      'Fully licensed under REGA FAL standards with clean digital title deed available for immediate electronic conveyancing.'
-    ],
-    featuresAr: [
-      'مرسى خاص مباشر للقوارب واليخوت',
-      'مسبح إنفينيتي مواجه لمياه الخليج',
-      'مجلس ضيافة رسمي مستقل مع مدخل خاص',
-      'مطبخ رئيسي أوروبي ومطبخ تحضيري متصل',
-      'نظام تحكم ذكي وأمان ومراقبة متطورة',
-      'كراج مظلل يتسع لـ 4 سيارات',
-      'صك ملكية إلكتروني معتمد برخصة فال 1200028472'
-    ],
-    featuresEn: [
-      'Direct Private Boat Slip & Yacht Berth',
-      'Sea-Facing Heated Infinity Plunge Pool',
-      'Detached Formal Guest Reception Majlis',
-      'Dual European Show Kitchen & Service Pantry',
-      'Integrated Smart Home Control & Security',
-      'Shaded Garage Accommodating 4 Cars',
-      'Official REGA FAL License No. 1200028472'
-    ],
-    specs: [
-      { labelAr: 'مساحة الأرض', labelEn: 'Plot Area', valueAr: '750 م²', valueEn: '750 m²' },
-      { labelAr: 'المساحة المبنية', labelEn: 'Built-up Area', valueAr: '576 م²', valueEn: '576 m²' },
-      { labelAr: 'المرسى البحري', labelEn: 'Boat Slip', valueAr: 'مرسى مخصص للقوارب بطول 35 قدماً', valueEn: 'Private 35ft Boat Slip' },
-      { labelAr: 'الفرش والتأثيث', labelEn: 'Furnishing', valueAr: 'مفروشة بالكامل بتصميم مخصص', valueEn: 'Bespoke Custom Furnished' },
-      { labelAr: 'الإطلالة', labelEn: 'View Type', valueAr: 'إطلالة بحرية مباشرة على خليج الشبيلي', valueEn: 'Direct Shobaily Bay Lagoon' },
-      { labelAr: 'رخصة فال', labelEn: 'FAL License', valueAr: '1200028472', valueEn: '1200028472' }
+      { labelAr: 'المدينة والحي', labelEn: 'Location', valueAr: 'حي الريان، الدمام', valueEn: 'Al-Rayyan, Dammam' },
+      { labelAr: 'المطور والمنفذ', labelEn: 'Developer', valueAr: 'مؤسسة هارد للمقاولات العامة', valueEn: 'HARD General Contracting' },
+      { labelAr: 'مساحة الأرض والبناء', labelEn: 'Built Area', valueAr: '500 م²', valueEn: '500 m²' },
+      { labelAr: 'شبكات السباكة', labelEn: 'Piping', valueAr: 'أنابيب العامرية ضمان 50 سنة', valueEn: 'Al-Ameria 50-Yr Warranty' },
+      { labelAr: 'التكييف المركزي', labelEn: 'HVAC', valueAr: 'ضمان 5 سنوات وعقد صيانة', valueEn: 'Pioneer 5-Yr Warranty' },
+      { labelAr: 'التمويل البنكي', labelEn: 'Financing', valueAr: 'الجزيرة / الرياض / سامبا', valueEn: 'AlJazira / Riyad / Samba' }
     ],
     falLicense: '1200028472',
     titleDeedNumber: '310992384711',
     advertisementNumber: '7200192851',
-    coords: { lat: 26.235, lng: 50.219 },
-    relatedSlugs: ['the-sky-crest-penthouse-khobar-corniche', 'the-royal-palm-coastal-palace-villa', 'khobar-sunset-boulevard-waterfront-residence']
+    coords: { lat: 26.4207, lng: 50.0888 },
+    relatedSlugs: ['hard-corporate-commercial-headquarters-tower', 'hard-residential-duplex-community', 'hard-commercial-retail-center'],
+    rawRef: referenceProperties[0]
+  },
+  {
+    id: 'prop-2',
+    slug: 'hard-corporate-commercial-headquarters-tower',
+    titleAr: 'مقر إداري ومكاتب تجارية متطورة من هارد',
+    titleEn: 'HARD Commercial Corporate Headquarters & Executive Offices',
+    city: 'dammam',
+    cityNameAr: 'المنطقة الشرقية – الدمام / الخُبر',
+    cityNameEn: 'Eastern Province – Dammam / Khobar',
+    districtAr: 'محور الأعمال والاستثمار التجاري',
+    districtEn: 'Commercial Business Corridor',
+    type: 'commercial',
+    typeNameAr: 'مبنى ومقر إداري تجاري',
+    typeNameEn: 'Corporate Commercial Tower',
+    status: 'sale',
+    statusNameAr: 'متاح للاستثمار والتملك',
+    statusNameEn: 'Prime Corporate Investment',
+    price: '14,500,000 ر.س',
+    priceRaw: 14500000,
+    priceCurrency: 'SAR',
+    area: '1,720 م² (18,500 قدم²)',
+    areaRaw: 1720,
+    beds: 'قاعات تنفيذية ومكاتب',
+    baths: '12 دورة مياه',
+    parking: '35 موقف سيارات بالقبو والمحيط',
+    image: '/images/hardgp/por6-big.jpg',
+    gallery: [
+      '/images/hardgp/por6-big.jpg',
+      '/images/hardgp/por1-big.jpg',
+      '/images/hardgp/por2-big.jpg',
+      '/images/hardgp/por7-big.jpg'
+    ],
+    badgeAr: 'تنفيذ المقاولات العامة هارد',
+    badgeEn: 'HARD General Contracting EPC',
+    descriptionAr:
+      'مقر إداري ومركز مكاتب تجاري متطور شيدته مؤسسة هارد للمقاولات العامة. يتميز بشبكات توزيع الجهد المتوسط والمنخفض، وأتمتة المباني، وشبكات الألياف الضوئية، وأنظمة السلامة ومكافحة الحريق المعتمدة.',
+    descriptionEn:
+      'Commercial office headquarters and retail center engineered by HARD General Contracting Establishment. Features medium and low voltage distribution, DCS/PLC building automation, campus fiber networking, and certified fire protection.',
+    longOverviewAr: [
+      'صُمم هذا المقر التجاري وفق أرقى النظم الهندسية ليخدم الشركات والمؤسسات الاستثمارية في المنطقة الشرقية، مع إشراف كامل لمهندسي هارد المتخصصين في أنظمة التحكم والكهرباء.',
+      'يحتوي المبنى على محطة تحويل ومولدات كهرباء احتياطية، وشبكة ألياف ضوئية OFC، وأنظمة إنذار ومكافحة حريق معنونة، ومطافئ سوتيريا المعتمدة.',
+      'تتيح هارد بدائل استثمارية وتمويلية عبر برامج البنوك المعتمدة لتسهيل التملك وإدارة الأصول بكفاءة عالية.'
+    ],
+    longOverviewEn: [
+      'Engineered to the highest specifications to host corporate enterprises and institutional investors across the Eastern Province.',
+      'Equipped with an independent electrical substation, backup generator, campus fiber network (OFC), addressable fire safety systems, and SOTERIA protection.',
+      'Structured with flexible financing alternatives via HARD banking agreements for streamlined acquisition and long-term asset management.'
+    ],
+    featuresAr: [
+      'محطة تحويل كهربائية وتأريض هندسي متكامل',
+      'شبكة ألياف ضوئية متطورة (OFC) وشبكات داخلية',
+      'أنظمة تحكم وأتمتة صناعية للمباني (PLC / SCADA)',
+      'أنظمة إنذار وإطفاء حريق معتمدة مع مطافئ سوتيريا',
+      '35 موقف سيارات مخصص للإدارة والعملاء',
+      'تشطيب إداري وتنفيذي متكامل جاهز للتشغيل'
+    ],
+    featuresEn: [
+      'Dedicated Electrical Substation & Engineered Grounding Grid',
+      'Campus Fiber Optic (OFC) & High-Speed Structured Cabling',
+      'Building Automation & Industrial Control (PLC / SCADA)',
+      'Certified Fire Alarm & Life Safety with SOTERIA Equipping',
+      '35 Reserved Executive & Visitor Parking Bays',
+      'Turnkey Executive Fitout Ready for Immediate Operations'
+    ],
+    specs: [
+      { labelAr: 'نوع الأصل', labelEn: 'Asset Type', valueAr: 'مقر إداري ومكاتب تجارية', valueEn: 'Commercial Headquarters' },
+      { labelAr: 'المنطقة', labelEn: 'Province', valueAr: 'المنطقة الشرقية، المملكة العربية السعودية', valueEn: 'Eastern Province, KSA' },
+      { labelAr: 'المساحة المبنية', labelEn: 'Built Area', valueAr: '1,720 م²', valueEn: '1,720 m²' },
+      { labelAr: 'الأنظمة الكهربائية', labelEn: 'E&I Systems', valueAr: 'جهد متوسط ومنخفض ومولد احتياطي', valueEn: 'Medium & Low Voltage + Genset' },
+      { labelAr: 'أنظمة التكييف', labelEn: 'HVAC', valueAr: 'شيلرات مركزية بعقد صيانة دوري', valueEn: 'Central Chiller Systems + AMC' },
+      { labelAr: 'معايير الجودة', labelEn: 'QA/QC Standard', valueAr: 'مطابقة 100% لمعايير هارد الإنشائية', valueEn: '100% QA Verified' }
+    ],
+    falLicense: '1200028472',
+    titleDeedNumber: '310992384712',
+    advertisementNumber: '7200192852',
+    coords: { lat: 26.3927, lng: 50.1804 },
+    relatedSlugs: ['hard-al-rayyan-residential-villa-dammam', 'hard-commercial-retail-center', 'hard-residential-duplex-community'],
+    rawRef: referenceProperties[1]
+  },
+  {
+    id: 'prop-3',
+    slug: 'hard-residential-duplex-community',
+    titleAr: 'مجمع فلل ودوبلكسات سكنية عصرية من هارد',
+    titleEn: 'HARD Contemporary Residential Duplex Compound',
+    city: 'dammam',
+    cityNameAr: 'المنطقة الشرقية – الدمام',
+    cityNameEn: 'Eastern Province – Dammam',
+    districtAr: 'القطاع السكني النموذجي - الريان',
+    districtEn: 'Al-Rayyan Residential Sector',
+    type: 'compound',
+    typeNameAr: 'مجمع دوبلكسات عائلية',
+    typeNameEn: 'Residential Duplex Compound',
+    status: 'sale',
+    statusNameAr: 'متاح للبيع والتملك',
+    statusNameEn: 'Available for Homeowners',
+    price: '1,750,000 ر.س',
+    priceRaw: 1750000,
+    priceCurrency: 'SAR',
+    area: '360 م² (3,875 قدم²)',
+    areaRaw: 360,
+    beds: '4 غرف نوم ماستر',
+    baths: '5 دورات مياه',
+    parking: 'موقف خاص مظلل',
+    image: '/images/hardgp/por8-big.jpg',
+    gallery: [
+      '/images/hardgp/por8-big.jpg',
+      '/images/hardgp/por4-big.jpg',
+      '/images/hardgp/por12-big.jpg',
+      '/images/hardgp/por13-big.jpg'
+    ],
+    badgeAr: 'حلول إسكانية لجيل الشباب',
+    badgeEn: 'Modern Youth Housing Solutions',
+    descriptionAr:
+      'مجمع دوبلكسات وفلل سكنية عصرية خططتها ونفذتها مؤسسة هارد لتلبية الطلب المتزايد على المساكن العائلية النموذجية في المملكة، شيدت وفق معايير كود البناء السعودي وبنية تحتية معتمدة.',
+    descriptionEn:
+      'Residential duplex community planned and executed by HARD Establishment to meet the growing demand for top-tier family housing in Saudi Arabia. Constructed to rigorous SBC standards with certified infrastructure.',
+    longOverviewAr: [
+      'يوفر هذا المشروع السكني نمط حياة عصري للأسر السعودية وفئة الشباب، مع تركيز دقيق على الجودة الإنشائية واستدامة المواد عبر استخدام أنابيب العامرية الحرارية بضمان 50 سنة.',
+      'تتميز الوحدات بتوزيع ذكي للمساحات الداخلية، ومجلس عائلي رحب، وتكييف هواء مضمون مع عقود صيانة دورية مرنة.',
+      'المشروع مؤهل لبرامج التمويل البنكي مع بنوك الجزيرة والرياض وسامبا بهامش ربح منخفض وتسهيلات سداد ميسرة.'
+    ],
+    longOverviewEn: [
+      'Delivers contemporary family living targeted to Saudi households and the young demographic, prioritizing durability through 50-year warranty thermal piping.',
+      'Features smart functional floor plans, expansive reception spaces, and reliable climate control backed by preventive maintenance.',
+      'Pre-approved for bank mortgage financing through AlJazira Bank, Riyad Bank, and Samba Bank with preferential rates.'
+    ],
+    featuresAr: [
+      'أنابيب بولي بروبيلين حرارية ألمانية بضمان 50 سنة',
+      'تكييف مستقل معتمد بضمان 5 سنوات وصيانة دورية',
+      'تمويل عقاري ميسر عبر بنوك الرياض والجزيرة وسامبا',
+      'كراج سيارة داخلي وتجهيزات أمنية متكاملة',
+      'مجلس ضيافة مستقل وصالة عائلية فسيحة',
+      'مطبخ عصري مجهز بمطافئ سوتيريا الذكية'
+    ],
+    featuresEn: [
+      'German Polypropylene Thermal Piping (50-Yr Warranty)',
+      'Independent AC Units with 5-Yr Warranty & AMC Support',
+      'Affordable Mortgage Funding via Riyad, AlJazira & Samba',
+      'Private Shaded Carport & Security Intercom',
+      'Separate Formal Majlis & Generous Family Lounge',
+      'Contemporary Kitchen Equipped with SOTERIA Safety'
+    ],
+    specs: [
+      { labelAr: 'المنطقة', labelEn: 'Location', valueAr: 'حي الريان، الدمام، المنطقة الشرقية', valueEn: 'Al-Rayyan, Dammam, Eastern Province' },
+      { labelAr: 'المطور', labelEn: 'Developer', valueAr: 'مؤسسة هارد للمقاولات العامة', valueEn: 'HARD General Contracting' },
+      { labelAr: 'المساحة', labelEn: 'Area', valueAr: '360 م²', valueEn: '360 m²' },
+      { labelAr: 'السباكة والعوازل', labelEn: 'Plumbing & Insulation', valueAr: 'أنابيب العامرية الألمانية المعتمدة', valueEn: 'Al-Ameria German Thermal Piping' },
+      { labelAr: 'التكييف', labelEn: 'HVAC', valueAr: 'ضمان 5 سنوات وكشف دوري', valueEn: '5-Year Warranty + Scheduled AMC' },
+      { labelAr: 'التمويل', labelEn: 'Financing', valueAr: 'بنوك الجزيرة / الرياض / سامبا', valueEn: 'AlJazira / Riyad / Samba' }
+    ],
+    falLicense: '1200028472',
+    titleDeedNumber: '310992384713',
+    advertisementNumber: '7200192853',
+    coords: { lat: 26.4250, lng: 50.0910 },
+    relatedSlugs: ['hard-al-rayyan-residential-villa-dammam', 'hard-corporate-commercial-headquarters-tower', 'hard-commercial-retail-center'],
+    rawRef: referenceProperties[2]
+  },
+  {
+    id: 'prop-4',
+    slug: 'hard-commercial-retail-center',
+    titleAr: 'مركز هارد التجاري ومعارض الأعمال',
+    titleEn: 'HARD Commercial Retail & Business Center',
+    city: 'dammam',
+    cityNameAr: 'المنطقة الشرقية – الدمام',
+    cityNameEn: 'Eastern Province – Dammam',
+    districtAr: 'الحي التجاري الرئيسي',
+    districtEn: 'Main Commercial District',
+    type: 'commercial',
+    typeNameAr: 'مركز ومعارض تجارية',
+    typeNameEn: 'Retail & Commercial Facility',
+    status: 'sale',
+    statusNameAr: 'متاح للبيع والاستثمار',
+    statusNameEn: 'Commercial Opportunity',
+    price: '8,900,000 ر.س',
+    priceRaw: 8900000,
+    priceCurrency: 'SAR',
+    area: '1,200 م² (12,900 قدم²)',
+    areaRaw: 1200,
+    beds: 'معارض ومساحات تجارية مفتوحة',
+    baths: '8 دورات مياه',
+    parking: '20 موقف سيارات مخصص',
+    image: '/images/hardgp/por7-big.jpg',
+    gallery: [
+      '/images/hardgp/por7-big.jpg',
+      '/images/hardgp/por1-big.jpg',
+      '/images/hardgp/por5-big.jpg'
+    ],
+    badgeAr: 'تنفيذ وإنشاءات مؤسسة هارد',
+    badgeEn: 'HARD General Contracting Construction',
+    descriptionAr:
+      'مركز ومعارض تجارية متعددة الاستخدامات شيدتها مؤسسة هارد للمقاولات العامة بمواصفات هندسية فائقة توفر مساحات عرض رحبة وتجهيزات كهروميكانيكية متكاملة.',
+    descriptionEn:
+      'Multi-unit commercial retail and showroom facility developed by HARD General Contracting Establishment. Built for prime retail traffic, showroom visibility, and full electro-mechanical capability.',
+    longOverviewAr: [
+      'يقع هذا المركز التجاري في موقع حيوي واستراتيجي بالدمام، ويوفر مساحات تجارية مرنة تناسب كبرى العلامات والمعارض والشركات.',
+      'تم تزويده بتجهيزات كهربائية ثقيلة، وشبكات صرف وتغذية بأنابيب العامرية، ومطافئ حريق سوتيريا متقدمة تضمن سلامة المنشأة والمتسوقين.',
+      'تضمن هارد جودة التنفيذ الإنشائي بخبرة تمتد منذ عام 2004 في قطاع المقاولات العامة بالمملكة.'
+    ],
+    longOverviewEn: [
+      'Positioned along a prominent commercial artery in Dammam, delivering flexible retail spaces suited for major retail brands and commercial entities.',
+      'Engineered with high electrical capacity, Al-Ameria certified piping networks, and advanced SOTERIA fire fighting units.',
+      'Backed by HARD Establishment proven contracting pedigree in the Kingdom of Saudi Arabia since 2004.'
+    ],
+    featuresAr: [
+      'واجهات زجاجية واسعة للمعارض والمتاجر',
+      'أحمال كهربائية عالية وتأريض هندسي متكامل',
+      'مواقف سيارات رحبة للعملاء والمتسوقين',
+      'أنظمة ومطافئ حريق معتمدة من الدفاع المدني',
+      'منطقة تحميل وتنزيل ومدخل خدمات خلفي',
+      'توثيق إنشائي وفحص جودة كامل'
+    ],
+    featuresEn: [
+      'Expansive Commercial Storefront Showroom Glass',
+      'High-Load Electrical Grid & Certified Grounding',
+      'Dedicated Front & Rear Customer Parking Bays',
+      'Civil Defense Approved Fire & Life Safety Systems',
+      'Rear Logistics Loading Dock & Service Access',
+      'Comprehensive QA/QC Structural Documentation'
+    ],
+    specs: [
+      { labelAr: 'نوع المشروع', labelEn: 'Facility Type', valueAr: 'مركز ومعارض تجارية', valueEn: 'Retail & Showroom Complex' },
+      { labelAr: 'المدينة', labelEn: 'City', valueAr: 'الدمام، المنطقة الشرقية', valueEn: 'Dammam, Eastern Province' },
+      { labelAr: 'المساحة المبنية', labelEn: 'Built Area', valueAr: '1,200 م²', valueEn: '1,200 m²' },
+      { labelAr: 'المقاول الرئيسي', labelEn: 'Main Contractor', valueAr: 'مؤسسة هارد للمقاولات العامة', valueEn: 'HARD General Contracting' },
+      { labelAr: 'السلامة والحريق', labelEn: 'Fire Safety', valueAr: 'مطافئ سوتيريا المعتمدة وأنظمة إنذار', valueEn: 'SOTERIA Fire Extinguishers' },
+      { labelAr: 'سنة الإنجاز', labelEn: 'Completion Year', valueAr: '2023', valueEn: '2023' }
+    ],
+    falLicense: '1200028472',
+    titleDeedNumber: '310992384714',
+    advertisementNumber: '7200192854',
+    coords: { lat: 26.4150, lng: 50.1100 },
+    relatedSlugs: ['hard-al-rayyan-residential-villa-dammam', 'hard-corporate-commercial-headquarters-tower', 'hard-residential-duplex-community'],
+    rawRef: referenceProperties[3]
   }
 ];
 
-// Compatibility aliases for legacy slugs
+// Compatibility aliases for legacy or previously linked slugs
 export const legacySlugAliases: Record<string, string> = {
-  'al-olaya-business-towers': 'the-sky-crest-penthouse-khobar-corniche',
-  'khobar-waterfront-luxury-villa': 'the-royal-palm-coastal-palace-villa',
-  'riyadh-skyline-penthouse': 'al-malqa-elite-contemporary-villa',
-  'eastern-oasis-compound': 'khobar-sunset-boulevard-waterfront-residence',
-  'al-narjis-contemporary-villas': 'the-grand-rakah-executive-suite-khobar',
-  'dhahran-techno-valley-offices': 'the-shobaily-bay-royal-villa'
+  'the-sky-crest-penthouse-khobar-corniche': 'hard-al-rayyan-residential-villa-dammam',
+  'the-royal-palm-coastal-palace-villa': 'hard-al-rayyan-residential-villa-dammam',
+  'al-malqa-elite-contemporary-villa': 'hard-corporate-commercial-headquarters-tower',
+  'khobar-sunset-boulevard-waterfront-residence': 'hard-residential-duplex-community',
+  'the-grand-rakah-executive-suite-khobar': 'hard-corporate-commercial-headquarters-tower',
+  'the-shobaily-bay-royal-villa': 'hard-commercial-retail-center',
+  'al-olaya-business-towers': 'hard-corporate-commercial-headquarters-tower',
+  'khobar-waterfront-luxury-villa': 'hard-al-rayyan-residential-villa-dammam',
+  'riyadh-skyline-penthouse': 'hard-corporate-commercial-headquarters-tower',
+  'eastern-oasis-compound': 'hard-residential-duplex-community',
+  'al-narjis-contemporary-villas': 'hard-residential-duplex-community',
+  'dhahran-techno-valley-offices': 'hard-commercial-retail-center'
 };

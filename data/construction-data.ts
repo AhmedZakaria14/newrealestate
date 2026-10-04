@@ -109,26 +109,27 @@ export interface CostEstimateResult {
 export const hardConstructionCompanyInfo: ConstructionCompanyInfo = {
   "taxId": "300192847100003",
   "momrahClassification": {
-    "ar": "تصنيف فئة أولى (المقاولات العامة)",
-    "en": "Class-A Classified General Contractor"
+    "ar": "مؤسسة هارد للمقاولات العامة والتطوير الإنشائي",
+    "en": "HARD General Contracting Establishment"
   },
   "sceAccreditation": {
-    "ar": "هيئة المهندسين السعوديين - اعتماد رقم #44091",
-    "en": "Saudi Council of Engineers Accredited #44091"
+    "ar": "خدمات إنشائية وصناعية وبنية تحتية منذ 2004",
+    "en": "Industrial & Infrastructure Contractor Since 2004"
   },
-  "phone": "+966 13 800 4272",
-  "mobile": "+966 50 123 4567",
-  "whatsapp": "+966501234567",
-  "email": "info@hard-sa.com",
+  "phone": "+966 13 844 4663",
+  "mobile": "+966 55 612 5711",
+  "whatsapp": "+966556125711",
+  "email": "info@hardgp.com",
   "address": {
-    "ar": "طريق الملك فهد، حي الصحافة، الرياض، المملكة العربية السعودية",
-    "en": "King Fahd Road, Al-Sahafa District, Riyadh, Saudi Arabia"
+    "ar": "4737 الشارع الثامن عشر - حي الريان، وحدة رقم: 1، الدمام 32256 - 8405، المملكة العربية السعودية",
+    "en": "4737 18th - Al-Rayyan, Unit No.: 1, Dammam 32256 - 8405, Kingdom of Saudi Arabia"
   },
   "easternProvinceBranch": {
-    "ar": "طريق الأمير تركي، حي الكورنيش، الخبر، المنطقة الشرقية",
-    "en": "Prince Turki Road, Corniche District, Al Khobar, Eastern Province"
+    "ar": "الدمام والمنطقة الشرقية، والتوسع بالمنطقة الوسطى والغربية",
+    "en": "Dammam & Eastern Province, with expansion in Central & Western Provinces"
   }
 };
+
 
 export const hardConstructionServices: ConstructionServiceItem[] = [
   {
@@ -291,313 +292,445 @@ export const hardConstructionServices: ConstructionServiceItem[] = [
 
 export const hardConstructionProjects: ConstructionProjectItem[] = [
   {
-    "id": "hard-proj-01",
-    "titleAr": "قصر هارد رويال إستيت - حطين",
-    "titleEn": "HARD Royal Estate Palace - Hittin",
-    "category": "residential",
-    "status": "completed",
-    "locationAr": "حي حطين، الرياض",
-    "locationEn": "Hittin District, Riyadh",
-    "cityAr": "الرياض",
-    "cityEn": "Riyadh",
-    "year": "2024",
-    "buaM2": 1850,
-    "durationMonths": 16,
-    "valueSAR": "14,500,000 ر.س",
-    "clientAr": "عميل خاص - نخبة كبار الشخصيات",
-    "clientEn": "Private VIP Client",
-    "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
-    ],
-    "descriptionAr": "تنفيذ كامل بنظام تسليم المفتاح لقصر سكني فاخر يجمع بين الطراز السلماني المعاصر والأنظمة الذكية المتطورة، متضمناً أقبية خدمية، مساحات خضراء بانورامية، وأعلى مواصفات العزل الحراري والمائي.",
-    "descriptionEn": "Turnkey delivery of a signature luxury palace blending contemporary Salmani architectural heritage with state-of-the-art smart home automation, expansive subterranean wellness suites, and zero-defect MEP engineering.",
-    "scopeAr": [
-      "الأعمال الخرسانية سابقة الإجهاد والأساسات الحصيرة",
-      "تكسيات الحجر الطبيعي والواجهات الزجاجية المعزولة ثلاثياً",
-      "التشطيبات الفندقية الداخلية برخام ستاتوريو الإيطالي",
-      "أنظمة التكييف المخفي VRF والمنزل الذكي الكامل KNX",
-      "اللاندسكيب الخارجي والمسبح الإنفينيتي المعلق"
-    ],
-    "scopeEn": [
-      "Post-tensioned slabs and continuous raft foundation works",
-      "Natural Riyadh stone cladding & triple-glazed curtain walls",
-      "Italian Statuario marble luxury interior finishing",
-      "Concealed VRF HVAC systems & whole-palace KNX automation",
-      "Designer landscaping and infinity perimeter pool"
-    ],
-    "structuralSystemAr": "هيكل خرساني مسلح مع بلاطات لاكمرية (Flat Slabs)",
-    "structuralSystemEn": "Reinforced Concrete Structure with Post-Tensioned Flat Slabs",
-    "finishingLevelAr": "سوبر VIP فاخر (Super VIP Luxury)",
-    "finishingLevelEn": "Super VIP Luxury Specification",
-    "highlightsAr": [
-      "مساحة أرض ٢,٢٠٠ م²",
-      "توفير طاقة ٣٥٪",
-      "مطابق لكود البناء السعودي SBC"
-    ],
-    "highlightsEn": [
-      "2,200 m² Plot Area",
-      "35% Energy Efficiency",
-      "100% SBC Compliant"
-    ],
-    "featured": true
-  },
-  {
-    "id": "hard-proj-02",
-    "titleAr": "برج هارد للأعمال والمجمع التجاري - العليا",
-    "titleEn": "HARD Business Tower & Retail Plaza - Al Olaya",
+    "id": "hard-por-01",
+    "titleAr": "تنفيذ مجمع تجاري وإنشائي متكامل",
+    "titleEn": "Commercial Complex & Structural Execution",
     "category": "commercial",
     "status": "completed",
-    "locationAr": "طريق الملك فهد، حي العليا، الرياض",
-    "locationEn": "King Fahd Road, Al Olaya, Riyadh",
-    "cityAr": "الرياض",
-    "cityEn": "Riyadh",
-    "year": "2024",
-    "buaM2": 12400,
-    "durationMonths": 24,
-    "valueSAR": "58,000,000 ر.س",
-    "clientAr": "شركة استثمارات كبرى للتطوير العقاري",
-    "clientEn": "Tier-1 Real Estate Investment Co.",
-    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+    "locationAr": "المنطقة الشرقية، المملكة العربية السعودية",
+    "locationEn": "Eastern Province, Saudi Arabia",
+    "cityAr": "الدمام / الخبر",
+    "cityEn": "Dammam / Khobar",
+    "year": "2022",
+    "buaM2": 6500,
+    "durationMonths": 18,
+    "valueSAR": "مشروع منجز",
+    "clientAr": "مؤسسة هارد للمقاولات العامة / عملاء القطاع التجاري",
+    "clientEn": "HARD General Contracting Establishment / Commercial Clients",
+    "image": "/images/hardgp/por1-big.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+      "/images/hardgp/por1-big.jpg",
+      "/images/hardgp/por1-small.jpg"
     ],
-    "descriptionAr": "برج إداري وتجاري متكامل مكون من ١٤ طابقاً بالإضافة إلى ثلاثة طوابق تحت الأرض لمواقف السيارات الذكية، واجهات زجاجية مزدوجة موفرة للطاقة حاصلة على تصنيف الاستدامة.",
-    "descriptionEn": "A 14-story corporate office tower featuring 3 subterranean automated parking levels, high-performance structural glass facade, and complete MEP integration certified for commercial sustainability.",
+    "descriptionAr": "تنفيذ كامل للأعمال الإنشائية والخرسانية والهيكل الحامل لمجمع تجاري مع تطبيق صارم لمعايير الجودة والسلامة المهنية.",
+    "descriptionEn": "Turnkey execution of commercial structural superstructure, concrete framing, and civil contracting delivered on time.",
     "scopeAr": [
-      "أعمال الحفر العميق وسند جوانب الحفر (Secant Piles)",
-      "الهيكل الخرساني والإنشائي للأبراج متصلة الجسور",
-      "الواجهات الزجاجية المعمارية ذات الأداء الحراري العالي",
-      "محطات التكييف المركزي والمولدات الاحتياطية",
-      "نظام إدارة المبنى الذكي (BMS) ومكافحة الحريق المتطورة"
+      "الأعمال المدنية والإنشائية",
+      "صب الهياكل الخرسانية المسلحة",
+      "عزل الأساسات والخرسانات",
+      "إشراف هندسي يومي مباشر"
     ],
     "scopeEn": [
-      "Deep excavation & secant pile shoring works",
-      "High-strength structural concrete core & framing",
-      "High-performance architectural curtain glazing",
-      "Central chiller plant & redundant backup power generation",
-      "Comprehensive BMS (Building Management System) & NFPA fire protection"
+      "Civil and structural contracting",
+      "Reinforced concrete framing",
+      "Foundation waterproofing",
+      "Certified engineering supervision"
     ],
-    "structuralSystemAr": "كور خرساني وسطي مع أعمدة خرسانية مسبقة الصب",
-    "structuralSystemEn": "Central Shear Concrete Core with Pre-stressed Perimeter Columns",
-    "finishingLevelAr": "تشطيب تجاري فندقي فئة أ (Grade-A Commercial)",
-    "finishingLevelEn": "Grade-A Commercial Turnkey",
+    "structuralSystemAr": "هيكل خرساني مسلح متكامل",
+    "structuralSystemEn": "Reinforced Concrete Structure",
+    "finishingLevelAr": "تشطيب تجاري معتمد",
+    "finishingLevelEn": "Commercial Specification",
     "highlightsAr": [
-      "١٤ طابقاً إدارياً",
-      "٣ أدوار مواقف سيارات",
-      "واجهات زجاجية عازلة"
+      "تنفيذ في الموعد",
+      "صفر حوادث سلامة",
+      "مطابق للمواصفات القياسية"
     ],
     "highlightsEn": [
-      "14 Corporate Floors",
-      "3 Basement Parking Levels",
-      "High-Spec Double Glazing"
+      "On-time completion",
+      "Zero Safety Incidents",
+      "Code Compliant"
     ],
     "featured": true
   },
   {
-    "id": "hard-proj-03",
-    "titleAr": "دوبلكسات هورايزون الفاخرة - الملقا",
-    "titleEn": "Luxury Horizon Duplexes - Al Malqa",
-    "category": "residential",
-    "status": "in-progress",
-    "locationAr": "حي الملقا، شمال الرياض",
-    "locationEn": "Al Malqa District, North Riyadh",
-    "cityAr": "الرياض",
-    "cityEn": "Riyadh",
-    "year": "2025",
-    "buaM2": 2200,
-    "durationMonths": 14,
-    "valueSAR": "11,200,000 ر.س",
-    "clientAr": "مجموعة المطورين المتحدة",
-    "clientEn": "United Real Estate Developers Group",
-    "image": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=80",
+    "id": "hard-por-02",
+    "titleAr": "تشييد مبنى تجاري وسكني متعدد الطوابق",
+    "titleEn": "Multi-Storey Commercial & Residential Building",
+    "category": "commercial",
+    "status": "completed",
+    "locationAr": "الدمام، المنطقة الشرقية، المملكة العربية السعودية",
+    "locationEn": "Dammam, Eastern Province, KSA",
+    "cityAr": "الدمام",
+    "cityEn": "Dammam",
+    "year": "2021",
+    "buaM2": 8200,
+    "durationMonths": 20,
+    "valueSAR": "مشروع منجز",
+    "clientAr": "مطورون ومستثمرون عقاريون",
+    "clientEn": "Real Estate Developers & Investors",
+    "image": "/images/hardgp/por2-big.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80"
+      "/images/hardgp/por2-big.jpg",
+      "/images/hardgp/por2-small.jpg"
     ],
-    "descriptionAr": "مجمع سكني راقٍ يضم ٤ وحدات دوبلكس فندقية بتصاميم عصرية مفتوحة، أسقف بارتفاع مضاعف، ومداخل مستقلة مع حدائق خاصة وتجهيزات المصاعد البانورامية.",
-    "descriptionEn": "A boutique residential development comprising 4 ultra-luxury duplexes featuring double-height ceiling voids, private courtyards, panoramic hydraulic elevators, and integrated EV charging provisions.",
+    "descriptionAr": "تشييد مبنى متعدد الطوابق يشمل الأعمال الإنشائية الكاملة والواجهات المقاومة للعوامل الجوية وتمديدات المرافق.",
+    "descriptionEn": "Comprehensive multi-storey reinforced concrete framing and exterior facade construction.",
     "scopeAr": [
-      "الأعمال الإنشائية وبناء العظم الكامل",
-      "العزل المائي والحراري المعتمد لضمان ١٠ سنوات",
-      "تركيب المصاعد الإيطالية البانورامية",
-      "التشطيبات الخشبية والرخامية الديكورية"
+      "الأساسات العميقة واللبشة الخرسانية",
+      "الهيكل الإنشائي متعدد الطوابق",
+      "أعمال العزل والسباكة والتكييف"
     ],
     "scopeEn": [
-      "Structural frame and shell construction",
-      "10-year certified dual-layer thermal and waterproofing",
-      "Panoramic Italian hydraulic elevator installation",
-      "Custom acoustic wood paneling and porcelain flooring"
+      "Deep raft foundation",
+      "Multi-storey superstructure",
+      "Waterproofing, MEP & HVAC integration"
+    ],
+    "structuralSystemAr": "خرسانة مسلحة عالية المقاومة",
+    "structuralSystemEn": "High-Strength Reinforced Concrete",
+    "finishingLevelAr": "تشطيب فندقي وسكني متكامل",
+    "finishingLevelEn": "Turnkey Residential & Commercial",
+    "highlightsAr": [
+      "استدامة إنشائية",
+      "خرسانات مختبرة مخبرياً",
+      "تسليم مفتاح متكامل"
+    ],
+    "highlightsEn": [
+      "Structural Longevity",
+      "Lab Tested Concrete",
+      "Turnkey Delivery"
+    ],
+    "featured": true
+  },
+  {
+    "id": "hard-por-03",
+    "titleAr": "منشأة صناعية وهيكل فولاذي متطور",
+    "titleEn": "Industrial Facility & Structural Framework",
+    "category": "industrial",
+    "status": "completed",
+    "locationAr": "المدينة الصناعية، المنطقة الشرقية",
+    "locationEn": "Eastern Province Industrial Area",
+    "cityAr": "المنطقة الشرقية",
+    "cityEn": "Eastern Province",
+    "year": "2022",
+    "buaM2": 9500,
+    "durationMonths": 14,
+    "valueSAR": "مشروع منجز",
+    "clientAr": "قطاع المنشآت الصناعية",
+    "clientEn": "Industrial Operations Sector",
+    "image": "/images/hardgp/por3-big.jpg",
+    "galleryImages": [
+      "/images/hardgp/por3-big.jpg",
+      "/images/hardgp/por3-small.jpg"
+    ],
+    "descriptionAr": "أعمال مدنية وصناعية تشمل تركيب الهياكل المعدنية واللحام الهندسي المتقدم والأنظمة الكهروميكانيكية المتوافقة مع معايير EPC.",
+    "descriptionEn": "Heavy civil and industrial mechanical erection including specialized welding and electro-mechanical systems.",
+    "scopeAr": [
+      "تركيب الهياكل الفولاذية الثقيلة",
+      "أعمال اللحام المعتمدة",
+      "أنظمة التحكم والمراقبة الصناعية E&I"
+    ],
+    "scopeEn": [
+      "Heavy steel erection",
+      "Certified structural welding",
+      "Industrial E&I control systems"
+    ],
+    "structuralSystemAr": "هيكل فولاذي صناعي مع قواعد خرسانية كتلية",
+    "structuralSystemEn": "Heavy Structural Steel with Reinforced Concrete Footings",
+    "finishingLevelAr": "مواصفات صناعية متقدمة (Industrial EPC)",
+    "finishingLevelEn": "Industrial EPC Standards",
+    "highlightsAr": [
+      "معايير سلامة صناعية",
+      "أعمال لحام معتمدة",
+      "جاهزية تشغيلية كاملة"
+    ],
+    "highlightsEn": [
+      "Industrial Safety",
+      "Certified Welding",
+      "100% Operational"
+    ],
+    "featured": true
+  },
+  {
+    "id": "hard-por-04",
+    "titleAr": "تطوير فلل سكنية ومجمعات عصرية",
+    "titleEn": "Residential Villa & Compound Development",
+    "category": "residential",
+    "status": "completed",
+    "locationAr": "حي الريان / الدمام، المنطقة الشرقية",
+    "locationEn": "Al-Rayyan / Dammam, Eastern Province",
+    "cityAr": "الدمام",
+    "cityEn": "Dammam",
+    "year": "2023",
+    "buaM2": 1400,
+    "durationMonths": 12,
+    "valueSAR": "مشروع منجز",
+    "clientAr": "عملاء القطاع السكني والعائلي",
+    "clientEn": "Residential Clients & Families",
+    "image": "/images/hardgp/por4-big.jpg",
+    "galleryImages": [
+      "/images/hardgp/por4-big.jpg",
+      "/images/hardgp/por4-small.jpg"
+    ],
+    "descriptionAr": "عمارة سكنية معاصرة تجمع بين التخطيط الفراغي الذكي والعزل الحراري، مع تمديدات أنابيب العامرية بضمان 50 سنة وتكييف مركزي متطور.",
+    "descriptionEn": "Modern residential villa architecture combining smart layout planning, thermal efficiency, and luxury finishes.",
+    "scopeAr": [
+      "بناء العظم الخرساني والأساسات",
+      "أنابيب العامرية الحرارية بضمان 50 سنة",
+      "تركيب التكييف المركزي مع الزامل ودايكن"
+    ],
+    "scopeEn": [
+      "Superstructure & foundations",
+      "Al-Ameria 50-year thermal piping",
+      "Central HVAC with AlZamil/Daikin"
+    ],
+    "structuralSystemAr": "خرسانة مسلحة مع عزل حراري ومائي مزدوج",
+    "structuralSystemEn": "Reinforced Concrete with Dual Thermal Insulation",
+    "finishingLevelAr": "تشطيب ديلوكس فاخر",
+    "finishingLevelEn": "Deluxe Residential Turnkey",
+    "highlightsAr": [
+      "ضمان أنابيب 50 عاماً",
+      "ضمان تكييف 5 سنوات",
+      "تصميم عصري متكامل"
+    ],
+    "highlightsEn": [
+      "50-Year Pipe Warranty",
+      "5-Year AC Warranty",
+      "Contemporary Design"
+    ],
+    "featured": true
+  },
+  {
+    "id": "hard-por-05",
+    "titleAr": "أعمال الهياكل الخرسانية المسلحة والصب",
+    "titleEn": "Concrete Framework & Structural Works",
+    "category": "residential",
+    "status": "completed",
+    "locationAr": "المنطقة الشرقية، المملكة العربية السعودية",
+    "locationEn": "Eastern Province, Saudi Arabia",
+    "cityAr": "الخبر / الدمام",
+    "cityEn": "Khobar / Dammam",
+    "year": "2022",
+    "buaM2": 3200,
+    "durationMonths": 10,
+    "valueSAR": "مشروع منجز",
+    "clientAr": "مستثمرون وشركاء التطوير الإنشائي",
+    "clientEn": "Structural & Investment Partners",
+    "image": "/images/hardgp/por5-big.jpg",
+    "galleryImages": [
+      "/images/hardgp/por5-big.jpg",
+      "/images/hardgp/por5-small.jpg"
+    ],
+    "descriptionAr": "نجارة مسلحة عالية الدقة، وتثبيت حديد التسليح، وصب الخرسانة المسلحة وفق درجات حرارة مضبوطة وبفحوصات كسر مخبرية معتمدة.",
+    "descriptionEn": "High-precision shuttering, steel reinforcement binding, and temperature-controlled mass concrete casting.",
+    "scopeAr": [
+      "الأعمال الإنشائية العظم",
+      "تسليح ومراقبة الجودة اليومية",
+      "اختبارات الخرسانة المخبرية"
+    ],
+    "scopeEn": [
+      "Core structural works",
+      "Rebar QA/QC daily verification",
+      "Laboratory cube compression testing"
+    ],
+    "structuralSystemAr": "هياكل خرسانية متينة مقاومة للأملاح",
+    "structuralSystemEn": "Sulfate-Resistant Reinforced Concrete",
+    "finishingLevelAr": "عظم مطابق للمواصفات القياسية",
+    "finishingLevelEn": "Standard Structural Shell",
+    "highlightsAr": [
+      "فحص مخبري دوري",
+      "حديد تسليح معتمد",
+      "صفر عيوب إنشائية"
+    ],
+    "highlightsEn": [
+      "Periodic Lab Testing",
+      "Certified Rebar",
+      "Zero Defect Delivery"
+    ],
+    "featured": false
+  },
+  {
+    "id": "hard-por-06",
+    "titleAr": "مقر إداري ومكاتب تجارية متطورة",
+    "titleEn": "Corporate Headquarters & Commercial Offices",
+    "category": "commercial",
+    "status": "completed",
+    "locationAr": "الدمام / الخبر، المنطقة الشرقية",
+    "locationEn": "Dammam / Khobar, Eastern Province",
+    "cityAr": "الدمام",
+    "cityEn": "Dammam",
+    "year": "2023",
+    "buaM2": 4500,
+    "durationMonths": 15,
+    "valueSAR": "مشروع منجز",
+    "clientAr": "شركات ومؤسسات تجارية",
+    "clientEn": "Commercial Corporate Clients",
+    "image": "/images/hardgp/por6-big.jpg",
+    "galleryImages": [
+      "/images/hardgp/por6-big.jpg",
+      "/images/hardgp/por6-small.jpg"
+    ],
+    "descriptionAr": "مبنى إداري متطور مجهز بشبكات التحكم E&I والألياف الضوئية وأنظمة الإنذار والتشطيبات العصرية.",
+    "descriptionEn": "State-of-the-art office infrastructure with integrated E&I networking, fire alarms, and modern aesthetic.",
+    "scopeAr": [
+      "الهيكل الإنشائي والمعماري",
+      "شبكات الاتصالات والألياف الضوئية",
+      "أنظمة السلامة ومكافحة الحريق"
+    ],
+    "scopeEn": [
+      "Structural & architectural shell",
+      "OFC structured cabling",
+      "Fire safety and suppression"
+    ],
+    "structuralSystemAr": "خرسانة مسلحة مع قواطع خفيفة معزولة",
+    "structuralSystemEn": "Reinforced Concrete Frame with Insulated Partitions",
+    "finishingLevelAr": "تشطيب مكتبي تجاري فخم",
+    "finishingLevelEn": "Premium Corporate Fit-Out",
+    "highlightsAr": [
+      "بيئة عمل متناغمة",
+      "شبكات متطورة",
+      "أنظمة تحكم ذكية"
+    ],
+    "highlightsEn": [
+      "Harmonized Workspace",
+      "Advanced Networking",
+      "Smart Controls"
+    ],
+    "featured": false
+  },
+  {
+    "id": "hard-por-07",
+    "titleAr": "أعمال البنية التحتية وتجهيز المواقع",
+    "titleEn": "Infrastructure & Site Development",
+    "category": "industrial",
+    "status": "completed",
+    "locationAr": "المنطقة الشرقية، المملكة العربية السعودية",
+    "locationEn": "Eastern Province, Saudi Arabia",
+    "cityAr": "المنطقة الشرقية",
+    "cityEn": "Eastern Province",
+    "year": "2021",
+    "buaM2": 15000,
+    "durationMonths": 12,
+    "valueSAR": "مشروع منجز",
+    "clientAr": "قطاع تطوير الأراضي والمخططات",
+    "clientEn": "Land Development Fund",
+    "image": "/images/hardgp/por7-big.jpg",
+    "galleryImages": [
+      "/images/hardgp/por7-big.jpg",
+      "/images/hardgp/por7-small.jpg"
+    ],
+    "descriptionAr": "أعمال الحفر، تسوية المناسيب بالليزر، تثبيت التربة، وتمديد شبكات الأنابيب والمرافق التحتية باستخدام أنابيب يورو HDPE الإيطالية.",
+    "descriptionEn": "Excavation, grading, soil stabilization, and underground utility piping infrastructure utilizing Euro HDPE Italian piping systems.",
+    "scopeAr": [
+      "الحفر والردم وتسوية المناسيب",
+      "تمديد خطوط الأنابيب HDPE",
+      "شبكات تصريف مياه الأمطار والصرف"
+    ],
+    "scopeEn": [
+      "Earthworks & laser grading",
+      "Euro HDPE piping installation",
+      "Stormwater & drainage networks"
+    ],
+    "structuralSystemAr": "بنية تحتية وشبكات مدفونة معتمدة",
+    "structuralSystemEn": "Engineered Underground Utility Infrastructure",
+    "finishingLevelAr": "بنية تحتية كاملة",
+    "finishingLevelEn": "Full Infrastructure Handover",
+    "highlightsAr": [
+      "أنابيب يورو HDPE إيطالية",
+      "تسوية دقيقة بالليزر",
+      "مطابقة لمعايير SASO"
+    ],
+    "highlightsEn": [
+      "Euro HDPE Italian Pipes",
+      "Laser Precision Grading",
+      "SASO Compliant"
+    ],
+    "featured": false
+  },
+  {
+    "id": "hard-por-08",
+    "titleAr": "إنشاء وتوسعة المنشآت والتشطيب المعماري",
+    "titleEn": "Plant Construction & Architectural Finishing",
+    "category": "industrial",
+    "status": "completed",
+    "locationAr": "المنطقة الشرقية، المملكة العربية السعودية",
+    "locationEn": "Eastern Province, KSA",
+    "cityAr": "المنطقة الشرقية",
+    "cityEn": "Eastern Province",
+    "year": "2022",
+    "buaM2": 7800,
+    "durationMonths": 16,
+    "valueSAR": "مشروع منجز",
+    "clientAr": "إدارة تشغيل وتطوير المنشآت",
+    "clientEn": "Plant Operations & Engineering",
+    "image": "/images/hardgp/por8-big.jpg",
+    "galleryImages": [
+      "/images/hardgp/por8-big.jpg",
+      "/images/hardgp/por8-small.jpg"
+    ],
+    "descriptionAr": "تعديل وتوسعة المنشآت والتشطيب الصناعي والمعماري ذو المواصفات الصارمة تحت إشراف قسم ضمان الجودة.",
+    "descriptionEn": "Plant modification, revamping, and high-specification industrial building finishing under strict QA/QC.",
+    "scopeAr": [
+      "توسعة وتحديث المرافق القائمة",
+      "أعمال التشطيبات الصناعية العازلة",
+      "فحص الجودة والسلامة المهنية"
+    ],
+    "scopeEn": [
+      "Facility expansion & revamping",
+      "Protective industrial finishes",
+      "QA/QC and occupational safety audit"
+    ],
+    "structuralSystemAr": "خرسانة مسلحة وهياكل فولاذية مدمجة",
+    "structuralSystemEn": "Composite Steel and Reinforced Concrete",
+    "finishingLevelAr": "مواصفات صناعية ومعمارية متقدمة",
+    "finishingLevelEn": "Heavy-Duty Architectural Finish",
+    "highlightsAr": [
+      "توسعة بدون توقف التشغيل",
+      "معايير جودة صارمة",
+      "تسليم تشغيلي كامل"
+    ],
+    "highlightsEn": [
+      "Seamless Revamp",
+      "Strict QA Protocols",
+      "Fully Operational"
+    ],
+    "featured": false
+  },
+  {
+    "id": "hard-por-09",
+    "titleAr": "مشروع سكني متكامل تسليم على المفتاح",
+    "titleEn": "Turnkey Residential Development Project",
+    "category": "residential",
+    "status": "completed",
+    "locationAr": "الدمام، المنطقة الشرقية",
+    "locationEn": "Dammam, Eastern Province",
+    "cityAr": "الدمام",
+    "cityEn": "Dammam",
+    "year": "2023",
+    "buaM2": 1850,
+    "durationMonths": 14,
+    "valueSAR": "مشروع منجز",
+    "clientAr": "مستثمرون في الإسكان الخاص",
+    "clientEn": "Private Housing Investors",
+    "image": "/images/hardgp/por9-big.jpg",
+    "galleryImages": [
+      "/images/hardgp/por9-big.jpg",
+      "/images/hardgp/por9-small.jpg"
+    ],
+    "descriptionAr": "تسليم كامل على المفتاح يشمل الهيكل الإنشائي، الكهروميكانيك، السباكة، والتشطيبات الفاخرة.",
+    "descriptionEn": "Full turnkey delivery encompassing structural execution, electro-mechanical, plumbing, and luxury finish.",
+    "scopeAr": [
+      "أعمال البناء من الأساسات",
+      "التمديدات الكهروميكانيكية والسباكة",
+      "التشطيبات المعمارية والديكور الداخلي"
+    ],
+    "scopeEn": [
+      "Turnkey building from foundation",
+      "MEP and plumbing infrastructure",
+      "Architectural fit-out and interior decor"
     ],
     "structuralSystemAr": "خرسانة مسلحة معزولة حرارياً بالكامل",
-    "structuralSystemEn": "Reinforced Concrete with Thermal Break Insulated Blocks",
-    "finishingLevelAr": "ديلوكس فاخر",
-    "finishingLevelEn": "Deluxe Turnkey",
+    "structuralSystemEn": "Thermally Insulated Reinforced Concrete",
+    "finishingLevelAr": "سوبر ديلوكس فاخر",
+    "finishingLevelEn": "Super Deluxe Turnkey",
     "highlightsAr": [
-      "٤ وحدات مستقلة",
-      "مصاعد بانورامية",
-      "تجهيز سيارات كهربائية"
+      "تسليم متكامل على المفتاح",
+      "أنابيب حرارية بضمان 50 سنة",
+      "أنظمة تكييف الزامل ودايكن"
     ],
     "highlightsEn": [
-      "4 Independent Units",
-      "Panoramic Elevators",
-      "EV Charger Ready"
-    ],
-    "featured": true
-  },
-  {
-    "id": "hard-proj-04",
-    "titleAr": "المركز اللوجستي والصناعي - مدن ٢",
-    "titleEn": "Industrial Logistics Hub - MODON 2",
-    "category": "industrial",
-    "status": "delivered",
-    "locationAr": "المدينة الصناعية الثانية (مدن)، الرياض",
-    "locationEn": "2nd Industrial City (MODON), Riyadh",
-    "cityAr": "الرياض",
-    "cityEn": "Riyadh",
-    "year": "2023",
-    "buaM2": 8500,
-    "durationMonths": 10,
-    "valueSAR": "26,000,000 ر.س",
-    "clientAr": "شركة سلاسل الإمداد اللوجستية",
-    "clientEn": "Global Supply Chain Logistics Corp",
-    "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=1200&q=80"
-    ],
-    "descriptionAr": "منشأة لوجستية متطورة تشمل مستودعات مركزية مبردة، أرضيات خرسانية صناعية خالية من الفواصل ذات قدرة تحمل عالية، ومبنى إداري ملحق متكامل.",
-    "descriptionEn": "A massive industrial logistics complex with jointless heavy-duty laser-screed concrete flooring, temperature-controlled warehouse zones, automated loading docks, and adjacent corporate administration facility.",
-    "scopeAr": [
-      "الهياكل الفولاذية مسبقة الصنع (PEB Steel Structures)",
-      "الأرضيات الخرسانية المروحية المقواة بألياف الفولاذ",
-      "عوازل الساندوتش بانل المقاومة للحريق PIR",
-      "منظومات التبريد ومكافحة الحريق الإنشائية"
-    ],
-    "scopeEn": [
-      "PEB Structural Steel fabrication and high-bay erection",
-      "Laser-screed steel fiber reinforced heavy-duty flooring",
-      "FM-Approved PIR Fire-Rated sandwich panel cladding",
-      "Industrial refrigeration and ESFR sprinkler systems"
-    ],
-    "structuralSystemAr": "هيكل حديدي PEB مع خرسانة صناعية مقواة",
-    "structuralSystemEn": "Engineered Pre-Engineered Steel with Heavy-Duty Reinforced Slab",
-    "finishingLevelAr": "مواصفات صناعية عالية التحمل",
-    "finishingLevelEn": "Heavy Industrial Heavy-Duty Spec",
-    "highlightsAr": [
-      "أرضيات ليزر سكريد",
-      "ساندوتش بانل مقاوم للحريق",
-      "مستودعات مبردة"
-    ],
-    "highlightsEn": [
-      "Laser-Screed Flooring",
-      "Fire-Rated Panels",
-      "Cold Storage Enabled"
-    ],
-    "featured": false
-  },
-  {
-    "id": "hard-proj-05",
-    "titleAr": "أبراج واحة الخبر السكنية والتجارية",
-    "titleEn": "Al Khobar Oasis Towers & Commercial Plaza",
-    "category": "commercial",
-    "status": "completed",
-    "locationAr": "طريق الأمير فيصل بن فهد، الخبر",
-    "locationEn": "Prince Faisal Bin Fahd Road, Al Khobar",
-    "cityAr": "الخبر",
-    "cityEn": "Al Khobar",
-    "year": "2024",
-    "buaM2": 18500,
-    "durationMonths": 28,
-    "valueSAR": "74,000,000 ر.س",
-    "clientAr": "مجموعة الواحة العقارية",
-    "clientEn": "Oasis Real Estate Investment Group",
-    "image": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80"
-    ],
-    "descriptionAr": "مشروع استثماري رائد بالمنطقة الشرقية يضم شققاً فندقية فاخرة ومحلات تجارية على الواجهة البحرية مع تطبيق كود البناء السعودي وكفاءة الطاقة.",
-    "descriptionEn": "A premier mixed-use waterfront tower combining serviced executive suites, street-level luxury retail, and integrated MEP infrastructure.",
-    "scopeAr": [
-      "الأساسات البحرية المعالجة ضد الأملاح والرطوبة",
-      "الهيكل الخرساني عالي الإجهاد (High-Strength Concrete)",
-      "الواجهات الزجاجية المقاومة للرياح البحرية"
-    ],
-    "scopeEn": [
-      "Marine-grade anti-corrosion foundations",
-      "High-strength reinforced concrete frame",
-      "Wind-load engineered acoustic curtain walling"
-    ],
-    "structuralSystemAr": "هيكل خرساني متطور مقاوم للعوامل البحرية",
-    "structuralSystemEn": "Marine-Resistant Reinforced Concrete Superstructure",
-    "finishingLevelAr": "تشطيب فندقي ٥ نجوم",
-    "finishingLevelEn": "5-Star Hospitality Turnkey",
-    "highlightsAr": [
-      "واجهة بحرية",
-      "شقق فندقية",
-      "تصميم معماري مستدام"
-    ],
-    "highlightsEn": [
-      "Waterfront View",
-      "Hotel Apartments",
-      "Sustainable Design"
-    ],
-    "featured": false
-  },
-  {
-    "id": "hard-proj-06",
-    "titleAr": "مشروع التشطيب الفندقي الفاخر - قصر النخيل",
-    "titleEn": "Al Nakheel Ultra-Luxury Interior & Architectural Fit-Out",
-    "category": "finishing",
-    "status": "completed",
-    "locationAr": "حي النخيل، الرياض",
-    "locationEn": "Al Nakheel District, Riyadh",
-    "cityAr": "الرياض",
-    "cityEn": "Riyadh",
-    "year": "2024",
-    "buaM2": 1200,
-    "durationMonths": 8,
-    "valueSAR": "7,800,000 ر.س",
-    "clientAr": "عائلة استثمارية خاصة",
-    "clientEn": "Private Family Office",
-    "image": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80"
-    ],
-    "descriptionAr": "تنفيذ أعمال الديكور والتشطيب الداخلي الفاخر باستخدام أجود أنواع الرخام الإيطالي، النجارة المعمارية المخصصة، الإنارة المغناطيسية الحديثة، والتكسيات الجدارية الجلدية والخشبية.",
-    "descriptionEn": "Bespoke luxury interior fit-out featuring book-matched Calacatta marble slabs, architectural millwork, magnetic architectural lighting tracks, and acoustic wall panels.",
-    "scopeAr": [
-      "تركيب الرخام الإيطالي بتقنية البوك ماتش (Book-match)",
-      "الأسقف المعلقة بتصميمات معمارية معقدة",
-      "أنظمة الإنارة الذكية وتوزيع الصوتيات المحيطية",
-      "تكسيات الخشب الطبيعي والأبواب المخفية Flush Doors"
-    ],
-    "scopeEn": [
-      "Book-matched Italian Calacatta marble slab installation",
-      "Multi-tiered architectural false ceiling systems",
-      "Smart architectural DALI lighting & multi-zone audio",
-      "Custom acoustic walnut millwork & concealed frameless doors"
-    ],
-    "structuralSystemAr": "أعمال ديكور وتشطيبات معمارية متقدمة",
-    "structuralSystemEn": "High-End Architectural Fit-out & Interior Joinery",
-    "finishingLevelAr": "سوبر ديلوكس VIP",
-    "finishingLevelEn": "Super Deluxe VIP",
-    "highlightsAr": [
-      "رخام إيطالي بوك ماتش",
-      "أبواب مخفية فخمة",
-      "إضاءة ذكية"
-    ],
-    "highlightsEn": [
-      "Book-match Marble",
-      "Flush Hidden Doors",
-      "Smart Architectural Lighting"
+      "Turnkey Handover",
+      "50-Year Pipe Warranty",
+      "Zamil/Daikin HVAC"
     ],
     "featured": false
   }

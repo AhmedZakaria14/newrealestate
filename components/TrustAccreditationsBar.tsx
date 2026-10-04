@@ -12,9 +12,8 @@ import {
 } from 'lucide-react';
 
 export default function TrustAccreditationsBar() {
-  const { language, theme } = useLanguageTheme();
+  const { language } = useLanguageTheme();
   const isAr = language === 'ar';
-  const isDark = theme === 'dark';
 
   const accreditations = [
     {
@@ -24,85 +23,71 @@ export default function TrustAccreditationsBar() {
       subAr: 'رقم الترخيص: 1200028472',
       subEn: 'Lic. No: 1200028472',
       authorityAr: 'الهيئة العامة للعقار',
-      authorityEn: 'Real Estate General Authority',
+      authorityEn: 'Real Estate Authority',
       icon: ShieldCheck,
-      color: 'text-emerald-500',
-      badgeBg: 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400',
     },
     {
       id: 'sbc',
       titleAr: 'كود البناء السعودي (SBC)',
       titleEn: 'Saudi Building Code (SBC)',
-      subAr: 'مطابقة هندسية وإنشائية 100%',
+      subAr: 'مطابقة هندسية 100%',
       subEn: '100% Engineering Compliance',
       authorityAr: 'اللجنة الوطنية لكود البناء',
-      authorityEn: 'National Building Code Committee',
+      authorityEn: 'National Building Code',
       icon: Building2,
-      color: 'text-blue-500',
-      badgeBg: 'bg-blue-500/10 border-blue-500/20 text-blue-400',
     },
     {
       id: 'sca',
       titleAr: 'مقاولات عامة فئة أولى',
       titleEn: 'Class-1 General Contracting',
-      subAr: 'عضوية معتمدة ومصنفة',
-      subEn: 'Certified & Classified Member',
-      authorityAr: 'الهيئة السعودية للمقاولين (SCA)',
+      subAr: 'تصنيف رسمي معتمد',
+      subEn: 'Classified Member',
+      authorityAr: 'الهيئة السعودية للمقاولين',
       authorityEn: 'Saudi Contractors Authority',
       icon: Award,
-      color: 'text-amber-500',
-      badgeBg: 'bg-amber-500/10 border-amber-500/20 text-amber-400',
     },
     {
       id: 'balady',
       titleAr: 'اعتمادات منصة بلدي',
       titleEn: 'Balady Platform Accredited',
-      subAr: 'تراخيص وإشراف بلدي فوري',
-      subEn: 'Municipal Licensing & Permits',
-      authorityAr: 'وزارة الشؤون البلدية والإسكان',
-      authorityEn: 'Ministry of Municipal & Housing',
+      subAr: 'تراخيص بلدية فورية',
+      subEn: 'Municipal Licensing',
+      authorityAr: 'وزارة البلديات والإسكان',
+      authorityEn: 'Ministry of Housing',
       icon: FileCheck,
-      color: 'text-purple-500',
-      badgeBg: 'bg-purple-500/10 border-purple-500/20 text-purple-400',
     },
     {
       id: 'iso',
-      titleAr: 'معايير الجودة والسلامة ISO',
-      titleEn: 'ISO Quality & Safety Standards',
-      subAr: 'ISO 9001 / ISO 45001',
-      subEn: 'ISO 9001 / ISO 45001 Certified',
-      authorityAr: 'منظومة إدارة الجودة العالمية',
-      authorityEn: 'International Quality Management',
+      titleAr: 'معايير الجودة ISO',
+      titleEn: 'ISO Quality & Safety',
+      subAr: 'ISO 9001 / 45001',
+      subEn: 'ISO 9001 / 45001 Certified',
+      authorityAr: 'إدارة الجودة العالمية',
+      authorityEn: 'Quality Management',
       icon: BadgeCheck,
-      color: 'text-sky-500',
-      badgeBg: 'bg-sky-500/10 border-sky-500/20 text-sky-400',
     },
   ];
 
   return (
     <section
       aria-label="Accreditations and Certifications"
-      className={`border-y transition-colors py-8 sm:py-10 ${
-        isDark
-          ? 'bg-[#05081e] border-white/10 text-white'
-          : 'bg-slate-50 border-slate-200 text-slate-900'
-      }`}
+      className="bg-black border-y border-[#222222] py-8 sm:py-10 text-[#E1E0CC]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
           <div>
-            <div className="flex items-center gap-2 text-xs font-bold text-blue-500 mb-1">
-              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+            <div className="flex items-center gap-2 text-xs font-semibold text-[#DEDBC8] mb-1">
+              <span className="w-2 h-2 rounded-full bg-[#DEDBC8] animate-pulse" />
               <span>{isAr ? 'الامتثال والتراخيص الوطنية المعتمدة' : 'Official Accreditations & Compliance'}</span>
             </div>
-            <h3 className="text-lg sm:text-xl font-extrabold tracking-tight">
+            <h3 className="text-base sm:text-lg font-bold tracking-tight text-[#E1E0CC]">
               {isAr ? 'منظومة معتمدة وفق أعلى الضوابط التنظيمية بالمملكة' : 'Fully Accredited Under Kingdom Regulatory Standards'}
             </h3>
           </div>
 
-          <div className="flex items-center gap-2 text-xs opacity-75">
-            <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-            <span>{isAr ? 'تراخيص رسمية سارية وموثقة رقمياً' : 'Digitally Verified & Active Licenses'}</span>
+          <div className="flex items-center gap-2 text-xs text-gray-400">
+            <CheckCircle2 className="w-4 h-4 text-[#DEDBC8] shrink-0" />
+            <span>{isAr ? 'تراخيص رسمية سارية وموثقة' : 'Digitally Verified & Active Licenses'}</span>
           </div>
         </div>
 
@@ -117,33 +102,25 @@ export default function TrustAccreditationsBar() {
             return (
               <div
                 key={item.id}
-                className={`p-3.5 sm:p-4 rounded-2xl border transition-all duration-200 hover:-translate-y-0.5 flex flex-col justify-between ${
-                  isDark
-                    ? 'bg-[#080d2b] border-white/10 hover:border-white/20 shadow-sm'
-                    : 'bg-white border-slate-200 hover:border-slate-300 shadow-sm'
-                }`}
+                className="p-4 rounded-2xl bg-[#101010] border border-[#222222] hover:border-[#383838] transition-all duration-200 hover:-translate-y-0.5 flex flex-col justify-between"
               >
                 <div className="flex items-center justify-between gap-2 mb-3">
-                  <div
-                    className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${
-                      isDark ? 'bg-white/5 border border-white/10' : 'bg-slate-100 border border-slate-200'
-                    }`}
-                  >
-                    <Icon className={`w-4 h-4 ${item.color}`} />
+                  <div className="w-8 h-8 rounded-xl bg-black border border-[#262626] flex items-center justify-center shrink-0">
+                    <Icon className="w-4 h-4 text-[#DEDBC8]" />
                   </div>
-                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${item.badgeBg}`}>
+                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#1c1c1c] text-[#DEDBC8] border border-[#2d2d2d]">
                     {isAr ? 'معتمد' : 'Verified'}
                   </span>
                 </div>
 
                 <div>
-                  <h4 className="text-xs sm:text-sm font-bold leading-tight mb-1 truncate" title={title}>
+                  <h4 className="text-xs sm:text-sm font-bold leading-tight mb-1 truncate text-[#E1E0CC]" title={title}>
                     {title}
                   </h4>
-                  <p className="text-[11px] font-semibold text-blue-500 mb-0.5 truncate" title={sub}>
+                  <p className="text-[11px] font-medium text-[#DEDBC8] mb-0.5 truncate" title={sub}>
                     {sub}
                   </p>
-                  <p className="text-[10px] opacity-60 leading-snug line-clamp-1" title={authority}>
+                  <p className="text-[10px] text-gray-500 leading-snug line-clamp-1" title={authority}>
                     {authority}
                   </p>
                 </div>

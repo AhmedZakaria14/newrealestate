@@ -53,7 +53,7 @@ export default function WordsPullUpMultiStyle({
               delay: delay + idx * staggerDelay,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className={`inline-block ${item.className} ${item.italic ? 'font-serif italic' : ''}`}
+            className={`inline-block transform-gpu will-change-transform ${item.className} ${item.italic ? 'font-serif italic' : ''}`}
           >
             {item.word}
           </motion.span>

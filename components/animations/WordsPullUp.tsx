@@ -46,7 +46,7 @@ export default function WordsPullUp({
                 delay: delay + i * staggerDelay,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="inline-block relative"
+              className="inline-block relative transform-gpu will-change-transform"
             >
               {word}
               {showAsterisk && isLastWord && (

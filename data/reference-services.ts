@@ -20,539 +20,828 @@ export interface ReferenceServiceItem {
   division: 'realestate' | 'construction' | 'hvac';
 }
 
-// 1. The Exact Core Real Estate Services from the Reference Website (https://ai-realestate-phi-ecru.vercel.app/)
+// 1. Real Estate Services & Development (from hardgp.com: realestate_dev.html, realestate_services.html, sales_marketing.html)
 export const referenceRealEstateServices: ReferenceServiceItem[] = [
   {
-    id: 'serv-1',
-    slug: 'prime-residential-brokerage',
+    id: 'serv-re-1',
+    slug: 'realestate-development',
     tag: {
-      en: 'Luxury Sales & Acquisitions',
-      ar: 'وساطة واستحواذ العقارات الفاخرة',
+      en: 'Real Estate Development',
+      ar: 'التطوير والاستثمار العقاري',
     },
     title: {
-      en: 'Prime Residential Brokerage & Portfolio Advisory',
-      ar: 'الوساطة العقارية المعتمدة وإدارة المحافظ السكنية',
+      en: 'Real Estate Development & Housing Solutions',
+      ar: 'التطوير العقاري والحلول الإسكانية العصرية',
     },
     subtitle: {
-      en: 'Discreet acquisition and disposition of exceptional waterfront villas, penthouses, and private estates.',
-      ar: 'خدمات وساطة واستشارات تملك متخصصة للقصور والفلل البحرية والشقق الفاخرة بالمنطقة الشرقية.',
+      en: 'Providing modern housing solutions for all types of society, particularly the youth, across Saudi Arabia.',
+      ar: 'توفير حلول إسكانية عصرية تلبي الطلب المتزايد لكافة فئات المجتمع لاسيما فئة الشباب في المملكة.',
     },
     description: {
-      en: 'Our certified real estate advisors represent high-net-worth individuals, family offices, and discerning investors across Khobar, Dhahran, and Dammam with unmatched market intelligence and REGA compliance.',
-      ar: 'يقدم مستشارونا المعتمدون خدمات الوساطة والاستشارة للمستثمرين وكبرى العائلات في الخُبر والظهران والدمام وفق أعلى معايير الشفافية وتنظيمات الهيئة العامة للعقار.',
+      en: 'In light of the continued requirement to provide housing solutions for all types of modern society, particularly the young layer, HARD Establishment develops lands, villas, duplexes, towers, and commercial headquarters throughout the Kingdom of Saudi Arabia.',
+      ar: 'في ظل الحاجة المستمرة لتوفير حلول سكنية لجميع فئات المجتمع العصري لاسيما شريحة الشباب، تهدف مؤسسة هارد لتلبية الطلب المتزايد على الوحدات السكنية عبر تطوير الأراضي، الفلل، الدوبلكسات، الأبراج والمقرات التجارية.',
     },
     features: [
       {
         title: {
-          en: 'REGA & FAL Certified Advisory',
-          ar: 'وساطة معتمدة وتراخيص فال الرسمية',
+          en: 'Comprehensive Property Development',
+          ar: 'تطوير متكامل للمشاريع السكنية والتجارية',
         },
         desc: {
-          en: '100% compliant transactions with authentic electronic title transfers and escrow protocols.',
-          ar: 'صفقات نظامية متوافقة بالكامل مع التوثيق الإلكتروني وحسابات الضمان المعتمدة.',
+          en: 'We develop lands, villas, duplexes, commercial towers, and executive corporate headquarters.',
+          ar: 'نطور الأراضي، الفلل، الدوبلكسات، الأبراج التجارية، والمقرات الإدارية بأعلى المواصفات.',
         },
       },
       {
         title: {
-          en: 'Exclusive Off-Market Collection',
-          ar: 'عقارات وقصور حصرية غير معلنة',
+          en: 'Expert Management & Advisory',
+          ar: 'فريق متخصص واستشارات هندسية',
         },
         desc: {
-          en: 'Direct access to ultra-prime private estates and coastal compounds reserved for pre-qualified buyers.',
-          ar: 'وصول مباشر لعقارات وقصور خاصة نادرة مخصصة لكبار المشترين والمستثمرين المؤهلين.',
+          en: 'Our real estate team comprises expert staff in management and real estate, cooperating with premier advisory offices.',
+          ar: 'يضم فريق التطوير العقاري كوادر خبيرة في الإدارة والعقار بالتعاون مع المكاتب الاستشارية والهندسية.',
         },
       },
       {
         title: {
-          en: 'End-to-End Closing Concierge',
-          ar: 'إفراغ وتوثيق متكامل وسريع',
+          en: 'Sound Investment Destination',
+          ar: 'وجهة استثمارية موثوقة بعوائد مجدية',
         },
         desc: {
-          en: 'Dedicated legal and documentation team ensuring swift title transfers and verified bank escrow settlements.',
-          ar: 'فريق قانوني وإداري متخصص يتابع كافة إجراءات الإفراغ العقاري والضمانات البنكية.',
+          en: 'Anybody looking to invest capital will find HARD the right destination with numerous alternative solutions.',
+          ar: 'كل من يتطلع لاستثمار أمواله يجد في هارد الوجهة المثالية مع باقة متنوعة من الحلول والبدائل الاستثمارية.',
         },
       },
     ],
     stats: [
       {
-        value: '15M+ SAR',
-        label: { en: 'Volume Transacted', ar: 'حجم الصفقات المنجزة' },
+        value: 'Since 2004',
+        label: { en: 'Industry Leadership', ar: 'ريادة في السوق السعودي' },
       },
       {
-        value: '98.7%',
-        label: { en: 'Client Satisfaction', ar: 'نسبة رضا العملاء' },
+        value: '100%',
+        label: { en: 'SBC Compliance', ar: 'مطابقة لكود البناء السعودي' },
       },
       {
-        value: '14 Days',
-        label: { en: 'Avg. Closing Time', ar: 'متوسط مدة الإفراغ' },
+        value: '3 Provinces',
+        label: { en: 'Coverage: Eastern, Central, Western', ar: 'الشرقية، الوسطى، والغربية' },
       },
     ],
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/hardgp/page3-img2.jpg',
     actionText: {
-      en: 'Explore Prime Properties',
-      ar: 'تصفح العقارات الفاخرة',
+      en: 'Explore Properties',
+      ar: 'استعراض المشاريع العقارية',
     },
-    actionHref: '/listings',
+    actionHref: '/realestate',
     actionType: 'properties',
     division: 'realestate',
   },
   {
-    id: 'serv-2',
-    slug: 'cinematic-property-marketing',
+    id: 'serv-re-2',
+    slug: 'realestate-services-funding',
     tag: {
-      en: 'Omnichannel Marketing',
-      ar: 'التسويق العقاري السينمائي المتكامل',
+      en: 'Advisory & Bank Funding',
+      ar: 'الخدمات العقارية والتمويل البنكي',
     },
     title: {
-      en: 'Global Exposure & Bespoke Media Production',
-      ar: 'تسويق عقاري سينمائي وحملات ترويجية مستهدفة',
+      en: 'Real Estate Services & Bank Funding Partnerships',
+      ar: 'الخدمات العقارية واتفاقيات التمويل البنكي',
     },
     subtitle: {
-      en: 'Elevate your property above the market with 4K drone cinematography, 3D architectural tours, and targeted campaigns.',
-      ar: 'إبراز قيمة عقارك عبر إنتاج سينمائي بدقة 4K وتصوير جوي وجولات ثلاثية الأبعاد وحملات رقمية كبرى.',
+      en: 'Facilitating land ownership and construction financing with AlJazira, Riyad, and Samba banks.',
+      ar: 'مساعدة العملاء في تملك الأراضي والبناء بتمويل ميسر عبر شراكاتنا مع بنوك الجزيرة والرياض وسامبا.',
     },
     description: {
-      en: 'We craft comprehensive multimedia campaigns that present your property as an irreplaceable lifestyle asset, reaching thousands of verified GCC and international qualified buyers.',
-      ar: 'نصمم حملات تسويقية متكاملة تبرز التفاصيل المعمارية الاستثنائية لعقارك وتصل إلى آلاف المشترين الجادين في السعودية والخليج.',
+      en: 'HARD offers real estate consultancy support to clients and investors in the market and seeks to reconcile the establishment of residential communities characterized by innovative design and function. We assist clients to own land where we build residential or commercial projects independently or through our long-term bank agreements with AlJazira Bank, Riyad Bank, and Samba Bank offering low profit margins.',
+      ar: 'تقدم هارد الدعم والاستشارات العقارية للعملاء والمستثمرين لإنشاء مجتمعات سكنية مبتكرة تجمع بين التصميم المتميز والوظيفة الحيوية. نساعد العملاء في تملك الأراضي والبناء عبر اتفاقيات طويلة الأجل مع أفضل ثلاثة بنوك تمويلية (بنك الجزيرة، بنك الرياض، بنك سامبا) بهوامش ربح منخفضة.',
     },
     features: [
       {
         title: {
-          en: '4K Drone & Architectural Video',
-          ar: 'تصوير جوي وسينمائي معماري 4K',
+          en: 'Land Ownership & Development Support',
+          ar: 'تسهيل تملك الأراضي وبناء المشاريع',
         },
         desc: {
-          en: 'Bespoke storytelling capturing the prime coastal location, interior finishes, and surrounding lifestyle.',
-          ar: 'سرد بصري سينمائي يبرز الموقع الساحلي المميز وجودة التشطيبات وأنماط الحياة المحيطة.',
+          en: 'Assisting clients in acquiring prime land and constructing residential or commercial projects with institutional funding.',
+          ar: 'مساعدة العميل في تملك الأرض المناسبة وبناء مشروعه السكني أو التجاري بتسهيلات تمويلية معتمدة.',
         },
       },
       {
         title: {
-          en: 'Targeted High-Net-Worth Reach',
-          ar: 'وصول مباشر لشرائح المشترين المستهدفين',
+          en: 'Institutional Bank Funding Program',
+          ar: 'برنامج التمويل البنكي المشترك',
         },
         desc: {
-          en: 'Data-driven private syndication across premium channels, investor portals, and VIP networks.',
-          ar: 'نشر موجه عبر المنصات الاستثمارية الرائدة وشبكات المستثمرين وكبار العملاء.',
+          en: 'Long-term partnership agreements with AlJazira Bank, Riyad Bank, and Samba Bank providing low profit margins.',
+          ar: 'اتفاقيات شراكة حصرية مع بنك الجزيرة، بنك الرياض، وبنك سامبا بهامش ربح منخفض جداً للموظفين والمستثمرين.',
         },
       },
       {
         title: {
-          en: 'Real-Time Performance Dashboard',
-          ar: 'تقارير أداء ومؤشرات تفاعل لحظية',
+          en: 'Generational Value & Future Communities',
+          ar: 'مجتمعات سكنية تلبي طموح الأجيال',
         },
         desc: {
-          en: 'Weekly analytics on inquiries, qualified viewing appointments, and buyer feedback.',
-          ar: 'تقارير أسبوعية تفصيلية عن المشاهدات وطلبات المعاينة الجادة والعروض المقدمة.',
+          en: 'Developing residential, educational, and social projects that serve present requirements and ensure future prosperity.',
+          ar: 'تطوير مشاريع سكنية واجتماعية وترفيهية لا تقتصر على المتطلبات الحالية بل تؤسس لنجاح الأجيال القادمة.',
         },
       },
     ],
     stats: [
       {
-        value: '1.7M+',
-        label: { en: 'Monthly Impressions', ar: 'مشاهدة شهرية لحملاتنا' },
+        value: '3 Major Banks',
+        label: { en: 'AlJazira, Riyad, Samba', ar: 'الجزيرة، الرياض، سامبا' },
       },
       {
-        value: '20 Days',
-        label: { en: 'Avg. Time to Offer', ar: 'متوسط استلام أول عرض' },
+        value: 'Low Margin',
+        label: { en: 'Competitive Financing', ar: 'هامش ربح تفضيلي منخفض' },
       },
       {
-        value: '100%',
-        label: { en: 'REGA Compliant Ads', ar: 'إعلانات مرخصة وموثقة' },
+        value: 'Turnkey',
+        label: { en: 'Land to Handover', ar: 'من شراء الأرض حتى التسليم' },
       },
     ],
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/hardgp/page2-img14.jpg',
     actionText: {
-      en: 'List Your Property With Us',
-      ar: 'اعرض عقارك معنا للتسويق',
+      en: 'Inquire About Funding',
+      ar: 'استفسر عن برامج التمويل',
     },
     actionHref: '/contact-us',
     actionType: 'list-property',
     division: 'realestate',
   },
   {
-    id: 'serv-3',
-    slug: 'investment-advisory-developments',
+    id: 'serv-re-3',
+    slug: 'sales-marketing',
     tag: {
-      en: 'Strategic Investment Advisory',
-      ar: 'الاستشارات والاستثمار العقاري الاستراتيجي',
+      en: 'Sales & Marketing',
+      ar: 'المبيعات والتسويق العقاري',
     },
     title: {
-      en: 'High-Yield Investment Advisory & Master Developments',
-      ar: 'استشارات الاستثمار العقاري والمشاريع التطويرية الكبرى',
+      en: 'Strategic Sales & Marketing for Property Assets',
+      ar: 'التسويق العقاري الاستراتيجي وإدارة المبيعات',
     },
     subtitle: {
-      en: 'Data-driven insights to maximize capital appreciation and rental yield across master developments.',
-      ar: 'تحليلات بيانات استثمارية لتعظيم العائد الإيجاري والنمو الرأسمالي في كبرى المخططات والمشاريع.',
+      en: 'Collaborative marketing plans with major real estate companies across the Kingdom of Saudi Arabia.',
+      ar: 'خطط تسويقية مدروسة بالتعاون مع كبرى الشركات العقارية بالمملكة لتحقيق أقصى عائد استثماري.',
     },
     description: {
-      en: 'We evaluate market cycles, rental benchmarks, and infrastructure growth corridors in the Eastern Province to identify lucrative commercial and income-generating opportunities.',
-      ar: 'نحلل دورات السوق ومؤشرات الإيجارات ومحاور التوسع العمراني بالمنطقة الشرقية لاقتناص أفضل الفرص الاستثمارية الواعدة.',
+      en: 'HARD focuses on marketing its services and products using ultimate choices of marketing plans in collaboration with major real estate companies in the region. Sales alternatives are analyzed precisely to be highly convenient to both consumers and investors.',
+      ar: 'تركز هارد على تسويق خدماتها ومنتجاتها باختيار أرقى الخطط التسويقية بالتعاون مع كبرى الشركات العقارية في المنطقة. ويتم تحليل البدائل البيعية بدقة لتكون ملائمة ومريحة للمستهلكين والمستثمرين على حد سواء.',
     },
     features: [
       {
         title: {
-          en: 'Comprehensive Yield & ROI Modeling',
-          ar: 'نماذج مالية دقيقة للعائد الاستثماري',
+          en: 'Alliances with Regional Real Estate Leaders',
+          ar: 'تحالفات مع كبرى الشركات العقارية',
         },
         desc: {
-          en: 'Detailed cash-flow forecasts, projected appreciation curves, and exit strategy recommendations.',
-          ar: 'توقعات دقيقة للتدفقات النقدية ومنحنيات نمو القيمة الرأسمالية واستراتيجيات الخروج.',
+          en: 'Extensive network collaborations delivering rapid sales cycles and verified buyer channels.',
+          ar: 'شبكة علاقات واسعة وشراكات تضمن سرعة تسويق الوحدات والوصول إلى المشترين الجادين.',
         },
       },
       {
         title: {
-          en: 'Prime Master Project Allocation',
-          ar: 'أولوية الحجز في كبرى المشاريع والمخططات',
+          en: 'Precise Alternative Sales Analysis',
+          ar: 'تحليل دقيق للبدائل البيعية',
         },
         desc: {
-          en: 'First-phase allocation and preferential pricing in flagship waterfront and urban developments.',
-          ar: 'تخصيص مبكر وأسعار تفضيلية في المرحلة الأولى لأبرز المشاريع السكنية والتجارية.',
+          en: 'Detailed evaluations tailored to consumer cash-flow needs and investor return targets.',
+          ar: 'دراسات تسعير وتدفقات نقدية مدروسة تناسب متطلبات المشترين وتضمن أعلى ربحية للمستثمرين.',
         },
       },
       {
         title: {
-          en: 'Turnkey Portfolio Management',
-          ar: 'إدارة أصول وتشغيل إيجاري شامل',
+          en: 'Targeted Multi-Channel Reach',
+          ar: 'حملات ترويجية مستهدفة ومباشرة',
         },
         desc: {
-          en: 'Post-handover tenant acquisition, rent collection, and property maintenance coordination.',
-          ar: 'خدمات ما بعد الاستلام وتأجير الوحدات وتحصيل الإيجارات ومتابعة الصيانة الدورية.',
+          en: 'Direct institutional and retail outreach covering commercial assets, villas, and master projects.',
+          ar: 'تغطية تسويقية مباشرة تشمل الأصول التجارية والمشاريع السكنية والفلل والمجمعات.',
         },
       },
     ],
     stats: [
       {
-        value: '8.9%',
-        label: { en: 'Avg. Gross Yield', ar: 'متوسط العائد الإيجاري' },
+        value: 'Top Channels',
+        label: { en: 'Regional Reach', ar: 'تغطية تسويقية إقليمية' },
       },
       {
-        value: '12+',
-        label: { en: 'Master Projects', ar: 'مشروع رئيسي معتمد' },
+        value: 'Optimal ROI',
+        label: { en: 'Yield Optimization', ar: 'تعظيم العوائد الاستثمارية' },
       },
       {
-        value: '100%',
-        label: { en: 'REGA Compliant', ar: 'معتمد وموثق نظاماً' },
+        value: 'Expert Team',
+        label: { en: 'Advisory & Brokerage', ar: 'فريق تسويق متخصص' },
       },
     ],
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/hardgp/page3-img10.jpg',
     actionText: {
-      en: 'Explore New Projects',
-      ar: 'استكشف المشاريع الكبرى',
+      en: 'Contact Marketing Desk',
+      ar: 'تواصل مع إدارة التسويق',
     },
-    actionHref: '/projects',
+    actionHref: '/contact-us',
     actionType: 'projects',
     division: 'realestate',
   },
 ];
 
-// 2. Dedicated General Contracting & Structural Construction Services
+// 2. Construction & Contracting Services (from hardgp.com: construction.html, quality_assurance.html, work_safety.html)
 export const referenceConstructionServices: ReferenceServiceItem[] = [
   {
-    id: 'const-1',
-    slug: 'general-contracting-towers',
+    id: 'serv-con-1',
+    slug: 'general-construction-epc',
     tag: {
-      en: 'Class-1 General Contracting',
-      ar: 'مقاولات عامة فئة أولى',
+      en: 'Civil & EPC Contracting',
+      ar: 'المقاولات العامة والإنشاءات',
     },
     title: {
-      en: 'Commercial Towers & Smart Residential Masterplans',
-      ar: 'تنفيذ الأبراج التجارية والمجمعات السكنية الذكية',
+      en: 'Grass Root Construction & EPC / LSTK / LSPB Turnkey Works',
+      ar: 'إنشاء المباني والمصانع من الأساسات ومشاريع تسليم المفتاح',
     },
     subtitle: {
-      en: 'Heavy civil and high-rise structural engineering executed under strict Saudi Building Code (SBC) standards.',
-      ar: 'تنفيذ الأعمال الخرسانية والهياكل الإنشائية الشاهقة وفق اشتراطات كود البناء السعودي بدقة هندسية مطلقة.',
+      en: 'Grass root building, plant construction, revamp, modification, upgrade, and debottlenecking since 2004.',
+      ar: 'تشييد المباني والمصانع وتحديث وتوسعة وتطوير المنشآت الصناعية والمشاريع الكبرى منذ 2004.',
     },
     description: {
-      en: 'Full-scope turn-key contracting capabilities for mixed-use developments, corporate headquarters, and high-density residential towers across the Kingdom.',
-      ar: 'قدرات تنفيذية شاملة على المفتاح لتشييد الأبراج والمقرات المؤسسية والمجمعات السكنية الكبرى بأعلى مواصفات الجودة والمتانة.',
+      en: 'HARD offers grass root building construction, plant construction, plant revamp and modification, plant upgrade and expansion and de-bottlenecking for LSTK/EPC/LSPB type projects. Our expert team studies individual requirements, planning and scheduling prior to commencement with a highly trained workforce.',
+      ar: 'تقدم هارد مقاولات البناء من الأساسات، تشييد المصانع، إعادة تأهيل وتطوير وتوسعة المنشآت وتجاوز الاختناقات لمشاريع LSTK و EPC و LSPB. يقوم فريقنا المتخصص بدراسة أدق تفاصيل كل مشروع وجدولة الأعمال بدقة مع كادر فني مدرب.',
     },
     features: [
       {
         title: {
-          en: 'SBC 100% Certified Compliance',
-          ar: 'مطابقة تامة لكود البناء السعودي (SBC)',
+          en: 'LSTK, EPC & LSPB Turnkey Capabilities',
+          ar: 'تنفيذ كامل لمشاريع LSTK و EPC و LSPB',
         },
         desc: {
-          en: 'Full architectural, structural, and electrical conformity verified by certified testing labs.',
-          ar: 'مطابقة معمارية وإنشائية وكهربائية معتمدة من مختبرات فحص التربة والمواد المعتمدة.',
+          en: 'Engineering, Procurement, Construction, and Lump Sum Turnkey delivery on time and within budget.',
+          ar: 'تغطية كاملة لكافة مراحل الهندسة والتوريد والإنشاء والتسليم على المفتاح وفق الميزانية المحددة.',
         },
       },
       {
         title: {
-          en: 'Resident Site Engineering Supervision',
-          ar: 'إشراف هندسي مقيم على مدار الساعة',
+          en: 'Industrial Plant Expansion & Revamp',
+          ar: 'توسعة وتحديث المصانع والمنشآت',
         },
         desc: {
-          en: 'Daily quality assurance audits, laser-level alignment, and progress milestone tracking.',
-          ar: 'متابعة يومية لمناسيب الصب وجودة التسليح واختبارات الضغط الخرساني في الموقع.',
+          en: 'Plant modification, facility upgrades, and debottlenecking maintaining full operational continuity.',
+          ar: 'تعديل وتوسعة خطوط الإنتاج والمنشآت الصناعية ورفع كفاءتها دون الإخلال بالعمليات التشغيلية.',
         },
       },
       {
         title: {
-          en: '10-Year Certified Structural Bond',
-          ar: 'ضمانات هيكلية ممتدة تصل إلى 10 سنوات',
+          en: 'Civil, Mechanical & Electro-Mechanical Integration',
+          ar: 'تكامل الأعمال المدنية والميكانيكية والكهربائية',
         },
         desc: {
-          en: 'Complete structural integrity warranty backed by licensed engineering consultants.',
-          ar: 'وثائق ضمان هيكلي معتمدة من المكاتب الاستشارية وشركات التأمين الهندسية.',
+          en: 'End-to-end execution combining structural concrete, steel frameworks, and mechanical systems.',
+          ar: 'تنفيذ شامل يجمع بين الهياكل الخرسانية والهياكل المعدنية والأنظمة الكهروميكانيكية.',
         },
       },
     ],
     stats: [
       {
-        value: 'FAL & SBC',
-        label: { en: 'Certifications', ar: 'اعتمادات رسمية' },
+        value: '2004',
+        label: { en: 'Established in Saudi Arabia', ar: 'سنة التأسيس في المملكة' },
       },
       {
-        value: '100%',
-        label: { en: 'On-Time Milestones', ar: 'التزام بالمواعيد' },
+        value: 'LSTK / EPC',
+        label: { en: 'Project Delivery Models', ar: 'نماذج تسليم المفتاح المعتمدة' },
       },
       {
-        value: 'Zero',
-        label: { en: 'Safety Incidents', ar: 'حوادث في الموقع' },
+        value: 'Zero Defect',
+        label: { en: 'Rigorous QA Guarantee', ar: 'ضمان الجودة والسلامة' },
       },
     ],
-    image: 'https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/hardgp/page3-img1.jpg',
     actionText: {
-      en: 'Request BOQ Estimation',
-      ar: 'طلب دراسة تكلفة وجداول كميات BOQ',
+      en: 'View Construction Portfolio',
+      ar: 'استعراض مشاريع المقاولات',
     },
-    actionHref: '/contact-us',
+    actionHref: '/construction',
     actionType: 'contracting',
     division: 'construction',
   },
   {
-    id: 'const-2',
-    slug: 'civil-structural-turnkey',
+    id: 'serv-con-2',
+    slug: 'quality-assurance-control',
     tag: {
-      en: 'Turnkey Delivery',
-      ar: 'تسليم متكامل على المفتاح',
+      en: 'Quality Assurance (QA/QC)',
+      ar: 'ضمان الجودة والرقابة الفنية',
     },
     title: {
-      en: 'Architectural Fit-Out & Turnkey Construction',
-      ar: 'التشطيبات المعمارية الفاخرة والتسليم على المفتاح',
+      en: 'Comprehensive Quality Assurance & Materials Inspection',
+      ar: 'ضمان الجودة وفحص المواد قبل وبعد التوريد',
     },
     subtitle: {
-      en: 'Seamless integration of MEP systems, luxury facades, and bespoke interior spaces delivered ready for occupancy.',
-      ar: 'دمج هندسي متكامل للأنظمة الكهروميكانيكية والواجهات الزجاجية المعزولة مع أرقى التشطيبات المعمارية.',
+      en: 'Preventing defects and guaranteeing compliance with client specifications and international standards.',
+      ar: 'منع أي عيوب أو أخطاء في مواد البناء والتحقق التام من مطابقتها للمواصفات المعتمدة والمعايير العالمية.',
     },
     description: {
-      en: 'From groundbreaking through final municipal occupancy certificates, HARD Contracting manages all subcontractor tiers, procurement, and site logistics.',
-      ar: 'من وضع حجر الأساس وحتى إصدار شهادات إتمام البناء وإطلاق التيار، نتولى إدارة كافة مراحل المشروع والموردين بأعلى كفاءة.',
+      en: 'Our construction services are guaranteed to prevent any possible defects or mistakes with construction materials before and after delivery to the construction site. QA is vital to check all items comply with agreed standards and avoid having any conflict with the original functionality.',
+      ar: 'خدماتنا الإنشائية مضمونة لمنع أي عيوب أو أخطاء محتملة في مواد البناء قبل وبعد وصولها لموقع العمل. يعد ضمان الجودة ركيزة حيوية للتأكد من مطابقة جميع المواد للمعايير المعتمدة وتجنب أي تعارض مع الوظيفة الأساسية للمبنى.',
     },
     features: [
       {
         title: {
-          en: 'Advanced 3D BIM Coordination',
-          ar: 'نمذجة معمارية ثلاثية الأبعاد (BIM)',
+          en: 'Pre- & Post-Delivery Materials Verification',
+          ar: 'فحص المواد قبل وبعد التوريد للموقع',
         },
         desc: {
-          en: 'Clash-detection across MEP, HVAC, and structural blueprints before physical execution.',
-          ar: 'كشف مسبق لأي تعارض بين شبكات التكييف والكهرباء والإنشاء قبل بدء الصب.',
+          en: 'Rigorous chemical and physical lab testing for concrete, steel, insulation, and piping.',
+          ar: 'اختبارات مخبرية دقيقة للخرسانة والحديد والعوازل والأنابيب لضمان سلامتها التامة.',
         },
       },
       {
         title: {
-          en: 'Premium ISO Materials Procurement',
-          ar: 'توريد مواد معتمدة بشهادات ISO',
+          en: 'Adherence to Client & International Codes',
+          ar: 'مطابقة المواصفات المعتمدة عالمياً',
         },
         desc: {
-          en: 'Direct factory partnerships for steel rebar, high-grade concrete, and thermal glass.',
-          ar: 'شراكات توريد مباشرة للحديد عالي الإجهاد والخرسانة المعالجة والرخام الطبيعي.',
+          en: 'Strict compliance audits against Saudi Building Code (SBC), ASTM, and ISO standards.',
+          ar: 'تدقيق دوري وصارم وفق كود البناء السعودي والمعايير الدولية المعتمدة من العميل.',
         },
       },
       {
         title: {
-          en: 'Electronic Owner Progress Portal',
-          ar: 'منصة متابعة رقمية لحظية للمالك',
+          en: 'Zero Conflict with Original Functionality',
+          ar: 'ضمان الأداء الوظيفي الكامل للمنشأة',
         },
         desc: {
-          en: 'Live camera streams, weekly photographic progress audits, and milestone approvals.',
-          ar: 'تقارير أسبوعية مصورة وتحديثات دورية لنسب الإنجاز المالية والإنشائية.',
+          en: 'Systematic audits ensuring all architectural, structural, and mechanical elements operate seamlessly.',
+          ar: 'مراجعة منهجية لضمان عمل كافة العناصر الإنشائية والميكانيكية وفق أعلى مستويات الكفاءة.',
         },
       },
     ],
     stats: [
       {
         value: '100%',
-        label: { en: 'SBC Compliance', ar: 'مطابقة الكود' },
+        label: { en: 'Materials Inspected', ar: 'فحص شامل لجميع المواد' },
       },
       {
-        value: '10 Yrs',
-        label: { en: 'Structural Guarantee', ar: 'ضمان الهيكل' },
+        value: 'ISO & SASO',
+        label: { en: 'Certified Standards', ar: 'مطابقة للمعايير والمواصفات' },
       },
       {
-        value: '24/7',
-        label: { en: 'Site Security', ar: 'حراسة وأمان' },
+        value: 'Zero Defect',
+        label: { en: 'Target Standard', ar: 'هدفنا الإنشائي الدائم' },
       },
     ],
-    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/hardgp/page3-img4.jpg',
     actionText: {
-      en: 'Consult Site Engineers',
-      ar: 'تواصل مع الاستشاري الهندسي',
+      en: 'Learn About QA Standards',
+      ar: 'معايير ضمان الجودة',
     },
-    actionHref: '/contact-us',
+    actionHref: '/construction/sbc-standards',
+    actionType: 'contracting',
+    division: 'construction',
+  },
+  {
+    id: 'serv-con-3',
+    slug: 'work-safety-hse',
+    tag: {
+      en: 'Work Safety (HSE)',
+      ar: 'السلامة والصحة المهنية',
+    },
+    title: {
+      en: 'Work Safety Procedures & Dedicated On-Site Safety Engineers',
+      ar: 'إجراءات السلامة المهنية وتعيين مهندسي سلامة بالموقع',
+    },
+    subtitle: {
+      en: 'Safety is first and most important: monthly workforce training, mandatory PPE, and rigorous controls.',
+      ar: 'السلامة أولاً وأهم أولوياتنا الإنشائية: تدريب شهري للكوادر، إلزامية معدات الوقاية، وضوابط ميدانية صارمة.',
+    },
+    description: {
+      en: 'HARD considers safety first and most important in construction. Safety procedures are integrated into training programs for our manpower and senior staff on a monthly basis. We provide certified site safety engineers and assistants to issue safety requirements and enforce site controls.',
+      ar: 'تعتبر المؤسسة السلامة الأولى والأهم في مجال الإنشاءات، ولهذا تعد إجراءات السلامة جزءاً أساسياً من البرنامج التدريبي لكوادرنا وكبار موظفينا شهرياً، مع توفير مهندس سلامة ميداني ومساعدين لضبط متطلبات السلامة في كافة مراحل العمل.',
+    },
+    features: [
+      {
+        title: {
+          en: 'Dedicated Site Safety Engineer & Assistants',
+          ar: 'مهندس سلامة مقيم ومساعدين في كل موقع',
+        },
+        desc: {
+          en: 'Full-time safety supervision issuing work permits, hazard prevention guidelines, and compliance checks.',
+          ar: 'إشراف ميداني مستمر لإصدار تصاريح العمل وتطبيق إرشادات الوقاية من المخاطر.',
+        },
+      },
+      {
+        title: {
+          en: 'Mandatory PPE & Equipment Operator Certification',
+          ar: 'معدات الوقاية وتراخيص تشغيل الآليات',
+        },
+        desc: {
+          en: 'Standardized safety shoes, helmets, vehicle speed limits, and certified heavy equipment operator licenses.',
+          ar: 'توفير أحذية وخوذ السلامة، وفرض سرعات محددة للمركبات، وتراخيص قيادة معتمدة لمشغلي المعدات الثقيلة.',
+        },
+      },
+      {
+        title: {
+          en: 'Site Warning Protocols & Monthly Drills',
+          ar: 'لوحات تحذيرية وتدريب شهري للعمالة',
+        },
+        desc: {
+          en: 'Comprehensive flags, warning tape, warning lights, cones, and mechanical electrical tool protections.',
+          ar: 'نشر الأشرطة التحذيرية والأضواء والأقماع ولوحات التنبيه، وفحص أدوات الحماية للآلات الكهربائية.',
+        },
+      },
+    ],
+    stats: [
+      {
+        value: 'Safety First',
+        label: { en: 'Zero Tolerance Policy', ar: 'أولوية لا تهاون فيها' },
+      },
+      {
+        value: 'Monthly',
+        label: { en: 'Staff Training Programs', ar: 'برامج تدريب وتأهيل شهري' },
+      },
+      {
+        value: 'Certified',
+        label: { en: 'Site Safety Engineers', ar: 'مهندسو سلامة معتمدون' },
+      },
+    ],
+    image: '/images/hardgp/page3-img5.jpg',
+    actionText: {
+      en: 'Safety Policy Details',
+      ar: 'تفاصيل سياسة السلامة',
+    },
+    actionHref: '/construction/sbc-standards',
     actionType: 'contracting',
     division: 'construction',
   },
 ];
 
-// 3. Dedicated HVAC Mechanical & Facilities Management Services
+// 3. Maintenance, HVAC & Specialized Agencies (from hardgp.com: maintenance_operations.html, air_conditioning_works.html, electrical_works.html, plumbing_works.html, welding_works.html, thermal_pipes_sanitation.html, fire_extinguishers.html)
 export const referenceHVACServices: ReferenceServiceItem[] = [
   {
-    id: 'hvac-1',
-    slug: 'amc-maintenance-chillers',
+    id: 'serv-hvac-1',
+    slug: 'air-conditioning-works',
     tag: {
-      en: 'Preventive AMC Contracts',
-      ar: 'عقود الصيانة الوقائية السنوية AMC',
+      en: 'Air Conditioning Works (A/C)',
+      ar: 'أعمال التكييف والتبريد المركزي',
     },
     title: {
-      en: 'Industrial Chillers, VRF Systems & Central Air Conditioning',
-      ar: 'الشيلرات المركزية وأنظمة التدفق المتغير VRF وتبريد الأبراج',
+      en: 'Air Conditioning Systems with Pioneer Brand Agreements',
+      ar: 'أعمال التكييف المركزية بشراكة مع رواد الصناعة',
     },
     subtitle: {
-      en: 'Engineered cooling solutions, ducting layout, and certified annual maintenance (AMC) for commercial properties.',
-      ar: 'تصميم وتنفيذ مجاري الهواء وتبريد المباني الشاهقة مع عقود صيانة سنوية دورية تضمن استمرارية العمل 100%.',
+      en: 'Partnerships with AlZamil, Daikin, LG, Samsung, and Trane with 5-year vendor warranties and free site surveys.',
+      ar: 'اتفاقيات مع كبرى شركات التكييف: الزامل، دايكن، إل جي، سامسونج، وترين مع ضمان 5 سنوات ومعاينة مجانية.',
     },
     description: {
-      en: 'Complete mechanical HVAC contracting covering package units, variable refrigerant flow (VRF), cooling towers, and continuous preventive maintenance.',
-      ar: 'حلول ميكانيكية متخصصة تغطي الشيلرات المركزية، مضخات التبريد، وحدات مناولة الهواء (AHU)، ومتابعة دورية تمنع الأعطال المفاجئة.',
+      en: 'HARD has agreements with pioneers in Air Conditioning services: AlZamil, Daikin, LG, Samsung, and Trane. Warranty is provided for 5 years from the vendor and after-sales service by our customer support staff. Our installation experts bring over 10 years of experience. We provide free site surveys carried out by AC Engineers and offer regular quarterly, bi-annual, and annual maintenance contracts.',
+      ar: 'ترتبط هارد باتفاقيات مع رواد شركات التكييف العالمية: الزامل، دايكن، إل جي، سامسونج، وترين. نوفر ضماناً لمدة 5 سنوات من المصنع وخدمات ما بعد البيع عبر فريق دعم العملاء. يمتلك خبراؤنا خبرة تزيد عن 10 سنوات، مع توفير معاينة موقع مجانية بواسطة مهندسي تكييف وعقود صيانة دورية (ربع سنوية، نصف سنوية، وسنوية).',
     },
     features: [
       {
         title: {
-          en: '24/7 Emergency Dispatch Fleet',
-          ar: 'فرق طوارئ واستجابة سريعة 24/7',
+          en: 'Authorized Pioneer Brands',
+          ar: 'شراكات مع رواد التكييف العالميين',
         },
         desc: {
-          en: 'Guaranteed maximum 45-minute on-site response time across Khobar, Dammam, and Dhahran.',
-          ar: 'وصول فريق الصيانة المتنقل خلال 45 دقيقة لمعالجة أي توقف طارئ في التبريد.',
+          en: 'Official partnerships with AlZamil, Daikin, LG, Samsung, and Trane.',
+          ar: 'اتفاقيات رسمية مع كبرى العلامات: الزامل، دايكن، إل جي، سامسونج، وترين.',
         },
       },
       {
         title: {
-          en: 'Energy Efficiency & Inverter Optimization',
-          ar: 'توفير استهلاك الكهرباء بنسبة تصل إلى 35%',
+          en: '5-Year Vendor Warranty & Free Survey',
+          ar: 'ضمان 5 سنوات ومعاينة مجانية للموقع',
         },
         desc: {
-          en: 'Smart inverter tuning and variable frequency drives reducing corporate utility costs.',
-          ar: 'ضبط ذكي لتردد الضواغط وتوزيع الأحمال الحرارية لتقليل فاتورة الكهرباء الشهرية.',
+          en: 'Full 5-year equipment warranty and complimentary engineering site survey for new projects.',
+          ar: 'ضمان 5 سنوات من الشركة المصنعة مع كشف ميداني هندسي مجاني للمشاريع الجديدة.',
         },
       },
       {
         title: {
-          en: 'Genuine Factory Parts & Warranty',
-          ar: 'قطع غيار أصلية وضمان معتمد',
+          en: 'Flexible Maintenance Contracts (AMC)',
+          ar: 'عقود صيانة دورية مرنة (AMC)',
         },
         desc: {
-          en: 'Direct certified partnerships with Daikin, Trane, Carrier, York, and LG.',
-          ar: 'شراكات مع كبرى الشركات المصنعة لضمان استخدام قطع غيار معتمدة وبضمان شامل.',
+          en: 'Scheduled contracts for individuals and companies on quarterly, bi-annual, and annual basis.',
+          ar: 'عقود صيانة وقائية منتظمة للأفراد والشركات (ربع سنوية، نصف سنوية، وسنوية).',
         },
       },
     ],
     stats: [
       {
-        value: '< 45 Min',
-        label: { en: 'Emergency Response', ar: 'زمن الاستجابة' },
+        value: '5 Years',
+        label: { en: 'Vendor Warranty', ar: 'ضمان معتمد 5 سنوات' },
       },
       {
-        value: '99.9%',
-        label: { en: 'Uptime Reliability', ar: 'جاهزية التبريد' },
+        value: '5 Brands',
+        label: { en: 'AlZamil, Daikin, LG, Samsung, Trane', ar: 'الزامل، دايكن، LG، سامسونج، ترين' },
       },
       {
-        value: '-35%',
-        label: { en: 'Energy Consumption', ar: 'توفير الطاقة' },
+        value: '10+ Years',
+        label: { en: 'Technician Experience', ar: 'خبرة مهندسي التكييف' },
       },
     ],
-    image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/hardgp/page3-img9.jpg',
     actionText: {
-      en: 'Request AMC Maintenance Quote',
-      ar: 'طلب تسعير عقد صيانة AMC',
+      en: 'Explore HVAC Maintenance',
+      ar: 'خدمات التكييف وعقود الصيانة',
+    },
+    actionHref: '/hvac',
+    actionType: 'hvac',
+    division: 'hvac',
+  },
+  {
+    id: 'serv-hvac-2',
+    slug: 'electrical-engineering-works',
+    tag: {
+      en: 'Electrical Works (E&I)',
+      ar: 'الأعمال الكهربائية وأنظمة التحكم',
+    },
+    title: {
+      en: 'Medium & Low Voltage Electrical, Instrumentation & Control Systems',
+      ar: 'أنظمة الكهرباء للجهد المتوسط والمنخفض والتحكم والإنذار',
+    },
+    subtitle: {
+      en: 'Power substations, generators, lightning protection, DCS/PLC/SCADA control, campus networks, and fire alarms.',
+      ar: 'محطات التحويل، المولدات، شبكات التأريض، أنظمة التحكم الصناعي، شبكات الألياف، وأنظمة الإنذار.',
+    },
+    description: {
+      en: 'The HARD E&I team has vast engineering and design experience in Medium and Low Voltage Electrical systems, Instrumentation, Various Control Systems (DCS, ESD, PLC, RTU, SCADA), LAN, Campus Networking (UTP, STP, OFC), Fire Alarm and Security Systems. Systems include Power Generators & Substations, Lighting, Lighting Protection & Grounding, and Communication Paging Systems.',
+      ar: 'يمتلك فريق الهندسة والتحكم في هارد خبرة واسعة في تصميم وتنفيذ أنظمة الكهرباء للجهد المتوسط والمنخفض، الأجهزة الدقيقة، أنظمة التحكم الآلي (DCS, ESD, PLC, RTU, SCADA)، شبكات LAN والألياف الضوئية، وأنظمة الإنذار والأمن الصناعي، والمولدات ومحطات التحويل والحماية من الصواعق.',
+    },
+    features: [
+      {
+        title: {
+          en: 'Power Generators & Substation Works',
+          ar: 'محطات التحويل والمولدات الكهربائية',
+        },
+        desc: {
+          en: 'Complete installation of medium and low voltage distribution boards, switchgear, and backup generators.',
+          ar: 'تركيب لوحات التوزيع والمفاتيح الكهربائية للجهد المتوسط والمنخفض والمولدات الاحتياطية.',
+        },
+      },
+      {
+        title: {
+          en: 'Industrial Control Systems (PLC / SCADA / DCS)',
+          ar: 'أنظمة التحكم الصناعي والأتمتة',
+        },
+        desc: {
+          en: 'Engineering and integration of DCS, ESD, PLC, RTU, and SCADA monitoring networks.',
+          ar: 'هندسة وتكامل أنظمة التحكم المتطورة وشاشات المراقبة الصناعية SCADA و PLC و DCS.',
+        },
+      },
+      {
+        title: {
+          en: 'Lightning Protection, Grounding & Fire Alarms',
+          ar: 'الحماية من الصواعق والتأريض وكشف الحريق',
+        },
+        desc: {
+          en: 'Complete certified grounding grids, lightning rods, addressable fire alarm and paging communication.',
+          ar: 'شبكات تأريض هندسية، مانعات صواعق، وأنظمة إنذار حريق معنونة وشبكات اتصال وإخلاء صوتي.',
+        },
+      },
+    ],
+    stats: [
+      {
+        value: 'MV & LV',
+        label: { en: 'Medium & Low Voltage', ar: 'جهد متوسط ومنخفض' },
+      },
+      {
+        value: 'PLC / SCADA',
+        label: { en: 'Advanced Automation', ar: 'تحكم وأتمتة صناعية' },
+      },
+      {
+        value: 'Complete',
+        label: { en: 'Protection & Grounding', ar: 'أنظمة تأريض وحماية متكاملة' },
+      },
+    ],
+    image: '/images/hardgp/page3-img6.jpg',
+    actionText: {
+      en: 'Inquire Electrical Services',
+      ar: 'طلب خدمات الكهرباء والتحكم',
+    },
+    actionHref: '/hvac',
+    actionType: 'hvac',
+    division: 'hvac',
+  },
+  {
+    id: 'serv-hvac-3',
+    slug: 'plumbing-thermal-pipes',
+    tag: {
+      en: 'Plumbing & Thermal Pipes',
+      ar: 'السباكة والأنابيب الحرارية المعتمدة',
+    },
+    title: {
+      en: 'Plumbing Works & Exclusive Al-Ameria Thermal Pipes Agency',
+      ar: 'أعمال السباكة والوكالة الحصرية لأنابيب العامرية الحرارية',
+    },
+    subtitle: {
+      en: 'German-engineered polypropylene thermal pipes with a 50-year warranty, HDPE networks, and complete plumbing services.',
+      ar: 'أنابيب حرارية ألمانية الصنع في تركيا بضمان 50 سنة، وشبكات HDPE، وخدمات السباكة المتكاملة.',
+    },
+    description: {
+      en: 'The plumbing unit serves residential, commercial, and industrial clients with water heater repair, sink/toilet installation, remodeling, drain/sewer repairs, shut-off valves, and complete piping systems. HARD is also the exclusive authorized distributor in the Eastern Province for Al-Ameria Pipes (German-engineered thermal polypropylene pipes with 50-year warranty, 3 free product inspections, ISO/SASO certified), Italian Euro HDPE pipes for gas and large water networks, and international sanitation products.',
+      ar: 'توفر وحدة السباكة في هارد خدمات متكاملة للمباني السكنية والتجارية والصناعية: صيانة السخانات، تجديد المطابخ والحمامات، صيانة الصرف والمحابس. كما أن هارد هي الوكيل الحصري في المنطقة الشرقية لأنابيب العامرية الحرارية (أنابيب بولي بروبيلين ألمانية الصنع بتركيا مع ضمان 50 سنة و3 كشوفات مجانية ومطابقة لـ ISO و SASO)، وأنابيب HDPE الإيطالية لخطوط الغاز والماء الضخمة.',
+    },
+    features: [
+      {
+        title: {
+          en: 'Exclusive Agency: Al-Ameria Thermal Pipes',
+          ar: 'وكالة حصرية: أنابيب العامرية الحرارية',
+        },
+        desc: {
+          en: 'German-engineered polypropylene pipes with 50-year warranty and free 3-stage quality inspections.',
+          ar: 'أنابيب بولي بروبيلين ألمانية متميزة تتحمل أعلى درجات الضغط مع ضمان 50 سنة و3 فحوصات مجانية.',
+        },
+      },
+      {
+        title: {
+          en: 'Italian Euro HDPE Heavy Infrastructure Pipes',
+          ar: 'أنابيب HDPE الإيطالية للبنية التحتية',
+        },
+        desc: {
+          en: 'High-density polyethylene pipes tailored for governmental and industrial gas and high-volume water networks.',
+          ar: 'أنابيب بولي إيثيلين إيطالية الصنع تلبي متطلبات خطوط الغاز وشبكات المياه الكبرى في المنشآت.',
+        },
+      },
+      {
+        title: {
+          en: 'Full Commercial & Residential Plumbing',
+          ar: 'صيانة وتمديد السباكة المنزلية والصناعية',
+        },
+        desc: {
+          en: 'Water heater repair, bathroom & kitchen remodeling, drain & sewer clearing, and shut-off valve restorations.',
+          ar: 'تمديد وصيانة خطوط التغذية والصرف، تركيب وصيانة السخانات والمغاسل، ومعالجة التسربات.',
+        },
+      },
+    ],
+    stats: [
+      {
+        value: '50 Years',
+        label: { en: 'Al-Ameria Pipe Warranty', ar: 'ضمان 50 سنة لأنابيب العامرية' },
+      },
+      {
+        value: '3 Free',
+        label: { en: 'Product Inspections', ar: '3 كشوفات واختبارات مجانية' },
+      },
+      {
+        value: 'Exclusive',
+        label: { en: 'Eastern Province Agency', ar: 'وكالة حصرية بالمنطقة الشرقية' },
+      },
+    ],
+    image: '/images/hardgp/Al-Ameria_Pipes.jpg',
+    actionText: {
+      en: 'Explore Plumbing & Pipes',
+      ar: 'تفاصيل السباكة والأنابيب الحرارية',
+    },
+    actionHref: '/hvac',
+    actionType: 'hvac',
+    division: 'hvac',
+  },
+  {
+    id: 'serv-hvac-4',
+    slug: 'soteria-fire-extinguishers',
+    tag: {
+      en: 'Fire Fighting Innovation',
+      ar: 'تقنيات مكافحة الحريق المبتكرة',
+    },
+    title: {
+      en: 'SOTERIA Throwable & Kitchen Fire Extinguishers',
+      ar: 'مطافئ الحريق المبتكرة SOTERIA (للقذف وللمطابخ)',
+    },
+    subtitle: {
+      en: 'Extinguish fires in 1 simple step: no annual inspection, no maintenance, 5-year lifespan, child & elderly friendly.',
+      ar: 'إخماد الحريق في خطوة واحدة بسيطة: بدون صيانة سنوية، تدوم حتى 5 سنوات، آمنة للأطفال وكبار السن.',
+    },
+    description: {
+      en: 'Authorized distributor of SOTERIA innovative fire extinguishers: put out fires in 1 simple step with zero training required. Environmentally friendly, non-hazardous, and lasts up to 5 years with no annual inspections or maintenance needed. Puts out initial fires, flammable liquid fires (petrol, paint thinners, kerosene), deep seated fires, and cooking oil fires. Available in Kitchen and Throwable formats.',
+      ar: 'موزع معتمد لمطافئ الحريق المبتكرة SOTERIA: إخماد الحرائق في خطوة واحدة سهلة دون الحاجة لأي تدريب مسبق. صديقة للبيئة، غير خطرة، وتدوم حتى 5 سنوات دون الحاجة لأي صيانة أو فحص سنوي. تخمد الحرائق الأولية، السوائل القابلة للاشتعال (البنزين، التنر، الكيروسين)، الحرائق العميقة، وحرائق زيوت الطهي. متوفرة بنوعين: للمطابخ وللقذف المباشر.',
+    },
+    features: [
+      {
+        title: {
+          en: '1-Step Throwable Fire Extinguishing',
+          ar: 'إخماد الحريق بقذف الزجاجة في خطوة واحدة',
+        },
+        desc: {
+          en: 'If a child can throw a ball, fire can be snuffed out easily without complicated nozzles or gauges.',
+          ar: 'إذا كان الطفل قادراً على رمي الكرة، يمكنه إخماد الحريق بسهولة دون تعقيدات الفوهات والعدادات.',
+        },
+      },
+      {
+        title: {
+          en: 'No Annual Inspection & 5-Year Lifespan',
+          ar: 'بدون صيانة سنوية وتدوم حتى 5 سنوات',
+        },
+        desc: {
+          en: 'Zero ongoing maintenance costs, completely non-hazardous, and ready for immediate emergency use.',
+          ar: 'تكلفة صيانة صفرية، آمنة بيئياً تماماً، وجاهزة دائماً للاستخدام الفوري في حالات الطوارئ.',
+        },
+      },
+      {
+        title: {
+          en: 'Effective on Flammable Liquids & Kitchen Cooking Oils',
+          ar: 'فعالية فائقة على السوائل المشتعلة وزيوت الطهي',
+        },
+        desc: {
+          en: 'Instantly extinguishes challenging oil and chemical fires that conventional water or powder cannot suppress safely.',
+          ar: 'تخمد على الفور حرائق زيوت الطبخ وحرائق السوائل البترولية التي يصعب إطفاؤها بالطرق التقليدية.',
+        },
+      },
+    ],
+    stats: [
+      {
+        value: '1 Step',
+        label: { en: 'Instant Fire Suppression', ar: 'إخماد فوري بخطوة واحدة' },
+      },
+      {
+        value: '5 Years',
+        label: { en: 'Maintenance-Free Shelf Life', ar: 'صلاحية 5 سنوات بدون صيانة' },
+      },
+      {
+        value: '4 Fire Types',
+        label: { en: 'Initial, Liquid, Deep, Cooking Oil', ar: 'السوائل، الزيوت، المواد الصلبة، البدايات' },
+      },
+    ],
+    image: '/images/hardgp/kitchen_fire_extinguisher.png',
+    actionText: {
+      en: 'Contact Distributorship Desk',
+      ar: 'طلب منتجات سوتيريا للسلامة',
     },
     actionHref: '/contact-us',
     actionType: 'hvac',
     division: 'hvac',
   },
   {
-    id: 'hvac-2',
-    slug: 'facilities-management-fm',
+    id: 'serv-hvac-5',
+    slug: 'welding-fabrication-works',
     tag: {
-      en: 'Integrated Facility Management',
-      ar: 'إدارة وتشغيل المرافق المتكاملة (FM)',
+      en: 'Welding & Cutting Works',
+      ar: 'أعمال اللحام والحدادة الهندسية',
     },
     title: {
-      en: 'Total Building Operations, MEP & Preventative Facility Services',
-      ar: 'تشغيل المرافق وأنظمة الكهرباء والسباكة والسلامة المهنية',
+      en: 'Specialized Industrial Welding, Cutting & Plant Erection',
+      ar: 'أعمال اللحام الهندسي وقطع المعادن والمنشآت الصناعية',
     },
     subtitle: {
-      en: 'Holistic facility management for corporate headquarters, compounds, and luxury retail destinations.',
-      ar: 'إدارة تشغيلية شاملة للأصول والمجمعات والأبراج تضمن أعلى درجات السلامة وراحة شاغلي المبنى.',
+      en: 'Gas welding, cutting, brazing, electric welding with full PPE safety compliance, grounding, and gas detection.',
+      ar: 'لحام الغاز والقطع الحراري واللحام بالقوس الكهربائي مع الالتزام الصارم بمعايير السلامة والتأريض.',
     },
     description: {
-      en: 'We preserve asset lifespan, enhance resident comfort, and guarantee continuous regulatory compliance across all building electro-mechanical systems.',
-      ar: 'نحافظ على القيمة السوقية للمبنى ونرفع كفاءة الأنظمة التشغيلية عبر كادر فني وإداري مقيم يتابع دورة العمل بانتظام.',
+      en: 'Welding works implemented by our certified welding specialists engaged in gas welding, cutting, and brazing operations. Strict PPE enforcement with helmets, goggles, and filter gloves. Welding machines are tested for insulation, elevated 15 cm above ground, grounded effectively, with gas detector verification in vapor-sensitive areas under Safety Engineer supervision.',
+      ar: 'أعمال لحام متخصصة ينفذها فنيون معتمدون في لحام الغاز والقطع واللحام بالنحاس ولحام القوس الكهربائي. التزام صارم بارتداء الخوذ ونظارات الوقاية والقفازات العازلة، وفحص عزل ماكينات اللحام ورفعها 15 سم عن الأرض مع كشف الغاز وإشراف هندسي ميداني.',
     },
     features: [
       {
         title: {
-          en: 'Comprehensive MEP Inspections',
-          ar: 'فحوصات دورية لشبكات الكهرباء والمضخات',
+          en: 'Gas Welding, Cutting & Brazing',
+          ar: 'لحام الغاز والقطع واللحام بالنحاس',
         },
         desc: {
-          en: 'Thermodynamic scanning, breaker load tests, and potable water filtration audits.',
-          ar: 'فحص حراري للألواح الكهربائية ومعايرة مضخات المياه وشبكات الإنذار ومكافحة الحريق.',
+          en: 'Oxy-fuel cutting, structural steel welding, and piping brazing to industrial standards.',
+          ar: 'قص ولحام الهياكل الفولاذية وشبكات الأنابيب وفق المواصفات الصناعية المعتمدة.',
         },
       },
       {
         title: {
-          en: 'Automated Facility Helpdesk',
-          ar: 'منصة بلاغات وتذاكر صيانة آلية',
+          en: 'Strict Electrical Safety & Grounding',
+          ar: 'تأريض كهربائي وعزل ماكينات اللحام',
         },
         desc: {
-          en: 'Tenants log tickets via smartphone app with real-time status and closure verification.',
-          ar: 'تسجيل ومتابعة البلاغات إلكترونياً مع إشعارات فورية وتقارير إنجاز موثقة بالصور.',
+          en: 'Welding machines elevated 15 cm, mechanically strong ground loads, and approved insulated connectors.',
+          ar: 'رفع ماكينات اللحام 15 سم عن الأرض مع تأريض كهربائي معتمد وفحص العزل الدوري.',
         },
       },
       {
         title: {
-          en: 'Strict Environmental & Safety Standards',
-          ar: 'امتثال تام لمعايير الدفاع المدني والسلامة',
+          en: 'Elevated & Sensitive Area Safety Protocols',
+          ar: 'إجراءات السلامة في الأماكن المرتفعة والحساسة',
         },
         desc: {
-          en: 'Certified safety compliance keeping your building compliant with civil defense codes.',
-          ar: 'تحديث مستمر لتراخيص السلامة وصيانة أنظمة الرش الآلي ومخارج الطوارئ.',
+          en: 'Safety harness enforcement at elevated spots and gas detector checks in vapor areas before welding starts.',
+          ar: 'أحزمة أمان في الأماكن المرتفعة وفحص الغازات بكواشف إلكترونية تحت إشراف مهندس السلامة.',
         },
       },
     ],
     stats: [
       {
-        value: '24/7/365',
-        label: { en: 'Operations Monitoring', ar: 'متابعة مستمرة' },
+        value: '15 cm',
+        label: { en: 'Dry Elevation Standard', ar: 'رفع الماكينات عن الأرض' },
       },
       {
-        value: '100%',
-        label: { en: 'Safety Compliance', ar: 'امتثال للسلامة' },
+        value: 'Gas Checked',
+        label: { en: 'Detector Verified', ar: 'فحص مسبق لكواشف الغاز' },
       },
       {
-        value: '500K+ m²',
-        label: { en: 'Managed Facilities', ar: 'مساحات مدارة' },
+        value: 'Certified',
+        label: { en: 'Specialist Welders', ar: 'فنيو لحام معتمدون' },
       },
     ],
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/hardgp/page3-img8.jpg',
     actionText: {
-      en: 'Schedule Facility Audit',
-      ar: 'طلب معاينة وتقييم مرافق',
+      en: 'Inquire Welding Services',
+      ar: 'طلب خدمات اللحام الهندسي',
     },
-    actionHref: '/contact-us',
+    actionHref: '/hvac',
     actionType: 'hvac',
     division: 'hvac',
   },
-];
-
-// Combine all services into one master array
-export const allReferenceServices: ReferenceServiceItem[] = [
-  ...referenceRealEstateServices,
-  ...referenceConstructionServices,
-  ...referenceHVACServices,
 ];
