@@ -1,7 +1,8 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
+  // Use standalone mode for Docker/containers, and default for Vercel serverless deployment
+  output: process.env.VERCEL ? undefined : 'standalone',
   reactStrictMode: true,
   devIndicators: false,
   eslint: {
