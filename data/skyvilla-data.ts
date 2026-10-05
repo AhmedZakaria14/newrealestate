@@ -19,8 +19,8 @@ export const navigationLinks: NavItem[] = [
     href: '/',
   },
   {
-    title: 'Group Sectors',
-    title_ar: 'قطاعات المجموعة',
+    title: 'Sectors',
+    title_ar: 'القطاعات',
     href: '#',
     children: [
       {
@@ -68,8 +68,8 @@ export const navigationLinks: NavItem[] = [
     ],
   },
   {
-    title: 'Projects & Portfolio',
-    title_ar: 'المشاريع وسجل الأعمال',
+    title: 'Projects',
+    title_ar: 'المشاريع',
     href: '/projects',
   },
   {
@@ -84,7 +84,7 @@ export const navigationLinks: NavItem[] = [
   },
   {
     title: 'About Us',
-    title_ar: 'عن المجموعة',
+    title_ar: 'عن هارد',
     href: '#',
     children: [
       {
@@ -132,7 +132,7 @@ export const navigationLinks: NavItem[] = [
     ],
   },
   {
-    title: 'Contact Us',
+    title: 'Contact',
     title_ar: 'اتصل بنا',
     href: '/contact-us',
   },

@@ -21,7 +21,7 @@ export default function PageHeader({
 
   return (
     <div
-      className={`relative pt-36 pb-20 sm:pt-44 sm:pb-24 border-b overflow-hidden transition-colors ${
+      className={`relative pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20 border-b overflow-hidden transition-colors ${
         isDark
           ? 'bg-gradient-to-b from-[#080b24] via-[#040618] to-[#040618] border-white/10 text-white'
           : 'bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 border-slate-700 text-white'
@@ -31,7 +31,7 @@ export default function PageHeader({
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-10 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div className="max-w-[1440px] 2xl:max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 relative z-10 text-center">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 text-white">
           {title}
         </h1>

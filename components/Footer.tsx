@@ -260,12 +260,6 @@ export default function Footer() {
                     {language === 'ar' ? 'تواصل مع الإدارة' : 'Contact Management'}
                   </Link>
                 </li>
-                <li>
-                  <Link href="/admin" className="hover:text-blue-400 transition-colors flex items-center justify-between">
-                    <span>{language === 'ar' ? 'لوحة التحكم وإدارة المحتوى' : 'Admin Operations'}</span>
-                    <span className="text-[10px] text-blue-400 bg-blue-500/10 px-1.5 py-0.5 rounded font-bold">Admin</span>
-                  </Link>
-                </li>
               </ul>
             </div>
 

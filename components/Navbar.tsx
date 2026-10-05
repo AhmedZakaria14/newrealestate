@@ -24,7 +24,6 @@ import {
   Sparkles,
   ChevronRight,
   Menu,
-  ShieldCheck,
 } from 'lucide-react';
 import { navigationLinks } from '@/data/skyvilla-data';
 import ConsultationModal from '@/components/ConsultationModal';
@@ -444,22 +443,6 @@ export default function Navbar() {
             >
               {isDark ? <Sun className="w-4 h-4 text-amber-300" /> : <Moon className="w-4 h-4 text-blue-600" />}
             </button>
-
-            {/* Admin Dashboard Portal Link */}
-            <Link
-              href="/admin"
-              title={isAr ? 'لوحة التحكم وإدارة المحتوى والطلبات' : 'Admin Operations & Leads'}
-              className={`hidden md:inline-flex items-center gap-1.5 h-9 sm:h-10 px-3 rounded-xl text-xs font-bold transition-all border shrink-0 ${
-                isDark
-                  ? 'bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 border-blue-500/30'
-                  : scrolled
-                  ? 'bg-blue-50 hover:bg-blue-100 text-blue-700 border-blue-200'
-                  : 'bg-white/10 hover:bg-white/20 text-white border-white/20'
-              }`}
-            >
-              <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
-              <span>{isAr ? 'لوحة التحكم' : 'Admin'}</span>
-            </Link>
 
             {/* Desktop CTA Button */}
             <button

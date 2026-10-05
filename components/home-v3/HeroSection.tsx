@@ -54,7 +54,7 @@ export default function HeroSection() {
   return (
     <section className="bg-black p-3 sm:p-5 md:p-6 min-h-screen flex flex-col justify-center">
       {/* Inset Cinematic Container */}
-      <div className="relative rounded-2xl md:rounded-[2rem] overflow-hidden border border-[#222222] bg-[#0c0c0c] min-h-[90vh] flex flex-col justify-between pt-24 pb-10 sm:pt-28 sm:pb-12 px-4 sm:px-8 lg:px-12">
+      <div className="relative rounded-2xl md:rounded-[2rem] overflow-hidden border border-[#222222] bg-[#0c0c0c] min-h-[90vh] flex flex-col justify-between pt-20 pb-8 sm:pt-24 sm:pb-10 lg:pt-24 lg:pb-12 px-4 sm:px-8 lg:px-12">
         {/* Background visual asset with noise & gradient overlays */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -72,7 +72,7 @@ export default function HeroSection() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto w-full my-auto">
+        <div className="relative z-10 max-w-[1440px] 2xl:max-w-[1600px] mx-auto w-full my-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-10 sm:mb-14">
             {/* Left Column (7 cols): Typography & CTA */}
             <div className="lg:col-span-7 space-y-6 sm:space-y-7">

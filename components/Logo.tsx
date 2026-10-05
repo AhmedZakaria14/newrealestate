@@ -232,7 +232,7 @@ export default function Logo({
 
           {showSubtitle && (
             <span
-              className={`${current.sub} font-semibold tracking-wider truncate max-w-[140px] xs:max-w-[220px] sm:max-w-none ${
+              className={`${current.sub} font-semibold tracking-wider truncate max-w-[140px] xs:max-w-[200px] sm:max-w-[240px] 2xl:max-w-none leading-none pt-0.5 ${
                 isLight ? 'text-sky-400' : 'text-sky-600'
               }`}
             >
