@@ -132,6 +132,7 @@ export default function ListingDetailClient({
                     alt={`${title} - Gallery Photo ${selectedImageIndex + 1}`}
                     fill
                     priority
+                    unoptimized
                     className="object-cover transition-all duration-500"
                     referrerPolicy="no-referrer"
                   />

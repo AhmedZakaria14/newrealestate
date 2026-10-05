@@ -182,7 +182,8 @@ export default function ConstructionPortal() {
             alt={isAr ? 'هارد للإنشاءات والمقاولات' : 'HARD Construction & Contracting'}
             fill
             priority
-            className="object-cover object-center opacity-25 filter brightness-75 contrast-110"
+            unoptimized
+            className="object-cover object-center opacity-35 filter brightness-90 contrast-105"
             referrerPolicy="no-referrer"
           />
           <div className={`absolute inset-0 bg-gradient-to-b ${isDark ? 'from-[#040618]/90 via-[#040618]/70 to-[#040618]' : 'from-slate-950/90 via-slate-950/75 to-slate-900'}`} />

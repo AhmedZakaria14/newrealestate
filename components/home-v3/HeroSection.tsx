@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -11,8 +11,8 @@ import {
   HardHat,
   Fan,
   Layers,
-  Calculator,
-  CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   Phone,
   FileSpreadsheet,
   Clock,
@@ -23,6 +23,7 @@ import ConsultationModal from '@/components/ConsultationModal';
 import { useLanguageTheme } from '@/lib/language-theme-context';
 import { useSiteContent } from '@/lib/site-content-context';
 import WordsPullUp from '@/components/animations/WordsPullUp';
+import { hardgpSlides, HardgpSlide } from '@/data/skyvilla-data';
 
 export default function HeroSection() {
   const { language, theme, direction } = useLanguageTheme();
@@ -31,6 +32,34 @@ export default function HeroSection() {
 
   const [consultationOpen, setConsultationOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'contracting' | 'realestate' | 'hvac'>('contracting');
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [viewMode, setViewMode] = useState<'slides' | 'flagship'>('slides');
+
+  const currentSlide = hardgpSlides[slideIndex] || hardgpSlides[0];
+
+  // Sync slide with activeTab when tab changes
+  const handleTabChange = (tab: 'contracting' | 'realestate' | 'hvac') => {
+    setActiveTab(tab);
+    if (viewMode === 'slides') {
+      if (tab === 'contracting') setSlideIndex(0);
+      else if (tab === 'realestate') setSlideIndex(4);
+      else if (tab === 'hvac') setSlideIndex(8);
+    }
+  };
+
+  const nextSlide = () => {
+    setSlideIndex((prev) => (prev + 1) % hardgpSlides.length);
+  };
+
+  const prevSlide = () => {
+    setSlideIndex((prev) => (prev - 1 + hardgpSlides.length) % hardgpSlides.length);
+  };
+
+  // Image to display
+  const activeImageSrc =
+    viewMode === 'flagship'
+      ? (settings.heroImage || '/images/hardgp/por1-big.jpg')
+      : currentSlide.image;
 
   const stats = [
     {
@@ -54,32 +83,102 @@ export default function HeroSection() {
   return (
     <section className="bg-black p-3 sm:p-5 md:p-6 min-h-screen flex flex-col justify-center">
       {/* Inset Cinematic Container */}
-      <div className="relative rounded-2xl md:rounded-[2rem] overflow-hidden border border-[#222222] bg-[#0c0c0c] min-h-[90vh] flex flex-col justify-between pt-20 pb-8 sm:pt-24 sm:pb-10 lg:pt-24 lg:pb-12 px-4 sm:px-8 lg:px-12">
-        {/* Background visual asset with noise & gradient overlays */}
+      <div className="relative rounded-2xl md:rounded-[2rem] overflow-hidden border border-[#222222] bg-[#0c0c0c] min-h-[90vh] flex flex-col justify-between pt-24 pb-10 sm:pt-28 sm:pb-12 px-4 sm:px-8 lg:px-12">
+        {/* Background Visual Asset: 100% Full Original Quality from hardgp.com */}
         <div className="absolute inset-0 z-0">
           <Image
-            src={settings.heroImage || "/images/hardgp/por1-big.jpg"}
-            alt={isAr ? (settings.heroTitleAr || 'مجموعة هارد للمقاولات العامة') : (settings.heroTitleEn || 'HARD Group')}
+            src={activeImageSrc}
+            alt={
+              viewMode === 'slides'
+                ? isAr
+                  ? `${currentSlide.division_ar} - ${currentSlide.title_ar}`
+                  : `${currentSlide.division} - ${currentSlide.title}`
+                : isAr
+                ? settings.heroTitleAr || 'مجموعة هارد للمقاولات العامة'
+                : settings.heroTitleEn || 'HARD Group'
+            }
             fill
             priority
-            className="object-cover object-center filter brightness-[0.32] contrast-[1.15]"
+            unoptimized
+            className="object-cover object-center transition-all duration-700 ease-in-out brightness-[0.62] contrast-[1.06]"
             referrerPolicy="no-referrer"
           />
-          {/* Fractal Noise Overlay */}
-          <div className="absolute inset-0 noise-overlay opacity-[0.65] mix-blend-overlay pointer-events-none" />
-          {/* Deep Cinematic Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/95" />
+          {/* Pure Cinematic Multi-layer Gradient: High Clarity, Zero Grainy Noise */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/70 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent pointer-events-none" />
         </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-[1440px] 2xl:max-w-[1600px] mx-auto w-full my-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-10 sm:mb-14">
-            {/* Left Column (7 cols): Typography & CTA */}
-            <div className="lg:col-span-7 space-y-6 sm:space-y-7">
+        {/* Top Floating Slide Navigation & Full-Quality Badge */}
+        <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-wrap items-center justify-between gap-3 mb-4">
+          {/* Slide Stage Kicker & Details from hardgp.com/index.html */}
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-xs text-[#E1E0CC]">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="font-bold text-[#DEDBC8]">
+              {isAr ? currentSlide.division_ar : currentSlide.division}
+            </span>
+            <span className="text-gray-400">•</span>
+            <span className="font-semibold text-sky-400">
+              {isAr ? currentSlide.step_ar : currentSlide.step}
+            </span>
+            <span className="text-gray-400 hidden sm:inline">•</span>
+            <span className="text-gray-300 hidden sm:inline truncate max-w-[280px]">
+              {isAr ? currentSlide.title_ar : currentSlide.title}
+            </span>
+          </div>
+
+          {/* Interactive Source Slide Controls */}
+          <div className="flex items-center gap-1.5 bg-black/75 backdrop-blur-md p-1 rounded-full border border-white/15">
+            <button
+              type="button"
+              onClick={direction === 'rtl' ? nextSlide : prevSlide}
+              className="w-7 h-7 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-white/15 transition-colors cursor-pointer"
+              title={isAr ? 'الشريحة السابقة' : 'Previous Slide'}
+              aria-label="Previous Slide"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <span className="text-[11px] font-mono px-2 text-[#DEDBC8] font-bold">
+              {slideIndex + 1} / {hardgpSlides.length}
+            </span>
+            <button
+              type="button"
+              onClick={direction === 'rtl' ? prevSlide : nextSlide}
+              className="w-7 h-7 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-white/15 transition-colors cursor-pointer"
+              title={isAr ? 'الشريحة التالية' : 'Next Slide'}
+              aria-label="Next Slide"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+            <div className="h-4 w-[1px] bg-white/20 mx-1" />
+            <button
+              type="button"
+              onClick={() => setViewMode(viewMode === 'slides' ? 'flagship' : 'slides')}
+              className={`text-[10px] font-bold px-2.5 py-1 rounded-full transition-colors cursor-pointer ${
+                viewMode === 'flagship'
+                  ? 'bg-blue-600 text-white'
+                  : 'text-gray-300 hover:text-white hover:bg-white/10'
+              }`}
+            >
+              {viewMode === 'flagship'
+                ? (isAr ? 'معلم رئيسي' : 'Flagship Landmark')
+                : (isAr ? '١٢ شريحة الأصلية' : '12 Source Slides')}
+            </button>
+          </div>
+        </div>
+
+        {/* Hero Main Content */}
+        <div className="relative z-10 max-w-7xl mx-auto w-full my-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-8 sm:mb-10">
+            {/* Left Column (7 cols): Typography, Live Step Caption & CTA */}
+            <div className="lg:col-span-7 space-y-5 sm:space-y-6">
               {/* Unboxed Metadata Kicker */}
               <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-medium text-[#DEDBC8]/80">
                 <span className="w-2 h-2 rounded-full bg-[#DEDBC8] animate-pulse" />
-                <span>{isAr ? (settings.heroBadgeAr || 'المساهمة في القطاع الصناعي والبنية التحتية في المملكة منذ 2004') : (settings.heroBadgeEn || 'Contributing to Saudi Arabia industrial & infrastructure sector since 2004')}</span>
+                <span>
+                  {isAr
+                    ? (settings.heroBadgeAr || 'المساهمة في القطاع الصناعي والبنية التحتية في المملكة منذ 2004')
+                    : (settings.heroBadgeEn || 'Contributing to Saudi Arabia industrial & infrastructure sector since 2004')}
+                </span>
               </div>
 
               {/* Monumental Headline */}
@@ -96,15 +195,19 @@ export default function HeroSection() {
                 </p>
               </div>
 
-              {/* Description Paragraph */}
-              <p className="text-[#DEDBC8]/75 text-xs sm:text-sm md:text-base max-w-xl leading-relaxed font-light">
-                {isAr
-                  ? 'مؤسسة هارد للمقاولات العامة، تساهم في قطاع الصناعة والبنية التحتية في المملكة العربية السعودية منذ عام 2004 بخدمات إنشائية موثوقة ومتعددة الأبعاد، وتطوير عقاري، وخدمات تشغيل وصيانة شاملة.'
-                  : 'HARD General Contracting Establishment, has been contributing to Saudi Arabia industrial and infrastructure sector since 2004 with reliable, multi-dimensional construction services, property development, and comprehensive maintenance operations.'}
-              </p>
+              {/* Authentic Source Description Banner from hardgp.com */}
+              <div className="p-3.5 sm:p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/10 text-xs sm:text-sm text-[#DEDBC8] space-y-1">
+                <div className="flex items-center gap-2 text-sky-400 font-bold text-xs">
+                  <span>{isAr ? currentSlide.step_ar : currentSlide.step}:</span>
+                  <span className="text-[#E1E0CC]">{isAr ? currentSlide.title_ar : currentSlide.title}</span>
+                </div>
+                <p className="text-[#DEDBC8]/90 font-light leading-relaxed">
+                  {isAr ? currentSlide.description_ar : currentSlide.description}
+                </p>
+              </div>
 
-              {/* Action Buttons: Sleek Pill Design with Black Arrow Circle */}
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
                 <button
                   type="button"
                   onClick={() => setConsultationOpen(true)}
@@ -141,7 +244,7 @@ export default function HeroSection() {
                 <div className="flex items-center gap-1 p-1 rounded-xl sm:rounded-2xl bg-[#000000] border border-[#262626]">
                   <button
                     type="button"
-                    onClick={() => setActiveTab('contracting')}
+                    onClick={() => handleTabChange('contracting')}
                     className={`flex-1 py-2.5 rounded-lg sm:rounded-xl text-xs font-bold transition-all cursor-pointer ${
                       activeTab === 'contracting'
                         ? 'bg-[#212121] text-[#DEDBC8] shadow-sm border border-[#333]'
@@ -152,7 +255,7 @@ export default function HeroSection() {
                   </button>
                   <button
                     type="button"
-                    onClick={() => setActiveTab('realestate')}
+                    onClick={() => handleTabChange('realestate')}
                     className={`flex-1 py-2.5 rounded-lg sm:rounded-xl text-xs font-bold transition-all cursor-pointer ${
                       activeTab === 'realestate'
                         ? 'bg-[#212121] text-[#DEDBC8] shadow-sm border border-[#333]'
@@ -163,7 +266,7 @@ export default function HeroSection() {
                   </button>
                   <button
                     type="button"
-                    onClick={() => setActiveTab('hvac')}
+                    onClick={() => handleTabChange('hvac')}
                     className={`flex-1 py-2.5 rounded-lg sm:rounded-xl text-xs font-bold transition-all cursor-pointer ${
                       activeTab === 'hvac'
                         ? 'bg-[#212121] text-[#DEDBC8] shadow-sm border border-[#333]'
@@ -184,6 +287,36 @@ export default function HeroSection() {
                       <h3 className="text-base sm:text-lg font-bold text-white">
                         {isAr ? 'تنفيذ الأبراج والمجمعات الذكية' : 'Smart Commercial Towers & Compounds'}
                       </h3>
+                    </div>
+
+                    {/* Step selector for contracting slides 1-4 */}
+                    <div className="grid grid-cols-4 gap-1.5 pt-1">
+                      {[0, 1, 2, 3].map((idx) => {
+                        const s = hardgpSlides[idx];
+                        const isCurrent = slideIndex === idx && viewMode === 'slides';
+                        return (
+                          <button
+                            key={s.id}
+                            type="button"
+                            onClick={() => {
+                              setViewMode('slides');
+                              setSlideIndex(idx);
+                            }}
+                            className={`p-2 rounded-xl text-center border transition-all cursor-pointer ${
+                              isCurrent
+                                ? 'bg-amber-500/20 border-amber-400 text-white shadow-md'
+                                : 'bg-[#181818] border-[#2a2a2a] text-gray-400 hover:text-white'
+                            }`}
+                          >
+                            <span className="block text-[10px] font-bold">
+                              {isAr ? `مرحلة ${idx + 1}` : `Step ${idx + 1}`}
+                            </span>
+                            <span className="block text-[9px] truncate opacity-75">
+                              {isAr ? s.step_ar : s.step}
+                            </span>
+                          </button>
+                        );
+                      })}
                     </div>
 
                     <div className="space-y-2 text-xs">
@@ -228,6 +361,36 @@ export default function HeroSection() {
                       </h3>
                     </div>
 
+                    {/* Step selector for real estate slides 5-8 */}
+                    <div className="grid grid-cols-4 gap-1.5 pt-1">
+                      {[4, 5, 6, 7].map((idx) => {
+                        const s = hardgpSlides[idx];
+                        const isCurrent = slideIndex === idx && viewMode === 'slides';
+                        return (
+                          <button
+                            key={s.id}
+                            type="button"
+                            onClick={() => {
+                              setViewMode('slides');
+                              setSlideIndex(idx);
+                            }}
+                            className={`p-2 rounded-xl text-center border transition-all cursor-pointer ${
+                              isCurrent
+                                ? 'bg-blue-500/20 border-blue-400 text-white shadow-md'
+                                : 'bg-[#181818] border-[#2a2a2a] text-gray-400 hover:text-white'
+                            }`}
+                          >
+                            <span className="block text-[10px] font-bold">
+                              {isAr ? `مرحلة ${idx - 3}` : `Step ${idx - 3}`}
+                            </span>
+                            <span className="block text-[9px] truncate opacity-75">
+                              {isAr ? s.step_ar : s.step}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+
                     <div className="grid grid-cols-2 gap-2 text-xs">
                       <Link
                         href="/listings?status=for-sale"
@@ -261,7 +424,7 @@ export default function HeroSection() {
                   </div>
                 )}
 
-                {/* Tab: HVAC */}
+                {/* Tab: HVAC & Maintenance */}
                 {activeTab === 'hvac' && (
                   <div className="space-y-4">
                     <div className="space-y-1">
@@ -271,6 +434,39 @@ export default function HeroSection() {
                       <h3 className="text-base sm:text-lg font-bold text-white">
                         {isAr ? 'شيلرات مركزية وأنظمة VRF الذكية' : 'Central Chillers & Inverter VRF'}
                       </h3>
+                    </div>
+
+                    {/* Step selector for maintenance slides 9-12 */}
+                    <div className="grid grid-cols-4 gap-1.5 pt-1">
+                      {[8, 9, 10, 11].map((idx) => {
+                        const s = hardgpSlides[idx];
+                        const isCurrent = slideIndex === idx && viewMode === 'slides';
+                        const labels = isAr
+                          ? ['كهرباء', 'سباكة', 'لحام', 'تكييف']
+                          : ['Electric', 'Plumbing', 'Welding', 'A/C'];
+                        return (
+                          <button
+                            key={s.id}
+                            type="button"
+                            onClick={() => {
+                              setViewMode('slides');
+                              setSlideIndex(idx);
+                            }}
+                            className={`p-2 rounded-xl text-center border transition-all cursor-pointer ${
+                              isCurrent
+                                ? 'bg-cyan-500/20 border-cyan-400 text-white shadow-md'
+                                : 'bg-[#181818] border-[#2a2a2a] text-gray-400 hover:text-white'
+                            }`}
+                          >
+                            <span className="block text-[10px] font-bold">
+                              {labels[idx - 8]}
+                            </span>
+                            <span className="block text-[9px] truncate opacity-75">
+                              {isAr ? s.step_ar : s.step}
+                            </span>
+                          </button>
+                        );
+                      })}
                     </div>
 
                     <div className="space-y-2 text-xs">

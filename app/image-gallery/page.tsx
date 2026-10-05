@@ -106,6 +106,7 @@ export default function ImageGalleryPage() {
                     src={item.image}
                     alt={title}
                     fill
+                    unoptimized
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                     referrerPolicy="no-referrer"
                   />
@@ -170,6 +171,7 @@ export default function ImageGalleryPage() {
                 src={filtered[lightboxIndex].image}
                 alt={language === 'ar' ? filtered[lightboxIndex].title_ar : filtered[lightboxIndex].title}
                 fill
+                unoptimized
                 className="object-contain"
                 referrerPolicy="no-referrer"
               />

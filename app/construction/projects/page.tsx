@@ -125,6 +125,7 @@ export default function ConstructionProjectsPage() {
                     src={proj.image}
                     alt={proj.title}
                     fill
+                    unoptimized
                     className="object-cover"
                     referrerPolicy="no-referrer"
                   />

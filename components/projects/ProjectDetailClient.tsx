@@ -56,6 +56,7 @@ export default function ProjectDetailClient({ project }: { project: ProjectItem 
                   src={project.image}
                   alt={title}
                   fill
+                  unoptimized
                   className="object-cover"
                   referrerPolicy="no-referrer"
                 />

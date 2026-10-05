@@ -136,6 +136,7 @@ export default function SkillsSection() {
                 src="/images/hardgp/por6-big.jpg"
                 alt="HARD Group Engineers"
                 fill
+                unoptimized
                 className="object-cover"
                 referrerPolicy="no-referrer"
               />

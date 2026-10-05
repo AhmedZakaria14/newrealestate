@@ -139,7 +139,8 @@ export default function HvacPortal() {
             alt="هارد لصيانة وتكييف الهواء"
             fill
             priority
-            className="object-cover object-center opacity-30 filter brightness-75 contrast-110"
+            unoptimized
+            className="object-cover object-center opacity-40 filter brightness-90 contrast-105"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#040618]/90 via-[#040618]/70 to-[#040618]" />

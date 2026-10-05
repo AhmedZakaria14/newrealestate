@@ -30,6 +30,7 @@ export default function WhyChooseUsSection() {
                 src="/images/hardgp/por2-big.jpg"
                 alt="HARD Group Construction Video"
                 fill
+                unoptimized
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />

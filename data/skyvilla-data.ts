@@ -19,8 +19,8 @@ export const navigationLinks: NavItem[] = [
     href: '/',
   },
   {
-    title: 'Sectors',
-    title_ar: 'القطاعات',
+    title: 'Group Sectors',
+    title_ar: 'قطاعات المجموعة',
     href: '#',
     children: [
       {
@@ -68,8 +68,8 @@ export const navigationLinks: NavItem[] = [
     ],
   },
   {
-    title: 'Projects',
-    title_ar: 'المشاريع',
+    title: 'Projects & Portfolio',
+    title_ar: 'المشاريع وسجل الأعمال',
     href: '/projects',
   },
   {
@@ -84,7 +84,7 @@ export const navigationLinks: NavItem[] = [
   },
   {
     title: 'About Us',
-    title_ar: 'عن هارد',
+    title_ar: 'عن المجموعة',
     href: '#',
     children: [
       {
@@ -132,18 +132,192 @@ export const navigationLinks: NavItem[] = [
     ],
   },
   {
-    title: 'Contact',
+    title: 'Contact Us',
     title_ar: 'اتصل بنا',
     href: '/contact-us',
   },
 ];
 
+export interface HardgpSlide {
+  id: string;
+  step: string;
+  step_ar: string;
+  division: string;
+  division_ar: string;
+  divisionKey: 'construction' | 'realestate' | 'hvac';
+  title: string;
+  title_ar: string;
+  description: string;
+  description_ar: string;
+  image: string;
+}
+
+export const hardgpSlides: HardgpSlide[] = [
+  {
+    id: 'slide-1',
+    step: '1st Step',
+    step_ar: 'المرحلة الأولى',
+    division: 'Construction',
+    division_ar: 'المقاولات والإنشاءات',
+    divisionKey: 'construction',
+    title: 'Excavation & Ground Preparation',
+    title_ar: 'أعمال الحفر وتجهيز التربة للخرسانة النظيفة',
+    description: 'Digging the land ground and get it ready for clean concrete',
+    description_ar: 'حفر وتجهيز الأرض وتسوية التربة لصب الخرسانة النظيفة بدقة هندسية عالية',
+    image: '/images/hardgp/slide-1.jpg',
+  },
+  {
+    id: 'slide-2',
+    step: '2nd Step',
+    step_ar: 'المرحلة الثانية',
+    division: 'Construction',
+    division_ar: 'المقاولات والإنشاءات',
+    divisionKey: 'construction',
+    title: 'Foundations & Pillars',
+    title_ar: 'تشييد الأساسات والأعمدة الخرسانية المسلحة',
+    description: 'Construct the foundation and pillars using good quality of wood and steel',
+    description_ar: 'إنشاء الأساسات والأعمدة باستخدام أجود خشب الطوبار وحديد سابك المعتمد',
+    image: '/images/hardgp/slide-2.jpg',
+  },
+  {
+    id: 'slide-3',
+    step: '3rd Step',
+    step_ar: 'المرحلة الثالثة',
+    division: 'Construction',
+    division_ar: 'المقاولات والإنشاءات',
+    divisionKey: 'construction',
+    title: 'Roof Concrete Pouring',
+    title_ar: 'صب الأسقف الخرسانية المسلحة بضغط محسوب',
+    description: 'Pouring cement to construct the building roofs with suitable pressure',
+    description_ar: 'صب الخرسانة الجاهزة المعالجة للأسقف بمضخات الضغط المناسب تحت إشراف هندسي',
+    image: '/images/hardgp/slide-3.jpg',
+  },
+  {
+    id: 'slide-4',
+    step: 'Final Step',
+    step_ar: 'المرحلة النهائية',
+    division: 'Construction',
+    division_ar: 'المقاولات والإنشاءات',
+    divisionKey: 'construction',
+    title: 'Structural Completion & Finishing',
+    title_ar: 'اكتمال الهيكل الإنشائي والبدء بالتشطيبات',
+    description: 'The building construction is complete and the customer is ready to select finishing materials',
+    description_ar: 'اكتمال البناء الإنشائي بالكامل وجاهزية العميل لاختيار وتطبيق مواد التشطيب الفاخرة',
+    image: '/images/hardgp/slide-4.jpg',
+  },
+  {
+    id: 'slide-5',
+    step: '1st Step',
+    step_ar: 'المرحلة الأولى',
+    division: 'Real Estate Development',
+    division_ar: 'التطوير العقاري',
+    divisionKey: 'realestate',
+    title: 'Contract Agreement Signing',
+    title_ar: 'توقيع العقد الرسمي والاتفاقية مع العميل',
+    description: 'After having customer agreement, contract will be signed between the two parties',
+    description_ar: 'بعد الاتفاق وتحديد متطلبات العميل، يتم توقيع العقد الرسمي الموثق بين الطرفين',
+    image: '/images/hardgp/slide-5.jpg',
+  },
+  {
+    id: 'slide-6',
+    step: '2nd Step',
+    step_ar: 'المرحلة الثانية',
+    division: 'Real Estate Development',
+    division_ar: 'التطوير العقاري',
+    divisionKey: 'realestate',
+    title: 'On-Site Land Inspection Tour',
+    title_ar: 'جولة ميدانية مع العميل لمعاينة الأرض',
+    description: 'We start to make a tour with the customer to view a land on reality',
+    description_ar: 'تنظيم جولة ميدانية مباشرة لمعاينة الموقع والأراضي المتاحة على أرض الواقع',
+    image: '/images/hardgp/slide-6.jpg',
+  },
+  {
+    id: 'slide-7',
+    step: '3rd Step',
+    step_ar: 'المرحلة الثالثة',
+    division: 'Real Estate Development',
+    division_ar: 'التطوير العقاري',
+    divisionKey: 'realestate',
+    title: 'Building Construction & Finishing',
+    title_ar: 'تشييد المبنى وتطبيق مواد التشطيب المختارة',
+    description: 'Our staff will construct the building and apply finishing materials as selected',
+    description_ar: 'تنفيذ أعمال البناء وتطبيق أرقى مواد التشطيب التي اختارها العميل بأيدي مهندسين مختصين',
+    image: '/images/hardgp/slide-7.jpg',
+  },
+  {
+    id: 'slide-8',
+    step: 'Final Step',
+    step_ar: 'المرحلة النهائية',
+    division: 'Real Estate Development',
+    division_ar: 'التطوير العقاري',
+    divisionKey: 'realestate',
+    title: 'Key Handover & Handover',
+    title_ar: 'تسليم المفتاح والبدء بحياة أو استثمار جديد',
+    description: 'It is the moment to submit the key of the ready-built product and enjoy new life or business',
+    description_ar: 'لحظة تسليم المفتاح للمنتج العقاري الجاهز للسكن وبدء النشاط الاستثماري الجديد',
+    image: '/images/hardgp/slide-8.jpg',
+  },
+  {
+    id: 'slide-9',
+    step: 'Electricals',
+    step_ar: 'الأعمال الكهربائية',
+    division: 'Maintenance Services',
+    division_ar: 'خدمات التشغيل والصيانة',
+    divisionKey: 'hvac',
+    title: 'Electrical Works & Wiring',
+    title_ar: 'تنفيذ وتمديد كافة الشبكات والأعمال الكهربائية',
+    description: 'Apply all kind of electrical works for residential, commercial and industrial projects',
+    description_ar: 'تنفيذ وتمديد كافة الشبكات والأعمال الكهربائية للمشاريع السكنية والتجارية والصناعية',
+    image: '/images/hardgp/slide-9.jpg',
+  },
+  {
+    id: 'slide-10',
+    step: 'Plumbing',
+    step_ar: 'أعمال السباكة',
+    division: 'Maintenance Services',
+    division_ar: 'خدمات التشغيل والصيانة',
+    divisionKey: 'hvac',
+    title: 'Pipeline Systems & Plumbing',
+    title_ar: 'تركيب أنظمة وشبكات السباكة والأنابيب المتكاملة',
+    description: 'Installation of full plumbing systems including pipelines ranging from small to large projects',
+    description_ar: 'تركيب وتمديد شبكات السباكة والأنابيب المتكاملة بمواصفات عالية للمشاريع الصغيرة والكبرى',
+    image: '/images/hardgp/slide-10.jpg',
+  },
+  {
+    id: 'slide-11',
+    step: 'Welding',
+    step_ar: 'أعمال اللحام',
+    division: 'Maintenance Services',
+    division_ar: 'خدمات التشغيل والصيانة',
+    divisionKey: 'hvac',
+    title: 'Industrial Welding & Plant Works',
+    title_ar: 'اللحام الصناعي المتخصص لمنشآت النفط والغاز',
+    description: 'Contribute in industry development by joining inspection and production plants for gas and oil',
+    description_ar: 'المساهمة في التنمية الصناعية عبر أعمال اللحام والفحص لمنشآت النفط والغاز والمصانع',
+    image: '/images/hardgp/slide-11.jpg',
+  },
+  {
+    id: 'slide-12',
+    step: 'AC Works',
+    step_ar: 'أعمال التكييف',
+    division: 'Maintenance Services',
+    division_ar: 'خدمات التشغيل والصيانة',
+    divisionKey: 'hvac',
+    title: 'HVAC Units Installation & Maintenance',
+    title_ar: 'تركيب وصيانة وحدات التكييف وتصميم المخططات',
+    description: 'Installation and maintenance of A/C units along with extensions and providing layout design service',
+    description_ar: 'تركيب وصيانة وحدات وأنظمة التكييف المركزي والمخفي وإعداد المخططات الهندسية المعتمدة',
+    image: '/images/hardgp/slide-12.jpg',
+  },
+];
+
 export const partnerLogos = [
   '/images/hardgp/slide-1.jpg',
-  '/images/hardgp/slide-10.jpg',
-  '/images/hardgp/slide-10.jpg',
-  '/images/hardgp/slide-10.jpg',
-  '/logo.svg',
+  '/images/hardgp/slide-2.jpg',
+  '/images/hardgp/slide-3.jpg',
+  '/images/hardgp/slide-4.jpg',
+  '/images/hardgp/slide-5.jpg',
+  '/images/hardgp/slide-6.jpg',
 ];
 
 export const clientAvatars = [

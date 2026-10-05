@@ -92,6 +92,7 @@ export default function ProjectsSection() {
                     src={project.image}
                     alt={title}
                     fill
+                    unoptimized
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                     referrerPolicy="no-referrer"
                   />
