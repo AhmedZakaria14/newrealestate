@@ -147,7 +147,7 @@ export default function RealEstatePortal() {
         {/* Background ambient lighting */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/hardgp/por4-big.jpg"
+            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80"
             alt="هارد للعقارات"
             fill
             priority

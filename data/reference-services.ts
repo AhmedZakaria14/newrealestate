@@ -87,7 +87,7 @@ export const referenceRealEstateServices: ReferenceServiceItem[] = [
         label: { en: 'Coverage: Eastern, Central, Western', ar: 'الشرقية، الوسطى، والغربية' },
       },
     ],
-    image: '/images/hardgp/por4-big.jpg',
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
     actionText: {
       en: 'Explore Properties',
       ar: 'استعراض المشاريع العقارية',
@@ -161,7 +161,7 @@ export const referenceRealEstateServices: ReferenceServiceItem[] = [
         label: { en: 'Land to Handover', ar: 'من شراء الأرض حتى التسليم' },
       },
     ],
-    image: '/images/hardgp/por8-big.jpg',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
     actionText: {
       en: 'Inquire About Funding',
       ar: 'استفسر عن برامج التمويل',
@@ -235,7 +235,7 @@ export const referenceRealEstateServices: ReferenceServiceItem[] = [
         label: { en: 'Advisory & Brokerage', ar: 'فريق تسويق متخصص' },
       },
     ],
-    image: '/images/hardgp/por6-big.jpg',
+    image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1600&q=80',
     actionText: {
       en: 'Contact Marketing Desk',
       ar: 'تواصل مع إدارة التسويق',
@@ -313,7 +313,7 @@ export const referenceConstructionServices: ReferenceServiceItem[] = [
         label: { en: 'Rigorous QA Guarantee', ar: 'ضمان الجودة والسلامة' },
       },
     ],
-    image: '/images/hardgp/por1-big.jpg',
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
     actionText: {
       en: 'View Construction Portfolio',
       ar: 'استعراض مشاريع المقاولات',
@@ -387,7 +387,7 @@ export const referenceConstructionServices: ReferenceServiceItem[] = [
         label: { en: 'Target Standard', ar: 'هدفنا الإنشائي الدائم' },
       },
     ],
-    image: '/images/hardgp/por5-big.jpg',
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80',
     actionText: {
       en: 'Learn About QA Standards',
       ar: 'معايير ضمان الجودة',
@@ -461,7 +461,7 @@ export const referenceConstructionServices: ReferenceServiceItem[] = [
         label: { en: 'Site Safety Engineers', ar: 'مهندسو سلامة معتمدون' },
       },
     ],
-    image: '/images/hardgp/por3-big.jpg',
+    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80',
     actionText: {
       en: 'Safety Policy Details',
       ar: 'تفاصيل سياسة السلامة',
@@ -539,7 +539,7 @@ export const referenceHVACServices: ReferenceServiceItem[] = [
         label: { en: 'Technician Experience', ar: 'خبرة مهندسي التكييف' },
       },
     ],
-    image: '/images/hardgp/slide-12.jpg',
+    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=80',
     actionText: {
       en: 'Explore HVAC Maintenance',
       ar: 'خدمات التكييف وعقود الصيانة',
@@ -613,7 +613,7 @@ export const referenceHVACServices: ReferenceServiceItem[] = [
         label: { en: 'Protection & Grounding', ar: 'أنظمة تأريض وحماية متكاملة' },
       },
     ],
-    image: '/images/hardgp/slide-9.jpg',
+    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=80',
     actionText: {
       en: 'Inquire Electrical Services',
       ar: 'طلب خدمات الكهرباء والتحكم',
@@ -687,7 +687,7 @@ export const referenceHVACServices: ReferenceServiceItem[] = [
         label: { en: 'Eastern Province Agency', ar: 'وكالة حصرية بالمنطقة الشرقية' },
       },
     ],
-    image: '/images/hardgp/por23-big.jpg',
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
     actionText: {
       en: 'Explore Plumbing & Pipes',
       ar: 'تفاصيل السباكة والأنابيب الحرارية',
@@ -761,7 +761,7 @@ export const referenceHVACServices: ReferenceServiceItem[] = [
         label: { en: 'Initial, Liquid, Deep, Cooking Oil', ar: 'السوائل، الزيوت، المواد الصلبة، البدايات' },
       },
     ],
-    image: '/images/hardgp/throwable_fire_extinguisher.png',
+    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80',
     actionText: {
       en: 'Contact Distributorship Desk',
       ar: 'طلب منتجات سوتيريا للسلامة',
@@ -835,7 +835,7 @@ export const referenceHVACServices: ReferenceServiceItem[] = [
         label: { en: 'Specialist Welders', ar: 'فنيو لحام معتمدون' },
       },
     ],
-    image: '/images/hardgp/por22-big.jpg',
+    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80',
     actionText: {
       en: 'Inquire Welding Services',
       ar: 'طلب خدمات اللحام الهندسي',

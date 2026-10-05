@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useRef } from 'react';
-import { motion, useInView } from 'motion/react';
+import React from 'react';
+import { motion } from 'motion/react';
 
 export interface StyleSegment {
   text: string;
@@ -12,53 +12,72 @@ export interface StyleSegment {
 interface WordsPullUpMultiStyleProps {
   segments: StyleSegment[];
   className?: string;
-  staggerDelay?: number;
   delay?: number;
 }
 
 export default function WordsPullUpMultiStyle({
   segments,
   className = '',
-  staggerDelay = 0.08,
   delay = 0,
 }: WordsPullUpMultiStyleProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: '-60px' });
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: delay,
+      },
+    },
+  };
 
-  // Flatten segments into individual words with their respective styles
-  const allWords = segments.flatMap((seg) => {
-    const words = seg.text.split(/\s+/).filter(Boolean);
-    return words.map((w) => ({
-      word: w,
-      className: seg.className || '',
-      italic: seg.italic,
-    }));
-  });
+  const child = {
+    hidden: {
+      y: 20,
+      opacity: 0,
+      filter: 'blur(4px)',
+    },
+    show: {
+      y: 0,
+      opacity: 1,
+      filter: 'blur(0px)',
+      transition: {
+        type: 'spring' as const,
+        damping: 18,
+        stiffness: 120,
+      },
+    },
+  };
 
   return (
-    <div
-      ref={containerRef}
-      className={`inline-flex flex-wrap items-baseline justify-center gap-x-[0.25em] gap-y-[0.1em] ${className}`}
+    <motion.div
+      className={`flex flex-wrap items-baseline gap-x-[0.25em] gap-y-1 ${className}`}
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: '-50px' }}
     >
-      {allWords.map((item, idx) => (
-        <span
-          key={`${item.word}-${idx}`}
-          className="inline-block overflow-hidden"
-        >
-          <motion.span
-            initial={{ y: 20, opacity: 0 }}
-            animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-            transition={{
-              duration: 0.7,
-              delay: delay + idx * staggerDelay,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className={`inline-block transform-gpu will-change-transform ${item.className} ${item.italic ? 'font-serif italic' : ''}`}
-          >
-            {item.word}
-          </motion.span>
-        </span>
-      ))}
-    </div>
+      {segments.map((segment, segIdx) => {
+        const words = segment.text.split(' ');
+        return (
+          <React.Fragment key={segIdx}>
+            {words.map((word, wordIdx) => {
+              if (!word) return null;
+              return (
+                <motion.span
+                  key={`${segIdx}-${wordIdx}-${word}`}
+                  variants={child}
+                  className={`inline-block ${segment.className || ''} ${
+                    segment.italic ? 'font-serif italic' : ''
+                  }`}
+                >
+                  {word}
+                </motion.span>
+              );
+            })}
+          </React.Fragment>
+        );
+      })}
+    </motion.div>
   );
 }

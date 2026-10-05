@@ -27,7 +27,7 @@ export default function WhyChooseUsSection() {
               }`}
             >
               <Image
-                src="/images/hardgp/por2-big.jpg"
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80"
                 alt="HARD Group Construction Video"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"

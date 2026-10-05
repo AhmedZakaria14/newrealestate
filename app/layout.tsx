@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: 'مجموعة هارد - HARD Group',
     images: [
       {
-        url: '/images/hardgp/por1-big.jpg',
+        url: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
         width: 1200,
         height: 630,
         alt: 'مجموعة هارد للمقاولات العامة والتطوير الإنشائي والعقاري',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: 'مجموعة هارد | المقاولات العامة والتطوير الإنشائي والعقاري',
     description:
       'مقاولات عامة فئة أولى لتنفيذ الأبراج والمجمعات الذكية وفق كود البناء السعودي (SBC)، مع منظومة متكاملة للتطوير العقاري وتشغيل المرافق.',
-    images: ['/images/hardgp/por1-big.jpg'],
+    images: ['https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80'],
   },
   icons: {
     icon: '/favicon.svg',

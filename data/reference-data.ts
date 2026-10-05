@@ -156,10 +156,10 @@ export const referenceProperties: ReferenceProperty[] = [
     areaSqM: 500,
     featured: true,
     images: [
-      '/images/hardgp/por4-big.jpg',
-      '/images/hardgp/por9-big.jpg',
-      '/images/hardgp/por10-big.jpg',
-      '/images/hardgp/por11-big.jpg'
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=80'
     ],
     amenities: {
       en: [
@@ -207,7 +207,7 @@ export const referenceProperties: ReferenceProperty[] = [
       phone: '+966138444663',
       whatsapp: '966556125711',
       email: 'info@hardgp.com',
-      avatar: '/images/hardgp/page2-img1.jpg'
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80'
     }
   },
   {
@@ -255,10 +255,10 @@ export const referenceProperties: ReferenceProperty[] = [
     areaSqM: 1720,
     featured: true,
     images: [
-      '/images/hardgp/por6-big.jpg',
-      '/images/hardgp/por1-big.jpg',
-      '/images/hardgp/por2-big.jpg',
-      '/images/hardgp/por7-big.jpg'
+      'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80'
     ],
     amenities: {
       en: [
@@ -306,7 +306,7 @@ export const referenceProperties: ReferenceProperty[] = [
       phone: '+966556125711',
       whatsapp: '966556125711',
       email: 'info@hardgp.com',
-      avatar: '/images/hardgp/page2-img2.jpg'
+      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80'
     }
   },
   {
@@ -354,10 +354,10 @@ export const referenceProperties: ReferenceProperty[] = [
     areaSqM: 360,
     featured: true,
     images: [
-      '/images/hardgp/por8-big.jpg',
-      '/images/hardgp/por4-big.jpg',
-      '/images/hardgp/por12-big.jpg',
-      '/images/hardgp/por13-big.jpg'
+      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=80'
     ],
     amenities: {
       en: [
@@ -405,7 +405,7 @@ export const referenceProperties: ReferenceProperty[] = [
       phone: '+966138444663',
       whatsapp: '966556125711',
       email: 'info@hardgp.com',
-      avatar: '/images/hardgp/page2-img3.jpg'
+      avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80'
     }
   },
   {
@@ -453,9 +453,9 @@ export const referenceProperties: ReferenceProperty[] = [
     areaSqM: 1200,
     featured: false,
     images: [
-      '/images/hardgp/por7-big.jpg',
-      '/images/hardgp/por1-big.jpg',
-      '/images/hardgp/por5-big.jpg'
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80'
     ],
     amenities: {
       en: [
@@ -499,7 +499,7 @@ export const referenceProperties: ReferenceProperty[] = [
       phone: '+966556125711',
       whatsapp: '966556125711',
       email: 'info@hardgp.com',
-      avatar: '/images/hardgp/page2-img2.jpg'
+      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80'
     }
   }
 ];
@@ -528,7 +528,7 @@ export const referenceProjects: ReferenceProject[] = [
     unitsTotal: 1,
     unitsAvailable: 0,
     roiProjected: 'Completed Portfolio Asset',
-    image: '/images/hardgp/por1-big.jpg',
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
     category: {
       en: 'Construction & Civil Superstructure',
       ar: 'المقاولات والإنشاءات الكبرى'
@@ -574,7 +574,7 @@ export const referenceProjects: ReferenceProject[] = [
     unitsTotal: 12,
     unitsAvailable: 0,
     roiProjected: 'High-Yield Asset',
-    image: '/images/hardgp/por2-big.jpg',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80',
     category: {
       en: 'Multi-Storey Construction',
       ar: 'مبانٍ متعددة الطوابق'
@@ -620,7 +620,7 @@ export const referenceProjects: ReferenceProject[] = [
     unitsTotal: 1,
     unitsAvailable: 0,
     roiProjected: 'Operational',
-    image: '/images/hardgp/por3-big.jpg',
+    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80',
     category: {
       en: 'Industrial & Mechanical Erection',
       ar: 'منشآت صناعية وهياكل معدنية'
@@ -666,7 +666,7 @@ export const referenceProjects: ReferenceProject[] = [
     unitsTotal: 6,
     unitsAvailable: 0,
     roiProjected: 'Completed Housing',
-    image: '/images/hardgp/por4-big.jpg',
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
     category: {
       en: 'Residential Development',
       ar: 'تطوير سكني عصري'
@@ -712,7 +712,7 @@ export const referenceProjects: ReferenceProject[] = [
     unitsTotal: 1,
     unitsAvailable: 0,
     roiProjected: 'Civil Foundation',
-    image: '/images/hardgp/por5-big.jpg',
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80',
     category: {
       en: 'Civil Engineering & Superstructure',
       ar: 'هندسة مدنية وهياكل خرسانية'
@@ -758,7 +758,7 @@ export const referenceProjects: ReferenceProject[] = [
     unitsTotal: 1,
     unitsAvailable: 0,
     roiProjected: 'Corporate Asset',
-    image: '/images/hardgp/por6-big.jpg',
+    image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1600&q=80',
     category: {
       en: 'Commercial Headquarters',
       ar: 'مقرات إدارية وتجارية'
@@ -804,7 +804,7 @@ export const referenceProjects: ReferenceProject[] = [
     unitsTotal: 1,
     unitsAvailable: 0,
     roiProjected: 'Retail Asset',
-    image: '/images/hardgp/por7-big.jpg',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
     category: {
       en: 'Retail & Commercial Facility',
       ar: 'مراكز تجارية ومعارض'
@@ -850,7 +850,7 @@ export const referenceProjects: ReferenceProject[] = [
     unitsTotal: 8,
     unitsAvailable: 0,
     roiProjected: 'Community Living',
-    image: '/images/hardgp/por8-big.jpg',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
     category: {
       en: 'Residential Communities',
       ar: 'مجتمعات سكنية متكاملة'
@@ -896,7 +896,7 @@ export const referenceProjects: ReferenceProject[] = [
     unitsTotal: 1,
     unitsAvailable: 0,
     roiProjected: 'Delivered',
-    image: '/images/hardgp/por9-big.jpg',
+    image: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80',
     category: {
       en: 'Private Villa Architecture',
       ar: 'فلل سكنية خاصة'
@@ -942,7 +942,7 @@ export const referenceProjects: ReferenceProject[] = [
     unitsTotal: 1,
     unitsAvailable: 0,
     roiProjected: 'Interior Showcase',
-    image: '/images/hardgp/por10-big.jpg',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80',
     category: {
       en: 'Interior Design & Decor',
       ar: 'التصميم الداخلي والديكور'
@@ -993,7 +993,7 @@ export const referenceBlogPosts: ReferenceBlogPost[] = [
       en: 'Hesham A. Al-Dossary',
       ar: 'هشام أ. الدوسري'
     },
-    image: '/images/hardgp/slide-1.jpg',
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
     content: {
       en: 'HARD General Contracting Establishment has been contributing to Saudi Arabia\'s industrial and infrastructure sector since 2004 with reliable, multi-dimensional construction services. The activities started in Eastern Province and expanded to cover Central and Western Provinces as per management development policy. Today, construction services focus on buildings, power, and the water sector. We meet all requirements of civil, industrial mechanical, and electro-mechanical services for LSTK, EPC, and LSPB projects.',
       ar: 'تساهم مؤسسة هارد للمقاولات العامة في قطاع الصناعة والبنية التحتية في المملكة العربية السعودية منذ عام 2004 بخدمات إنشائية موثوقة ومتعددة الأبعاد. بدأت أنشطتنا في المنطقة الشرقية وتوسعت لتغطي المنطقتين الوسطى والغربية وفق استراتيجية التطوير المؤسسي. واليوم تركز خدماتنا على قطاعات المباني، الطاقة، والمياه، مع تلبية كافة متطلبات الأعمال المدنية والميكانيكية الصناعية والكهروميكانيكية لمشاريع LSTK و EPC و LSPB.'
@@ -1022,7 +1022,7 @@ export const referenceBlogPosts: ReferenceBlogPost[] = [
       en: 'Ali H. Amsharah',
       ar: 'علي ح. عمشارة'
     },
-    image: '/images/hardgp/por5-big.jpg',
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80',
     content: {
       en: 'Our construction services are guaranteed to prevent any possible defects or mistakes with construction materials before and after delivery to the construction site. This is what is called QA (Quality Assurance) - verifying that delivered materials meet requirements and specifications approved by the client. QA is vital to check all items comply with agreed standards and avoid having any conflict with original functionality.',
       ar: 'خدماتنا الإنشائية مضمونة لمنع أي عيوب أو أخطاء محتملة في مواد البناء قبل وبعد وصولها إلى موقع العمل. وهذا ما يسمى بضمان الجودة (QA)، وهو التحقق من أن المواد الموردة تطابق المواصفات المعتمدة من قبل العميل. ويعد ضمان الجودة ركيزة حيوية للتأكد من مطابقة جميع المواد للمعايير المعتمدة وتجنب أي تعارض مع الوظيفة الأساسية للمنشأة.'
@@ -1051,7 +1051,7 @@ export const referenceBlogPosts: ReferenceBlogPost[] = [
       en: 'Mohammad Al-Qahtani',
       ar: 'محمد القحطاني'
     },
-    image: '/images/hardgp/Al-Ameria_Pipes.jpg',
+    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80',
     content: {
       en: 'HARD is the exclusive authorized distributor of Al-Ameria Pipes in the Eastern Province. German-engineered in Turkey from premium polypropylene, these beige thermal pipes withstand the highest pressures with geometric designs allowing streamlined water flow. Backed by a 50-year warranty, free 3-stage product inspections, and ISO and Saudi SASO certifications. We also distribute Italian Euro HDPE pipes for governmental and municipal gas and massive water systems.',
       ar: 'مؤسسة هارد هي الوكيل الحصري لتوزيع منتجات أنابيب العامرية في المنطقة الشرقية. هذه الأنابيب الحرارية ذات اللون البيج مصنعة من أجود خامات البولي بروبيلين الألمانية في تركيا وتتحمل أعلى درجات الضغط، وتتميز بتصميم هندسي يضمن تدفق المياه بسلاسة تامة. تأتي مدعومة بضمان 50 سنة و3 فحوصات مجانية مع شهادات ISO وهيئة المواصفات والمقاييس السعودية (SASO)، بالإضافة إلى أنابيب HDPE الإيطالية لخطوط الغاز والماء الضخمة.'
@@ -1080,7 +1080,7 @@ export const referenceBlogPosts: ReferenceBlogPost[] = [
       en: 'Ali H. Amsharah',
       ar: 'علي ح. عمشارة'
     },
-    image: '/images/hardgp/kitchen_fire_extinguisher.png',
+    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80',
     content: {
       en: 'Conventional fire extinguishers are baffling pieces of equipment to untrained adults. SOTERIA throwable fire extinguishers extinguish fires in one simple step: if a child can throw a ball, fire can be snuffed out easily. No annual inspections or maintenance needed, lasts up to 5 years, completely non-hazardous. Highly effective on initial fires, flammable liquids (petrol, paint thinners, kerosene), deep-seated fires, and kitchen cooking oils.',
       ar: 'تعد مطافئ الحريق التقليدية أجهزة معقدة ومربكة لكثير من الأشخاص غير المدربين. مع مطافئ سوتيريا (SOTERIA) القابلة للرمي، يتم إخماد الحريق في خطوة واحدة بسيطة: فإذا كان الطفل قادراً على رمي الكرة، يمكنه إخماد الحريق بسهولة. لا تحتاج إلى فحص سنوي أو صيانة، وتدوم حتى 5 سنوات، وهي آمنة بيئياً تماماً وفعالة للغاية في حرائق السوائل القابلة للاشتعال كالبنزين والتنر والحرائق العميقة وزيوت الطهي بالمطابخ.'
@@ -1109,7 +1109,7 @@ export const referenceBlogPosts: ReferenceBlogPost[] = [
       en: 'Mohammad Al-Qahtani',
       ar: 'محمد القحطاني'
     },
-    image: '/images/hardgp/por8-big.jpg',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
     content: {
       en: 'HARD offers real estate consultancy support to clients and investors in the market, seeking to reconcile the establishment of residential communities characterized by innovative design and function. We assist clients to own land where we build residential or commercial projects by utilizing institutional funding. Our management has long-term agreements with three of the best banks in real estate funding: AlJazira Bank, Riyad Bank, and Samba Bank, providing low profit margins specially to company employees and investors.',
       ar: 'تقدم هارد الدعم والاستشارات العقارية للعملاء والمستثمرين، وتسعى للتوفيق بين إنشاء مجتمعات سكنية تتميز بالتصميم المبتكر والوظيفة الحيوية. نحن نساعد عملائنا على تملك الأراضي وبناء المشاريع السكنية أو التجارية عبر التمويل المؤسسي. وترتبط إدارتنا باتفاقيات طويلة الأجل مع أفضل ثلاثة بنوك في التمويل العقاري: بنك الجزيرة، بنك الرياض، وبنك سامبا، والتي توفر هوامش ربح منخفضة مخصصة لموظفي الشركات والمستثمرين.'
@@ -1133,7 +1133,7 @@ export const referenceTestimonials: ReferenceTestimonial[] = [
       en: 'Architecture & Design Principle',
       ar: 'مبدأ الجودة والتنفيذ الإنشائي'
     },
-    avatar: '/images/hardgp/page2-img1.jpg',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
     rating: 5,
     quote: {
       en: 'If a building looks better under construction than it does when finished, then it is a failure.',
@@ -1159,7 +1159,7 @@ export const referenceTestimonials: ReferenceTestimonial[] = [
       en: 'Dammam & Jubail, Eastern Province',
       ar: 'الدمام والجبيل، المنطقة الشرقية'
     },
-    avatar: '/images/hardgp/page2-img2.jpg',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
     rating: 5,
     quote: {
       en: 'HARD General Contracting Establishment has been contributing to Saudi Arabia industrial and infrastructure sector since 2004 with reliable, multi-dimensional construction services.',
@@ -1185,7 +1185,7 @@ export const referenceTestimonials: ReferenceTestimonial[] = [
       en: 'Dammam & Eastern Province, KSA',
       ar: 'الدمام والمنطقة الشرقية'
     },
-    avatar: '/images/hardgp/page2-img3.jpg',
+    avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80',
     rating: 5,
     quote: {
       en: 'The commitment and efficiency through implementation of our projects built up a good customer relation and satisfaction, backed by certified 50-year warranty thermal piping and pioneer AC agreements.',

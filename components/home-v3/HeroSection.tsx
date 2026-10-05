@@ -58,7 +58,7 @@ export default function HeroSection() {
         {/* Background visual asset with noise & gradient overlays */}
         <div className="absolute inset-0 z-0">
           <Image
-            src={settings.heroImage || "/images/hardgp/por1-big.jpg"}
+            src={settings.heroImage || "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80"}
             alt={isAr ? (settings.heroTitleAr || 'مجموعة هارد القابضة') : (settings.heroTitleEn || 'HARD Group Holding')}
             fill
             priority
