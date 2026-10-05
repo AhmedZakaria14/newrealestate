@@ -4,6 +4,7 @@ import { LanguageThemeProvider } from '@/lib/language-theme-context';
 import { AuthProvider } from '@/lib/auth-context';
 import { SiteContentProvider } from '@/lib/site-content-context';
 import SmoothScrollProvider from '@/components/SmoothScrollProvider';
+import PageTransition from '@/components/PageTransition';
 import AnalyticsTracker from '@/components/AnalyticsTracker';
 import SeoJsonLd from '@/components/SeoJsonLd';
 
@@ -60,7 +61,9 @@ export default function RootLayout({
               <AnalyticsTracker />
               <SeoJsonLd />
               <SmoothScrollProvider>
-                {children}
+                <PageTransition>
+                  {children}
+                </PageTransition>
               </SmoothScrollProvider>
             </SiteContentProvider>
           </AuthProvider>
