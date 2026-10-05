@@ -149,7 +149,7 @@ export default function AdminDashboardPage() {
     bathrooms: 6,
     description: 'Luxury turnkey villa with smart automation and SBC code certification.',
     descriptionAr: 'فيلا فاخرة تسليم على المفتاح مع أنظمة ذكية ومطابقة كود البناء السعودي.',
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
+    image: '/images/hardgp/por4-big.jpg',
     featured: true,
   });
 
@@ -166,7 +166,7 @@ export default function AdminDashboardPage() {
     budget: '85,000,000 SAR',
     description: 'Commercial corporate tower engineered to SBC 100% standards.',
     descriptionAr: 'برج تجاري وإداري متطور تم تنفيذه وفق أعلى معايير كود البناء السعودي.',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
+    image: '/images/hardgp/por1-big.jpg',
     featured: true,
   });
 
@@ -189,7 +189,7 @@ export default function AdminDashboardPage() {
     excerptAr: 'تحليل شامل لاتجاهات السوق العقاري والإنشائي بالمملكة وفق رؤية 2030.',
     content: 'Full comprehensive market intelligence article...',
     contentAr: 'تقرير شامل ومفصل حول نمو قطاع المقاولات والعقارات في المنطقة الشرقية والرياض...',
-    image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1600&q=80',
+    image: '/images/hardgp/por6-big.jpg',
     author: 'هيئة الدراسات بمجموعة هارد',
     readTime: '5 دقائق',
     published: true,
@@ -266,7 +266,7 @@ export default function AdminDashboardPage() {
         bathrooms: 6,
         description: '',
         descriptionAr: '',
-        image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
+        image: '/images/hardgp/por4-big.jpg',
         featured: true,
       });
     } catch (err) {
@@ -292,7 +292,7 @@ export default function AdminDashboardPage() {
         budget: '85,000,000 SAR',
         description: '',
         descriptionAr: '',
-        image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
+        image: '/images/hardgp/por1-big.jpg',
         featured: true,
       });
     } catch (err) {
@@ -333,7 +333,7 @@ export default function AdminDashboardPage() {
         excerptAr: '',
         content: '',
         contentAr: '',
-        image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1600&q=80',
+        image: '/images/hardgp/por6-big.jpg',
         author: 'هيئة الدراسات بمجموعة هارد',
         readTime: '5 دقائق',
         published: true,
@@ -961,7 +961,7 @@ export default function AdminDashboardPage() {
                   <div>
                     <div className="relative h-48 w-full bg-slate-900">
                       <Image
-                        src={prop.image || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80'}
+                        src={prop.image || '/images/hardgp/por4-big.jpg'}
                         alt={prop.titleAr || prop.title}
                         fill
                         className="object-cover"
@@ -1030,7 +1030,7 @@ export default function AdminDashboardPage() {
                   <div>
                     <div className="relative h-48 w-full bg-slate-900">
                       <Image
-                        src={proj.image || 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80'}
+                        src={proj.image || '/images/hardgp/por1-big.jpg'}
                         alt={proj.titleAr || proj.title}
                         fill
                         className="object-cover"

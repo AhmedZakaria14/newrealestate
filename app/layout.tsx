@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     title: 'مجموعة هارد | المقاولات العامة والتطوير الإنشائي والعقاري',
     description:
       'مقاولات عامة فئة أولى لتنفيذ الأبراج والمجمعات الذكية وفق كود البناء السعودي (SBC)، مع منظومة متكاملة للتطوير العقاري، الوساطة المعتمدة (فال 1200028472)، وتشغيل المرافق.',
-    url: 'https://ai-realestate-phi-ecru.vercel.app/',
+    url: 'https://hardgp.com',
     siteName: 'مجموعة هارد - HARD Group',
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
+        url: '/images/hardgp/por1-big.jpg',
         width: 1200,
         height: 630,
         alt: 'مجموعة هارد للمقاولات العامة والتطوير الإنشائي والعقاري',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: 'مجموعة هارد | المقاولات العامة والتطوير الإنشائي والعقاري',
     description:
       'مقاولات عامة فئة أولى لتنفيذ الأبراج والمجمعات الذكية وفق كود البناء السعودي (SBC)، مع منظومة متكاملة للتطوير العقاري وتشغيل المرافق.',
-    images: ['https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80'],
+    images: ['/images/hardgp/por1-big.jpg'],
   },
   icons: {
     icon: '/favicon.svg',

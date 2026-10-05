@@ -77,13 +77,8 @@ export const realEstateListings: RealEstateListingItem[] = [
     beds: '5 أجنحة نوم',
     baths: '6 دورات مياه',
     parking: 'كراج خاص يتسع لسيارتين',
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=80'
-    ],
+    image: '/images/hardgp/por4-big.jpg',
+    gallery: ["/images/hardgp/por4-big.jpg","/images/hardgp/por9-big.jpg","/images/hardgp/por10-big.jpg","/images/hardgp/por11-big.jpg"],
     badgeAr: 'تطوير مؤسسة هارد للمقاولات العامة',
     badgeEn: 'HARD Group Real Estate Development',
     descriptionAr:
@@ -155,13 +150,8 @@ export const realEstateListings: RealEstateListingItem[] = [
     beds: 'قاعات تنفيذية ومكاتب',
     baths: '12 دورة مياه',
     parking: '35 موقف سيارات بالقبو والمحيط',
-    image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1600&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80'
-    ],
+    image: '/images/hardgp/por6-big.jpg',
+    gallery: ["/images/hardgp/por6-big.jpg","/images/hardgp/por1-big.jpg","/images/hardgp/por2-big.jpg","/images/hardgp/por7-big.jpg"],
     badgeAr: 'تنفيذ المقاولات العامة هارد',
     badgeEn: 'HARD General Contracting EPC',
     descriptionAr:
@@ -233,13 +223,8 @@ export const realEstateListings: RealEstateListingItem[] = [
     beds: '4 غرف نوم ماستر',
     baths: '5 دورات مياه',
     parking: 'موقف خاص مظلل',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=80'
-    ],
+    image: '/images/hardgp/por8-big.jpg',
+    gallery: ["/images/hardgp/por8-big.jpg","/images/hardgp/por4-big.jpg","/images/hardgp/por12-big.jpg","/images/hardgp/por13-big.jpg"],
     badgeAr: 'حلول إسكانية لجيل الشباب',
     badgeEn: 'Modern Youth Housing Solutions',
     descriptionAr:
@@ -311,12 +296,8 @@ export const realEstateListings: RealEstateListingItem[] = [
     beds: 'معارض ومساحات تجارية مفتوحة',
     baths: '8 دورات مياه',
     parking: '20 موقف سيارات مخصص',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80'
-    ],
+    image: '/images/hardgp/por7-big.jpg',
+    gallery: ["/images/hardgp/por7-big.jpg","/images/hardgp/por1-big.jpg","/images/hardgp/por5-big.jpg","/images/hardgp/por14-big.jpg"],
     badgeAr: 'تنفيذ وإنشاءات مؤسسة هارد',
     badgeEn: 'HARD General Contracting Construction',
     descriptionAr:

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
+        url: '/images/hardgp/por4-big.jpg',
         width: 1200,
         height: 630,
         alt: 'هارد للعقارات - الذراع العقاري لمجموعة هارد',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description:
       'الذراع العقاري الرائد في المملكة العربية السعودية، متخصص في التسويق والوساطة المعتمدة من الهيئة العامة للعقار (فال).',
     images: [
-      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
+      '/images/hardgp/por4-big.jpg',
     ],
   },
 };

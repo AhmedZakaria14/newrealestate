@@ -307,11 +307,8 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "valueSAR": "مشروع منجز",
     "clientAr": "مؤسسة هارد للمقاولات العامة / عملاء القطاع التجاري",
     "clientEn": "HARD General Contracting Establishment / Commercial Clients",
-    "image": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80"
-    ],
+    "image": "/images/hardgp/por1-big.jpg",
+    "galleryImages": ["/images/hardgp/por1-big.jpg", "/images/hardgp/por1-small.jpg"],
     "descriptionAr": "تنفيذ كامل للأعمال الإنشائية والخرسانية والهيكل الحامل لمجمع تجاري مع تطبيق صارم لمعايير الجودة والسلامة المهنية.",
     "descriptionEn": "Turnkey execution of commercial structural superstructure, concrete framing, and civil contracting delivered on time.",
     "scopeAr": [
@@ -358,11 +355,8 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "valueSAR": "مشروع منجز",
     "clientAr": "مطورون ومستثمرون عقاريون",
     "clientEn": "Real Estate Developers & Investors",
-    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80"
-    ],
+    "image": "/images/hardgp/por2-big.jpg",
+    "galleryImages": ["/images/hardgp/por2-big.jpg", "/images/hardgp/por2-small.jpg"],
     "descriptionAr": "تشييد مبنى متعدد الطوابق يشمل الأعمال الإنشائية الكاملة والواجهات المقاومة للعوامل الجوية وتمديدات المرافق.",
     "descriptionEn": "Comprehensive multi-storey reinforced concrete framing and exterior facade construction.",
     "scopeAr": [
@@ -407,11 +401,8 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "valueSAR": "مشروع منجز",
     "clientAr": "قطاع المنشآت الصناعية",
     "clientEn": "Industrial Operations Sector",
-    "image": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80"
-    ],
+    "image": "/images/hardgp/por3-big.jpg",
+    "galleryImages": ["/images/hardgp/por3-big.jpg", "/images/hardgp/por3-small.jpg"],
     "descriptionAr": "أعمال مدنية وصناعية تشمل تركيب الهياكل المعدنية واللحام الهندسي المتقدم والأنظمة الكهروميكانيكية المتوافقة مع معايير EPC.",
     "descriptionEn": "Heavy civil and industrial mechanical erection including specialized welding and electro-mechanical systems.",
     "scopeAr": [
@@ -456,11 +447,8 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "valueSAR": "مشروع منجز",
     "clientAr": "عملاء القطاع السكني والعائلي",
     "clientEn": "Residential Clients & Families",
-    "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80"
-    ],
+    "image": "/images/hardgp/por4-big.jpg",
+    "galleryImages": ["/images/hardgp/por4-big.jpg", "/images/hardgp/por4-small.jpg"],
     "descriptionAr": "عمارة سكنية معاصرة تجمع بين التخطيط الفراغي الذكي والعزل الحراري، مع تمديدات أنابيب العامرية بضمان 50 سنة وتكييف مركزي متطور.",
     "descriptionEn": "Modern residential villa architecture combining smart layout planning, thermal efficiency, and luxury finishes.",
     "scopeAr": [
@@ -505,11 +493,8 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "valueSAR": "مشروع منجز",
     "clientAr": "مستثمرون وشركاء التطوير الإنشائي",
     "clientEn": "Structural & Investment Partners",
-    "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80"
-    ],
+    "image": "/images/hardgp/por5-big.jpg",
+    "galleryImages": ["/images/hardgp/por5-big.jpg", "/images/hardgp/por5-small.jpg"],
     "descriptionAr": "نجارة مسلحة عالية الدقة، وتثبيت حديد التسليح، وصب الخرسانة المسلحة وفق درجات حرارة مضبوطة وبفحوصات كسر مخبرية معتمدة.",
     "descriptionEn": "High-precision shuttering, steel reinforcement binding, and temperature-controlled mass concrete casting.",
     "scopeAr": [
@@ -554,11 +539,8 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "valueSAR": "مشروع منجز",
     "clientAr": "شركات ومؤسسات تجارية",
     "clientEn": "Commercial Corporate Clients",
-    "image": "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1600&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1600&q=80"
-    ],
+    "image": "/images/hardgp/por6-big.jpg",
+    "galleryImages": ["/images/hardgp/por6-big.jpg", "/images/hardgp/por6-small.jpg"],
     "descriptionAr": "مبنى إداري متطور مجهز بشبكات التحكم E&I والألياف الضوئية وأنظمة الإنذار والتشطيبات العصرية.",
     "descriptionEn": "State-of-the-art office infrastructure with integrated E&I networking, fire alarms, and modern aesthetic.",
     "scopeAr": [
@@ -603,11 +585,8 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "valueSAR": "مشروع منجز",
     "clientAr": "قطاع تطوير الأراضي والمخططات",
     "clientEn": "Land Development Fund",
-    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80"
-    ],
+    "image": "/images/hardgp/por7-big.jpg",
+    "galleryImages": ["/images/hardgp/por7-big.jpg", "/images/hardgp/por7-small.jpg"],
     "descriptionAr": "أعمال الحفر، تسوية المناسيب بالليزر، تثبيت التربة، وتمديد شبكات الأنابيب والمرافق التحتية باستخدام أنابيب يورو HDPE الإيطالية.",
     "descriptionEn": "Excavation, grading, soil stabilization, and underground utility piping infrastructure utilizing Euro HDPE Italian piping systems.",
     "scopeAr": [
@@ -652,11 +631,8 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "valueSAR": "مشروع منجز",
     "clientAr": "إدارة تشغيل وتطوير المنشآت",
     "clientEn": "Plant Operations & Engineering",
-    "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80"
-    ],
+    "image": "/images/hardgp/por8-big.jpg",
+    "galleryImages": ["/images/hardgp/por8-big.jpg", "/images/hardgp/por8-small.jpg"],
     "descriptionAr": "تعديل وتوسعة المنشآت والتشطيب الصناعي والمعماري ذو المواصفات الصارمة تحت إشراف قسم ضمان الجودة.",
     "descriptionEn": "Plant modification, revamping, and high-specification industrial building finishing under strict QA/QC.",
     "scopeAr": [
@@ -701,11 +677,8 @@ export const hardConstructionProjects: ConstructionProjectItem[] = [
     "valueSAR": "مشروع منجز",
     "clientAr": "مستثمرون في الإسكان الخاص",
     "clientEn": "Private Housing Investors",
-    "image": "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80",
-    "galleryImages": [
-      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80",
-      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80"
-    ],
+    "image": "/images/hardgp/por9-big.jpg",
+    "galleryImages": ["/images/hardgp/por9-big.jpg", "/images/hardgp/por9-small.jpg"],
     "descriptionAr": "تسليم كامل على المفتاح يشمل الهيكل الإنشائي، الكهروميكانيك، السباكة، والتشطيبات الفاخرة.",
     "descriptionEn": "Full turnkey delivery encompassing structural execution, electro-mechanical, plumbing, and luxury finish.",
     "scopeAr": [

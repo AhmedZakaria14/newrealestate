@@ -51,7 +51,7 @@ export default function HardCoreDivisionsSection() {
         'The premier real estate and investment arm licensed by the Real Estate General Authority (VAL), specializing in certified brokerage, portfolio management, and prime developments across Eastern Province and Riyadh.',
       href: '/realestate',
       pathDisplay: '/realestate',
-      image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
+      image: '/images/hardgp/por4-big.jpg',
       icon: Building2,
       highlights: [
         { ar: 'وساطة وتسويق رسمي مرخص (فال)', en: 'VAL Licensed Brokerage' },
@@ -72,7 +72,7 @@ export default function HardCoreDivisionsSection() {
         'The engineering powerhouse of HARD Group, delivering Class-1 classified general contracting for commercial towers, residential communities, and advanced infrastructure under the Saudi Building Code (SBC).',
       href: '/construction',
       pathDisplay: '/construction',
-      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
+      image: '/images/hardgp/por1-big.jpg',
       icon: HardHat,
       highlights: [
         { ar: 'مقاولات عامة فئة أولى معتمدة (SCA)', en: 'Class-1 General Contracting' },
@@ -93,7 +93,7 @@ export default function HardCoreDivisionsSection() {
         'The electromechanical engineering arm providing annual preventive maintenance contracts (AMC) for central chillers, VRF variable refrigerant systems, air quality sanitation, and 24/7 rapid response.',
       href: '/hvac',
       pathDisplay: '/hvac',
-      image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=80',
+      image: '/images/hardgp/slide-12.jpg',
       icon: Fan,
       highlights: [
         { ar: 'عقود الصيانة الوقائية السنوية (AMC)', en: 'Preventive Annual Maintenance (AMC)' },

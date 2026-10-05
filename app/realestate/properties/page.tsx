@@ -55,7 +55,7 @@ export default function RealEstatePropertiesPage() {
         location: isAr ? (p?.locationAr || p?.location || '') : (p?.location || p?.locationAr || ''),
         bedrooms: p?.bedrooms ?? 4,
         bathrooms: p?.bathrooms ?? 5,
-        image: p?.image || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
+        image: p?.image || '/images/hardgp/por4-big.jpg',
         featured: !!p?.featured,
       }))
     : referenceProperties.filter(Boolean).map((p) => ({
@@ -68,7 +68,7 @@ export default function RealEstatePropertiesPage() {
         location: isAr ? (p?.location?.city?.ar || '') : (p?.location?.city?.en || ''),
         bedrooms: p?.bedrooms ?? 4,
         bathrooms: p?.bathrooms ?? 5,
-        image: p?.images?.[0] || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
+        image: p?.images?.[0] || '/images/hardgp/por4-big.jpg',
         featured: !!p?.featured,
       }));
 

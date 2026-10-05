@@ -133,7 +133,7 @@ export default function SkillsSection() {
               }`}
             >
               <Image
-                src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1600&q=80"
+                src="/images/hardgp/por6-big.jpg"
                 alt="HARD Group Engineers"
                 fill
                 className="object-cover"

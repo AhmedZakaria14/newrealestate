@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
+        url: '/images/hardgp/por1-big.jpg',
         width: 1200,
         height: 630,
         alt: 'هارد للإنشاءات والمقاولات - الذراع الإنشائي لمجموعة هارد',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description:
       'الذراع الإنشائي والهندسي لمجموعة هارد، مقاولات عامة مصنفة فئة أولى لتنفيذ الأبراج التجارية والمجمعات الذكية وفق كود البناء السعودي.',
     images: [
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80',
+      '/images/hardgp/por1-big.jpg',
     ],
   },
 };

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=80',
+        url: '/images/hardgp/slide-12.jpg',
         width: 1200,
         height: 630,
         alt: 'هارد لصيانة وتكييف الهواء - الذراع الكهروميكانيكي لمجموعة هارد',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description:
       'الذراع التخصصي للكهروميكانيك والتبريد، عقود AMC للشيلرات و VRF وتنقية مجاري الهواء وطوارئ 24/7.',
     images: [
-      'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=80',
+      '/images/hardgp/slide-12.jpg',
     ],
   },
 };

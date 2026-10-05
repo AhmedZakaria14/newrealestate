@@ -15,22 +15,22 @@ export default function AboutSection() {
   const [consultationOpen, setConsultationOpen] = useState(false);
 
   const segmentsAr: StyleSegment[] = [
-    { text: 'نحن مجموعة هارد،', className: 'text-[#E1E0CC] font-bold' },
-    { text: 'صرح إنشائي وعقاري رائد.', className: 'text-[#DEDBC8] font-serif italic', italic: true },
-    { text: 'نمتلك كفاءات معتمدة في المقاولات فئة أولى والوساطة المرخصة فال.', className: 'text-[#E1E0CC]/90 font-medium' },
+    { text: 'نحن مؤسسة هارد،', className: 'text-[#E1E0CC] font-bold' },
+    { text: 'خبرة إنشائية وصناعية راسخة منذ 2004.', className: 'text-[#DEDBC8] font-serif italic', italic: true },
+    { text: 'خدمات مقاولات موثوقة، تطوير عقاري، وتشغيل وصيانة متكاملة.', className: 'text-[#E1E0CC]/90 font-medium' },
   ];
 
   const segmentsEn: StyleSegment[] = [
     { text: 'We are HARD Group,', className: 'text-[#E1E0CC] font-bold' },
-    { text: 'a premier Saudi development house.', className: 'text-[#DEDBC8] font-serif italic', italic: true },
-    { text: 'Uniting Class-1 general contracting, VAL brokerage, and MEP engineering.', className: 'text-[#E1E0CC]/90 font-medium' },
+    { text: 'contributing to Saudi Arabia since 2004.', className: 'text-[#DEDBC8] font-serif italic', italic: true },
+    { text: 'Reliable multi-dimensional construction, real estate development, and maintenance.', className: 'text-[#E1E0CC]/90 font-medium' },
   ];
 
   const bodyTextAr =
-    'على مدار أكثر من عقد من الإنجاز والتطوير المستمر في المملكة العربية السعودية، شيدت مجموعة هارد محفظة استثنائية من الأبراج والمشاريع التجارية والمجمعات السكنية في الخبر والرياض، مرخصة برخصة فال ومطابقة 100% لكود البناء السعودي مع التزام راسخ بأعلى معايير الجودة والحوكمة المؤسسية.';
+    'مؤسسة هارد للمقاولات العامة، تساهم في قطاع الصناعة والبنية التحتية في المملكة العربية السعودية منذ عام 2004 بخدمات إنشائية موثوقة ومتعددة الأبعاد. بدأت أنشطتنا في المنطقة الشرقية وتوسعت لتغطي المنطقتين الوسطى والغربية. نلبي كافة متطلبات الإنشاءات المدنية والميكانيكية الصناعية والكهروميكانيكية لمشاريع تسليم المفتاح LSTK و EPC و LSPB.';
 
   const bodyTextEn =
-    'Over the past decade of continuous development across the Kingdom of Saudi Arabia, HARD Group has delivered an exceptional portfolio of commercial towers, residential communities, and advanced infrastructure in Khobar and Riyadh, fully compliant with the Saudi Building Code (SBC) and licensed under VAL.';
+    'HARD General Contracting Establishment has been contributing to Saudi Arabia industrial and infrastructure sector since 2004 with reliable, multi-dimensional construction services. The activities started in Eastern Province and expanded to cover Central and Western Provinces, meeting all requirements of civil, industrial mechanical, and electro-mechanical services for LSTK, EPC, and LSPB turnkey projects.';
 
   return (
     <section id="about-hard" className="bg-black py-20 sm:py-28 px-4 md:px-8 relative overflow-hidden">

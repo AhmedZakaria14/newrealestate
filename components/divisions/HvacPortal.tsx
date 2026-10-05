@@ -135,7 +135,7 @@ export default function HvacPortal() {
       >
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=80"
+            src="/images/hardgp/slide-12.jpg"
             alt="هارد لصيانة وتكييف الهواء"
             fill
             priority

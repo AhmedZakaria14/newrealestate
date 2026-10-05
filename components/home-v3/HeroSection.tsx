@@ -58,8 +58,8 @@ export default function HeroSection() {
         {/* Background visual asset with noise & gradient overlays */}
         <div className="absolute inset-0 z-0">
           <Image
-            src={settings.heroImage || "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80"}
-            alt={isAr ? (settings.heroTitleAr || 'مجموعة هارد القابضة') : (settings.heroTitleEn || 'HARD Group Holding')}
+            src={settings.heroImage || "/images/hardgp/por1-big.jpg"}
+            alt={isAr ? (settings.heroTitleAr || 'مجموعة هارد للمقاولات العامة') : (settings.heroTitleEn || 'HARD Group')}
             fill
             priority
             className="object-cover object-center filter brightness-[0.32] contrast-[1.15]"
@@ -79,28 +79,28 @@ export default function HeroSection() {
               {/* Unboxed Metadata Kicker */}
               <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-medium text-[#DEDBC8]/80">
                 <span className="w-2 h-2 rounded-full bg-[#DEDBC8] animate-pulse" />
-                <span>{isAr ? (settings.heroBadgeAr || 'مقاولات عامة فئة أولى · كود البناء السعودي SBC · رخصة فال 1200028472') : (settings.heroBadgeEn || 'Class-1 General Contracting · Saudi Building Code (SBC) · VAL Lic. 1200028472')}</span>
+                <span>{isAr ? (settings.heroBadgeAr || 'المساهمة في القطاع الصناعي والبنية التحتية في المملكة منذ 2004') : (settings.heroBadgeEn || 'Contributing to Saudi Arabia industrial & infrastructure sector since 2004')}</span>
               </div>
 
               {/* Monumental Headline */}
               <div className="space-y-1">
                 <h1 className="text-3xl sm:text-5xl md:text-6xl xl:text-7xl font-bold text-[#E1E0CC] tracking-tight leading-[1.12]">
                   <WordsPullUp
-                    text={isAr ? (settings.heroTitleAr || 'مجموعة هارد القابضة') : (settings.heroTitleEn || 'HARD Group Holding')}
+                    text={isAr ? (settings.heroTitleAr || 'مجموعة هارد للمقاولات العامة') : (settings.heroTitleEn || 'HARD Group')}
                     showAsterisk={true}
                     className="text-[#E1E0CC]"
                   />
                 </h1>
                 <p className="text-xl sm:text-3xl md:text-4xl text-[#DEDBC8] font-serif italic pt-1">
-                  {isAr ? (settings.heroSubtitleAr || 'للمقاولات والتطوير العقاري') : (settings.heroSubtitleEn || '& Structural Development')}
+                  {isAr ? (settings.heroSubtitleAr || 'للمقاولات والتطوير العقاري') : (settings.heroSubtitleEn || 'General Contracting & Real Estate Development')}
                 </p>
               </div>
 
               {/* Description Paragraph */}
               <p className="text-[#DEDBC8]/75 text-xs sm:text-sm md:text-base max-w-xl leading-relaxed font-light">
                 {isAr
-                  ? 'منظومة استثمارية وطنية متكاملة تجمع بين المقاولات الإنشائية المصنفة فئة أولى، الوساطة والتسويق العقاري المرخص (فال 1200028472)، وهندسة التكييف وتشغيل المرافق (AMC 24/7).'
-                  : 'A unified Saudi development ecosystem integrating Class-1 structural contracting, licensed real estate brokerage (VAL), and 24/7 electromechanical facility engineering.'}
+                  ? 'مؤسسة هارد للمقاولات العامة، تساهم في قطاع الصناعة والبنية التحتية في المملكة العربية السعودية منذ عام 2004 بخدمات إنشائية موثوقة ومتعددة الأبعاد، وتطوير عقاري، وخدمات تشغيل وصيانة شاملة.'
+                  : 'HARD General Contracting Establishment, has been contributing to Saudi Arabia industrial and infrastructure sector since 2004 with reliable, multi-dimensional construction services, property development, and comprehensive maintenance operations.'}
               </p>
 
               {/* Action Buttons: Sleek Pill Design with Black Arrow Circle */}
