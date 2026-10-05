@@ -36,9 +36,16 @@ export interface SearchResultItem {
   badgeEn?: string;
   image?: string;
   keywords: string[];
+  searchableText?: string;
 }
 
+let _cachedSearchItems: SearchResultItem[] | null = null;
+
 export function getAllSearchableItems(): SearchResultItem[] {
+  if (_cachedSearchItems) {
+    return _cachedSearchItems;
+  }
+
   const items: SearchResultItem[] = [];
 
   // 1. Standalone Core Pages & Portals
@@ -415,7 +422,21 @@ export function getAllSearchableItems(): SearchResultItem[] {
     });
   });
 
-  return items;
+  _cachedSearchItems = items.map((item) => ({
+    ...item,
+    searchableText: [
+      item.titleAr,
+      item.titleEn,
+      item.subtitleAr,
+      item.subtitleEn,
+      item.badgeAr || '',
+      item.badgeEn || '',
+      ...(item.keywords || []),
+    ]
+      .join(' ')
+      .toLowerCase(),
+  }));
+  return _cachedSearchItems;
 }
 
 export function searchSite(
@@ -439,17 +460,7 @@ export function searchSite(
       return false;
     }
 
-    const searchableText = [
-      item.titleAr,
-      item.titleEn,
-      item.subtitleAr,
-      item.subtitleEn,
-      item.badgeAr || '',
-      item.badgeEn || '',
-      ...(item.keywords || []),
-    ]
-      .join(' ')
-      .toLowerCase();
+    const searchableText = item.searchableText || '';
 
     // Must match all entered terms
     return terms.every((term) => searchableText.includes(term));
