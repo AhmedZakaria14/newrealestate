@@ -23,10 +23,14 @@ const listeners = new Set<() => void>();
 
 function subscribe(callback: () => void) {
   listeners.add(callback);
-  window.addEventListener('storage', callback);
+  if (typeof window !== 'undefined') {
+    window.addEventListener('storage', callback);
+  }
   return () => {
     listeners.delete(callback);
-    window.removeEventListener('storage', callback);
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('storage', callback);
+    }
   };
 }
 
@@ -642,7 +646,16 @@ export function LanguageThemeProvider({ children }: { children: React.ReactNode 
 export function useLanguageTheme() {
   const context = useContext(LanguageThemeContext);
   if (!context) {
-    throw new Error('useLanguageTheme must be used within a LanguageThemeProvider');
+    return {
+      language: 'ar' as Language,
+      direction: 'rtl' as 'rtl' | 'ltr',
+      setLanguage: () => {},
+      toggleLanguage: () => {},
+      theme: 'dark' as Theme,
+      setTheme: () => {},
+      toggleTheme: () => {},
+      t: (key: string, fallback?: string) => translations['ar']?.[key] || fallback || key,
+    };
   }
   return context;
 }

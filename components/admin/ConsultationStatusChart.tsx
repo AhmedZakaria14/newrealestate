@@ -199,7 +199,9 @@ export default function ConsultationStatusChart({
             : key === 'contacted'
             ? 'تم التواصل'
             : 'مكتمل'
-          : conf.labelEn.split(' ')[0],
+          : conf?.labelEn
+          ? conf.labelEn.split(' ')[0]
+          : key,
         value: count,
         percentage,
         color: conf.color,
@@ -327,8 +329,9 @@ export default function ConsultationStatusChart({
                     )}
                     <Tooltip
                       content={({ active, payload }) => {
-                        if (active && payload && payload.length) {
-                          const pData = payload[0].payload;
+                        if (active && payload && payload.length > 0) {
+                          const pData = payload[0]?.payload;
+                          if (!pData) return null;
                           return (
                             <div
                               className={`p-3 rounded-xl border shadow-xl backdrop-blur-md text-xs font-bold ${

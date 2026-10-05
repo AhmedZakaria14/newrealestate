@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from 'motion/react';
 import {
   ChevronDown,
   X,
@@ -27,6 +28,7 @@ import {
 } from 'lucide-react';
 import { navigationLinks } from '@/data/skyvilla-data';
 import ConsultationModal from '@/components/ConsultationModal';
+import GlobalSearchModal from '@/components/GlobalSearchModal';
 import Logo from '@/components/Logo';
 import { useLanguageTheme } from '@/lib/language-theme-context';
 
@@ -36,7 +38,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
   const [consultationOpen, setConsultationOpen] = useState(false);
   const scrollPositionRef = useRef(0);
 
@@ -57,6 +58,18 @@ export default function Navbar() {
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Global Ctrl+K / Cmd+K shortcut to open search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setSearchOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   // Strict & Robust Mobile Body Scroll Lock (prevents iOS rubber-banding & backdrop shifting)
@@ -191,72 +204,6 @@ export default function Navbar() {
         };
     }
   };
-
-  // Search Results List
-  const allSearchableItems = useMemo(() => {
-    const list: Array<{ title: string; subtitle: string; href: string; category: string }> = [
-      {
-        title: isAr ? 'هارد للعقارات والوساطة' : 'HARD Real Estate & Brokerage',
-        subtitle: isAr ? 'عقارات فاخرة، فلل بحرية، رخصة فال' : 'Prime luxury villas & VAL brokerage',
-        href: '/realestate',
-        category: isAr ? 'القطاعات' : 'Sectors',
-      },
-      {
-        title: isAr ? 'هارد للإنشاءات والمقاولات' : 'HARD Construction & Contracting',
-        subtitle: isAr ? 'مقاولات عامة فئة أولى، كود البناء SBC' : 'Class-1 General Contracting & SBC',
-        href: '/construction',
-        category: isAr ? 'القطاعات' : 'Sectors',
-      },
-      {
-        title: isAr ? 'هارد لصيانة وتكييف الهواء' : 'HARD HVAC & Maintenance',
-        subtitle: isAr ? 'صيانة شيلرات، أنظمة VRF، عقود AMC' : 'Chillers, VRF Systems & AMC contracts',
-        href: '/hvac',
-        category: isAr ? 'القطاعات' : 'Sectors',
-      },
-      {
-        title: isAr ? 'المشاريع العقارية الكبرى' : 'Master Projects Portfolio',
-        subtitle: isAr ? 'أبراج ومجمعات استثمارية في الخبر والرياض' : 'Major development projects in KSA',
-        href: '/projects',
-        category: isAr ? 'المشاريع' : 'Projects',
-      },
-      {
-        title: isAr ? 'العقارات والوحدات المتاحة' : 'Properties & Listings',
-        subtitle: isAr ? 'قصور، فلل، شقق فاخرة، وأراضٍ استثمارية' : 'Palaces, luxury villas and penthouses',
-        href: '/listings',
-        category: isAr ? 'العقارات' : 'Listings',
-      },
-      {
-        title: isAr ? 'منظومة الخدمات المتكاملة' : 'Integrated Services',
-        subtitle: isAr ? 'استشارات، تسويق، مقاولات، وتشغيل' : 'Brokerage, contracting & maintenance',
-        href: '/services',
-        category: isAr ? 'الخدمات' : 'Services',
-      },
-      {
-        title: isAr ? 'عن مجموعة هارد القابضة' : 'About HARD Group',
-        subtitle: isAr ? 'الرؤية، الحوكمة، وسجل الإنجازات' : 'Corporate profile and governance',
-        href: '/about-us',
-        category: isAr ? 'الشركة' : 'Company',
-      },
-      {
-        title: isAr ? 'تواصل معنا والمقرات' : 'Contact Us & Branches',
-        subtitle: isAr ? 'مقرات الرياض والخبر، الهاتف، والواتساب' : 'Riyadh & Khobar headquarters',
-        href: '/contact-us',
-        category: isAr ? 'التواصل' : 'Contact',
-      },
-    ];
-    return list;
-  }, [isAr]);
-
-  const searchResults = useMemo(() => {
-    const q = searchQuery.toLowerCase().trim();
-    if (!q) return allSearchableItems;
-    return allSearchableItems.filter(
-      (item) =>
-        item.title.toLowerCase().includes(q) ||
-        item.subtitle.toLowerCase().includes(q) ||
-        item.category.toLowerCase().includes(q)
-    );
-  }, [searchQuery, allSearchableItems]);
 
   return (
     <>
@@ -474,304 +421,251 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* 2. Harmonious Full-Height Fixed Mobile Menu */}
-      <div
-        className={`fixed inset-0 z-50 lg:hidden transition-opacity duration-250 transform-gpu ${
-          drawerOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
-      >
-        {/* Semi-transparent Backdrop with fast tap close */}
-        <div
-          className="absolute inset-0 bg-black/80 transition-opacity"
-          onClick={() => setDrawerOpen(false)}
-        />
-
-        {/* Sliding Panel (Locked Fixed Height with d-vh support) */}
-        <div
-          className={`absolute top-0 bottom-0 ${
-            direction === 'rtl' ? 'left-0' : 'right-0'
-          } w-[88vw] max-w-[340px] h-[100dvh] h-screen flex flex-col justify-between shadow-2xl transition-transform duration-250 ease-out transform-gpu border-l rtl:border-l-0 rtl:border-r ${
-            isDark
-              ? 'bg-[#06081e] text-white border-white/10'
-              : 'bg-white text-slate-900 border-slate-200'
-          } ${
-            drawerOpen
-              ? 'translate-x-0'
-              : direction === 'rtl'
-              ? '-translate-x-full'
-              : 'translate-x-full'
-          }`}
-        >
-          {/* Drawer Top Header (Fixed h-16) */}
-          <div className="h-16 px-4 border-b border-gray-500/15 flex items-center justify-between shrink-0">
-            <Link
-              href="/"
+      {/* 2. Harmonious Full-Height Fixed Mobile Menu with Native Spring Physics */}
+      <AnimatePresence>
+        {drawerOpen && (
+          <div className="fixed inset-0 z-50 lg:hidden overflow-hidden">
+            {/* Semi-transparent Backdrop with fast tap close */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.22, ease: 'easeOut' }}
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
               onClick={() => setDrawerOpen(false)}
-              className="flex items-center gap-2 group touch-manipulation"
-            >
-              <Logo size="sm" variant={isDark ? 'light' : 'dark'} />
-            </Link>
-            <button
-              type="button"
-              onClick={() => setDrawerOpen(false)}
-              className="p-2 rounded-xl hover:bg-gray-500/10 text-gray-400 hover:text-white transition-colors cursor-pointer touch-manipulation"
-              aria-label="Close menu"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
+            />
 
-          {/* Drawer Scrollable Content */}
-          <div className="flex-1 overflow-y-auto overscroll-contain p-4 space-y-4">
-            {/* 3 Core Divisions Cards */}
-            <div className="space-y-1.5">
-              <span className="text-[10.5px] font-black uppercase tracking-wider text-blue-400 block px-1">
-                {isAr ? 'القطاعات الاستثمارية الرئيسية' : 'Core Investment Divisions'}
-              </span>
-
-              <div className="grid grid-cols-1 gap-1.5">
-                <Link
-                  href="/realestate"
-                  onClick={() => setDrawerOpen(false)}
-                  className={`flex items-center justify-between p-2.5 rounded-xl border transition-colors touch-manipulation ${
-                    pathname === '/realestate'
-                      ? 'bg-blue-600 text-white border-blue-500 shadow-md'
-                      : isDark
-                      ? 'bg-white/5 border-white/5 hover:bg-white/10 text-slate-200'
-                      : 'bg-slate-50 border-slate-200/70 text-slate-800'
-                  }`}
-                >
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-lg bg-blue-500/15 flex items-center justify-center text-blue-400">
-                      <Building2 className="w-3.5 h-3.5" />
-                    </div>
-                    <div>
-                      <span className="text-xs font-bold block">{isAr ? 'هارد للعقارات' : 'HARD Real Estate'}</span>
-                      <span className="text-[9.5px] opacity-75 block">{isAr ? 'وساطة واستشارات فال' : 'VAL Licensed Brokerage'}</span>
-                    </div>
-                  </div>
-                  <ChevronRight className={`w-3.5 h-3.5 opacity-60 ${direction === 'rtl' ? 'rotate-180' : ''}`} />
-                </Link>
-
-                <Link
-                  href="/construction"
-                  onClick={() => setDrawerOpen(false)}
-                  className={`flex items-center justify-between p-2.5 rounded-xl border transition-colors touch-manipulation ${
-                    pathname === '/construction'
-                      ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-md'
-                      : isDark
-                      ? 'bg-white/5 border-white/5 hover:bg-white/10 text-slate-200'
-                      : 'bg-slate-50 border-slate-200/70 text-slate-800'
-                  }`}
-                >
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-lg bg-amber-500/15 flex items-center justify-center text-amber-400">
-                      <HardHat className="w-3.5 h-3.5" />
-                    </div>
-                    <div>
-                      <span className="text-xs font-bold block">{isAr ? 'هارد للإنشاءات والمقاولات' : 'HARD Construction'}</span>
-                      <span className="text-[9.5px] opacity-75 block">{isAr ? 'فئة أولى • كود SBC' : 'Class-1 General Contracting'}</span>
-                    </div>
-                  </div>
-                  <ChevronRight className={`w-3.5 h-3.5 opacity-60 ${direction === 'rtl' ? 'rotate-180' : ''}`} />
-                </Link>
-
-                <Link
-                  href="/hvac"
-                  onClick={() => setDrawerOpen(false)}
-                  className={`flex items-center justify-between p-2.5 rounded-xl border transition-colors touch-manipulation ${
-                    pathname === '/hvac'
-                      ? 'bg-cyan-600 text-white border-cyan-500 shadow-md'
-                      : isDark
-                      ? 'bg-white/5 border-white/5 hover:bg-white/10 text-slate-200'
-                      : 'bg-slate-50 border-slate-200/70 text-slate-800'
-                  }`}
-                >
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-lg bg-cyan-500/15 flex items-center justify-center text-cyan-400">
-                      <Fan className="w-3.5 h-3.5" />
-                    </div>
-                    <div>
-                      <span className="text-xs font-bold block">{isAr ? 'هارد لصيانة التكييف' : 'HARD HVAC'}</span>
-                      <span className="text-[9.5px] opacity-75 block">{isAr ? 'شيلرات • عقود AMC 24/7' : 'Chillers & AMC Maintenance'}</span>
-                    </div>
-                  </div>
-                  <ChevronRight className={`w-3.5 h-3.5 opacity-60 ${direction === 'rtl' ? 'rotate-180' : ''}`} />
-                </Link>
-              </div>
-            </div>
-
-            {/* General Navigation Links */}
-            <div className="space-y-1 pt-2 border-t border-gray-500/15">
-              <span className="text-[10.5px] font-black uppercase tracking-wider text-slate-400 block px-1 mb-1">
-                {isAr ? 'روابط التنقل' : 'Navigation'}
-              </span>
-
-              {[
-                { href: '/', label: isAr ? 'الرئيسية' : 'Home' },
-                { href: '/listings', label: isAr ? 'العقارات والقصور' : 'Listings & Estates' },
-                { href: '/projects', label: isAr ? 'المشاريع الكبرى' : 'Master Projects' },
-                { href: '/services', label: isAr ? 'خدمات المجموعة' : 'All Services' },
-                { href: '/about-us', label: isAr ? 'من نحن والحوكمة' : 'About HARD' },
-                { href: '/contact-us', label: isAr ? 'اتصل بنا والمقرات' : 'Contact & Branches' },
-              ].map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setDrawerOpen(false)}
-                    className={`block px-3 py-2.5 rounded-xl text-xs font-bold transition-colors touch-manipulation ${
-                      isActive
-                        ? 'bg-blue-600 text-white'
-                        : isDark
-                        ? 'text-slate-300 hover:bg-white/5'
-                        : 'text-slate-700 hover:bg-slate-100'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Drawer Bottom Controls & Contact (Fixed to Bottom with pb-safe) */}
-          <div className="p-4 pb-safe border-t border-gray-500/15 space-y-2.5 bg-black/20 shrink-0">
-            {/* Consultation CTA */}
-            <button
-              type="button"
-              onClick={() => {
-                setDrawerOpen(false);
-                setConsultationOpen(true);
+            {/* Sliding Panel (Locked Fixed Height with d-vh support) */}
+            <motion.div
+              initial={{
+                x: direction === 'rtl' ? '-100%' : '100%',
               }}
-              className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 touch-manipulation cursor-pointer active:scale-98"
+              animate={{ x: 0 }}
+              exit={{
+                x: direction === 'rtl' ? '-100%' : '100%',
+              }}
+              transition={{
+                type: 'spring',
+                damping: 30,
+                stiffness: 340,
+                mass: 0.8,
+              }}
+              className={`absolute top-0 bottom-0 ${
+                direction === 'rtl' ? 'left-0' : 'right-0'
+              } w-[88vw] max-w-[340px] h-[100dvh] h-screen flex flex-col justify-between shadow-2xl border-l rtl:border-l-0 rtl:border-r ${
+                isDark
+                  ? 'bg-[#06081e] text-white border-white/10'
+                  : 'bg-white text-slate-900 border-slate-200'
+              }`}
             >
-              <span>{isAr ? 'طلب استشارة وتسعير فوري' : 'Request Consultation'}</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </button>
+              {/* Drawer Top Header (Fixed h-16) */}
+              <div className="h-16 px-4 border-b border-gray-500/15 flex items-center justify-between shrink-0">
+                <Link
+                  href="/"
+                  onClick={() => setDrawerOpen(false)}
+                  className="flex items-center gap-2 group touch-manipulation"
+                >
+                  <Logo size="sm" variant={isDark ? 'light' : 'dark'} />
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => setDrawerOpen(false)}
+                  className="p-2 rounded-xl hover:bg-gray-500/10 text-gray-400 hover:text-white transition-colors cursor-pointer touch-manipulation"
+                  aria-label="Close menu"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
 
-            {/* Quick Contact buttons */}
-            <div className="grid grid-cols-2 gap-2 text-center text-xs">
-              <a
-                href="tel:+966138004273"
-                className={`p-2.5 rounded-xl border flex items-center justify-center gap-1.5 touch-manipulation ${
-                  isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-slate-100 border-slate-200 text-slate-800'
-                }`}
-              >
-                <Phone className="w-3.5 h-3.5 text-blue-400" />
-                <span>{isAr ? 'اتصال مباشر' : 'Direct Call'}</span>
-              </a>
-              <a
-                href="https://wa.me/966556125711"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`p-2.5 rounded-xl border flex items-center justify-center gap-1.5 touch-manipulation ${
-                  isDark ? 'bg-white/5 border-white/10 text-emerald-400' : 'bg-slate-100 border-slate-200 text-emerald-600'
-                }`}
-              >
-                <MessageCircle className="w-3.5 h-3.5" />
-                <span>{isAr ? 'واتساب' : 'WhatsApp'}</span>
-              </a>
-            </div>
+              {/* Drawer Scrollable Content */}
+              <div className="flex-1 overflow-y-auto overscroll-contain p-4 space-y-4">
+                {/* 3 Core Divisions Cards */}
+                <div className="space-y-1.5">
+                  <span className="text-[10.5px] font-black uppercase tracking-wider text-blue-400 block px-1">
+                    {isAr ? 'القطاعات الاستثمارية الرئيسية' : 'Core Investment Divisions'}
+                  </span>
 
-            {/* Theme & Language Bar */}
-            <div className="grid grid-cols-2 gap-2 pt-1 text-xs">
-              <button
-                type="button"
-                onClick={toggleTheme}
-                className={`flex items-center justify-center gap-1.5 p-2.5 rounded-xl border transition-all cursor-pointer touch-manipulation ${
-                  isDark ? 'bg-white/5 border-white/10 text-white hover:bg-white/10' : 'bg-slate-100 border-slate-200 text-slate-800 hover:bg-slate-200'
-                }`}
-              >
-                {isDark ? <Sun className="w-4 h-4 text-amber-300" /> : <Moon className="w-4 h-4 text-blue-600" />}
-                <span className="text-xs font-bold">{isDark ? (isAr ? 'الوضع النهاري' : 'Light Mode') : (isAr ? 'الوضع الليلي' : 'Dark Mode')}</span>
-              </button>
+                  <div className="grid grid-cols-1 gap-1.5">
+                    <Link
+                      href="/realestate"
+                      onClick={() => setDrawerOpen(false)}
+                      className={`flex items-center justify-between p-2.5 rounded-xl border transition-colors touch-manipulation ${
+                        pathname === '/realestate'
+                          ? 'bg-blue-600 text-white border-blue-500 shadow-md'
+                          : isDark
+                          ? 'bg-white/5 border-white/5 hover:bg-white/10 text-slate-200'
+                          : 'bg-slate-50 border-slate-200/70 text-slate-800'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-7 h-7 rounded-lg bg-blue-500/15 flex items-center justify-center text-blue-400">
+                          <Building2 className="w-3.5 h-3.5" />
+                        </div>
+                        <div>
+                          <span className="text-xs font-bold block">{isAr ? 'هارد للعقارات' : 'HARD Real Estate'}</span>
+                          <span className="text-[9.5px] opacity-75 block">{isAr ? 'وساطة واستشارات فال' : 'VAL Licensed Brokerage'}</span>
+                        </div>
+                      </div>
+                      <ChevronRight className={`w-3.5 h-3.5 opacity-60 ${direction === 'rtl' ? 'rotate-180' : ''}`} />
+                    </Link>
 
-              <button
-                type="button"
-                onClick={toggleLanguage}
-                className={`flex items-center justify-center gap-1.5 p-2.5 rounded-xl border transition-all cursor-pointer touch-manipulation ${
-                  isDark ? 'bg-white/5 border-white/10 text-white hover:bg-white/10' : 'bg-slate-100 border-slate-200 text-slate-800 hover:bg-slate-200'
-                }`}
-              >
-                <Globe className="w-4 h-4 text-blue-400" />
-                <span className="text-xs font-bold">{isAr ? 'English (EN)' : 'العربية (AR)'}</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+                    <Link
+                      href="/construction"
+                      onClick={() => setDrawerOpen(false)}
+                      className={`flex items-center justify-between p-2.5 rounded-xl border transition-colors touch-manipulation ${
+                        pathname === '/construction'
+                          ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-md'
+                          : isDark
+                          ? 'bg-white/5 border-white/5 hover:bg-white/10 text-slate-200'
+                          : 'bg-slate-50 border-slate-200/70 text-slate-800'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-7 h-7 rounded-lg bg-amber-500/15 flex items-center justify-center text-amber-400">
+                          <HardHat className="w-3.5 h-3.5" />
+                        </div>
+                        <div>
+                          <span className="text-xs font-bold block">{isAr ? 'هارد للإنشاءات والمقاولات' : 'HARD Construction'}</span>
+                          <span className="text-[9.5px] opacity-75 block">{isAr ? 'فئة أولى • كود SBC' : 'Class-1 General Contracting'}</span>
+                        </div>
+                      </div>
+                      <ChevronRight className={`w-3.5 h-3.5 opacity-60 ${direction === 'rtl' ? 'rotate-180' : ''}`} />
+                    </Link>
 
-      {/* 3. Global Quick Search Modal */}
-      {searchOpen && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 p-3 bg-black/80 backdrop-blur-sm animate-in fade-in duration-150">
-          <div
-            className={`relative w-full max-w-xl rounded-3xl border shadow-2xl overflow-hidden ${
-              isDark ? 'bg-[#080b24] text-white border-white/15' : 'bg-white text-slate-900 border-slate-200'
-            }`}
-          >
-            {/* Search Input Bar */}
-            <div className="p-4 border-b border-gray-500/15 flex items-center gap-3">
-              <Search className="w-5 h-5 text-blue-400 shrink-0" />
-              <input
-                type="text"
-                autoFocus
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={isAr ? 'ابحث في العقارات، المقاولات، الخدمات، أو المشاريع...' : 'Search properties, contracting, services...'}
-                className="w-full bg-transparent border-none text-sm sm:text-base focus:outline-none placeholder:text-slate-500"
-              />
-              <button
-                type="button"
-                onClick={() => setSearchOpen(false)}
-                className="p-1.5 rounded-xl hover:bg-gray-500/10 text-gray-400 hover:text-white transition-colors cursor-pointer"
-                aria-label="Close search"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Search Results */}
-            <div className="p-3 max-h-[60vh] overflow-y-auto space-y-1">
-              {searchResults.length === 0 ? (
-                <div className="p-8 text-center text-xs text-slate-400 space-y-2">
-                  <Search className="w-8 h-8 mx-auto opacity-40 text-blue-400" />
-                  <p>{isAr ? 'لا توجد نتائج تطابق بحثك.' : 'No results found.'}</p>
+                    <Link
+                      href="/hvac"
+                      onClick={() => setDrawerOpen(false)}
+                      className={`flex items-center justify-between p-2.5 rounded-xl border transition-colors touch-manipulation ${
+                        pathname === '/hvac'
+                          ? 'bg-cyan-600 text-white border-cyan-500 shadow-md'
+                          : isDark
+                          ? 'bg-white/5 border-white/5 hover:bg-white/10 text-slate-200'
+                          : 'bg-slate-50 border-slate-200/70 text-slate-800'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-7 h-7 rounded-lg bg-cyan-500/15 flex items-center justify-center text-cyan-400">
+                          <Fan className="w-3.5 h-3.5" />
+                        </div>
+                        <div>
+                          <span className="text-xs font-bold block">{isAr ? 'هارد لصيانة التكييف' : 'HARD HVAC'}</span>
+                          <span className="text-[9.5px] opacity-75 block">{isAr ? 'شيلرات • عقود AMC 24/7' : 'Chillers & AMC Maintenance'}</span>
+                        </div>
+                      </div>
+                      <ChevronRight className={`w-3.5 h-3.5 opacity-60 ${direction === 'rtl' ? 'rotate-180' : ''}`} />
+                    </Link>
+                  </div>
                 </div>
-              ) : (
-                searchResults.map((res) => (
-                  <Link
-                    key={res.href + res.title}
-                    href={res.href}
-                    onClick={() => setSearchOpen(false)}
-                    className={`flex items-center justify-between p-3 rounded-2xl transition-colors ${
-                      isDark ? 'hover:bg-white/5 text-slate-200' : 'hover:bg-slate-100 text-slate-800'
+
+                {/* General Navigation Links */}
+                <div className="space-y-1 pt-2 border-t border-gray-500/15">
+                  <span className="text-[10.5px] font-black uppercase tracking-wider text-slate-400 block px-1 mb-1">
+                    {isAr ? 'روابط التنقل' : 'Navigation'}
+                  </span>
+
+                  {[
+                    { href: '/', label: isAr ? 'الرئيسية' : 'Home' },
+                    { href: '/listings', label: isAr ? 'العقارات والقصور' : 'Listings & Estates' },
+                    { href: '/projects', label: isAr ? 'المشاريع الكبرى' : 'Master Projects' },
+                    { href: '/services', label: isAr ? 'خدمات المجموعة' : 'All Services' },
+                    { href: '/about-us', label: isAr ? 'من نحن والحوكمة' : 'About HARD' },
+                    { href: '/contact-us', label: isAr ? 'اتصل بنا والمقرات' : 'Contact & Branches' },
+                  ].map((link) => {
+                    const isActive = pathname === link.href;
+                    return (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setDrawerOpen(false)}
+                        className={`block px-3 py-2.5 rounded-xl text-xs font-bold transition-colors touch-manipulation ${
+                          isActive
+                            ? 'bg-blue-600 text-white'
+                            : isDark
+                            ? 'text-slate-300 hover:bg-white/5'
+                            : 'text-slate-700 hover:bg-slate-100'
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Drawer Bottom Controls & Contact (Fixed to Bottom with pb-safe) */}
+              <div className="p-4 pb-safe border-t border-gray-500/15 space-y-2.5 bg-black/20 shrink-0">
+                {/* Consultation CTA */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setDrawerOpen(false);
+                    setConsultationOpen(true);
+                  }}
+                  className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 touch-manipulation cursor-pointer active:scale-98"
+                >
+                  <span>{isAr ? 'طلب استشارة وتسعير فوري' : 'Request Consultation'}</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </button>
+
+                {/* Quick Contact buttons */}
+                <div className="grid grid-cols-2 gap-2 text-center text-xs">
+                  <a
+                    href="tel:+966138004273"
+                    className={`p-2.5 rounded-xl border flex items-center justify-center gap-1.5 touch-manipulation ${
+                      isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-slate-100 border-slate-200 text-slate-800'
                     }`}
                   >
-                    <div className="space-y-0.5 text-start">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-white group-hover:text-blue-400">{res.title}</span>
-                        <span className="text-[9.5px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 font-semibold">
-                          {res.category}
-                        </span>
-                      </div>
-                      <p className="text-[10.5px] text-slate-400 line-clamp-1">{res.subtitle}</p>
-                    </div>
-                    <ArrowUpRight className="w-4 h-4 opacity-50 shrink-0" />
-                  </Link>
-                ))
-              )}
-            </div>
+                    <Phone className="w-3.5 h-3.5 text-blue-400" />
+                    <span>{isAr ? 'اتصال مباشر' : 'Direct Call'}</span>
+                  </a>
+                  <a
+                    href="https://wa.me/966556125711"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`p-2.5 rounded-xl border flex items-center justify-center gap-1.5 touch-manipulation ${
+                      isDark ? 'bg-white/5 border-white/10 text-emerald-400' : 'bg-slate-100 border-slate-200 text-emerald-600'
+                    }`}
+                  >
+                    <MessageCircle className="w-3.5 h-3.5" />
+                    <span>{isAr ? 'واتساب' : 'WhatsApp'}</span>
+                  </a>
+                </div>
 
-            {/* Search Modal Footer */}
-            <div className="p-3 border-t border-gray-500/15 bg-black/10 flex items-center justify-between text-[10.5px] text-slate-400">
-              <span>{isAr ? 'اضغط ESC للإغلاق' : 'Press ESC to close'}</span>
-              <span>{searchResults.length} {isAr ? 'نتيجة متاحة' : 'results available'}</span>
-            </div>
+                {/* Theme & Language Bar */}
+                <div className="grid grid-cols-2 gap-2 pt-1 text-xs">
+                  <button
+                    type="button"
+                    onClick={toggleTheme}
+                    className={`flex items-center justify-center gap-1.5 p-2.5 rounded-xl border transition-all cursor-pointer touch-manipulation ${
+                      isDark ? 'bg-white/5 border-white/10 text-white hover:bg-white/10' : 'bg-slate-100 border-slate-200 text-slate-800 hover:bg-slate-200'
+                    }`}
+                  >
+                    {isDark ? <Sun className="w-4 h-4 text-amber-300" /> : <Moon className="w-4 h-4 text-blue-600" />}
+                    <span className="text-xs font-bold">{isDark ? (isAr ? 'الوضع النهاري' : 'Light Mode') : (isAr ? 'الوضع الليلي' : 'Dark Mode')}</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={toggleLanguage}
+                    className={`flex items-center justify-center gap-1.5 p-2.5 rounded-xl border transition-all cursor-pointer touch-manipulation ${
+                      isDark ? 'bg-white/5 border-white/10 text-white hover:bg-white/10' : 'bg-slate-100 border-slate-200 text-slate-800 hover:bg-slate-200'
+                    }`}
+                  >
+                    <Globe className="w-4 h-4 text-blue-400" />
+                    <span className="text-xs font-bold">{isAr ? 'English (EN)' : 'العربية (AR)'}</span>
+                  </button>
+                </div>
+              </div>
+            </motion.div>
           </div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
+
+      {/* 3. Global Comprehensive Search Engine Modal */}
+      <GlobalSearchModal
+        isOpen={searchOpen}
+        onClose={() => setSearchOpen(false)}
+      />
 
       {/* 4. Global Consultation Modal */}
       <ConsultationModal

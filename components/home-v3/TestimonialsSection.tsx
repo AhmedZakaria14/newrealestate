@@ -31,10 +31,10 @@ export default function TestimonialsSection() {
     setCurrentIndex((prev) => (prev === list.length - 1 ? 0 : prev + 1));
   };
 
-  const current = list[currentIndex] || list[0];
-  const quote = language === 'ar' ? current.quote_ar : current.quote;
-  const name = language === 'ar' ? current.name_ar : current.name;
-  const role = language === 'ar' ? current.role_ar : current.role;
+  const current = list[currentIndex] || list[0] || testimonialsData[0];
+  const quote = current ? (language === 'ar' ? current.quote_ar : current.quote) : '';
+  const name = current ? (language === 'ar' ? current.name_ar : current.name) : '';
+  const role = current ? (language === 'ar' ? current.role_ar : current.role) : '';
 
   return (
     <section
@@ -121,7 +121,7 @@ export default function TestimonialsSection() {
             <div className="flex items-center gap-4 pt-4 border-t border-gray-500/15">
               <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-blue-500">
                 <Image
-                  src={current.avatar || current.image || '/images/hardgp/slide-10.jpg'}
+                  src={('avatar' in current && (current as any).avatar) || ('image' in current && (current as any).image) || '/images/hardgp/slide-10.jpg'}
                   alt={name}
                   fill
                   unoptimized

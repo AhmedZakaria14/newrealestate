@@ -42,8 +42,11 @@ export default function HeroSection() {
       ? settings.slides.map((s) => s.image)
       : classicImages;
 
-  const totalSlides = imagesToDisplay.length;
-  const currentImage = imagesToDisplay[slideIndex % totalSlides] || classicImages[0];
+  const totalSlides = imagesToDisplay.length > 0 ? imagesToDisplay.length : 1;
+  const currentImage =
+    imagesToDisplay[((slideIndex % totalSlides) + totalSlides) % totalSlides] ||
+    classicImages[0] ||
+    '/images/hardgp/por1-big.jpg';
 
   const nextSlide = useCallback(() => {
     setSlideIndex((prev) => (prev + 1) % totalSlides);
@@ -63,12 +66,14 @@ export default function HeroSection() {
 
   // Touch swipe support on mobile
   const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartXRef.current = e.touches[0].clientX;
+    touchStartXRef.current = e.touches?.[0]?.clientX ?? null;
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (touchStartXRef.current === null) return;
-    const diff = touchStartXRef.current - e.changedTouches[0].clientX;
+    const clientX = e.changedTouches?.[0]?.clientX;
+    if (clientX === undefined) return;
+    const diff = touchStartXRef.current - clientX;
     if (Math.abs(diff) > 40) {
       if (diff > 0) {
         if (direction === 'rtl') prevSlide();

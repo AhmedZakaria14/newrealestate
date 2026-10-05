@@ -46,26 +46,37 @@ export default function ProjectsPage() {
     liveProjects.length > 0
       ? liveProjects.map((p) => ({
           id: p.id || p.title,
+          slug: (p.id || p.title).toLowerCase().replace(/\s+/g, '-'),
           title: p.title,
           title_ar: p.titleAr || p.title,
-          category:
+          category: (p.category === 'commercial'
+            ? 'Commercial'
+            : p.category === 'residential'
+            ? 'Residential'
+            : 'Industrial') as 'Residential' | 'Commercial' | 'Industrial' | 'Infrastructure',
+          category_ar:
             p.category === 'commercial'
-              ? 'Commercial'
+              ? 'تجاري'
               : p.category === 'residential'
-              ? 'Residential'
-              : 'Industrial',
-          location: p.location,
-          location_ar: p.locationAr || p.location,
-          year: p.completionDate || '2025',
-          area: p.budget || '50,000 m²',
-          floors: p.progress ? `${p.progress}%` : 'Turnkey',
-          architect: p.client || 'HARD Developments',
+              ? 'سكني'
+              : 'صناعي',
+          client: p.client || 'HARD Developments',
+          client_ar: p.client || 'مجموعة هارد للتطوير',
+          startDate: '2023',
+          startDate_ar: '2023',
+          completionDate: p.completionDate || '2025',
+          completionDate_ar: p.completionDate || '2025',
+          location: p.location || 'Eastern Province',
+          location_ar: p.locationAr || p.location || 'المنطقة الشرقية',
           image: p.image || '/images/hardgp/por1-big.jpg',
-          description: p.description,
-          description_ar: p.descriptionAr || p.description,
-          features: ['SBC Certified', 'Class-1 Standard', 'Smart Infrastructure'],
-          features_ar: ['معتمد كود SBC', 'تصنيف فئة أولى', 'بنية تحتية ذكية'],
-          gallery: [p.image || '/images/hardgp/por1-big.jpg'],
+          excerpt: p.description ? p.description.slice(0, 100) : '',
+          excerpt_ar: p.descriptionAr ? p.descriptionAr.slice(0, 100) : '',
+          description: p.description || '',
+          description_ar: p.descriptionAr || p.description || '',
+          stats: [
+            { label: 'Area', label_ar: 'المساحة', value: p.budget || '50,000 m²', value_ar: p.budget || '50,000 م²' },
+            { label: 'Progress', label_ar: 'نسبة الإنجاز', value: p.progress ? `${p.progress}%` : '100%', value_ar: p.progress ? `${p.progress}%` : '100%' },
+          ],
         }))
       : projectsData;
 

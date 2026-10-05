@@ -28,6 +28,7 @@ import {
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { motion, AnimatePresence } from 'motion/react';
 import { useLanguageTheme } from '@/lib/language-theme-context';
 import { useSiteContent } from '@/lib/site-content-context';
 import {
@@ -886,36 +887,72 @@ export default function ConstructionPortal() {
       <Footer />
 
       {/* 8. Project Details Modal */}
-      {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
-          <div className={`relative w-full max-w-4xl rounded-3xl border overflow-hidden my-6 animate-in fade-in zoom-in-95 ${
-            isDark ? 'bg-[#0b102b] text-white border-white/10' : 'bg-white text-slate-900 border-slate-200'
-          }`}>
-            <div className={`p-5 sm:p-6 border-b flex items-center justify-between ${isDark ? 'bg-white/5 border-white/10' : 'bg-slate-50 border-slate-200'}`}>
-              <div className="text-start space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 uppercase">
-                    {selectedProject.category}
-                  </span>
-                  <span className="text-xs text-slate-400">
-                    {isAr ? selectedProject.cityAr : selectedProject.cityEn} • {selectedProject.year}
-                  </span>
-                </div>
-                <h2 className="text-lg sm:text-2xl font-bold">
-                  {isAr ? selectedProject.titleAr : selectedProject.titleEn}
-                </h2>
+      <AnimatePresence mode="wait">
+        {selectedProject && (
+          <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-hidden touch-none">
+            <motion.div
+              initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+              animate={{ opacity: 1, backdropFilter: 'blur(16px)' }}
+              exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+              transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
+              onClick={() => setSelectedProject(null)}
+              className="fixed inset-0 bg-slate-950/80 z-0"
+            />
+            <motion.div
+              drag="y"
+              dragConstraints={{ top: 0, bottom: 0 }}
+              dragElastic={{ top: 0.03, bottom: 0.6 }}
+              onDragEnd={(_, info) => {
+                if (info.offset.y > 90 || info.velocity.y > 500) {
+                  setSelectedProject(null);
+                }
+              }}
+              initial={{ opacity: 0, y: '50%', scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: '60%', scale: 0.96 }}
+              transition={{
+                type: 'spring',
+                damping: 32,
+                stiffness: 380,
+                mass: 0.85,
+              }}
+              className={`relative z-10 w-full max-w-4xl max-h-[90vh] rounded-t-[2.25rem] sm:rounded-3xl border overflow-hidden shadow-2xl flex flex-col ${
+                isDark ? 'bg-[#0b102b]/95 text-white border-white/15 ring-1 ring-white/10' : 'bg-white/95 text-slate-900 border-slate-200'
+              } backdrop-blur-2xl`}
+            >
+              {/* Mobile Touch Drag Handle */}
+              <div className="w-full flex flex-col items-center pt-3 pb-1 sm:hidden cursor-grab active:cursor-grabbing touch-none select-none">
+                <div className="w-12 h-1.5 rounded-full bg-gray-400/50 hover:bg-gray-300 transition-colors" />
+                <span className="text-[10px] text-gray-400/70 font-medium mt-1">
+                  {isAr ? 'اسحب للأسفل للإغلاق' : 'Swipe down to close'}
+                </span>
               </div>
 
-              <button
-                type="button"
-                onClick={() => setSelectedProject(null)}
-                className={`p-2 rounded-xl border transition-colors cursor-pointer touch-manipulation ${
-                  isDark ? 'bg-white/5 border-white/10 text-slate-300 hover:text-white' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-100'
-                }`}
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
+              <div className={`p-5 sm:p-6 border-b flex items-center justify-between ${isDark ? 'bg-white/5 border-white/10' : 'bg-slate-50 border-slate-200'}`}>
+                <div className="text-start space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 uppercase">
+                      {selectedProject.category}
+                    </span>
+                    <span className="text-xs text-slate-400">
+                      {isAr ? selectedProject.cityAr : selectedProject.cityEn} • {selectedProject.year}
+                    </span>
+                  </div>
+                  <h2 className="text-lg sm:text-2xl font-bold">
+                    {isAr ? selectedProject.titleAr : selectedProject.titleEn}
+                  </h2>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(null)}
+                  className={`p-2 rounded-2xl border transition-all active:scale-90 cursor-pointer touch-manipulation ${
+                    isDark ? 'bg-white/5 border-white/10 text-slate-300 hover:text-white' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-100'
+                  }`}
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
 
             <div className="p-5 sm:p-8 space-y-6 max-h-[75vh] overflow-y-auto text-start">
               {/* Gallery Image */}
@@ -1043,7 +1080,7 @@ export default function ConstructionPortal() {
               <button
                 type="button"
                 onClick={() => setSelectedProject(null)}
-                className={`px-4 py-2.5 rounded-xl border text-xs font-bold cursor-pointer touch-manipulation ${
+                className={`px-4 py-2.5 rounded-xl border text-xs font-bold transition-all active:scale-95 cursor-pointer touch-manipulation ${
                   isDark ? 'bg-white/10 border-white/10 text-white hover:bg-white/20' : 'bg-white border-slate-300 text-slate-700 hover:bg-slate-100'
                 }`}
               >
@@ -1061,47 +1098,84 @@ export default function ConstructionPortal() {
                     notes: `Quote requested for model: ${isAr ? proj.titleAr : proj.titleEn}`,
                   });
                 }}
-                className="px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black shadow-md cursor-pointer touch-manipulation"
+                className="px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black shadow-md transition-all active:scale-95 cursor-pointer touch-manipulation"
               >
                 {isAr ? 'طلب عرض سعر لهذا النموذج' : 'Quote this Model'}
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
+    </AnimatePresence>
 
       {/* 9. Smart Cost Calculator Modal */}
-      {isCalculatorOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
-          <div className={`relative w-full max-w-4xl rounded-3xl border overflow-hidden my-6 animate-in fade-in zoom-in-95 ${
-            isDark ? 'bg-[#0b102b] text-white border-white/10' : 'bg-white text-slate-900 border-slate-200'
-          }`}>
-            {/* Header */}
-            <div className={`p-5 sm:p-6 border-b flex items-center justify-between ${isDark ? 'bg-white/5 border-white/10' : 'bg-slate-50 border-slate-200'}`}>
-              <div className="flex items-center gap-3 text-start">
-                <div className="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
-                  <Calculator className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-base sm:text-lg font-bold">
-                    {isAr ? 'حاسبة تكاليف البناء الذكية (كود البناء السعودي)' : 'Smart Construction Cost Calculator'}
-                  </h3>
-                  <p className={`text-xs ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
-                    {isAr ? 'تقدير دقيق للتكلفة الإنشائية والمدة الزمنية وفق أسعار السوق المعتمدة' : 'Instant structural, MEP, and finishing estimation'}
-                  </p>
-                </div>
+      <AnimatePresence mode="wait">
+        {isCalculatorOpen && (
+          <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-hidden touch-none">
+            <motion.div
+              initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+              animate={{ opacity: 1, backdropFilter: 'blur(16px)' }}
+              exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+              transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
+              onClick={() => setIsCalculatorOpen(false)}
+              className="fixed inset-0 bg-slate-950/80 z-0"
+            />
+            <motion.div
+              drag="y"
+              dragConstraints={{ top: 0, bottom: 0 }}
+              dragElastic={{ top: 0.03, bottom: 0.6 }}
+              onDragEnd={(_, info) => {
+                if (info.offset.y > 90 || info.velocity.y > 500) {
+                  setIsCalculatorOpen(false);
+                }
+              }}
+              initial={{ opacity: 0, y: '50%', scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: '60%', scale: 0.96 }}
+              transition={{
+                type: 'spring',
+                damping: 32,
+                stiffness: 380,
+                mass: 0.85,
+              }}
+              className={`relative z-10 w-full max-w-4xl max-h-[90vh] rounded-t-[2.25rem] sm:rounded-3xl border overflow-hidden shadow-2xl flex flex-col ${
+                isDark ? 'bg-[#0b102b]/95 text-white border-white/15 ring-1 ring-white/10' : 'bg-white/95 text-slate-900 border-slate-200'
+              } backdrop-blur-2xl`}
+            >
+              {/* Mobile Touch Drag Handle */}
+              <div className="w-full flex flex-col items-center pt-3 pb-1 sm:hidden cursor-grab active:cursor-grabbing touch-none select-none">
+                <div className="w-12 h-1.5 rounded-full bg-gray-400/50 hover:bg-gray-300 transition-colors" />
+                <span className="text-[10px] text-gray-400/70 font-medium mt-1">
+                  {isAr ? 'اسحب للأسفل للإغلاق' : 'Swipe down to close'}
+                </span>
               </div>
 
-              <button
-                type="button"
-                onClick={() => setIsCalculatorOpen(false)}
-                className={`p-2 rounded-xl border transition-colors cursor-pointer touch-manipulation ${
-                  isDark ? 'bg-white/5 border-white/10 text-slate-300 hover:text-white' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-100'
-                }`}
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
+              {/* Header */}
+              <div className={`p-5 sm:p-6 border-b flex items-center justify-between ${isDark ? 'bg-white/5 border-white/10' : 'bg-slate-50 border-slate-200'}`}>
+                <div className="flex items-center gap-3 text-start">
+                  <div className="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                    <Calculator className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base sm:text-lg font-bold">
+                      {isAr ? 'حاسبة تكاليف البناء الذكية (كود البناء السعودي)' : 'Smart Construction Cost Calculator'}
+                    </h3>
+                    <p className={`text-xs ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
+                      {isAr ? 'تقدير دقيق للتكلفة الإنشائية والمدة الزمنية وفق أسعار السوق المعتمدة' : 'Instant structural, MEP, and finishing estimation'}
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setIsCalculatorOpen(false)}
+                  className={`p-2 rounded-2xl border transition-all active:scale-90 cursor-pointer touch-manipulation ${
+                    isDark ? 'bg-white/5 border-white/10 text-slate-300 hover:text-white' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-100'
+                  }`}
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
 
             {/* Body */}
             <div className="p-5 sm:p-8 space-y-6 max-h-[75vh] overflow-y-auto text-start">
@@ -1286,8 +1360,8 @@ export default function ConstructionPortal() {
               <button
                 type="button"
                 onClick={() => setIsCalculatorOpen(false)}
-                className={`px-4 py-2.5 rounded-xl border text-xs font-bold cursor-pointer touch-manipulation ${
-                  isDark ? 'bg-white/10 border-white/10 text-white' : 'bg-white border-slate-300 text-slate-700'
+                className={`px-4 py-2.5 rounded-xl border text-xs font-bold transition-all active:scale-95 cursor-pointer touch-manipulation ${
+                  isDark ? 'bg-white/10 border-white/10 text-white hover:bg-white/20' : 'bg-white border-slate-300 text-slate-700 hover:bg-slate-100'
                 }`}
               >
                 {isAr ? 'إغلاق' : 'Close'}
@@ -1306,41 +1380,78 @@ export default function ConstructionPortal() {
                     notes: `Estimated area: ${calcParams.builtUpArea} m², Floors: ${calcParams.floors}, Basement: ${calcParams.hasBasement ? 'Yes' : 'No'}`,
                   });
                 }}
-                className="px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black shadow-md cursor-pointer touch-manipulation"
+                className="px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black shadow-md transition-all active:scale-95 cursor-pointer touch-manipulation"
               >
                 {isAr ? 'اعتماد التقدير وطلب عرض سعر رسمي' : 'Transfer to Official RFP'}
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
+    </AnimatePresence>
 
       {/* 10. Quote / RFP Request Modal */}
-      {isQuoteOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
-          <div className={`relative w-full max-w-2xl rounded-3xl border overflow-hidden my-6 animate-in fade-in zoom-in-95 ${
-            isDark ? 'bg-[#0b102b] text-white border-white/10' : 'bg-white text-slate-900 border-slate-200'
-          }`}>
-            <div className={`p-5 sm:p-6 border-b flex items-center justify-between ${isDark ? 'bg-white/5 border-white/10' : 'bg-slate-50 border-slate-200'}`}>
-              <div className="text-start space-y-1">
-                <h3 className="text-base sm:text-lg font-bold">
-                  {isAr ? 'طلب عرض سعر ودراسة هندسية متكاملة' : 'Request Official Contracting Proposal'}
-                </h3>
-                <p className={`text-xs ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
-                  {isAr ? 'أدخل تفاصيل مشروعك وسيقوم كبار مهندسينا بالتواصل معك لتقديم دراسة تفصيلية' : 'Submit your project details for engineering audit and BOQ pricing'}
-                </p>
+      <AnimatePresence mode="wait">
+        {isQuoteOpen && (
+          <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-hidden touch-none">
+            <motion.div
+              initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+              animate={{ opacity: 1, backdropFilter: 'blur(16px)' }}
+              exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+              transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
+              onClick={() => setIsQuoteOpen(false)}
+              className="fixed inset-0 bg-slate-950/80 z-0"
+            />
+            <motion.div
+              drag="y"
+              dragConstraints={{ top: 0, bottom: 0 }}
+              dragElastic={{ top: 0.03, bottom: 0.6 }}
+              onDragEnd={(_, info) => {
+                if (info.offset.y > 90 || info.velocity.y > 500) {
+                  setIsQuoteOpen(false);
+                }
+              }}
+              initial={{ opacity: 0, y: '50%', scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: '60%', scale: 0.96 }}
+              transition={{
+                type: 'spring',
+                damping: 32,
+                stiffness: 380,
+                mass: 0.85,
+              }}
+              className={`relative z-10 w-full max-w-2xl max-h-[90vh] rounded-t-[2.25rem] sm:rounded-3xl border overflow-hidden shadow-2xl flex flex-col ${
+                isDark ? 'bg-[#0b102b]/95 text-white border-white/15 ring-1 ring-white/10' : 'bg-white/95 text-slate-900 border-slate-200'
+              } backdrop-blur-2xl`}
+            >
+              {/* Mobile Touch Drag Handle */}
+              <div className="w-full flex flex-col items-center pt-3 pb-1 sm:hidden cursor-grab active:cursor-grabbing touch-none select-none">
+                <div className="w-12 h-1.5 rounded-full bg-gray-400/50 hover:bg-gray-300 transition-colors" />
+                <span className="text-[10px] text-gray-400/70 font-medium mt-1">
+                  {isAr ? 'اسحب للأسفل للإغلاق' : 'Swipe down to close'}
+                </span>
               </div>
 
-              <button
-                type="button"
-                onClick={() => setIsQuoteOpen(false)}
-                className={`p-2 rounded-xl border transition-colors cursor-pointer touch-manipulation ${
-                  isDark ? 'bg-white/5 border-white/10 text-slate-300 hover:text-white' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-100'
-                }`}
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
+              <div className={`p-5 sm:p-6 border-b flex items-center justify-between ${isDark ? 'bg-white/5 border-white/10' : 'bg-slate-50 border-slate-200'}`}>
+                <div className="text-start space-y-1">
+                  <h3 className="text-base sm:text-lg font-bold">
+                    {isAr ? 'طلب عرض سعر ودراسة هندسية متكاملة' : 'Request Official Contracting Proposal'}
+                  </h3>
+                  <p className={`text-xs ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
+                    {isAr ? 'أدخل تفاصيل مشروعك وسيقوم كبار مهندسينا بالتواصل معك لتقديم دراسة تفصيلية' : 'Submit your project details for engineering audit and BOQ pricing'}
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setIsQuoteOpen(false)}
+                  className={`p-2 rounded-2xl border transition-all active:scale-90 cursor-pointer touch-manipulation ${
+                    isDark ? 'bg-white/5 border-white/10 text-slate-300 hover:text-white' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-100'
+                  }`}
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
 
             <div className="p-5 sm:p-8 max-h-[75vh] overflow-y-auto text-start">
               {quoteSubmitted ? (
@@ -1517,16 +1628,17 @@ export default function ConstructionPortal() {
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black transition-all shadow-md cursor-pointer touch-manipulation"
+                    className="w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black transition-all active:scale-95 shadow-md cursor-pointer touch-manipulation"
                   >
                     {isAr ? 'إرسال طلب التسعير الرسمي' : 'Submit Official RFP'}
                   </button>
                 </form>
               )}
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
+    </AnimatePresence>
     </div>
   );
 }

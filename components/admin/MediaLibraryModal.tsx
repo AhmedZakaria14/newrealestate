@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import {
   Upload,
   Image as ImageIcon,
@@ -253,39 +254,60 @@ export default function MediaLibraryModal({
       )}
 
       {/* Image Preview Modal */}
-      {previewItem && (
-        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="relative max-w-3xl w-full bg-[#080d2b] border border-white/20 rounded-3xl p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between">
-              <h3 className="text-sm font-black text-white truncate max-w-md">{previewItem.name}</h3>
-              <button
-                onClick={() => setPreviewItem(null)}
-                className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white cursor-pointer"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
+      <AnimatePresence mode="wait">
+        {previewItem && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-hidden touch-none">
+            <motion.div
+              initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+              animate={{ opacity: 1, backdropFilter: 'blur(16px)' }}
+              exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+              transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
+              onClick={() => setPreviewItem(null)}
+              className="fixed inset-0 bg-black/80 z-0"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 20 }}
+              transition={{
+                type: 'spring',
+                damping: 32,
+                stiffness: 380,
+                mass: 0.85,
+              }}
+              className="relative z-10 max-w-3xl w-full bg-[#080d2b] border border-white/20 ring-1 ring-white/10 rounded-3xl p-6 shadow-2xl space-y-4"
+            >
+              <div className="flex items-center justify-between">
+                <h3 className="text-sm font-black text-white truncate max-w-md">{previewItem.name}</h3>
+                <button
+                  onClick={() => setPreviewItem(null)}
+                  className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white active:scale-90 transition-all cursor-pointer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
 
-            <div className="max-h-[60vh] overflow-hidden rounded-2xl flex items-center justify-center bg-black/50">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={previewItem.url} alt={previewItem.name} className="max-h-[60vh] object-contain" />
-            </div>
+              <div className="max-h-[60vh] overflow-hidden rounded-2xl flex items-center justify-center bg-black/50">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={previewItem.url} alt={previewItem.name} className="max-h-[60vh] object-contain" />
+              </div>
 
-            <div className="flex items-center justify-between gap-3 pt-2">
-              <span className="text-xs text-gray-400 font-mono">
-                {previewItem.type} · {(previewItem.size / 1024).toFixed(1)} KB
-              </span>
-              <button
-                onClick={() => copyUrl(previewItem)}
-                className="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-2 cursor-pointer"
-              >
-                <Copy className="w-4 h-4" />
-                <span>{isAr ? 'نسخ رابط الصورة المباشر' : 'Copy Direct Image URL'}</span>
-              </button>
-            </div>
+              <div className="flex items-center justify-between gap-3 pt-2">
+                <span className="text-xs text-gray-400 font-mono">
+                  {previewItem.type} · {(previewItem.size / 1024).toFixed(1)} KB
+                </span>
+                <button
+                  onClick={() => copyUrl(previewItem)}
+                  className="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-2 active:scale-95 transition-all cursor-pointer shadow-md"
+                >
+                  <Copy className="w-4 h-4" />
+                  <span>{isAr ? 'نسخ رابط الصورة المباشر' : 'Copy Direct Image URL'}</span>
+                </button>
+              </div>
+            </motion.div>
           </div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
     </div>
   );
 }

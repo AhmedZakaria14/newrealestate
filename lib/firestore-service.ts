@@ -462,13 +462,13 @@ export interface DivisionCardDoc {
 }
 
 export interface SectionContentDoc {
-  titleAr: string;
-  titleEn: string;
-  subtitleAr: string;
-  subtitleEn: string;
+  titleAr?: string;
+  titleEn?: string;
+  subtitleAr?: string;
+  subtitleEn?: string;
   descAr?: string;
   descEn?: string;
-  image: string;
+  image?: string;
   videoUrl?: string;
 }
 
@@ -513,7 +513,8 @@ export interface SiteSettingsDoc {
     quote: string;
     quote_ar: string;
     rating: number;
-    image: string;
+    avatar?: string;
+    image?: string;
   }>;
   partnerLogos?: string[];
   pageBanners?: {

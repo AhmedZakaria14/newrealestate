@@ -9,6 +9,7 @@ import { galleryImages } from '@/data/skyvilla-data';
 import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import { useLanguageTheme } from '@/lib/language-theme-context';
 import { useSiteContent } from '@/lib/site-content-context';
+import { motion, AnimatePresence } from 'motion/react';
 
 export default function ImageGalleryPage() {
   const { language, theme, t, direction } = useLanguageTheme();
@@ -100,7 +101,7 @@ export default function ImageGalleryPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((item, idx) => {
               const title = language === 'ar' ? item.title_ar : item.title;
-              const cat = language === 'ar' ? item.category_ar : item.category;
+              const cat = language === 'ar' ? (('category_ar' in item && item.category_ar) || item.category) : item.category;
 
               return (
                 <div
@@ -145,54 +146,82 @@ export default function ImageGalleryPage() {
         </div>
       </section>
 
-      {/* Lightbox Modal */}
-      {lightboxIndex !== null && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4">
-          <button
-            onClick={closeLightbox}
-            className="absolute top-6 right-6 text-gray-300 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-20 cursor-pointer"
-            aria-label="Close lightbox"
-          >
-            <X className="w-6 h-6" />
-          </button>
+      {/* Silky Lightbox Modal with Mobile Native Gestures */}
+      <AnimatePresence mode="wait">
+        {lightboxIndex !== null && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 overflow-hidden touch-none">
+            {/* Silky Backdrop */}
+            <motion.div
+              initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+              animate={{ opacity: 1, backdropFilter: 'blur(20px)' }}
+              exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+              transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
+              onClick={closeLightbox}
+              className="fixed inset-0 bg-black/90 z-0"
+            />
 
-          <button
-            onClick={direction === 'rtl' ? nextImage : prevImage}
-            className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-300 hover:text-white p-3.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-20 cursor-pointer"
-            aria-label="Previous image"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 sm:top-6 right-4 sm:right-6 text-gray-300 hover:text-white p-2.5 sm:p-3 rounded-2xl bg-white/10 hover:bg-white/20 transition-all active:scale-90 z-20 cursor-pointer"
+              aria-label="Close lightbox"
+            >
+              <X className="w-6 h-6" />
+            </button>
 
-          <button
-            onClick={direction === 'rtl' ? prevImage : nextImage}
-            className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-300 hover:text-white p-3.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-20 cursor-pointer"
-            aria-label="Next image"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
+            <button
+              onClick={direction === 'rtl' ? nextImage : prevImage}
+              className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 text-gray-300 hover:text-white p-2.5 sm:p-3.5 rounded-2xl bg-white/10 hover:bg-white/20 transition-all active:scale-90 z-20 cursor-pointer"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
 
-          <div className="relative max-w-5xl max-h-[85vh] w-full h-[70vh] flex flex-col items-center justify-center">
-            <div className="relative w-full h-full rounded-2xl overflow-hidden">
-              <Image
-                src={filtered[lightboxIndex].image}
-                alt={language === 'ar' ? filtered[lightboxIndex].title_ar : filtered[lightboxIndex].title}
-                fill
-                className="object-contain"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <div className="mt-4 text-center">
-              <h4 className="text-xl font-bold text-white">
-                {language === 'ar' ? filtered[lightboxIndex].title_ar : filtered[lightboxIndex].title}
-              </h4>
-              <span className="text-xs uppercase text-blue-400 font-semibold tracking-wider">
-                {language === 'ar' ? filtered[lightboxIndex].category_ar : filtered[lightboxIndex].category} • {language === 'ar' ? 'صورة' : 'Image'} {lightboxIndex + 1} {language === 'ar' ? 'من' : 'of'} {filtered.length}
-              </span>
-            </div>
+            <button
+              onClick={direction === 'rtl' ? prevImage : nextImage}
+              className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 text-gray-300 hover:text-white p-2.5 sm:p-3.5 rounded-2xl bg-white/10 hover:bg-white/20 transition-all active:scale-90 z-20 cursor-pointer"
+              aria-label="Next image"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 20 }}
+              transition={{
+                type: 'spring',
+                damping: 32,
+                stiffness: 380,
+                mass: 0.85,
+              }}
+              className="relative z-10 max-w-5xl max-h-[85vh] w-full h-[70vh] flex flex-col items-center justify-center pointer-events-auto"
+            >
+              <div className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-black/50">
+                <Image
+                  src={filtered[lightboxIndex].image}
+                  alt={language === 'ar' ? filtered[lightboxIndex].title_ar : filtered[lightboxIndex].title}
+                  fill
+                  unoptimized
+                  className="object-contain"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mt-4 text-center space-y-1 px-4"
+              >
+                <h4 className="text-base sm:text-xl font-bold text-white">
+                  {language === 'ar' ? filtered[lightboxIndex].title_ar : filtered[lightboxIndex].title}
+                </h4>
+                <span className="text-xs uppercase text-blue-400 font-semibold tracking-wider">
+                  {language === 'ar' ? (('category_ar' in filtered[lightboxIndex] && filtered[lightboxIndex].category_ar) || filtered[lightboxIndex].category) : filtered[lightboxIndex].category} • {language === 'ar' ? 'صورة' : 'Image'} {lightboxIndex + 1} {language === 'ar' ? 'من' : 'of'} {filtered.length}
+                </span>
+              </motion.div>
+            </motion.div>
           </div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
 
       <Footer />
     </main>

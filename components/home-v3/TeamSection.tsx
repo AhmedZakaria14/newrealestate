@@ -131,7 +131,7 @@ export default function TeamSection() {
                           isDark ? 'group-hover:text-blue-400' : 'group-hover:text-blue-600'
                         }`}
                       >
-                        <Link href={`/our-team/${member.slug}`}>{name}</Link>
+                        <Link href={`/our-team/${('slug' in member && (member as any).slug) || member.id || 'leader'}`}>{name}</Link>
                       </h3>
                       <span className="text-xs uppercase tracking-wider font-semibold opacity-90 mt-1 block">
                         {role}
@@ -139,7 +139,7 @@ export default function TeamSection() {
                     </div>
 
                     <Link
-                      href={`/our-team/${member.slug}`}
+                      href={`/our-team/${('slug' in member && (member as any).slug) || member.id || 'leader'}`}
                       className={`w-10 h-10 rounded-full border flex items-center justify-center transition-colors ${
                         isDark
                           ? 'bg-white/5 border-white/10 text-white group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-500'
