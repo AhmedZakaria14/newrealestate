@@ -136,6 +136,12 @@ export default function AdminDashboardPage() {
   const [articleModalOpen, setArticleModalOpen] = useState(false);
   const [selectedLead, setSelectedLead] = useState<ConsultationDoc | null>(null);
 
+  // Edit Tracking IDs
+  const [editingPropertyId, setEditingPropertyId] = useState<string | null>(null);
+  const [editingProjectId, setEditingProjectId] = useState<string | null>(null);
+  const [editingServiceId, setEditingServiceId] = useState<string | null>(null);
+  const [editingArticleId, setEditingArticleId] = useState<string | null>(null);
+
   // Form states for adding Property
   const [propForm, setPropForm] = useState({
     title: '',
@@ -248,12 +254,17 @@ export default function AdminDashboardPage() {
     }
   };
 
-  // Add Property Handler
-  const handleAddProperty = async (e: React.FormEvent) => {
+  // Save/Update Property Handler
+  const handleSaveProperty = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await addProperty(propForm);
+      if (editingPropertyId) {
+        await updateProperty(editingPropertyId, propForm);
+      } else {
+        await addProperty(propForm);
+      }
       setPropertyModalOpen(false);
+      setEditingPropertyId(null);
       setPropForm({
         title: '',
         titleAr: '',
@@ -271,16 +282,42 @@ export default function AdminDashboardPage() {
         featured: true,
       });
     } catch (err) {
-      console.error('Error adding property:', err);
+      console.error('Error saving property:', err);
     }
   };
 
-  // Add Project Handler
-  const handleAddProject = async (e: React.FormEvent) => {
+  const handleOpenEditProperty = (prop: PropertyDoc) => {
+    setEditingPropertyId(prop.id || null);
+    setPropForm({
+      title: prop.title || '',
+      titleAr: prop.titleAr || '',
+      type: prop.type || 'فيلا فاخرة',
+      status: prop.status || 'for-sale',
+      price: prop.price || 4500000,
+      area: prop.area || 550,
+      location: prop.location || 'Al Khobar, Eastern Province',
+      locationAr: prop.locationAr || 'الخُبر، المنطقة الشرقية',
+      bedrooms: prop.bedrooms || 5,
+      bathrooms: prop.bathrooms || 6,
+      description: prop.description || '',
+      descriptionAr: prop.descriptionAr || '',
+      image: prop.image || '/images/hardgp/por4-big.jpg',
+      featured: prop.featured !== undefined ? prop.featured : true,
+    });
+    setPropertyModalOpen(true);
+  };
+
+  // Save/Update Project Handler
+  const handleSaveProject = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await addProject(projForm);
+      if (editingProjectId) {
+        await updateProject(editingProjectId, projForm);
+      } else {
+        await addProject(projForm);
+      }
       setProjectModalOpen(false);
+      setEditingProjectId(null);
       setProjForm({
         title: '',
         titleAr: '',
@@ -297,16 +334,41 @@ export default function AdminDashboardPage() {
         featured: true,
       });
     } catch (err) {
-      console.error('Error adding project:', err);
+      console.error('Error saving project:', err);
     }
   };
 
-  // Add Service Handler
-  const handleAddService = async (e: React.FormEvent) => {
+  const handleOpenEditProject = (proj: ProjectDoc) => {
+    setEditingProjectId(proj.id || null);
+    setProjForm({
+      title: proj.title || '',
+      titleAr: proj.titleAr || '',
+      category: proj.category || 'commercial',
+      location: proj.location || 'King Fahd Road, Khobar',
+      locationAr: proj.locationAr || 'طريق الملك فهد، الخُبر',
+      progress: proj.progress !== undefined ? proj.progress : 75,
+      completionDate: proj.completionDate || '2026 Q4',
+      client: proj.client || 'HARD Developments',
+      budget: proj.budget || '85,000,000 SAR',
+      description: proj.description || '',
+      descriptionAr: proj.descriptionAr || '',
+      image: proj.image || '/images/hardgp/por1-big.jpg',
+      featured: proj.featured !== undefined ? proj.featured : true,
+    });
+    setProjectModalOpen(true);
+  };
+
+  // Save/Update Service Handler
+  const handleSaveService = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await addService(servForm);
+      if (editingServiceId) {
+        await updateService(editingServiceId, servForm);
+      } else {
+        await addService(servForm);
+      }
       setServiceModalOpen(false);
+      setEditingServiceId(null);
       setServForm({
         title: '',
         titleAr: '',
@@ -316,16 +378,34 @@ export default function AdminDashboardPage() {
         active: true,
       });
     } catch (err) {
-      console.error('Error adding service:', err);
+      console.error('Error saving service:', err);
     }
   };
 
-  // Add Article Handler
-  const handleAddArticle = async (e: React.FormEvent) => {
+  const handleOpenEditService = (serv: ServiceDoc) => {
+    setEditingServiceId(serv.id || null);
+    setServForm({
+      title: serv.title || '',
+      titleAr: serv.titleAr || '',
+      category: serv.category || 'contracting',
+      description: serv.description || '',
+      descriptionAr: serv.descriptionAr || '',
+      active: serv.active !== undefined ? serv.active : true,
+    });
+    setServiceModalOpen(true);
+  };
+
+  // Save/Update Article Handler
+  const handleSaveArticle = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await addArticle(artForm);
+      if (editingArticleId) {
+        await updateArticle(editingArticleId, artForm);
+      } else {
+        await addArticle(artForm);
+      }
       setArticleModalOpen(false);
+      setEditingArticleId(null);
       setArtForm({
         title: '',
         titleAr: '',
@@ -340,8 +420,26 @@ export default function AdminDashboardPage() {
         published: true,
       });
     } catch (err) {
-      console.error('Error adding article:', err);
+      console.error('Error saving article:', err);
     }
+  };
+
+  const handleOpenEditArticle = (art: ArticleDoc) => {
+    setEditingArticleId(art.id || null);
+    setArtForm({
+      title: art.title || '',
+      titleAr: art.titleAr || '',
+      category: art.category || 'تقارير السوق والعقارات',
+      excerpt: art.excerpt || '',
+      excerptAr: art.excerptAr || '',
+      content: art.content || '',
+      contentAr: art.contentAr || '',
+      image: art.image || '/images/hardgp/por6-big.jpg',
+      author: art.author || 'هيئة الدراسات بمجموعة هارد',
+      readTime: art.readTime || '5 دقائق',
+      published: art.published !== undefined ? art.published : true,
+    });
+    setArticleModalOpen(true);
   };
 
   // Filtered consultations
@@ -988,7 +1086,13 @@ export default function AdminDashboardPage() {
                   </div>
 
                   <div className="p-4 border-t border-gray-500/10 flex items-center justify-between text-xs">
-                    <span className="text-[10px] opacity-60">ID: {prop.id?.slice(0, 8)}...</span>
+                    <button
+                      onClick={() => handleOpenEditProperty(prop)}
+                      className="text-blue-500 hover:text-blue-400 font-bold flex items-center gap-1 cursor-pointer"
+                    >
+                      <Edit className="w-3.5 h-3.5" />
+                      <span>{isAr ? 'تعديل' : 'Edit'}</span>
+                    </button>
                     <button
                       onClick={() => deleteProperty(prop.id!)}
                       className="text-red-500 hover:text-red-400 font-bold flex items-center gap-1 cursor-pointer"
@@ -1013,7 +1117,7 @@ export default function AdminDashboardPage() {
               </div>
 
               <button
-                onClick={() => setProjectModalOpen(true)}
+                onClick={() => { setEditingProjectId(null); setProjectModalOpen(true); }}
                 className="py-3 px-5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs flex items-center gap-2 shadow-lg shadow-amber-600/30 cursor-pointer self-start sm:self-auto"
               >
                 <Plus className="w-4 h-4" />
@@ -1062,10 +1166,11 @@ export default function AdminDashboardPage() {
 
                   <div className="p-4 border-t border-gray-500/10 flex items-center justify-between text-xs">
                     <button
-                      onClick={() => updateProject(proj.id!, { progress: Math.min(100, proj.progress + 5) })}
-                      className="text-blue-500 hover:underline font-bold text-[11px] cursor-pointer"
+                      onClick={() => handleOpenEditProject(proj)}
+                      className="text-amber-500 hover:text-amber-400 font-bold flex items-center gap-1 cursor-pointer"
                     >
-                      +5% {isAr ? 'تحديث الإنجاز' : 'Progress'}
+                      <Edit className="w-3.5 h-3.5" />
+                      <span>{isAr ? 'تعديل' : 'Edit'}</span>
                     </button>
                     <button
                       onClick={() => deleteProject(proj.id!)}
@@ -1091,7 +1196,7 @@ export default function AdminDashboardPage() {
               </div>
 
               <button
-                onClick={() => setServiceModalOpen(true)}
+                onClick={() => { setEditingServiceId(null); setServiceModalOpen(true); }}
                 className="py-3 px-5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-2 cursor-pointer"
               >
                 <Plus className="w-4 h-4" />
@@ -1113,12 +1218,20 @@ export default function AdminDashboardPage() {
                     <p className="text-xs opacity-75">{isAr ? srv.descriptionAr || srv.description : srv.description}</p>
                   </div>
 
-                  <button
-                    onClick={() => deleteService(srv.id!)}
-                    className="p-2 rounded-lg bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white transition-all cursor-pointer"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <button
+                      onClick={() => handleOpenEditService(srv)}
+                      className="p-2 rounded-lg bg-blue-500/10 text-blue-500 hover:bg-blue-500 hover:text-white transition-all cursor-pointer"
+                    >
+                      <Edit className="w-3.5 h-3.5" />
+                    </button>
+                    <button
+                      onClick={() => deleteService(srv.id!)}
+                      className="p-2 rounded-lg bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white transition-all cursor-pointer"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
@@ -1135,7 +1248,7 @@ export default function AdminDashboardPage() {
               </div>
 
               <button
-                onClick={() => setArticleModalOpen(true)}
+                onClick={() => { setEditingArticleId(null); setArticleModalOpen(true); }}
                 className="py-3 px-5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs flex items-center gap-2 cursor-pointer"
               >
                 <Plus className="w-4 h-4" />
@@ -1151,14 +1264,25 @@ export default function AdminDashboardPage() {
                     isDark ? 'bg-[#080d2b] border-white/10' : 'bg-white border-slate-200'
                   }`}
                 >
-                  <div>
-                    <span className="text-[10px] font-bold text-purple-400">{art.category}</span>
-                    <h4 className="text-sm font-bold mt-1">{isAr ? art.titleAr || art.title : art.title}</h4>
-                    <p className="text-xs opacity-75 mt-1 line-clamp-2">{isAr ? art.excerptAr || art.excerpt : art.excerpt}</p>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-500/10 text-purple-400">
+                        {art.category}
+                      </span>
+                      <span className="text-[10px] opacity-60">{art.readTime || '5m'}</span>
+                    </div>
+                    <h4 className="text-sm font-black line-clamp-1">{isAr ? art.titleAr || art.title : art.title}</h4>
+                    <p className="text-xs opacity-75 line-clamp-2">{isAr ? art.excerptAr || art.excerpt : art.excerpt}</p>
                   </div>
 
-                  <div className="flex items-center justify-between text-xs pt-2 border-t border-gray-500/10">
-                    <span className="text-[10px] opacity-60">{art.author}</span>
+                  <div className="flex items-center justify-between pt-3 border-t border-gray-500/10 text-xs">
+                    <button
+                      onClick={() => handleOpenEditArticle(art)}
+                      className="text-purple-400 hover:text-purple-300 font-bold flex items-center gap-1 cursor-pointer"
+                    >
+                      <Edit className="w-3.5 h-3.5" />
+                      <span>{isAr ? 'تعديل' : 'Edit'}</span>
+                    </button>
                     <button
                       onClick={() => deleteArticle(art.id!)}
                       className="text-red-500 hover:text-red-400 font-bold flex items-center gap-1 cursor-pointer"
@@ -1286,7 +1410,7 @@ export default function AdminDashboardPage() {
         </div>
       )}
 
-      {/* ADD PROPERTY MODAL */}
+      {/* ADD/EDIT PROPERTY MODAL */}
       {propertyModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
           <div
@@ -1295,13 +1419,15 @@ export default function AdminDashboardPage() {
             }`}
           >
             <div className="flex items-center justify-between pb-3 border-b border-gray-500/15">
-              <h3 className="text-base font-black">{isAr ? 'إضافة عقار جديد لقاعدة البيانات' : 'Add Property to Firestore'}</h3>
-              <button onClick={() => setPropertyModalOpen(false)} className="p-1 rounded-full hover:bg-gray-500/10 cursor-pointer">
+              <h3 className="text-base font-black">
+                {editingPropertyId ? (isAr ? 'تعديل بيانات العقار' : 'Edit Property') : (isAr ? 'إضافة عقار جديد لقاعدة البيانات' : 'Add Property to Firestore')}
+              </h3>
+              <button onClick={() => { setPropertyModalOpen(false); setEditingPropertyId(null); }} className="p-1 rounded-full hover:bg-gray-500/10 cursor-pointer">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleAddProperty} className="space-y-4 text-xs">
+            <form onSubmit={handleSaveProperty} className="space-y-4 text-xs">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block font-bold mb-1">{isAr ? 'عنوان العقار (عربي)' : 'Arabic Title'}</label>
@@ -1415,14 +1541,14 @@ export default function AdminDashboardPage() {
                 type="submit"
                 className="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-lg cursor-pointer"
               >
-                {isAr ? 'حفظ العقار في قاعدة البيانات' : 'Save Property to Firestore'}
+                {editingPropertyId ? (isAr ? 'تحديث العقار' : 'Update Property') : (isAr ? 'حفظ العقار في قاعدة البيانات' : 'Save Property to Firestore')}
               </button>
             </form>
           </div>
         </div>
       )}
 
-      {/* ADD PROJECT MODAL */}
+      {/* ADD/EDIT PROJECT MODAL */}
       {projectModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
           <div
@@ -1431,13 +1557,15 @@ export default function AdminDashboardPage() {
             }`}
           >
             <div className="flex items-center justify-between pb-3 border-b border-gray-500/15">
-              <h3 className="text-base font-black">{isAr ? 'إضافة مشروع إنشائي جديد' : 'Add Structural Project'}</h3>
-              <button onClick={() => setProjectModalOpen(false)} className="p-1 rounded-full hover:bg-gray-500/10 cursor-pointer">
+              <h3 className="text-base font-black">
+                {editingProjectId ? (isAr ? 'تعديل بيانات المشروع' : 'Edit Project') : (isAr ? 'إضافة مشروع إنشائي جديد' : 'Add Structural Project')}
+              </h3>
+              <button onClick={() => { setProjectModalOpen(false); setEditingProjectId(null); }} className="p-1 rounded-full hover:bg-gray-500/10 cursor-pointer">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleAddProject} className="space-y-4 text-xs">
+            <form onSubmit={handleSaveProject} className="space-y-4 text-xs">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block font-bold mb-1">{isAr ? 'اسم المشروع (عربي)' : 'Arabic Title'}</label>
@@ -1514,14 +1642,14 @@ export default function AdminDashboardPage() {
                 type="submit"
                 className="w-full py-3.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs shadow-lg cursor-pointer"
               >
-                {isAr ? 'حفظ المشروع في قاعدة البيانات' : 'Save Project to Firestore'}
+                {editingProjectId ? (isAr ? 'تحديث المشروع' : 'Update Project') : (isAr ? 'حفظ المشروع في قاعدة البيانات' : 'Save Project to Firestore')}
               </button>
             </form>
           </div>
         </div>
       )}
 
-      {/* ADD SERVICE MODAL */}
+      {/* ADD/EDIT SERVICE MODAL */}
       {serviceModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
           <div
@@ -1530,13 +1658,15 @@ export default function AdminDashboardPage() {
             }`}
           >
             <div className="flex items-center justify-between pb-3 border-b border-gray-500/15">
-              <h3 className="text-base font-black">{isAr ? 'إضافة خدمة جديدة' : 'Add New Service'}</h3>
-              <button onClick={() => setServiceModalOpen(false)} className="p-1 rounded-full hover:bg-gray-500/10 cursor-pointer">
+              <h3 className="text-base font-black">
+                {editingServiceId ? (isAr ? 'تعديل بيانات الخدمة' : 'Edit Service') : (isAr ? 'إضافة خدمة جديدة' : 'Add New Service')}
+              </h3>
+              <button onClick={() => { setServiceModalOpen(false); setEditingServiceId(null); }} className="p-1 rounded-full hover:bg-gray-500/10 cursor-pointer">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleAddService} className="space-y-4 text-xs">
+            <form onSubmit={handleSaveService} className="space-y-4 text-xs">
               <div>
                 <label className="block font-bold mb-1">{isAr ? 'اسم الخدمة (عربي)' : 'Arabic Title'}</label>
                 <input
@@ -1565,14 +1695,14 @@ export default function AdminDashboardPage() {
                 type="submit"
                 className="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-lg cursor-pointer"
               >
-                {isAr ? 'حفظ الخدمة' : 'Save Service'}
+                {editingServiceId ? (isAr ? 'تحديث الخدمة' : 'Update Service') : (isAr ? 'حفظ الخدمة' : 'Save Service')}
               </button>
             </form>
           </div>
         </div>
       )}
 
-      {/* ADD ARTICLE MODAL */}
+      {/* ADD/EDIT ARTICLE MODAL */}
       {articleModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
           <div
@@ -1581,13 +1711,15 @@ export default function AdminDashboardPage() {
             }`}
           >
             <div className="flex items-center justify-between pb-3 border-b border-gray-500/15">
-              <h3 className="text-base font-black">{isAr ? 'نشر مقال أو تقرير سوقي' : 'Publish Market Report'}</h3>
-              <button onClick={() => setArticleModalOpen(false)} className="p-1 rounded-full hover:bg-gray-500/10 cursor-pointer">
+              <h3 className="text-base font-black">
+                {editingArticleId ? (isAr ? 'تعديل بيانات المقال' : 'Edit Article') : (isAr ? 'نشر مقال أو تقرير سوقي' : 'Publish Market Report')}
+              </h3>
+              <button onClick={() => { setArticleModalOpen(false); setEditingArticleId(null); }} className="p-1 rounded-full hover:bg-gray-500/10 cursor-pointer">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleAddArticle} className="space-y-4 text-xs">
+            <form onSubmit={handleSaveArticle} className="space-y-4 text-xs">
               <div>
                 <label className="block font-bold mb-1">{isAr ? 'عنوان المقال (عربي)' : 'Arabic Title'}</label>
                 <input
@@ -1620,7 +1752,7 @@ export default function AdminDashboardPage() {
                 type="submit"
                 className="w-full py-3.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-lg cursor-pointer"
               >
-                {isAr ? 'نشر المقال في قاعدة البيانات' : 'Publish Article to Firestore'}
+                {editingArticleId ? (isAr ? 'تحديث المقال' : 'Update Article') : (isAr ? 'نشر المقال في قاعدة البيانات' : 'Publish Article to Firestore')}
               </button>
             </form>
           </div>

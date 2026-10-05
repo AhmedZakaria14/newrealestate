@@ -472,6 +472,17 @@ export interface SectionContentDoc {
   videoUrl?: string;
 }
 
+export interface PageSeoDoc {
+  metaTitleAr: string;
+  metaTitleEn: string;
+  metaDescriptionAr: string;
+  metaDescriptionEn: string;
+  keywordsAr: string;
+  keywordsEn: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+}
+
 export interface SiteSettingsDoc {
   heroTitleAr: string;
   heroTitleEn: string;
@@ -603,6 +614,7 @@ export interface SiteSettingsDoc {
     googleVerification?: string;
     indexNowKey?: string;
     lastPingedAt?: any;
+    perPageSeo?: Record<string, PageSeoDoc>;
   };
   updatedAt?: any;
 }
@@ -849,6 +861,108 @@ export const defaultSiteSettings: SiteSettingsDoc = {
     canonicalUrl: 'https://hardgp.com',
     googleVerification: 'google-site-verification-hard-group-ksa',
     indexNowKey: 'hardgroup_indexnow_2026_sec',
+    perPageSeo: {
+      home: {
+        metaTitleAr: 'مجموعة هارد | المقاولات العامة والتطوير الإنشائي والعقاري - HARD Group',
+        metaTitleEn: 'HARD Group | General Contracting & Real Estate Development KSA',
+        metaDescriptionAr: 'مجموعة هارد للمقاولات العامة فئة أولى والتطوير الإنشائي والوساطة العقارية المرخصة (فال 1200028472). تنفيذ أبراج ومجمعات وفق كود البناء السعودي SBC وهندسة تشغيل المرافق AMC.',
+        metaDescriptionEn: 'HARD Group: Class-1 general contracting, certified SBC structural development, licensed VAL real estate brokerage, and 24/7 HVAC AMC engineering in Saudi Arabia.',
+        keywordsAr: 'مقاولات عامة, تطوير عقاري, كود البناء السعودي, SBC, رخصة فال, وساطة عقارية, الخبر, الرياض, تكييف مركزي, مجموعة هارد',
+        keywordsEn: 'general contracting, real estate development, Saudi building code, SBC, VAL license, KSA real estate, HVAC AMC, HARD group',
+        ogImage: '/images/hardgp/por1-big.jpg',
+        canonicalUrl: 'https://hardgp.com',
+      },
+      about: {
+        metaTitleAr: 'من نحن وتاريخ التأسيس | مجموعة هارد للمقاولات والتطوير الإنشائي',
+        metaTitleEn: 'About HARD Group | Saudi Construction & Development Heritage Since 2004',
+        metaDescriptionAr: 'تعرف على تاريخ وإنجازات مجموعة هارد للمقاولات العامة والتطوير العقاري منذ عام 2004 في المملكة العربية السعودية وسجل مشروعاتها الكبرى.',
+        metaDescriptionEn: 'Discover the history, leadership, and infrastructure milestones of HARD Group in Saudi Arabia since 2004.',
+        keywordsAr: 'عن مجموعة هارد, تاريخ التأسيس, مقاولات الشرقية, رؤية 2030, إنجازات هندسية',
+        keywordsEn: 'about HARD group, Saudi infrastructure contractor, history since 2004, leadership',
+        ogImage: '/images/hardgp/por6-big.jpg',
+        canonicalUrl: 'https://hardgp.com/about-us',
+      },
+      services: {
+        metaTitleAr: 'دليل الخدمات الهندسية المتكاملة | مقاولات، عقارات فال، تكييف AMC',
+        metaTitleEn: 'Comprehensive Engineering Services | HARD Group Saudi Arabia',
+        metaDescriptionAr: 'مصفوفة خدمات متكاملة تغطي المقاولات العامة الإنشائية، الوساطة والتسويق العقاري المرخص (فال 1200028472)، وتشغيل وتكييف المرافق وعقود الصيانة AMC.',
+        metaDescriptionEn: 'Full turnkey solutions spanning general contracting, VAL licensed property brokerage, and 24/7 electromechanical HVAC operations.',
+        keywordsAr: 'خدمات مقاولات, وساطة عقارية, صيانة تكييف مركزي, عقود AMC, تشغيل مرافق, تسليم مفتاح',
+        keywordsEn: 'contracting services, real estate brokerage, HVAC maintenance AMC, facility operations',
+        ogImage: '/images/hardgp/por3-big.jpg',
+        canonicalUrl: 'https://hardgp.com/services',
+      },
+      projects: {
+        metaTitleAr: 'المشاريع الاستراتيجية والتطويرية | سجل إنجازات مجموعة هارد',
+        metaTitleEn: 'Master Projects & Developments | HARD Group Landmark Portfolio',
+        metaDescriptionAr: 'استعرض أحدث الأبراج التجارية، المجمعات السكنية، والمراكز اللوجستية المنفذة بأعلى مواصفات كود البناء السعودي SBC من مجموعة هارد.',
+        metaDescriptionEn: 'Explore our portfolio of commercial towers, residential communities, and advanced logistics complexes in KSA.',
+        keywordsAr: 'مشاريع هارد, أبراج الخبر, مجمعات الرياض, كود البناء السعودي, تنفيذ إنشائي',
+        keywordsEn: 'master projects, corporate towers, residential compounds, Saudi building code, Khobar, Riyadh',
+        ogImage: '/images/hardgp/por2-big.jpg',
+        canonicalUrl: 'https://hardgp.com/projects',
+      },
+      listings: {
+        metaTitleAr: 'العقارات والقصور والفرص الاستثمارية المعتمدة | رخصة فال 1200028472',
+        metaTitleEn: 'Prime Properties & Luxury Real Estate | HARD Group VAL Certified',
+        metaDescriptionAr: 'عقارات حصرية، فلل فاخرة، ومجمعات استثمارية معتمدة برخصة فال في المنطقة الشرقية والرياض مع خطط تملك واستثمار موثوقة.',
+        metaDescriptionEn: 'Exclusive luxury villas, premium commercial buildings, and high-yield real estate assets in Eastern Province & Riyadh.',
+        keywordsAr: 'عقارات للبيع, فلل فاخرة بالخبر, أراضي استثمارية, رخصة فال, تسويق عقاري مرخص',
+        keywordsEn: 'properties for sale, luxury villas Khobar, investment real estate Riyadh, VAL licensed',
+        ogImage: '/images/hardgp/por4-big.jpg',
+        canonicalUrl: 'https://hardgp.com/listings',
+      },
+      realestate: {
+        metaTitleAr: 'هارد للعقارات والاستثمار | وساطة وتسويق معتمد برخصة فال 1200028472',
+        metaTitleEn: 'HARD Real Estate & Investment | Licensed VAL Brokerage 1200028472',
+        metaDescriptionAr: 'الذراع العقاري الرائد لمجموعة هارد، يقدم وساطة معتمدة وتسويق للمخططات وإدارة المحافظ الاستثمارية في المملكة العربية السعودية.',
+        metaDescriptionEn: 'Certified real estate brokerage, off-plan property marketing, and portfolio asset management across KSA.',
+        keywordsAr: 'هارد العقارية, رخصة فال 1200028472, وساطة معتمدة, تسويق مشاريع, إدارة أملاك',
+        keywordsEn: 'HARD real estate, VAL license 1200028472, property marketing, portfolio management KSA',
+        ogImage: '/images/hardgp/por4-big.jpg',
+        canonicalUrl: 'https://hardgp.com/realestate',
+      },
+      construction: {
+        metaTitleAr: 'هارد للإنشاءات والمقاولات العامة | تصنيف فئة أولى واعتماد كود SBC',
+        metaTitleEn: 'HARD Construction & Contracting | Class-1 Saudi Building Code Certified',
+        metaDescriptionAr: 'تنفيذ الأبراج الذكية والمجمعات والمصانع بأعلى معايير كود البناء السعودي (SBC) وتسليم المفتاح مع ضمانات شاملة للهيكل والتشطيب.',
+        metaDescriptionEn: 'Class-1 general contracting for commercial towers, industrial facilities, and smart compounds under SBC standards.',
+        keywordsAr: 'هارد للإنشاءات, مقاولات فئة أولى, كود البناء السعودي, SBC, تشييد مباني, تسليم مفتاح',
+        keywordsEn: 'HARD construction, class-1 general contractor, Saudi building code SBC, turnkey building',
+        ogImage: '/images/hardgp/por1-big.jpg',
+        canonicalUrl: 'https://hardgp.com/construction',
+      },
+      hvac: {
+        metaTitleAr: 'هارد لصيانة وتكييف الهواء | عقود صيانة سنوية AMC وطوارئ 24/7',
+        metaTitleEn: 'HARD HVAC & Facility Maintenance | 24/7 AMC Preventive Contracts',
+        metaDescriptionAr: 'حلول التكييف المركزي، الشيلرات الصناعية، أنظمة VRF، وعقود الصيانة الوقائية السنوية AMC مع طواقم استجابة فورية 24/7.',
+        metaDescriptionEn: 'Annual preventive maintenance contracts (AMC), central chiller overhaul, and 24/7 emergency response for commercial cooling.',
+        keywordsAr: 'هارد للتكييف, صيانة تكييف مركزي, عقود AMC, شيلرات, تكييف VRF, طوارئ تكييف 24/7',
+        keywordsEn: 'HARD HVAC, chiller maintenance, AMC annual contracts, VRF systems, 24/7 cooling emergency',
+        ogImage: '/images/hardgp/slide-12.jpg',
+        canonicalUrl: 'https://hardgp.com/hvac',
+      },
+      contact: {
+        metaTitleAr: 'اتصل بمجموعة هارد | فروع الخبر والدمام والرياض واستشارات 24/7',
+        metaTitleEn: 'Contact HARD Group | Headquarters & Branch Offices Saudi Arabia',
+        metaDescriptionAr: 'تواصل مع الإدارة العامة والمهندسين الاستشاريين لمجموعة هارد عبر الهاتف الموحد +966138004273 أو البريد info@hardgp.com.',
+        metaDescriptionEn: 'Get in touch with HARD Group headquarters and branch offices in Khobar, Dammam, and Riyadh for instant estimates.',
+        keywordsAr: 'اتصل بنا, فروع مجموعة هارد, رقم هاتف مقاولات, استشارة فورية, الخبر, الرياض',
+        keywordsEn: 'contact HARD group, Khobar office, Dammam headquarters, Riyadh branch, instant quotation',
+        ogImage: '/images/hardgp/por1-big.jpg',
+        canonicalUrl: 'https://hardgp.com/contact-us',
+      },
+      blog: {
+        metaTitleAr: 'المركز الإعلامي والتقارير الفنية | أبحاث السوق العقاري والإنشائي',
+        metaTitleEn: 'Media Center & Technical Insights | Saudi Construction & Real Estate News',
+        metaDescriptionAr: 'أحدث التحليلات والتقارير الهندسية حول كود البناء السعودي وتطورات القطاع العقاري والإنشائي في ضوء رؤية المملكة 2030.',
+        metaDescriptionEn: 'Authoritative analysis on Saudi Building Code updates, real estate trends, and engineering innovations.',
+        keywordsAr: 'أخبار المقاولات, كود البناء السعودي, تقارير عقارية, أبحاث السوق, رؤية 2030',
+        keywordsEn: 'construction news KSA, Saudi building code updates, real estate reports, Vision 2030',
+        ogImage: '/images/hardgp/por6-big.jpg',
+        canonicalUrl: 'https://hardgp.com/blog',
+      },
+    },
   },
 };
 

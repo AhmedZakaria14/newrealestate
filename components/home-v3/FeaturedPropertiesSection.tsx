@@ -17,7 +17,7 @@ import { useSiteContent } from '@/lib/site-content-context';
 
 export default function FeaturedPropertiesSection() {
   const { language, direction } = useLanguageTheme();
-  const { settings } = useSiteContent();
+  const { properties, settings } = useSiteContent();
   const [activeTab, setActiveTab] = useState<string>('all');
   const isAr = language === 'ar';
 
@@ -30,7 +30,41 @@ export default function FeaturedPropertiesSection() {
     { key: 'apartment', label: isAr ? 'شقق فندقية' : 'Apartments' },
   ];
 
-  const filtered = referenceProperties.filter((item) => {
+  // Combine live properties from Firestore or fallback to referenceProperties
+  const combinedProperties = React.useMemo(() => {
+    if (properties && properties.length > 0) {
+      const liveConverted = properties.map((p) => {
+        const typeNorm =
+          p.type?.toLowerCase().includes('بنتهاوس') || p.type?.toLowerCase().includes('penthouse')
+            ? 'penthouse'
+            : p.type?.toLowerCase().includes('فيلا') || p.type?.toLowerCase().includes('villa') || p.type?.toLowerCase().includes('قصر')
+            ? 'villa'
+            : 'apartment';
+
+        return {
+          id: p.id || `prop-${Math.random()}`,
+          slug: p.id || 'luxury-property',
+          title: { ar: p.titleAr || p.title, en: p.title || p.titleAr },
+          type: typeNorm,
+          status: p.status || 'for-sale',
+          price: { sar: p.price, formattedSAR: `${p.price?.toLocaleString()} ر.س` },
+          areaSqM: p.area || 450,
+          areaSqFt: Math.round((p.area || 450) * 10.764),
+          location: {
+            city: { ar: p.locationAr?.split('،')?.[0] || 'الخُبر', en: p.location?.split(',')?.[0] || 'Al Khobar' },
+            area: { ar: p.locationAr || 'المنطقة الشرقية', en: p.location || 'Eastern Province' },
+          },
+          bedrooms: p.bedrooms || 4,
+          bathrooms: p.bathrooms || 5,
+          images: [p.image || '/images/hardgp/por4-big.jpg'],
+        };
+      });
+      return liveConverted;
+    }
+    return referenceProperties;
+  }, [properties]);
+
+  const filtered = combinedProperties.filter((item) => {
     if (activeTab === 'all') return true;
     if (activeTab === 'for-sale' && item.status === 'for-sale') return true;
     if (activeTab === 'for-rent' && item.status === 'for-rent') return true;

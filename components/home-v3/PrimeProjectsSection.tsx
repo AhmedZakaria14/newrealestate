@@ -19,10 +19,36 @@ import { useSiteContent } from '@/lib/site-content-context';
 
 export default function PrimeProjectsSection() {
   const { language, theme, direction } = useLanguageTheme();
-  const { settings } = useSiteContent();
+  const { projects, settings } = useSiteContent();
   const [consultationOpen, setConsultationOpen] = useState(false);
   const isDark = theme === 'dark';
   const isAr = language === 'ar';
+
+  const combinedProjects = React.useMemo(() => {
+    if (projects && projects.length > 0) {
+      return projects.slice(0, 3).map((p) => ({
+        id: p.id || `proj-${Math.random()}`,
+        slug: p.id || 'landmark-project',
+        title: { ar: p.titleAr || p.title, en: p.title || p.titleAr },
+        description: { ar: p.descriptionAr || p.description, en: p.description || p.descriptionAr },
+        location: { ar: p.locationAr || p.location, en: p.location || p.locationAr },
+        category: {
+          ar: p.category === 'commercial' ? 'تجاري ومكتبي' : p.category === 'industrial' ? 'صناعي ولوجستي' : 'سكني فاخر',
+          en: p.category ? p.category.toUpperCase() : 'Commercial',
+        },
+        image: p.image || '/images/hardgp/por1-big.jpg',
+        handoverDate: { ar: p.completionDate || '2026 Q4', en: p.completionDate || '2026 Q4' },
+        roiProjected: '14.2% عائد استثماري',
+        startingPriceSAR: p.budget || '45,000,000 ر.س',
+        unitsAvailable: 12,
+        highlights: {
+          ar: ['مطابق لكود البناء السعودي 100%', 'موقع استراتيجي بالمنطقة الشرقية', 'إشراف هندسي وتنفيذ متكامل'],
+          en: ['100% Saudi Building Code SBC', 'Prime Strategic Location', 'Full Turnkey Execution'],
+        },
+      }));
+    }
+    return referenceProjects;
+  }, [projects]);
 
   return (
     <section
@@ -63,7 +89,7 @@ export default function PrimeProjectsSection() {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {referenceProjects.map((proj) => {
+          {combinedProjects.map((proj) => {
             const title = isAr ? proj.title.ar : proj.title.en;
             const description = isAr ? proj.description.ar : proj.description.en;
             const location = isAr ? proj.location.ar : proj.location.en;

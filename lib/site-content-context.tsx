@@ -8,40 +8,94 @@ import {
   updateSiteSettings,
   PageBannerDoc,
   DivisionCardDoc,
+  PageSeoDoc,
+  PropertyDoc,
+  ProjectDoc,
+  ServiceDoc,
+  ArticleDoc,
+  subscribeToProperties,
+  subscribeToProjects,
+  subscribeToServices,
+  subscribeToArticles,
 } from './firestore-service';
 
 interface SiteContentContextType {
   settings: SiteSettingsDoc;
   loading: boolean;
+  properties: PropertyDoc[];
+  projects: ProjectDoc[];
+  services: ServiceDoc[];
+  articles: ArticleDoc[];
   saveSettings: (newSettings: Partial<SiteSettingsDoc>) => Promise<void>;
   getSectionTitle: (sectionKey: keyof SiteSettingsDoc['sectionTitles'] | string, lang: 'ar' | 'en') => string;
   getSectionSubtitle: (sectionKey: string, lang: 'ar' | 'en') => string;
   getPageBanner: (pageKey: string) => PageBannerDoc;
   getDivisionCard: (divKey: 'realestate' | 'contracting' | 'hvac') => DivisionCardDoc;
+  getPageSeo: (pageKey: string) => PageSeoDoc;
 }
+
+const defaultPageSeo: PageSeoDoc = {
+  metaTitleAr: defaultSiteSettings.seo.metaTitleAr,
+  metaTitleEn: defaultSiteSettings.seo.metaTitleEn,
+  metaDescriptionAr: defaultSiteSettings.seo.metaDescriptionAr,
+  metaDescriptionEn: defaultSiteSettings.seo.metaDescriptionEn,
+  keywordsAr: defaultSiteSettings.seo.keywordsAr,
+  keywordsEn: defaultSiteSettings.seo.keywordsEn,
+  ogImage: defaultSiteSettings.seo.ogImage,
+  canonicalUrl: defaultSiteSettings.seo.canonicalUrl,
+};
 
 const SiteContentContext = createContext<SiteContentContextType>({
   settings: defaultSiteSettings,
   loading: false,
+  properties: [],
+  projects: [],
+  services: [],
+  articles: [],
   saveSettings: async () => {},
   getSectionTitle: () => '',
   getSectionSubtitle: () => '',
   getPageBanner: () => ({ titleAr: '', titleEn: '', subtitleAr: '', subtitleEn: '', image: '/images/hardgp/por1-big.jpg' }),
   getDivisionCard: (k) => defaultSiteSettings.divisionCards?.[k] || { titleAr: '', titleEn: '', badgeAr: '', badgeEn: '', descAr: '', descEn: '', image: '' },
+  getPageSeo: () => defaultPageSeo,
 });
 
 export function SiteContentProvider({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState<SiteSettingsDoc>(defaultSiteSettings);
+  const [properties, setProperties] = useState<PropertyDoc[]>([]);
+  const [projects, setProjects] = useState<ProjectDoc[]>([]);
+  const [services, setServices] = useState<ServiceDoc[]>([]);
+  const [articles, setArticles] = useState<ArticleDoc[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const unsubscribe = subscribeToSiteSettings((latest) => {
+    const unsubSettings = subscribeToSiteSettings((latest) => {
       setSettings(latest);
       setLoading(false);
     });
 
+    const unsubProperties = subscribeToProperties((data) => {
+      if (data) setProperties(data);
+    });
+
+    const unsubProjects = subscribeToProjects((data) => {
+      if (data) setProjects(data);
+    });
+
+    const unsubServices = subscribeToServices((data) => {
+      if (data) setServices(data);
+    });
+
+    const unsubArticles = subscribeToArticles((data) => {
+      if (data) setArticles(data);
+    });
+
     return () => {
-      if (unsubscribe) unsubscribe();
+      unsubSettings?.();
+      unsubProperties?.();
+      unsubProjects?.();
+      unsubServices?.();
+      unsubArticles?.();
     };
   }, []);
 
@@ -107,16 +161,31 @@ export function SiteContentProvider({ children }: { children: ReactNode }) {
     };
   };
 
+  const getPageSeo = (pageKey: string): PageSeoDoc => {
+    if (settings.seo?.perPageSeo && settings.seo.perPageSeo[pageKey]) {
+      return settings.seo.perPageSeo[pageKey];
+    }
+    if (defaultSiteSettings.seo?.perPageSeo && defaultSiteSettings.seo.perPageSeo[pageKey]) {
+      return defaultSiteSettings.seo.perPageSeo[pageKey];
+    }
+    return defaultPageSeo;
+  };
+
   return (
     <SiteContentContext.Provider
       value={{
         settings,
         loading,
+        properties,
+        projects,
+        services,
+        articles,
         saveSettings,
         getSectionTitle,
         getSectionSubtitle,
         getPageBanner,
         getDivisionCard,
+        getPageSeo,
       }}
     >
       {children}
