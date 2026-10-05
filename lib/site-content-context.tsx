@@ -6,6 +6,8 @@ import {
   defaultSiteSettings,
   subscribeToSiteSettings,
   updateSiteSettings,
+  PageBannerDoc,
+  DivisionCardDoc,
 } from './firestore-service';
 
 interface SiteContentContextType {
@@ -14,6 +16,8 @@ interface SiteContentContextType {
   saveSettings: (newSettings: Partial<SiteSettingsDoc>) => Promise<void>;
   getSectionTitle: (sectionKey: keyof SiteSettingsDoc['sectionTitles'] | string, lang: 'ar' | 'en') => string;
   getSectionSubtitle: (sectionKey: string, lang: 'ar' | 'en') => string;
+  getPageBanner: (pageKey: string) => PageBannerDoc;
+  getDivisionCard: (divKey: 'realestate' | 'contracting' | 'hvac') => DivisionCardDoc;
 }
 
 const SiteContentContext = createContext<SiteContentContextType>({
@@ -22,6 +26,8 @@ const SiteContentContext = createContext<SiteContentContextType>({
   saveSettings: async () => {},
   getSectionTitle: () => '',
   getSectionSubtitle: () => '',
+  getPageBanner: () => ({ titleAr: '', titleEn: '', subtitleAr: '', subtitleEn: '', image: '/images/hardgp/por1-big.jpg' }),
+  getDivisionCard: (k) => defaultSiteSettings.divisionCards?.[k] || { titleAr: '', titleEn: '', badgeAr: '', badgeEn: '', descAr: '', descEn: '', image: '' },
 });
 
 export function SiteContentProvider({ children }: { children: ReactNode }) {
@@ -66,6 +72,41 @@ export function SiteContentProvider({ children }: { children: ReactNode }) {
     return '';
   };
 
+  const getPageBanner = (pageKey: string): PageBannerDoc => {
+    const key = pageKey as keyof NonNullable<SiteSettingsDoc['pageBanners']>;
+    if (settings.pageBanners && settings.pageBanners[key]) {
+      return settings.pageBanners[key]!;
+    }
+    if (defaultSiteSettings.pageBanners && defaultSiteSettings.pageBanners[key]) {
+      return defaultSiteSettings.pageBanners[key]!;
+    }
+    return {
+      titleAr: '',
+      titleEn: '',
+      subtitleAr: '',
+      subtitleEn: '',
+      image: '/images/hardgp/por1-big.jpg',
+    };
+  };
+
+  const getDivisionCard = (divKey: 'realestate' | 'contracting' | 'hvac'): DivisionCardDoc => {
+    if (settings.divisionCards && settings.divisionCards[divKey]) {
+      return settings.divisionCards[divKey]!;
+    }
+    if (defaultSiteSettings.divisionCards && defaultSiteSettings.divisionCards[divKey]) {
+      return defaultSiteSettings.divisionCards[divKey]!;
+    }
+    return {
+      titleAr: '',
+      titleEn: '',
+      badgeAr: '',
+      badgeEn: '',
+      descAr: '',
+      descEn: '',
+      image: '/images/hardgp/por1-big.jpg',
+    };
+  };
+
   return (
     <SiteContentContext.Provider
       value={{
@@ -74,6 +115,8 @@ export function SiteContentProvider({ children }: { children: ReactNode }) {
         saveSettings,
         getSectionTitle,
         getSectionSubtitle,
+        getPageBanner,
+        getDivisionCard,
       }}
     >
       {children}

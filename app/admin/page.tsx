@@ -86,6 +86,7 @@ import NewsletterManager from '@/components/admin/NewsletterManager';
 import MediaLibraryModal from '@/components/admin/MediaLibraryModal';
 import SeoManager from '@/components/admin/SeoManager';
 import RealtimeAnalyticsView from '@/components/admin/RealtimeAnalyticsView';
+import ImageUploadPicker from '@/components/admin/ImageUploadPicker';
 
 export type AdminTab =
   | 'overview'
@@ -891,6 +892,7 @@ export default function AdminDashboardPage() {
             onSave={handleSaveSiteSettings}
             isDark={isDark}
             isAr={isAr}
+            uploadedMedia={mediaItems}
           />
         )}
 
@@ -1389,13 +1391,13 @@ export default function AdminDashboardPage() {
               </div>
 
               <div>
-                <label className="block font-bold mb-1">{isAr ? 'رابط الصورة (URL)' : 'Image URL'}</label>
-                <input
-                  type="url"
-                  required
+                <ImageUploadPicker
                   value={propForm.image}
-                  onChange={(e) => setPropForm({ ...propForm, image: e.target.value })}
-                  className="w-full p-2.5 rounded-xl border bg-transparent"
+                  onChange={(url) => setPropForm({ ...propForm, image: url })}
+                  label="Property Image"
+                  labelAr="صورة العقار"
+                  isAr={isAr}
+                  uploadedMedia={mediaItems}
                 />
               </div>
 
@@ -1498,13 +1500,13 @@ export default function AdminDashboardPage() {
               </div>
 
               <div>
-                <label className="block font-bold mb-1">{isAr ? 'رابط صورة المشروع' : 'Project Image URL'}</label>
-                <input
-                  type="url"
-                  required
+                <ImageUploadPicker
                   value={projForm.image}
-                  onChange={(e) => setProjForm({ ...projForm, image: e.target.value })}
-                  className="w-full p-2.5 rounded-xl border bg-transparent"
+                  onChange={(url) => setProjForm({ ...projForm, image: url })}
+                  label="Project Image"
+                  labelAr="صورة المشروع"
+                  isAr={isAr}
+                  uploadedMedia={mediaItems}
                 />
               </div>
 
@@ -1606,6 +1608,14 @@ export default function AdminDashboardPage() {
                   className="w-full p-2.5 rounded-xl border bg-transparent"
                 />
               </div>
+              <ImageUploadPicker
+                value={artForm.image}
+                onChange={(url) => setArtForm({ ...artForm, image: url })}
+                label="Article Cover Image"
+                labelAr="صورة غلاف المقال"
+                isAr={isAr}
+                uploadedMedia={mediaItems}
+              />
               <button
                 type="submit"
                 className="w-full py-3.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-lg cursor-pointer"

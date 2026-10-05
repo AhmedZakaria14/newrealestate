@@ -8,12 +8,19 @@ import PageHeader from '@/components/PageHeader';
 import { galleryImages } from '@/data/skyvilla-data';
 import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import { useLanguageTheme } from '@/lib/language-theme-context';
+import { useSiteContent } from '@/lib/site-content-context';
 
 export default function ImageGalleryPage() {
   const { language, theme, t, direction } = useLanguageTheme();
+  const { settings } = useSiteContent();
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const isDark = theme === 'dark';
+
+  const allItems =
+    settings.galleryItems && settings.galleryItems.length > 0
+      ? settings.galleryItems
+      : galleryImages;
 
   const categories = [
     { key: 'All', label: t('projects.all') },
@@ -24,8 +31,8 @@ export default function ImageGalleryPage() {
 
   const filtered =
     activeCategory === 'All'
-      ? galleryImages
-      : galleryImages.filter((img) => img.category === activeCategory);
+      ? allItems
+      : allItems.filter((img) => img.category === activeCategory);
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -52,6 +59,7 @@ export default function ImageGalleryPage() {
       <Navbar />
 
       <PageHeader
+        pageKey="gallery"
         title={t('nav.imageGallery')}
         subtitle={
           language === 'ar'
@@ -106,7 +114,6 @@ export default function ImageGalleryPage() {
                     src={item.image}
                     alt={title}
                     fill
-                    unoptimized
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                     referrerPolicy="no-referrer"
                   />
@@ -171,7 +178,6 @@ export default function ImageGalleryPage() {
                 src={filtered[lightboxIndex].image}
                 alt={language === 'ar' ? filtered[lightboxIndex].title_ar : filtered[lightboxIndex].title}
                 fill
-                unoptimized
                 className="object-contain"
                 referrerPolicy="no-referrer"
               />

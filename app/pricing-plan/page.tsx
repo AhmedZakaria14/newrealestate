@@ -21,6 +21,7 @@ export default function PricingPlanPage() {
       <Navbar />
 
       <PageHeader
+        pageKey="pricing"
         title={language === 'ar' ? 'التسعير ودراسات الجدوى المعتمدة' : 'Valuation & Project Estimation'}
         subtitle={
           language === 'ar'

@@ -4,12 +4,14 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { ShieldCheck, ArrowRight, Phone, Award, Building2 } from 'lucide-react';
 import { useLanguageTheme } from '@/lib/language-theme-context';
+import { useSiteContent } from '@/lib/site-content-context';
 import WordsPullUpMultiStyle, { StyleSegment } from '@/components/animations/WordsPullUpMultiStyle';
 import AnimatedLetterText from '@/components/animations/AnimatedLetterText';
 import ConsultationModal from '@/components/ConsultationModal';
 
 export default function AboutSection() {
   const { language, direction } = useLanguageTheme();
+  const { settings } = useSiteContent();
   const isAr = language === 'ar';
   const isRtl = direction === 'rtl';
   const [consultationOpen, setConsultationOpen] = useState(false);
@@ -56,7 +58,7 @@ export default function AboutSection() {
         {/* Scroll-Linked Progressive Opacity Reveal Body Text */}
         <div className="max-w-3xl mx-auto mt-8 sm:mt-10">
           <AnimatedLetterText
-            text={isAr ? bodyTextAr : bodyTextEn}
+            text={isAr ? (settings.aboutSection?.descAr || bodyTextAr) : (settings.aboutSection?.descEn || bodyTextEn)}
             className="text-[#DEDBC8]/85 text-xs sm:text-sm md:text-base leading-relaxed font-light"
           />
         </div>

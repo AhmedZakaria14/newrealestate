@@ -5,10 +5,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowUpRight } from 'lucide-react';
 import { useLanguageTheme } from '@/lib/language-theme-context';
+import { useSiteContent } from '@/lib/site-content-context';
 
 export default function SkillsSection() {
   const { language, theme, t, direction } = useLanguageTheme();
+  const { settings } = useSiteContent();
   const isDark = theme === 'dark';
+  const isAr = language === 'ar';
+
+  const displayImage = settings.skillsSection?.image || '/images/hardgp/por6-big.jpg';
+  const whoDesc = (isAr ? settings.skillsSection?.whoDescAr || settings.skillsSection?.descAr : settings.skillsSection?.whoDescEn || settings.skillsSection?.descEn) || t('skills.whoDesc');
 
   const skills = [
     {
@@ -123,7 +129,7 @@ export default function SkillsSection() {
             </div>
 
             <p className="opacity-100 text-base leading-relaxed">
-              {t('skills.whoDesc')}
+              {whoDesc}
             </p>
 
             {/* Featured Image */}
@@ -133,7 +139,7 @@ export default function SkillsSection() {
               }`}
             >
               <Image
-                src="/images/hardgp/por6-big.jpg"
+                src={displayImage}
                 alt="HARD Group Engineers"
                 fill
                 unoptimized

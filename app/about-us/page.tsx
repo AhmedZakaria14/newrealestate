@@ -20,11 +20,12 @@ export default function AboutUsPage() {
       <Navbar />
 
       <PageHeader
-        title={language === 'ar' ? 'عن شركة هارد للعقارات' : 'About HARD Real Estate'}
+        pageKey="about"
+        title={language === 'ar' ? 'عن مجموعة هارد القابضة' : 'About HARD Group Holding'}
         subtitle={
           language === 'ar'
-            ? 'منظومة وساطة وتسويق عقاري ترتكز على الشفافية المطلقة، والبيانات الدقيقة، والتركيز على نجاح العميل.'
-            : 'A premier real estate brokerage and marketing system built on absolute transparency, precise data, and client success.'
+            ? 'المساهمة في القطاع الصناعي والبنية التحتية في المملكة العربية السعودية منذ 2004'
+            : 'Contributing to Saudi Arabia industrial & infrastructure sector since 2004'
         }
         breadcrumb={[{ label: language === 'ar' ? 'من نحن' : 'About Us' }]}
       />

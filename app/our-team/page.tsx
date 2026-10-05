@@ -17,6 +17,7 @@ export default function OurTeamPage() {
       <Navbar />
 
       <PageHeader
+        pageKey="team"
         title={t('nav.team')}
         subtitle={
           language === 'ar'

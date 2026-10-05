@@ -16,6 +16,7 @@ export default function BlogPage() {
       <Navbar />
 
       <PageHeader
+        pageKey="blog"
         title={t('nav.blog')}
         subtitle={
           language === 'ar'

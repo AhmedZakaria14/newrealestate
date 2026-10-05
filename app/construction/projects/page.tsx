@@ -21,7 +21,7 @@ import BackButton from '@/components/BackButton';
 import ConsultationModal from '@/components/ConsultationModal';
 import { useLanguageTheme } from '@/lib/language-theme-context';
 import { referenceProjects } from '@/data/reference-data';
-import { getProjects, ProjectDoc } from '@/lib/firestore-service';
+import { getProjects, subscribeToProjects, ProjectDoc } from '@/lib/firestore-service';
 
 export default function ConstructionProjectsPage() {
   const { language, theme, direction } = useLanguageTheme();
@@ -33,9 +33,12 @@ export default function ConstructionProjectsPage() {
   const [consultationOpen, setConsultationOpen] = useState(false);
 
   useEffect(() => {
-    getProjects().then((items) => {
-      if (items.length > 0) setDbProjects(items);
+    const unsub = subscribeToProjects((items) => {
+      if (items && items.length > 0) setDbProjects(items);
     });
+    return () => {
+      if (unsub) unsub();
+    };
   }, []);
 
   const displayProjects = dbProjects.length > 0
@@ -125,7 +128,6 @@ export default function ConstructionProjectsPage() {
                     src={proj.image}
                     alt={proj.title}
                     fill
-                    unoptimized
                     className="object-cover"
                     referrerPolicy="no-referrer"
                   />

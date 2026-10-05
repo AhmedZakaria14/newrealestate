@@ -114,5 +114,23 @@ service cloud.firestore {
         incoming().path is string && incoming().path.size() <= 250;
       allow read, update, delete: if isStaff();
     }
+
+    // 12. Team Members Collection
+    match /team/{memberId} {
+      allow read: if true;
+      allow create, update, delete: if isStaff();
+    }
+
+    // 13. Testimonials Collection
+    match /testimonials/{testimonialId} {
+      allow read: if true;
+      allow create, update, delete: if isStaff();
+    }
+
+    // 14. Gallery Collection
+    match /gallery/{galleryId} {
+      allow read: if true;
+      allow create, update, delete: if isStaff();
+    }
   }
 }

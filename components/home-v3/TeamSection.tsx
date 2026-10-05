@@ -6,10 +6,17 @@ import Link from 'next/link';
 import { Facebook, Twitter, Linkedin, Instagram, ArrowUpRight } from 'lucide-react';
 import { teamMembers } from '@/data/skyvilla-data';
 import { useLanguageTheme } from '@/lib/language-theme-context';
+import { useSiteContent } from '@/lib/site-content-context';
 
 export default function TeamSection() {
   const { language, theme, t, direction } = useLanguageTheme();
+  const { settings } = useSiteContent();
   const isDark = theme === 'dark';
+
+  const members =
+    settings.teamMembers && settings.teamMembers.length > 0
+      ? settings.teamMembers
+      : teamMembers;
 
   return (
     <section
@@ -45,7 +52,7 @@ export default function TeamSection() {
 
         {/* Team Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {teamMembers.slice(0, 3).map((member) => {
+          {members.slice(0, 3).map((member) => {
             const name = language === 'ar' ? member.name_ar : member.name;
             const role = language === 'ar' ? member.role_ar : member.role;
 
@@ -70,6 +77,7 @@ export default function TeamSection() {
                     src={member.image}
                     alt={name}
                     fill
+                    unoptimized
                     className="object-contain object-bottom transition-transform duration-500 group-hover:scale-105"
                     referrerPolicy="no-referrer"
                   />

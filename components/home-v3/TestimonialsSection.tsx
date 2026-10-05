@@ -5,21 +5,33 @@ import Image from 'next/image';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { testimonialsData, partnerLogos } from '@/data/skyvilla-data';
 import { useLanguageTheme } from '@/lib/language-theme-context';
+import { useSiteContent } from '@/lib/site-content-context';
 
 export default function TestimonialsSection() {
   const { language, theme, t, direction } = useLanguageTheme();
+  const { settings } = useSiteContent();
   const [currentIndex, setCurrentIndex] = useState(0);
   const isDark = theme === 'dark';
 
+  const list =
+    settings.testimonials && settings.testimonials.length > 0
+      ? settings.testimonials
+      : testimonialsData;
+
+  const logos =
+    settings.partnerLogos && settings.partnerLogos.length > 0
+      ? settings.partnerLogos
+      : partnerLogos;
+
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? testimonialsData.length - 1 : prev - 1));
+    setCurrentIndex((prev) => (prev === 0 ? list.length - 1 : prev - 1));
   };
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev === testimonialsData.length - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev) => (prev === list.length - 1 ? 0 : prev + 1));
   };
 
-  const current = testimonialsData[currentIndex];
+  const current = list[currentIndex] || list[0];
   const quote = language === 'ar' ? current.quote_ar : current.quote;
   const name = language === 'ar' ? current.name_ar : current.name;
   const role = language === 'ar' ? current.role_ar : current.role;
@@ -109,9 +121,10 @@ export default function TestimonialsSection() {
             <div className="flex items-center gap-4 pt-4 border-t border-gray-500/15">
               <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-blue-500">
                 <Image
-                  src={current.avatar}
+                  src={current.avatar || current.image || '/images/hardgp/slide-10.jpg'}
                   alt={name}
                   fill
+                  unoptimized
                   className="object-cover"
                   referrerPolicy="no-referrer"
                 />
@@ -128,7 +141,7 @@ export default function TestimonialsSection() {
 
           {/* Dots Indicator */}
           <div className="flex items-center gap-2 mt-8">
-            {testimonialsData.map((_, idx) => (
+            {list.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
@@ -151,12 +164,13 @@ export default function TestimonialsSection() {
             {t('testimonials.clientsCount')}
           </span>
           <div className="flex flex-wrap items-center gap-8 opacity-95">
-            {partnerLogos.map((logo, i) => (
+            {logos.map((logo, i) => (
               <div key={i} className="relative h-7 w-28">
                 <Image
                   src={logo}
                   alt="Partner logo"
                   fill
+                  unoptimized
                   className={`object-contain grayscale opacity-60 hover:opacity-100 transition-opacity ${
                     isDark ? 'brightness-0 invert' : ''
                   }`}

@@ -3,13 +3,29 @@
 import React from 'react';
 import Image from 'next/image';
 import { useLanguageTheme } from '@/lib/language-theme-context';
+import { useSiteContent } from '@/lib/site-content-context';
 import { Star, Quote, ShieldCheck, MapPin, CheckCircle2 } from 'lucide-react';
 import { referenceTestimonials } from '@/data/reference-data';
 
 export default function ClientTestimonialsSection() {
   const { language, theme, direction } = useLanguageTheme();
+  const { settings } = useSiteContent();
   const isDark = theme === 'dark';
   const isAr = language === 'ar';
+
+  const list =
+    settings.testimonials && settings.testimonials.length > 0
+      ? settings.testimonials.map((t) => ({
+          id: t.id,
+          name: { ar: t.name_ar, en: t.name },
+          role: { ar: t.role_ar, en: t.role },
+          quote: { ar: t.quote_ar, en: t.quote },
+          rating: t.rating || 5,
+          avatar: t.image || '/images/hardgp/slide-10.jpg',
+          dealHighlight: { ar: 'مشروع منجز', en: 'Delivered Project' },
+          location: { ar: 'المملكة العربية السعودية', en: 'Saudi Arabia' },
+        }))
+      : referenceTestimonials;
 
   return (
     <section
@@ -40,7 +56,7 @@ export default function ClientTestimonialsSection() {
 
         {/* Testimonials Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {referenceTestimonials.map((item) => {
+          {list.map((item) => {
             const name = isAr ? item.name.ar : item.name.en;
             const role = isAr ? item.role.ar : item.role.en;
             const quote = isAr ? item.quote.ar : item.quote.en;
@@ -65,7 +81,7 @@ export default function ClientTestimonialsSection() {
 
                     {/* Rating Stars */}
                     <div className="flex items-center gap-1 text-amber-400">
-                      {[...Array(5)].map((_, i) => (
+                      {[...Array(item.rating || 5)].map((_, i) => (
                         <Star key={i} className="w-3.5 h-3.5 fill-current" />
                       ))}
                     </div>
@@ -84,6 +100,7 @@ export default function ClientTestimonialsSection() {
                       src={item.avatar}
                       alt={name}
                       fill
+                      unoptimized
                       className="object-cover"
                       referrerPolicy="no-referrer"
                     />

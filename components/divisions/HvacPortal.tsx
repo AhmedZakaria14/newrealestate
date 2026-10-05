@@ -25,12 +25,16 @@ import {
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useLanguageTheme } from '@/lib/language-theme-context';
+import { useSiteContent } from '@/lib/site-content-context';
 import ServiceCardsList from '@/components/services/ServiceCardsList';
 
 export default function HvacPortal() {
   const { theme, language, direction } = useLanguageTheme();
+  const { getPageBanner } = useSiteContent();
   const isDark = theme === 'dark';
   const isRtl = direction === 'rtl';
+
+  const hvacBanner = getPageBanner('hvac');
 
   const [formMode, setFormMode] = useState<'amc' | 'emergency'>('amc');
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -135,12 +139,12 @@ export default function HvacPortal() {
       >
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/hardgp/slide-12.jpg"
+            src={hvacBanner?.image || '/images/hardgp/slide-12.jpg'}
             alt="هارد لصيانة وتكييف الهواء"
             fill
             priority
             unoptimized
-            className="object-cover object-center opacity-40 filter brightness-90 contrast-105"
+            className="object-cover object-center opacity-30 filter brightness-75 contrast-110"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#040618]/90 via-[#040618]/70 to-[#040618]" />

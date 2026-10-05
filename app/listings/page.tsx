@@ -68,6 +68,7 @@ export default function ListingsIndexPage() {
       <Navbar />
 
       <PageHeader
+        pageKey="listings"
         title={isAr ? 'العقارات والصفقات المتاحة' : 'Verified Real Estate Listings'}
         subtitle={
           isAr

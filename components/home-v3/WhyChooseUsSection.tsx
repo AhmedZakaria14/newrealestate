@@ -5,11 +5,17 @@ import Image from 'next/image';
 import { Play, ShieldCheck, HardHat, Clock } from 'lucide-react';
 import VideoModal from '@/components/VideoModal';
 import { useLanguageTheme } from '@/lib/language-theme-context';
+import { useSiteContent } from '@/lib/site-content-context';
 
 export default function WhyChooseUsSection() {
-  const { theme, t, direction } = useLanguageTheme();
+  const { theme, t, direction, language } = useLanguageTheme();
+  const { settings } = useSiteContent();
   const [videoOpen, setVideoOpen] = useState(false);
   const isDark = theme === 'dark';
+  const isAr = language === 'ar';
+
+  const displayImage = settings.whyChooseUs?.image || '/images/hardgp/por2-big.jpg';
+  const displayTitle = (isAr ? settings.whyChooseUs?.titleAr : settings.whyChooseUs?.titleEn) || t('why.title');
 
   return (
     <section
@@ -27,7 +33,7 @@ export default function WhyChooseUsSection() {
               }`}
             >
               <Image
-                src="/images/hardgp/por2-big.jpg"
+                src={displayImage}
                 alt="HARD Group Construction Video"
                 fill
                 unoptimized

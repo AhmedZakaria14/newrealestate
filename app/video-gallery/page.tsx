@@ -20,6 +20,7 @@ export default function VideoGalleryPage() {
       <Navbar />
 
       <PageHeader
+        pageKey="video"
         title={t('nav.videoGallery')}
         subtitle={
           language === 'ar'

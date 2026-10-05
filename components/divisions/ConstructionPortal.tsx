@@ -29,6 +29,7 @@ import {
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useLanguageTheme } from '@/lib/language-theme-context';
+import { useSiteContent } from '@/lib/site-content-context';
 import {
   hardConstructionProjects,
   hardConstructionServices,
@@ -41,9 +42,12 @@ import {
 
 export default function ConstructionPortal() {
   const { theme, language, direction } = useLanguageTheme();
+  const { getPageBanner } = useSiteContent();
   const isDark = theme === 'dark';
   const isRtl = direction === 'rtl';
   const isAr = language === 'ar';
+
+  const constructionBanner = getPageBanner('construction');
 
   // Projects filtering state
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -178,12 +182,12 @@ export default function ConstructionPortal() {
       >
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/hardgp/por1-big.jpg"
+            src={constructionBanner?.image || '/images/hardgp/por1-big.jpg'}
             alt={isAr ? 'هارد للإنشاءات والمقاولات' : 'HARD Construction & Contracting'}
             fill
             priority
             unoptimized
-            className="object-cover object-center opacity-35 filter brightness-90 contrast-105"
+            className="object-cover object-center opacity-30 filter brightness-75 contrast-105"
             referrerPolicy="no-referrer"
           />
           <div className={`absolute inset-0 bg-gradient-to-b ${isDark ? 'from-[#040618]/90 via-[#040618]/70 to-[#040618]' : 'from-slate-950/90 via-slate-950/75 to-slate-900'}`} />

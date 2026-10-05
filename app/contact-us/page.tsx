@@ -30,11 +30,12 @@ export default function ContactUsPage() {
       <Navbar />
 
       <PageHeader
-        title={language === 'ar' ? 'تواصل مع فريق هارد للعقارات' : 'Get in Touch with HARD Real Estate'}
+        pageKey="contact"
+        title={language === 'ar' ? 'اتصل بنا وتواصل مع خبرائنا' : 'Contact Us & Reach Our Experts'}
         subtitle={
           language === 'ar'
-            ? 'هل لديك استفسار، ترغب في حجز استشارة خاصة، أو تريد إدراج عقارك؟ مستشارونا المعتمدون جاهزون لمساعدتك.'
-            : 'Have an inquiry, looking to book a private viewing, or wanting to list your property? Our certified advisors are ready to assist.'
+            ? 'فروعنا في الدمام والخبر ومكاتب التوسع بالرياض لخدمتكم وتقديم الاستشارات الفورية.'
+            : 'Offices in Dammam, Khobar, and Riyadh ready to assist your projects around the clock.'
         }
         breadcrumb={[{ label: language === 'ar' ? 'تواصل معنا' : 'Contact Us' }]}
       />

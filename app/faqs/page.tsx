@@ -38,6 +38,7 @@ export default function FAQsPage() {
       <Navbar />
 
       <PageHeader
+        pageKey="faqs"
         title={t('nav.faqs')}
         subtitle={
           language === 'ar'

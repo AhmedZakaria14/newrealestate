@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
@@ -10,6 +10,7 @@ import PageHeader from '@/components/PageHeader';
 import MarqueeTicker from '@/components/MarqueeTicker';
 import { projectsData, ProjectItem } from '@/data/skyvilla-data';
 import { useLanguageTheme } from '@/lib/language-theme-context';
+import { subscribeToProjects, ProjectDoc } from '@/lib/firestore-service';
 import {
   Building2,
   Home,
@@ -25,8 +26,48 @@ import {
 export default function ProjectsPage() {
   const { language, theme, t, direction } = useLanguageTheme();
   const [activeCategory, setActiveCategory] = useState<string>('All');
+  const [liveProjects, setLiveProjects] = useState<ProjectDoc[]>([]);
   const isDark = theme === 'dark';
   const isAr = language === 'ar';
+
+  useEffect(() => {
+    const unsub = subscribeToProjects((docs) => {
+      if (docs && docs.length > 0) {
+        setLiveProjects(docs);
+      }
+    });
+    return () => {
+      if (unsub) unsub();
+    };
+  }, []);
+
+  // Merge live projects from Firestore or fallback to projectsData
+  const allProjects: ProjectItem[] =
+    liveProjects.length > 0
+      ? liveProjects.map((p) => ({
+          id: p.id || p.title,
+          title: p.title,
+          title_ar: p.titleAr || p.title,
+          category:
+            p.category === 'commercial'
+              ? 'Commercial'
+              : p.category === 'residential'
+              ? 'Residential'
+              : 'Industrial',
+          location: p.location,
+          location_ar: p.locationAr || p.location,
+          year: p.completionDate || '2025',
+          area: p.budget || '50,000 m²',
+          floors: p.progress ? `${p.progress}%` : 'Turnkey',
+          architect: p.client || 'HARD Developments',
+          image: p.image || '/images/hardgp/por1-big.jpg',
+          description: p.description,
+          description_ar: p.descriptionAr || p.description,
+          features: ['SBC Certified', 'Class-1 Standard', 'Smart Infrastructure'],
+          features_ar: ['معتمد كود SBC', 'تصنيف فئة أولى', 'بنية تحتية ذكية'],
+          gallery: [p.image || '/images/hardgp/por1-big.jpg'],
+        }))
+      : projectsData;
 
   // Category filter tabs matching the image gallery structure
   const categories = [
@@ -55,13 +96,13 @@ export default function ProjectsPage() {
   // Filter projects by selected category
   const filteredProjects: ProjectItem[] =
     activeCategory === 'All'
-      ? projectsData
-      : projectsData.filter((item) => item.category === activeCategory);
+      ? allProjects
+      : allProjects.filter((item) => item.category === activeCategory);
 
   // Helper count for each tab
   const getCount = (key: string) => {
-    if (key === 'All') return projectsData.length;
-    return projectsData.filter((item) => item.category === key).length;
+    if (key === 'All') return allProjects.length;
+    return allProjects.filter((item) => item.category === key).length;
   };
 
   return (
@@ -71,6 +112,7 @@ export default function ProjectsPage() {
 
       {/* Page Header */}
       <PageHeader
+        pageKey="projects"
         title={t('nav.projects')}
         subtitle={
           isAr
@@ -178,7 +220,6 @@ export default function ProjectsPage() {
                           src={project.image}
                           alt={title}
                           fill
-                          unoptimized
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                           referrerPolicy="no-referrer"
                         />

@@ -32,13 +32,17 @@ import {
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useLanguageTheme } from '@/lib/language-theme-context';
+import { useSiteContent } from '@/lib/site-content-context';
 import { realEstateListings } from '@/data/listings-data';
 import ServiceCardsList from '@/components/services/ServiceCardsList';
 
 export default function RealEstatePortal() {
   const { theme, language, direction } = useLanguageTheme();
+  const { getPageBanner } = useSiteContent();
   const isDark = theme === 'dark';
   const isRtl = direction === 'rtl';
+
+  const realestateBanner = getPageBanner('realestate');
 
   // Search & Filter state
   const [selectedCity, setSelectedCity] = useState('all');
@@ -147,12 +151,12 @@ export default function RealEstatePortal() {
         {/* Background ambient lighting */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/hardgp/por4-big.jpg"
+            src={realestateBanner?.image || '/images/hardgp/por4-big.jpg'}
             alt="هارد للعقارات"
             fill
             priority
             unoptimized
-            className="object-cover object-center opacity-40 filter brightness-90"
+            className="object-cover object-center opacity-30 filter brightness-75"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#040618]/90 via-[#040618]/70 to-[#040618]" />

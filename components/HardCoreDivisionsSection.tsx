@@ -15,6 +15,7 @@ import {
   ArrowUpRight,
 } from 'lucide-react';
 import { useLanguageTheme } from '@/lib/language-theme-context';
+import { useSiteContent } from '@/lib/site-content-context';
 
 interface DivisionCard {
   id: string;
@@ -34,24 +35,31 @@ interface DivisionCard {
 
 export default function HardCoreDivisionsSection() {
   const { theme, language, direction } = useLanguageTheme();
+  const { getDivisionCard } = useSiteContent();
   const isDark = theme === 'dark';
   const isRtl = direction === 'rtl';
+
+  const realestateCard = getDivisionCard('realestate');
+  const contractingCard = getDivisionCard('contracting');
+  const hvacCard = getDivisionCard('hvac');
 
   const divisions: DivisionCard[] = [
     {
       id: 'realestate',
-      titleAr: 'هارد للعقارات والاستثمار',
-      titleEn: 'HARD Real Estate & Investment',
-      badgeAr: 'رخصة فال 1200028472',
-      badgeEn: 'VAL Licensed 1200028472',
+      titleAr: realestateCard.titleAr || 'هارد للعقارات والاستثمار',
+      titleEn: realestateCard.titleEn || 'HARD Real Estate & Investment',
+      badgeAr: realestateCard.badgeAr || 'رخصة فال 1200028472',
+      badgeEn: realestateCard.badgeEn || 'VAL Licensed 1200028472',
       tagColor: 'text-blue-400 bg-blue-500/10 border-blue-500/20',
       descAr:
+        realestateCard.descAr ||
         'الذراع العقاري والاستثماري الرائد في المملكة العربية السعودية، متخصص في التسويق والوساطة المعتمدة من الهيئة العامة للعقار (فال)، وإدارة المحافظ الاستثمارية وتطوير الفرص في المنطقة الشرقية والرياض.',
       descEn:
+        realestateCard.descEn ||
         'The premier real estate and investment arm licensed by the Real Estate General Authority (VAL), specializing in certified brokerage, portfolio management, and prime developments across Eastern Province and Riyadh.',
       href: '/realestate',
-      pathDisplay: '/realestate',
-      image: '/images/hardgp/por4-big.jpg',
+      pathDisplay: realestateCard.pathDisplay || '/realestate',
+      image: realestateCard.image || '/images/hardgp/por4-big.jpg',
       icon: Building2,
       highlights: [
         { ar: 'وساطة وتسويق رسمي مرخص (فال)', en: 'VAL Licensed Brokerage' },
@@ -61,18 +69,20 @@ export default function HardCoreDivisionsSection() {
     },
     {
       id: 'construction',
-      titleAr: 'هارد للإنشاءات والمقاولات العامة',
-      titleEn: 'HARD Construction & Contracting',
-      badgeAr: 'تصنيف مقاولات فئة أولى • كود SBC',
-      badgeEn: 'Class-1 Contractor • SBC Code',
+      titleAr: contractingCard.titleAr || 'هارد للإنشاءات والمقاولات العامة',
+      titleEn: contractingCard.titleEn || 'HARD Construction & Contracting',
+      badgeAr: contractingCard.badgeAr || 'تصنيف مقاولات فئة أولى • كود SBC',
+      badgeEn: contractingCard.badgeEn || 'Class-1 Contractor • SBC Code',
       tagColor: 'text-amber-400 bg-amber-500/10 border-amber-500/20',
       descAr:
+        contractingCard.descAr ||
         'الذراع الإنشائي والهندسي لمجموعة هارد، يقدم خدمات المقاولات العامة المصنفة فئة أولى لتنفيذ الأبراج التجارية، المجمعات السكنية، والمنشآت الذكية بأعلى كفاءة ومعايير كود البناء السعودي (SBC).',
       descEn:
+        contractingCard.descEn ||
         'The engineering powerhouse of HARD Group, delivering Class-1 classified general contracting for commercial towers, residential communities, and advanced infrastructure under the Saudi Building Code (SBC).',
       href: '/construction',
-      pathDisplay: '/construction',
-      image: '/images/hardgp/por1-big.jpg',
+      pathDisplay: contractingCard.pathDisplay || '/construction',
+      image: contractingCard.image || '/images/hardgp/por1-big.jpg',
       icon: HardHat,
       highlights: [
         { ar: 'مقاولات عامة فئة أولى معتمدة (SCA)', en: 'Class-1 General Contracting' },
@@ -82,18 +92,20 @@ export default function HardCoreDivisionsSection() {
     },
     {
       id: 'hvac',
-      titleAr: 'هارد لصيانة وتكييف الهواء',
-      titleEn: 'HARD HVAC & Facilities Maintenance',
-      badgeAr: 'طوارئ واستجابة 24/7 • عقود AMC',
-      badgeEn: '24/7 Emergency • AMC Contracts',
+      titleAr: hvacCard.titleAr || 'هارد لصيانة وتكييف الهواء',
+      titleEn: hvacCard.titleEn || 'HARD HVAC & Facilities Maintenance',
+      badgeAr: hvacCard.badgeAr || 'طوارئ واستجابة 24/7 • عقود AMC',
+      badgeEn: hvacCard.badgeEn || '24/7 Emergency • AMC Contracts',
       tagColor: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20',
       descAr:
+        hvacCard.descAr ||
         'الذراع التخصصي للخدمات الكهروميكانيكية والتبريد، يقدم عقود الصيانة الوقائية (AMC) للشيلرات المركزية، أنظمة VRF الحديثة، وتنقية مجاري الهواء مع طوارئ واستجابة فورية على مدار الساعة.',
       descEn:
+        hvacCard.descEn ||
         'The electromechanical engineering arm providing annual preventive maintenance contracts (AMC) for central chillers, VRF variable refrigerant systems, air quality sanitation, and 24/7 rapid response.',
       href: '/hvac',
-      pathDisplay: '/hvac',
-      image: '/images/hardgp/slide-12.jpg',
+      pathDisplay: hvacCard.pathDisplay || '/hvac',
+      image: hvacCard.image || '/images/hardgp/slide-12.jpg',
       icon: Fan,
       highlights: [
         { ar: 'عقود الصيانة الوقائية السنوية (AMC)', en: 'Preventive Annual Maintenance (AMC)' },
@@ -157,7 +169,6 @@ export default function HardCoreDivisionsSection() {
                     src={card.image}
                     alt={title}
                     fill
-                    unoptimized
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                     referrerPolicy="no-referrer"

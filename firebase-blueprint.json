@@ -185,6 +185,50 @@
         "createdAt": { "type": "string", "format": "date-time", "description": "Visit timestamp" }
       },
       "required": ["path", "createdAt"]
+    },
+    "TeamMember": {
+      "title": "TeamMember",
+      "description": "Leadership and engineering staff members.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Member name" },
+        "nameAr": { "type": "string", "description": "Member name in Arabic" },
+        "role": { "type": "string", "description": "Role / Title" },
+        "roleAr": { "type": "string", "description": "Role in Arabic" },
+        "image": { "type": "string", "format": "uri", "description": "Profile photo URL" },
+        "phone": { "type": "string", "description": "Direct contact phone" },
+        "email": { "type": "string", "format": "email", "description": "Contact email" }
+      },
+      "required": ["name", "role", "image"]
+    },
+    "Testimonial": {
+      "title": "Testimonial",
+      "description": "Client reviews and institutional endorsements.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Client full name" },
+        "nameAr": { "type": "string", "description": "Client name in Arabic" },
+        "company": { "type": "string", "description": "Company name" },
+        "role": { "type": "string", "description": "Client position" },
+        "content": { "type": "string", "description": "Feedback content" },
+        "contentAr": { "type": "string", "description": "Feedback in Arabic" },
+        "rating": { "type": "number", "description": "Rating score 1-5" },
+        "avatar": { "type": "string", "format": "uri", "description": "Client avatar image" }
+      },
+      "required": ["name", "content", "rating", "avatar"]
+    },
+    "GalleryItem": {
+      "title": "GalleryItem",
+      "description": "Visual portfolio and high-resolution architecture photos.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Photo title" },
+        "title_ar": { "type": "string", "description": "Photo title in Arabic" },
+        "category": { "type": "string", "description": "Category key" },
+        "category_ar": { "type": "string", "description": "Category in Arabic" },
+        "image": { "type": "string", "format": "uri", "description": "High-res image URL" }
+      },
+      "required": ["title", "category", "image"]
     }
   },
   "firestore": {
@@ -231,6 +275,18 @@
     "/analytics_visits/{visitId}": {
       "schema": { "$ref": "#/entities/AnalyticsVisit" },
       "description": "Real-time traffic visits and page impressions log."
+    },
+    "/team/{memberId}": {
+      "schema": { "$ref": "#/entities/TeamMember" },
+      "description": "Team members collection."
+    },
+    "/testimonials/{testimonialId}": {
+      "schema": { "$ref": "#/entities/Testimonial" },
+      "description": "Client testimonials collection."
+    },
+    "/gallery/{galleryId}": {
+      "schema": { "$ref": "#/entities/GalleryItem" },
+      "description": "Gallery photos collection."
     }
   }
 }

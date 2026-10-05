@@ -17,6 +17,14 @@ import {
 import { db } from './firebase';
 import { referenceProperties } from '@/data/reference-data';
 import { referenceProjects } from '@/data/reference-data';
+import {
+  hardgpSlides,
+  HardgpSlide,
+  galleryImages,
+  teamMembers,
+  testimonialsData,
+  partnerLogos,
+} from '@/data/skyvilla-data';
 
 export interface PropertyDoc {
   id?: string;
@@ -434,6 +442,36 @@ export async function seedInitialDatabase() {
 }
 
 // ----------------- SITE SETTINGS & DYNAMIC CONTENT -----------------
+export interface PageBannerDoc {
+  titleAr: string;
+  titleEn: string;
+  subtitleAr: string;
+  subtitleEn: string;
+  image: string;
+}
+
+export interface DivisionCardDoc {
+  titleAr: string;
+  titleEn: string;
+  badgeAr: string;
+  badgeEn: string;
+  descAr: string;
+  descEn: string;
+  image: string;
+  pathDisplay?: string;
+}
+
+export interface SectionContentDoc {
+  titleAr: string;
+  titleEn: string;
+  subtitleAr: string;
+  subtitleEn: string;
+  descAr?: string;
+  descEn?: string;
+  image: string;
+  videoUrl?: string;
+}
+
 export interface SiteSettingsDoc {
   heroTitleAr: string;
   heroTitleEn: string;
@@ -441,11 +479,69 @@ export interface SiteSettingsDoc {
   heroSubtitleEn: string;
   heroBadgeAr: string;
   heroBadgeEn: string;
+  heroDescriptionAr?: string;
+  heroDescriptionEn?: string;
   heroImage?: string;
   heroCtaQuoteAr?: string;
   heroCtaQuoteEn?: string;
   heroCtaCalcAr?: string;
   heroCtaCalcEn?: string;
+  slides?: HardgpSlide[];
+  galleryItems?: Array<{
+    id: string;
+    title: string;
+    title_ar: string;
+    category: string;
+    image: string;
+    area?: string;
+    date?: string;
+  }>;
+  teamMembers?: Array<{
+    id: string;
+    name: string;
+    name_ar: string;
+    role: string;
+    role_ar: string;
+    image: string;
+  }>;
+  testimonials?: Array<{
+    id: string;
+    name: string;
+    name_ar: string;
+    role: string;
+    role_ar: string;
+    quote: string;
+    quote_ar: string;
+    rating: number;
+    image: string;
+  }>;
+  partnerLogos?: string[];
+  pageBanners?: {
+    construction?: PageBannerDoc;
+    realestate?: PageBannerDoc;
+    hvac?: PageBannerDoc;
+    projects?: PageBannerDoc;
+    listings?: PageBannerDoc;
+    services?: PageBannerDoc;
+    about?: PageBannerDoc;
+    contact?: PageBannerDoc;
+    gallery?: PageBannerDoc;
+    careers?: PageBannerDoc;
+    faqs?: PageBannerDoc;
+    team?: PageBannerDoc;
+    blog?: PageBannerDoc;
+    testimonials?: PageBannerDoc;
+    pricing?: PageBannerDoc;
+    video?: PageBannerDoc;
+  };
+  divisionCards?: {
+    realestate?: DivisionCardDoc;
+    contracting?: DivisionCardDoc;
+    hvac?: DivisionCardDoc;
+  };
+  aboutSection?: SectionContentDoc;
+  whyChooseUs?: SectionContentDoc;
+  skillsSection?: SectionContentDoc & { whoDescAr?: string; whoDescEn?: string };
   sectionTitles: {
     propertiesAr: string;
     propertiesEn: string;
@@ -511,17 +607,188 @@ export interface SiteSettingsDoc {
 }
 
 export const defaultSiteSettings: SiteSettingsDoc = {
-  heroTitleAr: 'مجموعة هارد القابضة',
-  heroTitleEn: 'HARD Group Holding',
+  heroTitleAr: 'مجموعة هارد للمقاولات العامة',
+  heroTitleEn: 'HARD Group',
   heroSubtitleAr: 'للمقاولات والتطوير العقاري',
-  heroSubtitleEn: '& Structural Development',
-  heroBadgeAr: 'مقاولات عامة فئة أولى · كود البناء السعودي SBC · رخصة فال 1200028472',
-  heroBadgeEn: 'Class-1 General Contracting · Saudi Building Code (SBC) · VAL Lic. 1200028472',
+  heroSubtitleEn: 'General Contracting & Real Estate Development',
+  heroBadgeAr: 'المساهمة في القطاع الصناعي والبنية التحتية في المملكة منذ 2004',
+  heroBadgeEn: 'Contributing to Saudi Arabia industrial & infrastructure sector since 2004',
+  heroDescriptionAr: 'مؤسسة هارد للمقاولات العامة، تساهم في قطاع الصناعة والبنية التحتية في المملكة العربية السعودية منذ عام 2004 بخدمات إنشائية موثوقة ومتعددة الأبعاد، وتطوير عقاري، وخدمات تشغيل وصيانة شاملة.',
+  heroDescriptionEn: 'HARD General Contracting Establishment, has been contributing to Saudi Arabia industrial and infrastructure sector since 2004 with reliable, multi-dimensional construction services, property development, and comprehensive maintenance operations.',
   heroImage: '/images/hardgp/por1-big.jpg',
   heroCtaQuoteAr: 'طلب استشارة وتسعير فوري',
   heroCtaQuoteEn: 'Request Instant Estimate',
   heroCtaCalcAr: 'حاسبة تكاليف المشاريع',
   heroCtaCalcEn: 'Cost Estimator',
+  slides: hardgpSlides,
+  pageBanners: {
+    construction: {
+      titleAr: 'هارد للإنشاءات والمقاولات العامة',
+      titleEn: 'HARD Construction & Contracting',
+      subtitleAr: 'تصنيف مقاولات عامة فئة أولى واعتماد كود البناء السعودي (SBC) لتنفيذ الأبراج والمجمعات الذكية',
+      subtitleEn: 'Class-1 general contracting for commercial towers, industrial facilities, and smart compounds',
+      image: '/images/hardgp/por1-big.jpg',
+    },
+    realestate: {
+      titleAr: 'هارد للعقارات والاستثمار',
+      titleEn: 'HARD Real Estate & Investment',
+      subtitleAr: 'وساطة وتسويق معتمد برخصة فال 1200028472 وتطوير المخططات الكبرى في المملكة',
+      subtitleEn: 'VAL licensed real estate brokerage and prime investment development marketing',
+      image: '/images/hardgp/por4-big.jpg',
+    },
+    hvac: {
+      titleAr: 'هارد لصيانة وتكييف الهواء',
+      titleEn: 'HARD HVAC & Facilities Maintenance',
+      subtitleAr: 'عقود الصيانة الوقائية السنوية AMC وطوارئ 24/7 للشيلرات المركزية وأنظمة VRF',
+      subtitleEn: 'Preventive annual AMC contracts and 24/7 emergency dispatch for industrial and residential cooling',
+      image: '/images/hardgp/slide-12.jpg',
+    },
+    projects: {
+      titleAr: 'المشاريع الاستراتيجية والتطويرية',
+      titleEn: 'Strategic & Landmark Projects',
+      subtitleAr: 'سجل حافل بتنفيذ الأبراج والمجمعات التجارية والطبية واللوجستية وفق أعلى معايير الجودة',
+      subtitleEn: 'Proven track record delivering commercial towers, healthcare, and logistics facilities',
+      image: '/images/hardgp/por2-big.jpg',
+    },
+    listings: {
+      titleAr: 'العقارات والفرص الاستثمارية',
+      titleEn: 'Properties & Investment Opportunities',
+      subtitleAr: 'أصول عقارية فاخرة ومخططات معتمدة برخصة فال في المنطقة الشرقية والرياض',
+      subtitleEn: 'Verified luxury real estate assets backed by certified VAL license in Eastern Province & Riyadh',
+      image: '/images/hardgp/por4-big.jpg',
+    },
+    services: {
+      titleAr: 'مصفوفة الخدمات المتكاملة',
+      titleEn: 'Comprehensive Engineering Services',
+      subtitleAr: 'منظومة شاملة للإنشاءات، التطوير العقاري، وأنظمة التشغيل والصيانة الكهروميكانيكية',
+      subtitleEn: 'Turnkey contracting, real estate brokerage, and electromechanical facility operations',
+      image: '/images/hardgp/por3-big.jpg',
+    },
+    about: {
+      titleAr: 'عن مجموعة هارد القابضة',
+      titleEn: 'About HARD Group Holding',
+      subtitleAr: 'المساهمة في القطاع الصناعي والبنية التحتية في المملكة العربية السعودية منذ 2004',
+      subtitleEn: 'Contributing to Saudi Arabia industrial & infrastructure sector since 2004',
+      image: '/images/hardgp/por6-big.jpg',
+    },
+    contact: {
+      titleAr: 'اتصل بنا وتواصل مع خبرائنا',
+      titleEn: 'Contact Us & Reach Our Experts',
+      subtitleAr: 'فروعنا في الدمام والخبر ومكاتب التوسع بالرياض لخدمتكم وتقديم الاستشارات الفورية',
+      subtitleEn: 'Offices in Dammam, Khobar, and Riyadh ready to assist your projects around the clock',
+      image: '/images/hardgp/por1-big.jpg',
+    },
+    gallery: {
+      titleAr: 'معرض الصور والمشاريع بجودة كاملة',
+      titleEn: 'High-Resolution Project Gallery',
+      subtitleAr: 'معرض بصري تفاعلي يبرز الفلل السكنية الفارهة، والواجهات الزجاجية المعاصرة، وأدق التفاصيل الإنشائية',
+      subtitleEn: 'Visual showcase of completed sky villas, commercial atriums, and precision engineering details',
+      image: '/images/hardgp/por7-big.jpg',
+    },
+    team: {
+      titleAr: 'فريق عمل وقيادات مجموعة هارد',
+      titleEn: 'Our Executive Leadership & Engineers',
+      subtitleAr: 'نخبة من كبار المعماريين والمهندسين المدنيين ومديري المشاريع وراء كل صرح ناجح',
+      subtitleEn: 'Skilled architects, civil engineers, and master builders behind every award-winning project',
+      image: '/images/hardgp/por6-big.jpg',
+    },
+    blog: {
+      titleAr: 'المركز الإعلامي والتقارير الفنية',
+      titleEn: 'Media Center & Technical Insights',
+      subtitleAr: 'أحدث التحديثات حول كود البناء السعودي وتطورات سوق العقارات والإنشاءات',
+      subtitleEn: 'Latest analysis on Saudi Building Code compliance, market trends, and civil innovations',
+      image: '/images/hardgp/por2-big.jpg',
+    },
+    testimonials: {
+      titleAr: 'شهادات العملاء وشركاء النجاح',
+      titleEn: 'Client Testimonials & Partner Trust',
+      subtitleAr: 'ثقة كبرى الشركات والجهات الحكومية والمستثمرين في دقة إنجازنا وجودة تسليمنا',
+      subtitleEn: 'Testimonials from leading government entities, commercial giants, and private investors',
+      image: '/images/hardgp/por10-big.jpg',
+    },
+    pricing: {
+      titleAr: 'خطط وباقات الخدمات والتسعير',
+      titleEn: 'Transparent Pricing & Contracting Packages',
+      subtitleAr: 'باقات تسعير واضحة وشاملة للاستشارات والتصميم والإشراف الهندسي وإدارة المشاريع',
+      subtitleEn: 'Structured service packages for architectural consulting, supervision, and turnkey contracting',
+      image: '/images/hardgp/por3-big.jpg',
+    },
+    faqs: {
+      titleAr: 'الأسئلة الشائعة والمساعد الفوري',
+      titleEn: 'Frequently Asked Questions & Advisory',
+      subtitleAr: 'إجابات تفصيلية وشاملة عن إجراءات التعاقد والتراخيص ورخصة فال والضمانات الممتدة',
+      subtitleEn: 'Comprehensive answers regarding contracts, VAL licensing, SBC compliance, and guarantees',
+      image: '/images/hardgp/por5-big.jpg',
+    },
+    video: {
+      titleAr: 'معرض الفيديو والتوثيق الميداني',
+      titleEn: 'Video Gallery & Field Documentation',
+      subtitleAr: 'مقاطع توثيقية حية لمراحل الصب الإنشائي والتشطيبات وتسليم المفاتيح للمشاريع',
+      subtitleEn: 'Cinematic video chronicles documenting foundation casting, MEP installations, and handovers',
+      image: '/images/hardgp/por2-big.jpg',
+    },
+  },
+  galleryItems: galleryImages,
+  teamMembers: teamMembers,
+  testimonials: testimonialsData,
+  partnerLogos: partnerLogos,
+  divisionCards: {
+    realestate: {
+      titleAr: 'هارد للعقارات والاستثمار',
+      titleEn: 'HARD Real Estate & Investment',
+      badgeAr: 'رخصة فال 1200028472',
+      badgeEn: 'VAL Licensed 1200028472',
+      descAr: 'الذراع العقاري والاستثماري الرائد في المملكة العربية السعودية، متخصص في التسويق والوساطة المعتمدة من الهيئة العامة للعقار (فال)، وإدارة المحافظ الاستثمارية وتطوير الفرص في المنطقة الشرقية والرياض.',
+      descEn: 'The premier real estate and investment arm licensed by the Real Estate General Authority (VAL), specializing in certified brokerage, portfolio management, and prime developments across Eastern Province and Riyadh.',
+      image: '/images/hardgp/por4-big.jpg',
+      pathDisplay: '/realestate',
+    },
+    contracting: {
+      titleAr: 'هارد للإنشاءات والمقاولات العامة',
+      titleEn: 'HARD Construction & Contracting',
+      badgeAr: 'تصنيف مقاولات فئة أولى • كود SBC',
+      badgeEn: 'Class-1 Contractor • SBC Code',
+      descAr: 'الذراع الإنشائي والهندسي لمجموعة هارد، يقدم خدمات المقاولات العامة المصنفة فئة أولى لتنفيذ الأبراج التجارية، المجمعات السكنية، والمنشآت الذكية بأعلى كفاءة ومعايير كود البناء السعودي (SBC).',
+      descEn: 'The engineering powerhouse of HARD Group, delivering Class-1 classified general contracting for commercial towers, residential communities, and advanced infrastructure under the Saudi Building Code (SBC).',
+      image: '/images/hardgp/por1-big.jpg',
+      pathDisplay: '/construction',
+    },
+    hvac: {
+      titleAr: 'هارد لصيانة وتكييف الهواء',
+      titleEn: 'HARD HVAC & Facilities Maintenance',
+      badgeAr: 'طوارئ واستجابة 24/7 • عقود AMC',
+      badgeEn: '24/7 Emergency • AMC Contracts',
+      descAr: 'الذراع التخصصي للخدمات الكهروميكانيكية والتبريد، يقدم عقود الصيانة الوقائية (AMC) للشيلرات المركزية، أنظمة VRF الحديثة، وتنقية مجاري الهواء مع طوارئ واستجابة فورية على مدار الساعة.',
+      descEn: 'The electromechanical engineering arm providing annual preventive maintenance contracts (AMC) for central chillers, VRF variable refrigerant systems, air quality sanitation, and 24/7 rapid response.',
+      image: '/images/hardgp/slide-12.jpg',
+      pathDisplay: '/hvac',
+    },
+  },
+  aboutSection: {
+    titleAr: 'عن مجموعة هارد للمقاولات والتطوير',
+    titleEn: 'About HARD Group',
+    subtitleAr: 'المساهمة في قطاع الصناعة والبنية التحتية منذ 2004',
+    subtitleEn: 'Contributing to Saudi infrastructure since 2004',
+    descAr: 'مؤسسة هارد للمقاولات العامة، تساهم في قطاع الصناعة والبنية التحتية في المملكة العربية السعودية منذ عام 2004 بخدمات إنشائية موثوقة ومتعددة الأبعاد، وتطوير عقاري، وخدمات تشغيل وصيانة شاملة.',
+    descEn: 'HARD General Contracting Establishment, has been contributing to Saudi Arabia industrial and infrastructure sector since 2004 with reliable, multi-dimensional construction services, property development, and comprehensive maintenance operations.',
+    image: '/images/hardgp/por6-big.jpg',
+  },
+  whyChooseUs: {
+    titleAr: 'لماذا تختار مجموعة هارد لمشروعك؟',
+    titleEn: 'Why Choose HARD Group for Your Project?',
+    subtitleAr: 'معايير هندسية صارمة وتطبيق معتمد لكود البناء السعودي SBC',
+    subtitleEn: 'Rigorous engineering standards & 100% Saudi Building Code compliance',
+    image: '/images/hardgp/por2-big.jpg',
+  },
+  skillsSection: {
+    titleAr: 'كفاءاتنا الهندسية وإمكانات التنفيذ',
+    titleEn: 'Our Engineering Competencies & Capabilities',
+    subtitleAr: 'فريق عمل متكامل من المهندسين والفنيين المؤهلين',
+    subtitleEn: 'Integrated team of accredited engineers and technicians',
+    image: '/images/hardgp/por6-big.jpg',
+    whoDescAr: 'نمتلك طواقم هندسية متخصصة ومعدات ثقيلة متطورة تتيح لنا تنفيذ أصعب المشاريع الإنشائية والتجارية والصناعية بدقة متناهية والتزام صارم بمواعيد التسليم.',
+    whoDescEn: 'We possess specialized engineering staff and advanced heavy equipment enabling the execution of the most demanding civil, commercial, and industrial projects with strict deadlines.',
+  },
   sectionTitles: {
     propertiesAr: 'فرص استثمارية وعقارات مميزة',
     propertiesEn: 'Featured Investment Properties',
@@ -553,9 +820,9 @@ export const defaultSiteSettings: SiteSettingsDoc = {
     aboutEn: 'About HARD Group Holding',
   },
   contactInfo: {
-    hotline: '+966138444663',
+    hotline: '+966138004273',
     emergencyPhone: '+966556125711',
-    email: 'info@hardgroup.sa',
+    email: 'info@hardgp.com',
     addressKhobarAr: '4737 شارع 18 - حي الريان وحدة رقم: 1، الدمام 32256 - 8405، المملكة العربية السعودية',
     addressKhobarEn: '4737 18th - Al-Rayyan Unit No.: 1, Dammam 32256 - 8405, Kingdom of Saudi Arabia',
     addressRiyadhAr: 'مشاريع وخدمات التوسع: المنطقة الوسطى (الرياض) والمنطقة الغربية',
@@ -792,5 +1059,173 @@ export async function addMediaItem(item: Omit<MediaItemDoc, 'id' | 'createdAt'>)
 
 export async function deleteMediaItem(id: string) {
   const docRef = doc(db, 'media', id);
+  await deleteDoc(docRef);
+}
+
+// ----------------- TEAM MEMBERS -----------------
+export interface TeamMemberDoc {
+  id?: string;
+  name: string;
+  nameAr: string;
+  role: string;
+  roleAr: string;
+  image: string;
+  bio?: string;
+  bioAr?: string;
+  phone?: string;
+  email?: string;
+  order?: number;
+  createdAt?: any;
+}
+
+export function subscribeToTeam(callback: (team: TeamMemberDoc[]) => void) {
+  const colRef = collection(db, 'team');
+  const q = query(colRef, orderBy('createdAt', 'asc'));
+
+  return onSnapshot(
+    q,
+    (snapshot) => {
+      const list: TeamMemberDoc[] = [];
+      snapshot.forEach((d) => {
+        list.push({ id: d.id, ...d.data() } as TeamMemberDoc);
+      });
+      callback(list);
+    },
+    (error) => {
+      console.error('Error listening to team:', error);
+    }
+  );
+}
+
+export async function addTeamMember(member: Omit<TeamMemberDoc, 'id' | 'createdAt'>) {
+  const colRef = collection(db, 'team');
+  const docRef = await addDoc(colRef, {
+    ...member,
+    createdAt: serverTimestamp(),
+  });
+  return docRef.id;
+}
+
+export async function updateTeamMember(id: string, member: Partial<TeamMemberDoc>) {
+  const docRef = doc(db, 'team', id);
+  await updateDoc(docRef, {
+    ...member,
+    updatedAt: serverTimestamp(),
+  });
+}
+
+export async function deleteTeamMember(id: string) {
+  const docRef = doc(db, 'team', id);
+  await deleteDoc(docRef);
+}
+
+// ----------------- TESTIMONIALS -----------------
+export interface TestimonialDoc {
+  id?: string;
+  name: string;
+  nameAr: string;
+  role: string;
+  roleAr: string;
+  company?: string;
+  companyAr?: string;
+  content: string;
+  contentAr: string;
+  rating: number;
+  avatar: string;
+  featured?: boolean;
+  createdAt?: any;
+}
+
+export function subscribeToTestimonials(callback: (testimonials: TestimonialDoc[]) => void) {
+  const colRef = collection(db, 'testimonials');
+  const q = query(colRef, orderBy('createdAt', 'desc'));
+
+  return onSnapshot(
+    q,
+    (snapshot) => {
+      const list: TestimonialDoc[] = [];
+      snapshot.forEach((d) => {
+        list.push({ id: d.id, ...d.data() } as TestimonialDoc);
+      });
+      callback(list);
+    },
+    (error) => {
+      console.error('Error listening to testimonials:', error);
+    }
+  );
+}
+
+export async function addTestimonial(testimonial: Omit<TestimonialDoc, 'id' | 'createdAt'>) {
+  const colRef = collection(db, 'testimonials');
+  const docRef = await addDoc(colRef, {
+    ...testimonial,
+    createdAt: serverTimestamp(),
+  });
+  return docRef.id;
+}
+
+export async function updateTestimonial(id: string, testimonial: Partial<TestimonialDoc>) {
+  const docRef = doc(db, 'testimonials', id);
+  await updateDoc(docRef, {
+    ...testimonial,
+    updatedAt: serverTimestamp(),
+  });
+}
+
+export async function deleteTestimonial(id: string) {
+  const docRef = doc(db, 'testimonials', id);
+  await deleteDoc(docRef);
+}
+
+// ----------------- GALLERY ITEMS -----------------
+export interface GalleryItemDoc {
+  id?: string;
+  title: string;
+  title_ar: string;
+  category: string;
+  category_ar: string;
+  image: string;
+  order?: number;
+  createdAt?: any;
+}
+
+export function subscribeToGallery(callback: (items: GalleryItemDoc[]) => void) {
+  const colRef = collection(db, 'gallery');
+  const q = query(colRef, orderBy('createdAt', 'asc'));
+
+  return onSnapshot(
+    q,
+    (snapshot) => {
+      const list: GalleryItemDoc[] = [];
+      snapshot.forEach((d) => {
+        list.push({ id: d.id, ...d.data() } as GalleryItemDoc);
+      });
+      callback(list);
+    },
+    (error) => {
+      console.error('Error listening to gallery:', error);
+    }
+  );
+}
+
+export async function addGalleryItem(item: Omit<GalleryItemDoc, 'id' | 'createdAt'>) {
+  const colRef = collection(db, 'gallery');
+  const docRef = await addDoc(colRef, {
+    ...item,
+    createdAt: serverTimestamp(),
+  });
+  return docRef.id;
+}
+
+export async function updateGalleryItem(id: string, item: Partial<GalleryItemDoc>) {
+  const docRef = doc(db, 'gallery', id);
+  await updateDoc(docRef, {
+    ...item,
+    updatedAt: serverTimestamp(),
+  });
+}
+
+export async function deleteGalleryItem(id: string) {
+  const docRef = doc(db, 'gallery', id);
   await deleteDoc(docRef);
 }

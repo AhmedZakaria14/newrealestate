@@ -24,7 +24,7 @@ import BackButton from '@/components/BackButton';
 import ConsultationModal from '@/components/ConsultationModal';
 import { useLanguageTheme } from '@/lib/language-theme-context';
 import { referenceProperties } from '@/data/reference-data';
-import { getProperties, PropertyDoc } from '@/lib/firestore-service';
+import { getProperties, subscribeToProperties, PropertyDoc } from '@/lib/firestore-service';
 
 export default function RealEstatePropertiesPage() {
   const { language, theme, direction } = useLanguageTheme();
@@ -38,9 +38,12 @@ export default function RealEstatePropertiesPage() {
   const [consultationOpen, setConsultationOpen] = useState(false);
 
   useEffect(() => {
-    getProperties().then((items) => {
-      if (items.length > 0) setDbProperties(items);
+    const unsub = subscribeToProperties((items) => {
+      if (items && items.length > 0) setDbProperties(items);
     });
+    return () => {
+      if (unsub) unsub();
+    };
   }, []);
 
   // Combined properties (Firestore live properties + reference catalog)
@@ -191,7 +194,6 @@ export default function RealEstatePropertiesPage() {
                     src={property.image}
                     alt={property.title}
                     fill
-                    unoptimized
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
                   />

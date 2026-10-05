@@ -20,6 +20,7 @@ export default function TestimonialsPage() {
       <Navbar />
 
       <PageHeader
+        pageKey="testimonials"
         title={t('nav.testimonials')}
         subtitle={
           language === 'ar'

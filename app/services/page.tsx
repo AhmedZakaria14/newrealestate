@@ -20,6 +20,7 @@ export default function ServicesPage() {
       <Navbar />
 
       <PageHeader
+        pageKey="services"
         title={isAr ? 'خدمات قطاعات مجموعة هارد' : 'HARD Group Services Portfolio'}
         subtitle={
           isAr
